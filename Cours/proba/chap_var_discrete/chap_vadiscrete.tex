@@ -1,0 +1,651 @@
+\chapter[V.A. discrètes]{Variables aléatoires discrètes}
+
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+
+\section{Loi de probabilité}
+
+De manière générale si $f:A\to B$ est une application. L'image réciproque de $\beta \subset B$ est l'ensemble $f^{-1}(\beta) = \left\{ a \in A | f(a) \in \beta \right\}$. On note aussi $f^{-1}(\beta) = \left\{ f=\beta \right\} \subset A$.
+\pl{\rep{2cm}}
+
+\subsection{Généralités}
+
+
+\begin{definition}
+Soit $(\Omega,\mathcal{A})$ un espace probabilisable et soit $E$ un ensemble. On dit qu'une application $X:\Omega \to E$ est une \emph{variable aléatoire discrète} si les deux conditions sont satisfaites: 
+\begin{enumerate}[label=(\roman*)]
+	\item L'ensemble $X(\Omega)$ des valeurs prises par $X$ est dénombrable.
+	\item Pour tout $x \in E$, on a $X^{-1} (\{x\}) \in \mathcal{A}$.
+\end{enumerate}
+\end{definition}
+
+{\bf\sffamily Notation :} Pour alléger l'écriture, on utilise la notation $\{X=x\}$ au lieu de $X^{-1} (\{x\}) \doteq \{ \omega\in\Omega| X(\omega) =x \}$. Les variables aléatoires sont toujours notées en majuscules tandis que les valeurs (déterministes) prises par ces variables aléatoires sont notées en minuscules. 
+
+\begin{remark}
+	La plupart du temps, on aura $E=\mathbb{N}$ ou $\mathbb{Z}$ et on munira $E$ de la tribu $\mathcal{E}=\mathcal{P}(E)$. 
+\end{remark}
+
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+\begin{defprop}
+Soit $X$ une variable aléatoire définie sur l'espace probabilisé $(\Omega,\mathcal{A},\P)$ à valeurs dans l'espace probabilisable $(E,\mathcal{E})$. L'application 
+\begin{align*}
+	\P_X : \mathcal E & \to [0,1] \\
+	A &\mapsto \mathbb{P}(X^{-1}(A)) = \P(X\in A)
+\end{align*}
+est une probabilité sur l'espace probabilisable $(E,\mathcal{E})$ appelée \emph{loi (de probabilité)} de la variable aléatoire $X$.
+\end{defprop}
+
+\begin{proof}
+	La mesure $\P_X$ est bien de masse 1: en effet, $\P_X(E) = \P(X\in E) = \P(\Omega) =1$. Elle est bien $\sigma$-additive car si les ensembles $E_1,E_2 \in \mathcal E$ sont disjoints, alors $X^{-1}(E_1)$ et $X^{-1}(E_2)$ le sont aussi. On a alors pour toute suite $(E_n)_{n \in \mathbb{N}}$ d'éléments disjoints deux à deux de $\mathcal{E}$
+	\[
+		\P_X\Big(\bigcup_{n\in \N} E_n \Big) =  \mathbb{P} \Big( \bigcup_{n \in \mathbb{N}} X^{-1}(E_n) \Big) = \sum_{n=0}^{\infty} \mathbb{P} (X^{-1}(E_n)) =  \sum_{n=0}^{\infty} \mathbb{P}_X (E_n). \qedhere
+	\]
+\end{proof}
+
+La loi d'une variable aléatoire est donc une probabilité sur l'espace des valeurs prises par celle-ci. 
+
+\begin{defprop}
+	Si $X$ est une variable aléatoire discrète à valeurs dans $(E,\mathcal{E})$, sa loi est déterminée entièrement par la fonction 
+	\begin{align*} f^X:E &\to [0,1] \\ x &\mapsto  \P^X(\{x\}) = \mathbb{P}(\{X=x\})\end{align*}
+	appelée \emph{fonction de masse} de la variable $X$. L'ensemble $\{x\in E | \P(\{X=x\} ) >0 \} \subset X(\Omega)$ est appelé \emph{support} de la variable aléatoire $X$.
+\end{defprop}
+
+{\bf\sffamily Notation :} Pour alléger l'écriture, on écrit $\P( X=x)$ au lieu de $\P(\{X=x\})$.
+\begin{proof}
+	En effet, pour tout $A \in \mathcal{E}$, on a:
+	\[ \mathbb{P} \left(X^{-1}(A)\right) = \mathbb{P} \left( \bigcup_{x \in X(\Omega) \cap A} X^{-1}(\{x\}) \right)  = \sum_{x \in X(\Omega) \cap A} \mathbb{P} \left( X^{-1}(\{x\}) \right)  = \sum_{x \in A} \mathbb{P} ( \{X=x \} ).\qedhere\]
+\end{proof}
+
+{\bf\sffamily Représentation :} Lorsque l'on demande de donner la loi d'une variable aléatoire $X$, on s'attend soit à :
+\begin{itemize}\item la formule de la fonction de masse: $\P(X=x) = f^X(x)$ pour tout $x$ dans le support de $X$ (en général, on ne note que les probabilités des éléments du support car les autres éléments de $E$ ont une probabilité nulle d'apparition).
+	%(ce qui revient à représenter la loi de la variable aléatoire)
+		\item la représentation du graphe de $f^X$ :
+			\begin{center}
+			\input{../figures/fonction_masse.tex}
+	\end{center}
+\item  (si $E$ est de cardinal $n$ fini), un tableau contenant les couples $(x,\P(X=x) = p_{x})$
+	\begin{center}
+	\begin{tabular}[]{|c|ccc|}
+		\hline $x$ & $x_1$ & $\cdots$ & $x_p$ \\\hline
+		$\P(X = x)$ & $p_{x_1}$ & \ldots & $p_{x_n}$ \\ \hline
+	\end{tabular}
+	\end{center}
+	\end{itemize}
+
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+
+\subsection{Quelques lois usuelles}
+
+\subsubsection{Loi uniforme}
+
+Comme nous l'avons vu précédemment, cette loi accorde la même probabilité à chaque élément d'un ensemble fini, que nous noterons $\{x_1,\cdots,x_n\}$. Si $X$ est l'un des éléments de cet ensemble pris au hasard, c'est une variable aléatoire discrète à valeurs dans $E = \{x_1,\cdots, x_n\}$. On dit que $X$ est une variable aléatoire de loi uniforme sur l'ensemble $E$ et on écrit $X \sim \mathcal{U}(\{x_1,\cdots,x_n\})$. Sa fonction de masse est : 
+$$ \mathbb{P}(X=x) = \frac{1}{n} $$
+pour $x \in  E = \{x_1,\cdots,x_n\}$. On vérifie que 
+\[ \sum_{x \in E} \mathbb{P}(X=x) =  \sum_{i=1}^n \mathbb{P}(X=x_i) = \sum_{i=1}^n \frac{1}{n} =1.\]
+\begin{center}
+	\input{../figures/fonction_masse_unif.tex}
+\end{center}
+
+\begin{exemple}
+	\begin{enumerate}
+		\item On effectue un tirage avec un dé à 6 faces équilibré. Soit $X$ le résultat: il suit une loi uniforme sur $\{1,\cdots,6\}$.
+		\item Une urne est remplie de 10 boules numérotées de 1 à 10. On tire une boule et on note $X$ son numéro: $X$ suit une loi uniforme sur $\{1,\cdots,10\}$.
+	\end{enumerate}
+\end{exemple}
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+
+\subsubsection{Loi de Bernoulli}
+
+Cette loi de probabilité sert à coder de manière numérique la réalisation ou non d'un événement. Soit $A$ un événement aléatoire de probabilité $\mathbb{P} (A) = p \in ] 0, 1[$. On définit la variable aléatoire 
+$$ X = \one_A = \begin{cases}
+		1  \textrm{ si } A \textrm{ se réalise (succès)}  , \\
+		0  \textrm{ si } A^c \textrm{ se réalise (échec)}. 
+	\end{cases} $$
+	 Lorsque $X=1$ (\ie $A$ se réalise) ont parle de \emph{succès}. Ainsi $p = \P(A)$ est la probabilité de succès. Lorsque $X=0$ (\ie $A^c$ se réalise) on parle d'\emph{échec}.
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+
+
+On dit que $X$ suit la loi de Bernoulli de paramètre $p$  et on écrit: $X \sim \mathcal{B} (1, p)$. Le support de $X$  est $X(\Omega) =\{0, 1\}$. Sa fonction de masse est pour $x \in  E = \{0, 1\}$ 
+\[\redspace  \mathbb{P}(X=x) = p^x q^{1-x} = \begin{cases}
+		p \text{ si $x=1$} \\ q \text{ si $x=0$}
+\end{cases}\] avec $q=1-p$.
+On vérifie que 
+\[\redspace \mathbb{P}_X (E) = \mathbb{P}(X \in E) = \sum_{x \in E} \mathbb{P}(X=x) = \mathbb{P}(X=0) + \mathbb{P}(X=1) = p+q=1.\]
+\begin{center}
+	\input{../figures/fonction_masse_bern.tex}
+\end{center}
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+
+\begin{exemple} On peut toujours se ramener à un schéma de Bernoulli dès lors que l'on ne considère que les deux issues ``$A$'' et ``non $A$'': 
+	\begin{enumerate}
+		\item On lance une pièce de monnaie équilibrée. Soit $A$ l'événement ``face''. Ici $X= 1$ si la pièce tombe sur face et $0$ sinon. On a $ p =\frac{1}{2}$.
+		\item On lance un dé équilibré. Soit $A$ l'événement ``résultat < 3''. Ici $X = 1$ si le résultat est \drawdie{1} ou \drawdie{2} et $X=0$ sinon. On a $p = \frac{1}{3}$.
+\pl{	\item Observation du sexe du prochain bébé qui naîtra dans une maternité : $A =$ ``fille''. Ici $X = 1$ si c'est une fille et 0 sinon.  Selon des statistiques de 2008 (\url{http://www.bartleby.com/151/fields/31.html}), en France, $p = \frac{1}{2.05} \approx 0.4878$. Noter que $p$ varie (peu) selon les pays (voir le site internet).}
+	\end{enumerate}
+\end{exemple} 
+
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+
+
+\subsubsection{Loi binomiale}
+
+Cette loi de probabilité sert à modéliser le nombre de réalisations d'un événement: %Soit $A$ un événement aléatoire de probabilité $\mathbb{P} (A) = p \in ] 0, 1[$, susceptible de se produire lors d'une expérience aléatoire. 
+	C'est la loi de la variable aléatoire du nombre de succès en $n$ répétitions indépendantes d'un schéma de Bernoulli. 
+	
+	Une telle variable aléatoire $X$ s'écrit donc comme la somme de $n$ variables aléatoires de loi de Bernoulli indépendantes.  Soit donc $Y_1,\cdots,Y_n$ des variables aléatoires $\mathcal B(p)$ indépendantes, on a: 
+	\[
+		\P_X = \P_{Y_1 + Y_2 + \cdots + Y_n}.
+\]\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+On dit que $X$ est une variable aléatoire de loi binomiale de paramètres $n$ et $p$ et on écrit $X \sim \mathcal{B}(n, p)$. Le support de $X$ est  $X(\Omega) = \{0, 1, \cdots, n\}$. Sa fonction de masse est pour $x \in \{0, 1,\cdots,n\}$,
+\[ \mathbb{P}(X=x) = \binom{n}{x} p^x q^{n-x} \]
+ où $\binom{n}{x}=\frac{n!}{x! (n-x)!}$ est le nombre de combinaisons de $x$ éléments parmi $n$. On vérifie que 
+\[ \sum_{x \in E} \mathbb{P}(X=x) =  \sum_{x=0}^n \binom n x p^x q^{n-x} = (p+q)^n =1.\]\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+\begin{center}
+	\input{../figures/fonction_masse_bin.tex}
+\end{center}
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+\begin{exemple}
+	\begin{enumerate}
+		\item On lance une pièce de monnaie équilibrée $6$ fois de suite. On s'intéresse à la probabilité d'obtenir, au cours de ces $6$ lancers, $2$ fois l'événement $A$ =  ``face''. Si on note $X$ le nombre de ``face'' sur 6 lancers, on  a \sld{$X \sim \mathcal{B} (6, \frac{1}{2})$ de sorte que:
+			\[
+			\mathbb{P}(X=2)=\binom{6}{2} \Big(\frac{1}{2} \Big)^2 \Big(\frac{1}{2} \Big)^{6-2} = \frac{6!}{2! 4!}  \Big(\frac{1}{2} \Big)^6 = \frac{15}{64}.
+		\]}
+		 \pl{\rep{1.5cm}}
+		\item On effectue des tirages avec remise dans une urne remplie de boules, dont $1/3$ de blanches et $2/3$ de rouges. Soit $X$ le nombre de boules blanches tirées après 10 lancers: on a $X \sim \mathcal{B} (10, \frac{1}{3})$.
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+		\item On estime qu'en France à l'instant $t$, la probabilité qu'un individu soit un fumeur est de $0.2$. Un bus contient 6 personnes. Quelle est la probabilité que 4 ou plus de ces passagers soient fumeurs? On suppose leur indépendance. \sld{Soit $X$ le nombre de fumeurs parmi les 6 personnes: on a $X \sim \mathcal{B}(6, 0.2)$, $E = \{0, 1, \cdots , 6\}$ et
+			\begin{align*}
+				\mathbb{P} (X \geq 4) & =  \mathbb{P} ( \{X = 4 \} \cup \{X = 5\} \cup \{X = 6\}) \\
+				& =  \mathbb{P} (X = 4) + \mathbb{P} (X = 5) + \mathbb{P} (X = 6) \\
+				& =  \binom{4}{6} (0.2)^4 (0.8)^2 + \binom{5}{6} (0.2)^5 (0.8)^1 + \binom{6}{6} (0.2)^6 \\
+				&= 0.01536 + 0.001536 + 0.000064\\
+				&=  0.01696
+			\end{align*}}
+		\pl{\rep{3.5cm}}
+	\end{enumerate}
+\end{exemple}
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+\subsubsection{Loi géométrique}
+
+Cette loi de probabilité sert à modéliser le nombre d'essais nécessaires à la réalisation d'un événement. C'est la loi de la variable aléatoire du rang du premier succès dans la répétition indépendante d'un schéma de Bernoulli de paramètre $p$ (probabilité de succès). 
+
+Une telle variable aléatoire $X$ suit une loi géométrique de paramètre $p$ et on écrit $X \sim \mathcal{G}(p)$. Le support de $X$ est $X(\Omega)= \N\setminus\left\{ 0 \right\} = \N^*$. Sa fonction de masse est pour $x \in  E =\mathbb{N}^*$  
+	\[ 
+		\mathbb{P}(X=x) = p q^{x-1}
+	\]
+On vérifie que 
+\[ \sum_{x \in E} \mathbb{P}(X=x) =  \sum_{x=1}^{+ \infty} p q^{x-1} = p \frac{1}{1-q}  =1.\]
+\begin{center}
+	\input{../figures/fonction_masse_geom.tex}
+\end{center}
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+\begin{exemple}
+	\begin{enumerate}
+		\item On lance un dé à 6 faces jusqu'à l'obtention d'un 6. Si on note $X$ le nombre de lancers nécessaires, on  a \sld{$X \sim \mathcal{G} (\frac{1}{6})$ de sorte que:
+			\[ \mathbb{P}(X=x)= \frac{1}{6} \times \frac{5^{x-1}}{6^{x-1}}.\]}\pl{\rep{2cm}}
+		\pl{\item On lance une pièce de monnaie équilibrée jusqu'à la réalisation de l'événement $A$ =  ``face''. Si on note $X$ le nombre de lancers nécessaires, on  a $X \sim \mathcal{G} (\frac{1}{2})$ de sorte que:
+			\[ \mathbb{P}(X=x)= \frac{1}{2^x}.\]}
+	\end{enumerate}
+\end{exemple}
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+\subsubsection{Loi hypergéométrique}
+
+Cette loi de probabilité sert à modéliser le résultat d'un tirage \textit{sans remise}. Soit $U$ un ensemble de cardinal $r$ partitionné en deux sous-ensembles $U_1$ et $U_2$, de cardinaux respectifs $r_1$ et $r_2=r-r_1$. On se propose de choisir ``au hasard'' $n$ éléments de $U$ ($n \leq r$) et on note $X$ le nombre d'éléments de $U_1$ parmi ces $n$. C'est une variable aléatoire discrète de support $X(\Omega) = \{ \max(0, n-r_2),\cdots, \min(n,r_1) \} $. On dit que $X$ est une variable aléatoire de loi hypergéométrique de paramètres $n$, $r$ et $r_1$ et on écrit $X \sim \mathcal{H}(n,r,r_1)$. Sa fonction de masse est~: 
+\[ \mathbb{P}(X=x) = \frac{\binom{r_1}{x} \binom{r_2}{n-x}}{\binom r n} \]
+pour $x \in \{ \max(0, n-r_2),\cdots, \min(n,r_1) \}$.
+ \sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+On vérifie que 
+\begin{align*}
+\sum_{x \in E} \mathbb{P}(X=x) & =  \sum_{x=\max(0, n-r_2)}^{\min(n,r_1)} \frac{\binom{r_1}{x} \binom{r_2}{n-x}}{\binom r n} \\ & =  \frac{1}{\binom r n} \sum_{x=\max(0, n-r_2)}^{\min(n,r_1)} \binom{r_1}{x} \binom{r_2}{n-x}  = \frac{1}{\binom{r_1+r_2}{n} } \sum_{x=0}^{r_1} \binom{r_1}{x} \binom{r_2}{n-x} = 1	
+\end{align*}
+d'après l'identité de Vandermonde.
+ \sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+\begin{center}
+	\input{../figures/fonction_masse_hypergeom.tex}
+\end{center}
+ \sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+\begin{exemple}
+	\begin{enumerate}
+		\item Un lac contient $r$ poissons, dont $r_1$ sont d'une espèce intéressante. On pêche $n$ poissons, en supposant que toutes les espèces se laissent aussi facilement attraper, et on note $X$ le nombre de poissons de l'espèce intéressante parmi les poissons attrapés: $X$ suit une loi hypergéométrique.
+		\item Ce modèle hypergéométrique est à la base de la théorie des sondages.
+	\end{enumerate}
+\end{exemple}
+
+ \sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+\subsubsection{Loi de Poisson}
+
+Cette loi de probabilité décrit le comportement du nombre d'événements se produisant dans un laps de temps fixé, si ces événements se produisent avec une fréquence moyenne connue et indépendamment du temps écoulé depuis l'événement précédent. Soit $X$ ce nombre d'occurrences. C'est une variable aléatoire discrète de support $X(\Omega) = \mathbb{N}$. On dit que $X$ est une variable aléatoire de loi de Poisson de paramètre $\lambda >0$ et on écrit $X \sim \mathcal{P}(\lambda)$. Sa fonction de masse est : 
+\[
+	\mathbb{P}(X=x) = e^{-\lambda} \frac{\lambda^x}{x!} 
+\]
+pour $x \in \mathbb{N}$. On vérifie que 
+\[
+\sum_{x \in E} \mathbb{P}(X=x) =  \sum_{x=0}^{+ \infty} e^{-\lambda} \frac{\lambda^x}{x!} = e^{-\lambda} \sum_{x=0}^{+ \infty} \frac{\lambda^x}{x!} =1.
+\]\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+\begin{center}
+	\input{../figures/fonction_masse_poiss.tex}
+\end{center}
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+\begin{exemple}
+	Actuellement, on utilise beaucoup cette loi dans les télécommunications (pour compter le nombre de communications dans un intervalle de temps donné), le contrôle de qualité statistique (nombre de défauts), la description de certains phénomènes liés à la désintégration radioactive, la biologie (mutations), la météorologie, la finance pour modéliser la probabilité de défaut d'un crédit, le Yield Management (pour estimer la demande de passagers).
+\end{exemple}
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+\section{Moments}
+
+Les moments d'une variable aléatoire sont des paramètres numériques qui donnent des renseignements sur la loi de cette variable aléatoire (sans toutefois, en général, la déterminer complètement). %Les plus couramment utilisés sont la moyenne, ou espérance mathématique) et la variance.
+
+\subsection{Moyenne (espérance mathématique)}
+
+\begin{definition}
+Soit $X$ une variable aléatoire réelle discrète à valeurs dans $E$. Si la somme $\sum_{x \in E} |x| \, \mathbb{P}(X=x)$ est finie, on dit que la variable aléatoire $X$ possède une \emph{moyenne} ou \emph{espérance mathématique}
+\[
+\mathbb{E} (X) = \sum_{x \in E} x \, \mathbb{P}(X=x).
+\]
+\end{definition}
+
+L'espérance $\mathbb{E} (X)$ est la \emph{moyenne} des valeurs prises par la variable aléatoire $X$, pondérées par leur probabilité d'apparition.
+\pagebreak[5]
+\subsubsection{Premières propriétés de l'espérance}
+
+\begin{proposition}
+On peut montrer les propriétés suivantes:
+\begin{enumerate}[label=$(\roman*)$]
+	\item Soit un réel $a$. Si la variable aléatoire $X$ est telle que $\mathbb{P}(X=a)=1$, elle admet une moyenne égale à $a$ et on écrit
+	\[\mathbb{E} (a) = a .\]
+	\item Toute variable aléatoire discrète bornée admet une moyenne.
+	\item Si $X \geq 0$ alors $\mathbb{E} (X) \geq 0$. Si $X \geq 0$ et $\mathbb{E} (X) =0$ alors $X=0$ avec probabilité $1$.
+	\item Si $X$ et $Y$ possèdent une moyenne et vérifient $X \leq Y$ alors $\mathbb{E} (X) \leq \mathbb{E} (Y)$.
+	\item Si $X$ possède une moyenne, on a:
+		\[ 
+			|\mathbb{E} (X) | \leq \mathbb{E} |X|.
+		\]
+\end{enumerate}
+\end{proposition}
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+\begin{exemple}
+	\begin{enumerate}
+		\item Si $X \sim \mathcal{U}(\{x_1,\cdots,x_n\})$, sa moyenne est la moyenne arithmétique des $x_i$:
+			\[
+				\mathbb{E} (X) = \frac{1}{n} \sum_{i=1}^n x_i .
+			\]
+		\item Si $X \sim \mathcal{B} (1, p)$, sa moyenne est 
+			\[
+				\mathbb{E} (X) = 1 \times p + 0 \times q = p .
+			\]
+	\end{enumerate}
+\end{exemple}
+ \sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+\subsubsection{Espérance d'une fonction de variable aléatoire}
+
+\begin{theorem}[(Théorème de transfert)]
+Soit $X$ une variable aléatoire discrète à valeurs dans $E$. Soit $f$ une application de $E$ dans $\mathbb{R}$. L'application composée $Y=f \circ X = f(X)$ est une variable aléatoire réelle discrète. Pour qu'elle admette une moyenne, il faut et il suffit que la somme 
+\[  
+	\sum_{x \in E} |f(x)| \, \mathbb{P}(X=x) 
+\]
+soit finie. Dans ce cas, on a:
+\[
+	\mathbb{E} \big( f(X) \big) = \sum_{x \in E} f(x) \, \mathbb{P}(X=x) .
+\]
+\end{theorem}
+
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+\begin{exemple}
+Quel est la moyenne du carrée du tirage d'un dé équilibré ?
+\sld{ On modélise le résultat du lancer de dé par  $X \sim Unif(\left\{ 1,\cdots,6 \right\})$. On a:
+\[
+	\E(X^2) = \sum_{i=1}^6 i^2 \P(X=i) = \frac{1}{6} \left( 1^2 + 2^2 + \cdots + 6^2 \right)= \frac{1}{6} \times \frac{6\times 7\times (2\times 6 +1)}{6} = \frac{91}{6}
+\]} \pl{\rep{2cm}}
+\end{exemple}
+
+\begin{proposition}
+Soit $X$ et $Y$ deux variables aléatoires réelles discrètes et $a$ et $b$ deux réels. On a:
+\[
+	\mathbb{E} (a X + b Y) = a \, \mathbb{E} (X) + b \,  \mathbb{E} (Y). 
+\]
+\end{proposition}
+\begin{proof}
+	Cette égalité s'obtient en appliquant le théorème de transfert avec $Z=(X,Y)$, variable aléatoire discrète, et $f:(x,y) \mapsto ax + by$.
+	\pl{\rep{4cm}}
+\end{proof}
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+
+\subsubsection{Moyennes des lois discrètes classiques}
+
+\paragraph{Loi binomiale} Soit $X$ une variable aléatoire suivant une loi binomiale $\mathcal{B}(n, p)$. \sld{On rappelle que $X$ peut s'écrire comme la somme de $n$ variables aléatoires indépendantes $Y_1,\cdots,Y_n$ suivant la loi de Bernoulli $\mathcal{B}(1, p)$:
+$$ X=Y_1 + \cdots Y_n \Rightarrow \mathbb{E} (X) = \mathbb{E} (Y_1) + \cdots + \mathbb{E} (Y_n) = n p.$$}\pl{\rep{2cm}}
+
+\paragraph{Loi géométrique} Soit $X$ une variable aléatoire suivant une loi géométrique $\mathcal{G}(p)$. \sld{On a:
+$$ \mathbb{E} (X) = \sum_{i=1}^{+ \infty} i p q^{i-1} = p \sum_{i=0}^{+ \infty} i  q^{i-1}= p \, \frac{\partial}{\partial q} \Big[ \sum_{i=0}^{+ \infty} q^i \Big] = p \frac{\partial}{\partial q}\Big[\frac{1}{1-q} \Big] = p (1-q)^{-2} = \frac{1}{p}. $$
+}\pl{\rep{4cm}}
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+\paragraph{Loi de Poisson} Soit $X$ une variable aléatoire suivant une loi de Poisson $\mathcal{P}(\lambda)$.\sld{ On a:
+$$ \mathbb{E} (X) = \sum_{i=0}^{+ \infty} i \frac{\lambda^i}{i!}e^{-\lambda}  = e^{-\lambda} \sum_{i=1}^{+ \infty} \frac{\lambda^i}{(i-1)!} =e^{-\lambda}  \, \lambda \, \sum_{j=0}^{+ \infty} \frac{\lambda^j}{j!} = \lambda. $$
+}\pl{\rep{4cm}}
+
+\begin{remark}
+	Si l'on sait qu'une variable aléatoire suit une loi géométrique ou une loi de Poisson, pour identifier entièrement sa loi, il suffit de connaître sa moyenne, ce qui n'est pas le cas pour la loi binomiale.
+\end{remark}
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+\subsection{Moments d'ordre deux et variance}
+
+\subsubsection{Généralités}
+
+
+ 
+\begin{definition}
+	Soit $X$ une variable aléatoire réelle discrète et $p$ un entier supérieur ou égal à 1. Si $\mathbb{E} (|X|^p) < + \infty$, on dit que $X$ admet un \emph{moment d'ordre} $\boldsymbol{p}$, qui n'est autre que le nombre réel $\mathbb{E} (X^p)$. 
+\end{definition}
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+\begin{proposition} (Inégalité de Cauchy-Schwarz).
+Soit $X$ et $Y$ deux variables aléatoires réelles discrètes admettant un moment d'ordre deux. On a:
+$$  [\mathbb{E} (X Y)]^2 \leq\mathbb{E} (X^2) \mathbb{E} (Y^2). $$
+\end{proposition}
+
+\begin{proof}
+	\sld{Définissons le polynôme $Q$ du second degré à coefficients réels
+		\[ Q(\lambda)=\mathbb{E} ([X + \lambda Y]^2) = \mathbb{E} (X^2) + 2 \lambda \mathbb{E} (XY) + \lambda^2 \mathbb{E} (Y^2) .\]
+		Puisque $Q(\lambda) \geq 0$ pour tout $\lambda \in \mathbb{R}$, le discriminant est négatif:
+		\[ \Delta = 4 [\mathbb{E} (XY)]^2 - 4 \mathbb{E} (X^2)\mathbb{E} (Y^2) \leq 0 \Rightarrow [\mathbb{E} (X Y)]^2 \leq\mathbb{E} (X^2) \mathbb{E} (Y^2).\]\qedhere}
+		\pl{ \rep{5cm}}
+	\end{proof}
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+\begin{definition}
+\begin{enumerate}[label=(\roman*)]
+	\item Si $X$ admet un moment d'ordre 1, la variable aléatoire 
+		\[
+		\dot{X} = X - \mathbb{E}(X)
+	\]
+	est appelée \emph{variable aléatoire centrée} associée à $X$. On a $\mathbb{E}(\dot{X})=0$.
+	\item Si $X$ admet un moment d'ordre 2, $X$ admet une moyenne et le réel 
+		\[
+			\mathbb{V}(X) = \mathbb{E} \big[ \big( X-\mathbb{E}(X) \big)^2 \big]
+		\]
+		est appelé \emph{variance} de $X$. Sa racine carrée est appelée \emph{écart-type} de $X$ et notée $\sigma_X$. On a donc $\mathbb{V}(X)=\sigma_X^2$.
+	 \item Si $X$ admet un moment d'ordre 2 et que $\sigma_X \neq 0$, la variable aléatoire 
+		 \[
+		 \tilde{X} = \frac{X - \mathbb{E}(X)}{\sigma_X}
+	 \]
+	 est appelée \emph{variable aléatoire centrée réduite} associée à $X$. On a $\mathbb{E}(\tilde{X})=0$ et $\mathbb{V}(\tilde{X})=1$.
+\end{enumerate}
+\end{definition}
+
+
+D'après le théorème de transfert, la variance de $X$ s'obtient de la manière suivante:
+\[\mathbb{V}(X)= \sum_{x \in E} [x-\mathbb{E}(X)]^2 \, \mathbb{P}(X=x).\]
+
+\begin{proposition}
+Si $X$ admet un moment d'ordre deux, on a:
+\begin{enumerate}[label=$(\roman*)$]
+	\item \[\mathbb{V}(X)= \mathbb{E}(X^2) - [\mathbb{E}(X)]^2 . \]
+ \item Pour tous réels $a$ et $b$, on a:
+ \[ \mathbb{V}(aX+b)=a^2 \mathbb{V}(X).\]
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	%Cela découle de la linéarité de l'espérance.
+	\pl{\rep{4cm}}
+\end{proof}
+
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+
+\subsubsection{Covariance de deux variables aléatoires}
+
+\begin{definition}
+Si $X$ et $Y$ admettent un moment d'ordre 2, il résulte de l'inégalité de Cauchy-Schwarz que la variable aléatoire $\big( X - \mathbb{E}(X) \big) \big( Y - \mathbb{E}(Y) \big)$ admet une moyenne, que nous appelons \emph{covariance} de $X$ et $Y$:
+\[ \cov (X,Y) = \mathbb{E} \big[ \big( X - \mathbb{E}(X) \big) \big( Y - \mathbb{E}(Y) \big) \big] .\]
+\end{definition}
+
+%\begin{remark}
+	%La covariance est la forme bilinéaire associée à la forme quadratique variance.
+%\end{remark}
+
+La proposition suivante permet en général un calcul plus simple de la covariance de deux variables aléatoires et permet également de calculer la variance d'une somme de variables aléatoires.
+
+\begin{proposition}
+Si $X$ et $Y$ admettent un moment d'ordre 2, on a:
+\begin{enumerate}[label=(\roman*)]
+	\item \[ \cov (X,Y) = \mathbb{E} (XY) - \mathbb{E}(X) \, \mathbb{E}(Y) .\]
+	 \item \[ \mathbb{V}(X+Y)= \mathbb{V}(X) + \mathbb{V}(Y) + 2 \, \cov (X,Y).\]
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	%Cela découle de la linéarité de l'espérance.
+	\pl{\rep{4cm}}
+\end{proof}
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+\begin{proposition}
+Si $X$ et $Y$ admettent un moment d'ordre 1 et sont \emph{indépendantes}, on a:
+\[ \mathbb{E}(X \, Y)= \mathbb{E}(X) \, \mathbb{E}(Y) .\]
+\end{proposition}
+
+\begin{proof}
+	\sld{A lire par vous même} \pl{	On considère que $X$ est à valeurs dans $E_X$ et $Y$ à valeurs dans $E_Y$. La variable aléatoire $XY$ est donc discrète, à valeurs dans $E_Z=\{z=xy \in \mathbb{R}: x \in E_X,y \in E_Y\}$. On a:
+	\begin{align*}
+		\mathbb{E}(X \, Y)  & =  \sum_{z \in E_Z} z \, \mathbb{P}(XY=z) \\
+		& = \sum_{z \in E_Z} z \, \sum_{x \in E_X, y \in E_Y | xy=z} \mathbb{P}(X=x,Y=y) \\
+		& = \sum_{z \in E_Z} z \, \sum_{x \in E_X, y \in E_Y | xy=z} \mathbb{P}(X=x) \, \mathbb{P}(Y=y) \\
+		& =  \sum_{z \in E_Z} \, \sum_{x \in E_X, y \in E_Y | xy=z} x \, y \, \mathbb{P}(X=x) \, \mathbb{P}(Y=y) \\
+		& =  \sum_{x \in E_X, y \in E_Y} x \, y \, \mathbb{P}(X=x) \, \mathbb{P}(Y=y) \\
+		& =  \sum_{x \in E_X} x \, \mathbb{P}(X=x) \, \sum_{y \in E_Y} y \, \mathbb{P}(Y=y) \\
+		& = \mathbb{E}(X) \, \mathbb{E}(Y).\qedhere
+	\end{align*}} 
+\end{proof}
+
+Ainsi, si $X$ et $Y$ sont \emph{indépendantes}, on a:
+\[\cov (X,Y) = 0 \textrm{ et } \mathbb{V}(X+Y)= \mathbb{V}(X) + \mathbb{V}(Y).\]
+
+Par extension, la variance d'une somme de variables aléatoires indépendantes est la somme de leurs variances. Attention! L'égalité $\cov (X,Y) = 0 $ \emph{n'entraîne pas} l'indépendance entre $X$ et $Y$.
+
+
+\subsubsection{Variance des lois discrètes classiques}
+
+\paragraph{Loi de Bernoulli} Soit $X$ une variable aléatoire suivant une loi de Bernoulli $\mathcal{B}(1, p)$. On a:
+\sld{\[ \mathbb{V} (X) = \mathbb{E}(X^2) - [\mathbb{E}(X)]^2 = 1^2 \times p + 0^2 \times q - p^2 = p-p^2=pq .\]} \pl{\rep{2cm}}
+
+
+\paragraph{Loi binomiale} Soit $X$ une variable aléatoire suivant une loi binomiale $\mathcal{B}(n, p)$. \sld{On rappelle que $X$ peut s'écrire comme la somme de $n$ variables aléatoires indépendantes $Y_1,\cdots,Y_n$ suivant la loi de Bernoulli $\mathcal{B}(1, p)$ donc
+\[ \mathbb{V} (X) = \mathbb{V} (Y_1) + \cdots + \mathbb{V} (Y_n) = n pq.\]} \pl{\rep{3cm}}
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+\paragraph{Loi géométrique} Soit $X$ une variable aléatoire suivant une loi géométrique $\mathcal{G}(p)$. \sld{Calculons d'abord:
+ 
+\begin{align*}
+	\mathbb{E} \big( X (X-1) \big) & = \sum_{i=1}^{+ \infty} i (i-1) p q^{i-1} \\
+					& = p \, q \, \sum_{i=0}^{+ \infty} i (i-1) q^{i-2} \\ 
+					& = p \, q \, \frac{\partial^2}{\partial q^2} \Big[ \sum_{i=0}^{+ \infty} q^i \Big]  \\
+					& = p \, q \frac{\partial^2}{\partial q^2}\Big[\frac{1}{1-q} \Big] \\
+					& = 2 p q (1-q)^{-3} = \frac{2q}{p^2},
+	\intertext{ce qui nous permet d'obtenir :}
+ \mathbb{V} (X) & = \mathbb{E}(X^2) - [\mathbb{E}(X)]^2 \\
+ 		&  = \mathbb{E} \big( X (X-1) \big) + \mathbb{E}(X) - [\mathbb{E}(X)]^2 \\
+		&  = \frac{2q}{p^2} + \frac{1}{p} - \frac{1}{p^2} \\
+		&  = \frac{2q + p -1}{p^2} = \frac{q}{p^2}.
+\end{align*}} \pl{\rep{8cm}}
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+\paragraph{Loi de Poisson} Soit $X$ une variable aléatoire suivant une loi de Poisson $\mathcal{P}(\lambda)$.\sld{ Calculons d'abord:
+$$ \mathbb{E} \big( X (X-1) \big) = \sum_{i=0}^{+ \infty} i (i-1) e^{-\lambda} \frac{\lambda^i}{i!} = e^{-\lambda} \sum_{i=2}^{+ \infty} \frac{\lambda^i}{(i-2)!} =e^{-\lambda}  \, \lambda^2 \, \sum_{j=0}^{+ \infty} \frac{\lambda^j}{j!} = \lambda^2, $$
+
+ce qui nous permet d'obtenir:
+
+$$ \mathbb{V} (X) = \mathbb{E}(X^2) - [\mathbb{E}(X)]^2 = \mathbb{E} \big( X (X-1) \big) + \mathbb{E}(X) - [\mathbb{E}(X)]^2 =  \lambda^2 + \lambda - \lambda^2 = \lambda.$$} \pl{\rep{6cm}}
+
+
+On remarque que, pour une variable aléatoire de Poisson, le paramètre représente à la fois la moyenne et la variance.
+
+
+\section{Couples de variables aléatoires}
+
+\subsection{Lois jointes et marginales}
+
+\begin{definition}
+Soit $X$ et $Y$ deux variables aléatoires discrètes définies sur l'espace probabilisable $(\Omega,\mathcal{A})$, et à valeurs respectivement dans $E$ et $F$. Le couple $(X, Y)$ définit ce que l'on peut appeler une variable aléatoire discrète à valeurs dans $E \times F$: à tout $\omega$ de $\Omega$, il associe en effet le vecteur $\big( X(\omega), Y(\omega) \big)$.
+\end{definition}
+
+\begin{proposition}
+La loi de probabilité du couple $(X,Y)$, aussi appelée \emph{loi conjointe} de $(X,Y)$, est déterminée entièrement par la fonction de masse $(x,y) \mapsto \mathbb{P} (X=x,Y=y)$ sur $E \times F$.
+\end{proposition}
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+
+\begin{exemple}
+	On lance deux dés à 6 faces équilibrés. Soit $X$ la somme des résultats et $Y$ leur différence en valeur absolue: le couple $(X,Y)$ est à valeurs dans \sld{$\{1,\cdots,12\} \times \{0,\cdots,5\}$. Pour calculer la loi conjointe de $X$ et $Y$, on introduit les variables aléatoires $R_1$ et $R_2$ représentant les résultats des deux dés. On a, par exemple:
+	$$ \mathbb{P} (X=7,Y=3) =  \mathbb{P} (R_1=2,R_2=5) + \mathbb{P} (R_1=5,R_2=2) = \frac{2}{36}=\frac{1}{18}.$$}\pl{\rep{3cm}}
+\end{exemple}
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+\begin{definition}
+On appelle \emph{lois marginales} de $X$ et de $Y$ les lois respectives de $X$ et de $Y$, que l'on peut calculer à partir de la loi conjointe:
+\begin{align*}
+	\forall x \in E, \mathbb{P} (X=x) &= \sum_{y \in F} \mathbb{P} (X=x,Y=y). \\
+	\forall y \in F, \mathbb{P} (Y=y) &= \sum_{x \in E} \mathbb{P} (X=x,Y=y).
+\end{align*}
+\end{definition}
+
+\begin{exemple}
+	En gardant l'exemple précédent, on veut calculer  $\mathbb{P} (X=7) $:
+	\pl{\rep{5cm}}
+\sld{	\[ 
+		\mathbb{P} (X=7)=\mathbb{P} (X=7,Y=1)+\mathbb{P} (X=7,Y=3)+\mathbb{P} (X=7,Y=5)=\frac{1}{18}+\frac{1}{18}+\frac{1}{18}=\frac{1}{6}.
+	\]
+}
+\end{exemple}
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+\subsection{Lois conditionnelles}
+
+\begin{definition}
+	Soit $X$ et $Y$ deux variables aléatoires discrètes définies sur l'espace probabilisable $(\Omega,\mathcal{A})$, et à valeurs respectivement dans les espaces probabilisables $(E,\mathcal{E})$ et $(F,\mathcal{F})$. Soit $x \in E$ tel que $\mathbb{P}(X=x)>0$. La \emph{loi de $Y$ conditionnelle à l'événement $\{X=x\}$}, aussi appelée \emph{loi de $Y$ sachant que $\{X=x\}$}, est la probabilité sur $(F,\mathcal{F})$ définie par l'application
+\[ 
+B \mapsto \mathbb{P}^{(X=x)}(Y \in B) = \mathbb{P}(Y \in B | X=x)
+\]
+et elle est notée $\mathbb{P}_Y^{(X=x)}$.
+\end{definition}
+
+\begin{exemple}
+	En gardant l'exemple précédent, la loi conditionnelle $\mathbb{P}_Y^{(X=7)}$ est donnée par:
+\sld{	\[
+	\mathbb{P}^{(X=7)} (Y=1)=\frac{1}{3},  \mathbb{P}^{(X=7)} (Y=3)=\frac{1}{3} \textrm{ et } \mathbb{P}^{(X=7)} (Y=5)=\frac{1}{3}.
+\]}\pl{\rep{2cm}}
+\end{exemple}
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+
+\begin{proposition}
+La famille des probabilités $\mathbb{P}_Y^{(X=x)}$, où $x$ décrit l'ensemble des éléments de $E$ tels que $\mathbb{P}(X=x)>0$, et la loi $\mathbb{P}_X$ de $X$ déterminent entièrement la loi du couple aléatoire $(X,Y)$
+\end{proposition}
+
+\begin{proof}
+\sld{	La loi du couple $(X,Y)$ est donnée par l'ensemble des probabilités $\mathbb{P} (X=x,Y=y)$ pour $x \in E$, $y \in F$. Or, si $x \in E$ et $y \in F$,
+	\begin{itemize}
+		\item soit $\mathbb{P}(X=x)=0$ auquel cas on a 
+			$$ \mathbb{P} (X=x,Y=y) \leq \mathbb{P}(X=x)=0 $$
+			donc $\mathbb{P} (X=x,Y=y)=0$;
+		\item soit $\mathbb{P}(X=x)>0$ auquel cas on a 
+			$$ \mathbb{P} (X=x,Y=y) = \mathbb{P} (Y=y |X=x) \mathbb{P}(X=x) =  \mathbb{P}^{(X=x)}(Y=y).$$
+	\end{itemize}
+	On sait donc toujours bien calculer $ \mathbb{P} (X=x,Y=y)$.} \pl{\rep{4cm}}
+\end{proof}
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+\begin{proposition}
+Deux variables aléatoires $X$ et $Y$ sont indépendantes si et seulement si, pour tout $x \in E$ tel que $\mathbb{P}(X=x)>0$, la loi conditionnelle $\mathbb{P}_Y^{(X=x)}$ est égale à la loi marginale $\mathbb{P}_Y$ de $Y$.
+\end{proposition}
+
+\begin{definition}
+La \emph{moyenne conditionnelle} et la \emph{variance conditionnelle} de $Y$ sachant que $X=x$ sont la moyenne et la variance calculées à partir de la loi conditionnelle $\mathbb{P}_Y^{(X=x)}$. 
+\end{definition}
+
+\begin{exemple}
+	En gardant l'exemple précédent, la moyenne conditionnelle de $Y$ sachant $X=7$ est:
+	\sld{	$$ \mathbb{E} (Y | X=7) = 1 \times \mathbb{P}^{(X=7)} (Y=1) + 3 \times \mathbb{P}^{(X=7)} (Y=3) + 5 \times \mathbb{P}^{(X=7)} (Y=5) = \frac{1}{3} + \frac{3}{3} + \frac{5}{3} = 3 $$} \pl{\rep{1cm}}
+	et la variance conditionnelle de $Y$ sachant $X=7$ est:
+	\sld{$$ \mathbb{V} (Y | X=7) = \mathbb{E} (Y^2 | X=7) - \big(  \mathbb{E} (Y | X=7)   \big)^2= \frac{1}{3} + \frac{9}{3} + \frac{25}{3} - 9 = \frac{8}{3}. $$} \pl{\rep{1cm}}
+\end{exemple}
+
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+\subsection{Somme de variables aléatoires}
+
+On a très souvent besoin de calculer la somme de $n$ variables aléatoires:
+\[ Y=X_1+\cdots+X_n.\]
+Quand les variables aléatoires $X_1,\cdots,X_n$ sont indépendantes, la loi de leur somme peut se calculer à partir des lois marginales. Nous donnons la méthode de calcul, dite de \emph{convolution}, dans le cas où $n=2$.
+
+\begin{proposition}
+Soit $X_1$ et $X_2$ deux variables aléatoires discrètes \emph{indépendantes} définies sur l'espace probabilisé $(\Omega, \mathcal{A}, \mathbb{P})$, à valeurs dans $\Z$. Alors la variable aléatoire $Y=X_1+X_2$ est discrète et sa loi est donnée par:
+\[
+\forall x \in  \Z, \mathbb{P} (Y=y) = \sum_{x_1 \in \Z} \mathbb{P} (X_1=x_1) \, \mathbb{P} (X_2=y-x_1). 
+\]
+\end{proposition}
+
+\begin{proof}
+On a équivalence entre les événements suivants:
+	\[
+	\{Y=y\} = \bigcup_{x_1 \in \Z} \{ (X_1=x_1) \cup (X_2=y-x_1) \} .
+\]
+On utilise ensuite le fait que les événements $\big( (X_1=x_1) \cup (X_2=y-x_1) , x_1 \in \Z \big)$, sont incompatibles deux à deux et on conclut en utilisant l'indépendance de $X_1$ et $X_2$.
+\end{proof}
+
+\begin{exemple}
+	On lance deux dés équilibrés. Calculer la loi de la somme des résultats.
+	\pl{\rep{3cm}}
+\end{exemple}
+
+\begin{definition}
+	On dit que la loi de probabilité de $Y$, obtenue à partir de $\mathbb{P}_{X_1}$ et $\mathbb{P}_{X_2}$, est le \emph{produit de convolution} (ou simplement la convolution) des deux probabilités $\mathbb{P}_{X_1}$ et $\mathbb{P}_{X_2}$: elle est notée $\mathbb{P}_{X_1} \ast \mathbb{P}_{X_2}$.
+\end{definition}
+
+
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+\section{Fonctions génératrices}
+
+\subsubsection{Généralités}
+
+\begin{definition}
+Soit $X$ une variable aléatoire à valeurs dans $\mathbb{N}$. La \emph{fonction génératrice} de $X$ est la fonction 
+\begin{align*}
+	G_X : \mathbb{R} &\to \R \\
+	s &\mapsto G_X(s) = \mathbb{E} (s^X)
+\end{align*}
+lorsque cette quantité existe. 
+\end{definition}
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+\begin{proposition}
+Soit $X$ une variable aléatoire à valeurs dans $\mathbb{N}$, de fonction génératrice $G_X$ et de loi déterminée par:
+ \[ \redspace\mathbb{P} (X=n) = p_n, \quad \forall n \in \mathbb{N}. \]
+\begin{enumerate}[label=$(\roman*)$]
+ \item Le domaine de définition de $G_X$ contient l'intervalle $[-1,1]$. On a:
+	 \[ \redspace\forall s \in [-1,1], \quad |G_X(s)| \leq 1 \textrm{ et } G_X(1)=1.  \]
+ \item Pour tout $s \in [-1,1]$, on a:
+  \[ G_X(s)=\sum_{n=0}^{+ \infty} p_n s^n.\]
+ \item La fonction $G_X$ est continue sur $[-1,1]$, et $\Cc^{\infty}$ sur $]-1,1[$.
+ \item La fonction génératrice $G_X$ caractérise la loi de $X$ puisque, pour tout $k \in \mathbb{N}$, on a:
+  \[ \redspace\mathbb{P} (X=k) = \frac{G_X^{(k)} (0)}{k!}.\]
+\end{enumerate}
+\end{proposition}
+
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+\subsubsection{Fonctions génératrices des lois discrètes classiques}
+
+\paragraph{Loi binomiale} Soit $X$ une variable aléatoire suivant une loi binomiale $\mathcal{B}(n, p)$. On a, $\forall s \in [-1,1]$:
+\sld{\[ G_X(s) = \sum_{i=0}^n \binom{n}{i} p^i q^{n-i} s^i = (ps+q)^n.\]}\pl{\rep{2cm}}
+
+\paragraph{Loi géométrique} Soit $X$ une variable aléatoire suivant une loi géométrique $\mathcal{G}(p)$. On a, $\forall s \in [-1,1]$:
+\sld{\[ G_X(s) = \sum_{i=0}^{+ \infty}  p q^{i-1} s^i = \frac{ps}{1-qs}.\]}\pl{\rep{2cm}}
+
+
+\paragraph{Loi de Poisson} Soit $X$ une variable aléatoire suivant une loi de Poisson $\mathcal{P}(\lambda)$. On a, $\forall s \in [-1,1]$:
+\sld{\[ G_X(s) = \sum_{i=0}^{+ \infty}  e^{-\lambda} \frac{\lambda^i}{i!} s^i = \exp(\lambda s - \lambda).\]}\pl{\rep{2cm}}
+
+
+\subsubsection{Fonctions génératrices et moments}
+
+La fonction génératrice d'une variable aléatoire déterminant sa loi, il est naturel qu'elle donne ses moments lorsque ceux-ci existent. Nous noterons, pour $r \in \mathbb{N}^*$, $G_X^{(r)} (1^-)$ la $r^{\textrm{ième}}$ dérivée à gauche de $G_X$ en 1 lorsqu'elle existe.
+
+
+\begin{proposition}
+Soit $X$ une variable aléatoire à valeurs dans $\mathbb{N}$. Pour que $X$ admette un moment d'ordre $r \in \mathbb{N}^*$, il faut et il suffit que sa fonction génératrice $G_X$ soit $r$ fois dérivable à gauche en 1 et dans ce cas, on a  
+\[ G_X^{(r)} (1^-) = \sum_{k=r}^{+\infty} k(k-1) \cdots (k-r+1) p_k = \mathbb{E} [X(X-1)\cdots (X-r+1)].\]
+\end{proposition}
+
+
+
+\end{document}
+
+
+
+
+

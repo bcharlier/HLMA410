@@ -1,0 +1,104 @@
+\begin{tikzpicture}[]
+\def\dsup{25};
+\begin{axis}[
+		width=0.45\textwidth,
+		      height=0.35\textwidth,
+		axis y line=left,
+		axis x line=middle,
+		%y post scale=.24,
+		%x post scale=.6,
+		xlabel={$$},
+		ylabel={$$},
+		every axis x label/.style={at={(current axis.right of origin)},anchor=west},
+		y label style={at={(current axis.above origin)},anchor= east},
+		ytick={0,.1,.2},
+		%yticklabels={0,0.1,0.2},
+		xtick={0,10,20},
+		%xticklabels={0,10,20},
+		enlargelimits, %needed to avoid a bug in fillbetween pkg
+		after end axis/.code={\node[anchor=west] at (axis cs:9,.15) {$\mathcal B(25;0.1)$ }; },
+		samples at={0,...,\dsup} 
+		ymin =0, ymax=.25
+]
+\tikzset{declare function={binom(\k,\n,\p)=\n!/(\k!*(\n-\k)!)*\p^\k*(1-\p)^(\n-\k);}} 
+\addplot [ycomb,thick,samples at={0,1,2,...,\dsup},blue] {binom(x,\dsup,0.1)}; %\addlegendentry{$p=0.2$}
+\end{axis}
+\end{tikzpicture}
+\begin{tikzpicture}[]
+\def\dsup{25};
+\begin{axis}[
+		width=0.45\textwidth,
+		      height=0.35\textwidth,
+		axis y line=left,
+		axis x line=middle,
+		%y post scale=.24,
+		%x post scale=.6,
+		xlabel={$$},
+		ylabel={$$},
+		every axis x label/.style={at={(current axis.right of origin)},anchor=west},
+		y label style={at={(current axis.above origin)},anchor= east},
+		ytick={0,.1,.2},
+		%yticklabels={0,0.1,0.2},
+		xtick={0,10,20},
+		%xticklabels={0,10,20},
+		enlargelimits, %needed to avoid a bug in fillbetween pkg
+		after end axis/.code={\node[anchor=west] at (axis cs:13,.15) {$\mathcal B(25;0.3)$ };},
+		samples at={0,...,\dsup} 
+		ymin =0, ymax=.25
+]
+\tikzset{declare function={binom(\k,\n,\p)=\n!/(\k!*(\n-\k)!)*\p^\k*(1-\p)^(\n-\k);}} 
+\addplot [ycomb,thick,samples at={0,1,2,...,\dsup},blue] {binom(x,\dsup,0.3)}; %\addlegendentry{$p=0.2$}
+\end{axis}
+\end{tikzpicture}
+\begin{tikzpicture}[]
+\def\dsup{25};
+\begin{axis}[
+		width=0.45\textwidth,
+		      height=0.35\textwidth,
+		axis y line=left,
+		axis x line=middle,
+		%y post scale=.24,
+		%x post scale=.6,
+		xlabel={$$},
+		ylabel={$$},
+		every axis x label/.style={at={(current axis.right of origin)},anchor=west},
+		y label style={at={(current axis.above origin)},anchor= east},
+		ytick={0,.1,.2},
+		%yticklabels={0,0.1,0.2},
+		xtick={0,10,20},
+		%xticklabels={0,10,20},
+		enlargelimits, %needed to avoid a bug in fillbetween pkg
+		after end axis/.code={\node[anchor=west] at (axis cs:14,.15) {$\mathcal B(25;0.5)$ };},
+		samples at={0,...,\dsup} 
+		ymin =0, ymax=.25
+]
+\tikzset{declare function={binom(\k,\n,\p)=\n!/(\k!*(\n-\k)!)*\p^\k*(1-\p)^(\n-\k);}} 
+\addplot [ycomb,thick,samples at={0,1,2,...,\dsup},blue] {binom(x,\dsup,0.5)}; %\addlegendentry{$p=0.2$}
+\end{axis}
+\end{tikzpicture}
+\begin{tikzpicture}[]
+\def\dsup{25};
+\begin{axis}[
+		width=0.45\textwidth,
+		      height=0.35\textwidth,
+		axis y line=left,
+		axis x line=middle,
+		%y post scale=.24,
+		%x post scale=.6,
+		xlabel={$$},
+		ylabel={$$},
+		every axis x label/.style={at={(current axis.right of origin)},anchor=west},
+		y label style={at={(current axis.above origin)},anchor= east},
+		ytick={0,.1,.2},
+		%yticklabels={0,0.1,0.2},
+		xtick={0,10,20},
+		%xticklabels={0,10,20},
+		enlargelimits, %needed to avoid a bug in fillbetween pkg
+		after end axis/.code={\node[anchor=west] at (axis cs:3,.15) {$\mathcal B(25;0.7)$ };},
+		samples at={0,...,\dsup} 
+		ymin =0, ymax=.25
+]
+\tikzset{declare function={binom(\k,\n,\p)=\n!/(\k!*(\n-\k)!)*\p^\k*(1-\p)^(\n-\k);}} 
+\addplot [ycomb,thick,samples at={0,1,2,...,\dsup},blue] {binom(x,\dsup,0.7)}; %\addlegendentry{$p=0.2$}
+\end{axis}
+\end{tikzpicture}

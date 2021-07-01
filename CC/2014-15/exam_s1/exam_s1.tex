@@ -1,0 +1,140 @@
+\documentclass{article}
+\input{./header.tex}
+
+%-----------------------------------------------------------------------------
+\begin{document}
+\noindent Université Montpellier 2 \hfill Année 2014-2015
+
+\noindent HLMA 410
+ 
+
+
+\bigskip
+
+\begin{center}
+{\large \sffamily\bfseries Examen - Session 1}
+\end{center}
+
+\textit{Durée 2h00. Les documents, la calculatrice, les téléphones portables, tablettes, ordinateurs ne sont pas autorisés. La qualité de la rédaction sera prise en compte. Les exercices sont indépendants.} 
+
+\bigskip
+\bigskip
+
+\section{Analyse}
+
+\exo{Question de cours}
+	Soit $\Gamma=([a,b],\phi)$ un arc param\'etr\'e dans $\R^n$ de classe $\mathcal C^1$ et $V:\R^n \rightarrow \R^n$ un champ de vecteurs continu.
+\begin{enumerate}
+	\item Qu'appelle-t-on circulation de $V$ le long de $\Gamma$ ?
+\end{enumerate}
+			Soit $\theta: [c,d] \rightarrow [a,b]$ un $C^1$-diff\'eomorphisme et $\psi=\phi \circ \theta$. 
+		\begin{enumerate}[resume]
+	\item Quelle relation y a-t-il entre la circulation de $V$ le long de $\Gamma'=([c,d],\psi)$ et la circulation le long de $\Gamma$ ? 	\item Le-d\'emontrer.
+\end{enumerate}
+
+\bigskip
+
+
+\exo{} On considère le champ de vecteurs 
+\begin{align*}
+	F: \R^2 & \to \R^2 \\
+	(x,y) & \mapsto (2xy+y\cos(xy), x\cos(xy) +x^2-1)
+\end{align*}
+%\begin{center}
+	%\begin{tikzpicture}
+		%\begin{axis}[,%xtick=\empty,
+			     %%ytick=\empty,
+			     %ztick=\empty ,
+			     %xlabel=$x$,ylabel=$y$,xlabel=$x$,ylabel=$y$,domain=-2:2,% y domain=-1:1,
+			     %view={0}{90},
+			     %xmax=2, xmin=-2,
+			     %ymax=2, ymin=-2,%axis equal
+			%]
+			%\addplot3[blue, quiver={u={2*x*y+y*cos(x*y)}, v={x*cos(x*y) +x^2-1}, scale arrows=.1}, -stealth,samples=25] {0};
+			%\addplot3[contour gnuplot={number={25}, labels=true},samples=60] gnuplot {sin(x*y) +y* x**2  -y };
+		%\end{axis}
+	%\end{tikzpicture}
+%\end{center}
+
+%\begin{enumerate}
+	%\item Trouver une fonction $f:\R^2 \to \R$ de classe $\mathcal C^2$ telle que $F = \nabla f$, où $\nabla f =(\frac{\partial f}{\partial x} , \frac{\partial f}{\partial y})$.
+	%\item Déterminer les points critiques de la fonction $f$.
+	%\item Calculer la matrice Hessienne de $f$ en tout point de $\R^2$. 
+	%\item Déterminer la nature de la matrice Hessienne en chacun des points critiques  (\textit{i.e.} la forme quadratique associée est-elle définie ? est-elle positive ? est elle négative ?)
+	%\item Peut-on déduire, de la question précédente, la nature des points critiques (\textit{i.e.} minimum, maximum, strict, global) ? Justifier!
+	%\item \'Etudier la restriction de $f$ a la droite $y=0$. Quelle(s) information(s) cela apporte sur la nature des points critiques (\textit{i.e.} minimum, maximum, strict, global) ?
+	%\item Soit $\Gamma$ la courbe paramétrée par $\phi : t \mapsto (t,t^2)$ pour $t \in [0,1]$. Calculer  $\int_{\Gamma} \langle F , d\phi \rangle$.
+%\end{enumerate}
+On admettra provisoirement l'existence d'une fonction $f:\R^2 \to \R$ telle que $F = (\frac{\partial f}{\partial x} , \frac{\partial f}{\partial y})$.
+\begin{enumerate}
+	\item Déterminer les points critiques de la fonction $f$.
+	\item Calculer la matrice Hessienne de $f$ en tout point de $\R^2$. 
+	\item Déterminer la nature de la matrice Hessienne de $f$ en chacun des points critiques  (\textit{i.e.} la forme quadratique associée est-elle définie ? est-elle positive ? est elle négative ?)
+	\item Peut-on déduire, de la question précédente, la nature des points critiques de $f$ (\textit{i.e.} minimum, maximum, strict, global) ? Justifier!
+%\end{enumerate}
+%On étudie maintenant le potentiel $f$ :  
+%\begin{enumerate}[resume]
+	\item Trouver une fonction $f:\R^2 \to \R$ de classe $\mathcal C^2$ telle que $\nabla f = F$.
+%	\item \'Etudier la restriction de $f$ à la droite $y=0$. Quelle(s) information(s) cela apporte sur la nature des points critiques (\textit{i.e.} minimum, maximum, strict, global) ?
+	\item Soit $\Gamma$ la courbe paramétrée par $\phi : t \mapsto (t,t^2)$ pour $t \in [0,1]$. Calculer la circulation de $F$  le long de $\Gamma$.
+\end{enumerate}
+
+\bigskip 
+
+\exo{}
+\begin{enumerate}
+	\item Soient $\alpha, \beta, R > 0$. Calculer l'aire de l'ellipse $E \subset R^2$ définie par l'équation
+		\[
+			\frac{x^2}{\alpha^2} + \frac{y^2}{\beta^2} < R^2.
+		\]
+		{\it Indication : On pourra utiliser le changement de variables $(u,v) \mapsto (\alpha u, \beta v)$.}
+	\item Soit $H_{a,b,c} \subset \R^3$ le solide défini par
+\[
+	H_{a,b,c} = \left\{  (x,y,z) \in \R^2 | -1 < z <2, \frac{x^2}{a^2} + \frac{y^2}{b^2} - \frac{z^2}{c^2} <1 \right\}
+\]
+		où $a$, $b$ et $c$ sont des réels strictement positifs. Calculer le volume de $H_{a,b,c}$.
+
+	\item On suppose que $a = b = 1$ et $c = 2$. Calculer l'intégrale
+		\[
+			I = \iiint_{H_{1,1,2}} z e^{x^2+y^2}dxdydz.
+		\]
+\end{enumerate}
+
+\bigskip
+
+
+\section{Probabilités}
+
+\exo{(Dominos)} Un domino se compose de deux cases, portant chacune un numéro $n$ entier, $0\leq n \leq 6$. Un jeu est formé de tous les dominos différents possibles. 
+\begin{enumerate}
+	\item Combien y a-t-il de domino dans un jeu ?
+%	\item On choisit un domino au hasard. Quelle est la probabilité conditionnelle que les deux numéros portés par ce domino soient consécutifs, sachant que le domino tiré n'est pas un double.
+	\item On choisit deux dominos au hasard. Quelle est la probabilité qu'ils soient compatibles (\textit{i.e.} possèdent un numéro commun) ?
+\end{enumerate}
+
+\bigskip
+
+\exo{(Jeans)}
+%\subsection*{Partie A}
+%Le directeur de \og Massimo Dutti \fg{} a noté que 40 \% de ses clients achetaient désormais des jeans évasés. Afin de connaître leurs préférences, il décide avant la fermeture d\textquoteright interroger les
+%cinq derniers clients.
+%
+%
+%\begin{enumerate}
+%\item Donner la distribution de probabilité de la variable
+%aléatoire $X$ : « nombre de clients possédant un jean
+%évasé ». 
+%\item Calculer la moyenne et l\textquoteright écart type
+%de $X$. 
+%\item Quelle est la probabilité pour que l\textquoteright échantillon
+%des cinq derniers clients représente parfaitement la
+%structure de la clientèle ? 
+%\end{enumerate}
+L'enseigne \og Massimo Dutti \fg{} produit et vend $4\times10^{4}$ jeans par mois. Le coût de fabrication est de $100$ euros par jean. Le fabricant fait réaliser un test de conformité, dans les mêmes conditions, sur chacun de ses jeans fabriqués. Le test est positif dans $90\%$ des cas et un jean reconnu conforme peut alors être vendu à $200$ euros. Si le test est en revanche négatif, le jean est bradé au prix de $50$ euros. 
+\begin{enumerate}
+\item On note $Y$ la variable aléatoire qui indique le nombre de jeans conformes parmi les $4\times10^{4}$ produits.  Calculer l'espérance et la variance de $Y$. 
+\item On note $Z$ la variable aléatoire qui indique le bénéfice mensuel, exprimé en euros. Calculer l'espérance et la variance de $Z$.
+\end{enumerate}
+
+\end{document}
+

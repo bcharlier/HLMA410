@@ -1,0 +1,184 @@
+\documentclass[a4paper]{tp_um}
+\input{../../TD/header.tex}
+
+\usepackage{lastpage}
+\cfoot{\thepage\ sur \pageref{LastPage}}
+
+%\def\version{cor}
+\def\version{eno}
+\ue{HLMA410}
+\usepackage{tikz,tkz-tab}
+%-----------------------------------------------------------------------------
+
+\title{\large \sffamily\bfseries Examen}
+
+\begin{document}
+
+\maketitle
+\textit{Durée 3h00. Les documents, la calculatrice, les téléphones portables, tablettes, ordinateurs ne sont pas autorisés. Les exercices sont indépendants. La qualité de la rédaction sera prise en compte.} 
+
+\bigskip
+\bigskip
+
+
+\section{Topologie et formes quadratiques}
+
+\exo{} Soit $(a,b) \in \mathbb R^2$ et $\phi : \mathbb R^2 \times \mathbb R^2 \to \mathbb R$
+d\'efinie par
+\[
+\phi((x_1,x_2), (y_1,y_2)) = x_1y_1 + 4x_1y_2 + b x_2y_1 + a x_2y_2 \quad 
+\forall \, ((x_1,x_2),(y_1,y_2)) \in \mathbb R^2 \times \mathbb R^2.
+\]
+\begin{enumerate}
+\item Justifier que $\phi$ est bilin\'eaire. Montrer qu'elle est sym\'etrique si et seulement si $b=4.$
+Exprimer alors la matrice associ\'ee. 
+\item On suppose $b=4.$ Exprimer une condition sur $a$ pour que $\phi$ soit d\'efinie positive.
+\item A quelle condition sur la paire $(a,b)$  l'application $\phi$ d\'efinit-elle un produit scalaire sur $\mathbb R^2.$
+\item On pose $b=4$ et $a=16.$ Montrer que l'ensemble 
+    \[
+        C =\{(x_1,x_2) \in \mathbb R^2 \, | \, \phi((x_1,x_2),(x_1,x_2)) = 1\}
+    \]
+est un ferm\'e et le dessiner dans un rep\`ere orthonorm\'e. $C$ est-il compact ? 
+\end{enumerate}
+
+\section{Courbes paramétrées}
+
+\exo{} Soit $\Gamma(t) = (\sin t, \frac{\sin t}{2 + \cos t})$ pour $t\in \left[0, \pi  \right]$. 
+
+\begin{enumerate}
+    \item Donner le tableau de variation de $\Gamma$.
+        \cor{
+            On a de manière immédiate $x'(t) =\cos t$ et $y'(t) =\frac{2\cos t +1}{(2+ \cos t)^2}$. Ce qui donne
+
+            \begin{center}
+                \begin{tikzpicture}
+                    \tkzTabInit{$t$ / 1 , $x'(t)$ / 1, $x(t)$ / 1.5, $y'(t)$ / 1, $y(t)$ / 1.5}{$0$, $\pi/2$, $2\pi/3$, $\pi$}
+                    \tkzTabLine{, +, 0, -,,-, }
+                    \tkzTabVar{-/ 0, +/ $1$, R/,-/ 0}
+                    \tkzTabIma{2}{4}{3}{$\frac{\sqrt 3}{2}$}
+                    \tkzTabLine{,+ ,,+,0,-, }
+                    \tkzTabVar{-/ $0$, R/ , +/ $\frac{\sqrt 3}{2}$, -/ $0$}
+                    \tkzTabIma{1}{3}{2}{$\frac{1}{2}$}
+                \end{tikzpicture}
+            \end{center}
+            
+        }
+
+    \item Déterminer le point double de  $\Gamma$. Calculer les tangentes en ce point double
+
+        \cor{
+            Le point double est l'origine atteint en $t=0$ et $t=\pi$. Les tengentes passent donc par l'origine. La pente de la droite est alors $\frac{x'(0)}{y'(0)} = \frac 1 3$ et $\frac{x'(\pi)}{y'(\pi)} = 1$ respectivement.
+        }
+
+    \item Déterminer points de  $\Gamma$ qui admettent une tangente horizontale ou une tangente verticale.
+        \cor{
+            Les tangentes verticales sont données par les solutions de $x'(t) = 0$. On est alors en $\Gamma(\pi/2) = (1,1/2) $. 
+
+            Les tangentes horizontales sont données par les solutions de $y'(t) = 0$. On est alors en $\Gamma(2\pi/3) = \sqrt 3 (1/2,1/3)$.
+        }
+
+    \item Tracer la courbe $t\mapsto \Gamma(t)$  pour $t\in [-\pi,\pi]$.
+
+\cor{
+    Attention, ici le domaine pour le tracé est différent du domaine d'étude. Mais comme $\Gamma(t) = - \Gamma(-t)$ on a une symétrie centrale par rapport à l'origine. Cela donne:
+    
+        \begin{center}
+            \begin{tikzpicture}\pgfplotsset{compat=1.8}
+                \begin{axis}[height=6cm,width=6cm, axis lines=center, axis on top, xlabel={$x$}, ylabel={$y$}, axis equal,grid=both, minor tick num=2,]
+                    \addplot[samples=200, very thick,blue,  domain = 0:pi] ({sin(deg(x))},{sin(deg(x))/(2+cos(deg(x)))});
+                    \addplot[samples=200, very thick,red,  domain = -pi:0] ({sin(deg(x))},{sin(deg(x))/(2+cos(deg(x)))});
+                \end{axis}
+            \end{tikzpicture}
+        \end{center}
+    }
+\end{enumerate}
+
+\section{Calcul différentiel}
+
+\exo{} Soit $f : \mathbb R^2 \to \mathbb R$ définie par
+$$
+f(x,y)=\begin{cases}
+\sin(y-x) & \text{ si }  y>|x|  \\
+0 & \text{ si }  y=|x| \\  
+\frac{x-y}{\sqrt{x^2 + y^2}} & \text{si }  y<|x| 
+\end{cases}
+$$
+\begin{enumerate}
+\item La fonction $f$ est-elle continue sur $\mathbb R^2$ ?
+\item La fonction $f$ est-elle différentiable sur $\mathbb R^2$ ?
+\item La fonction $f$ est-elle $C^1$ sur $\mathbb R^2$ ?
+\end{enumerate}
+
+
+\exo{} Soit $f : \mathbb R^2 \to \mathbb R$ définie par
+$$
+f(x,y)=\begin{cases}
+\frac{x^2y}{x^4+y^2} & \text{ si } (x,y) \neq (0,0)  \\
+0 & \text{ si } (x,y)=(0,0) 
+\end{cases}
+$$
+\begin{enumerate}
+\item La fonction $f$ est-elle continue sur $\mathbb R^2$ ?
+\item Soit $v \in \mathbb R^2$ un vecteur non nul. La fonction $f$ admet-elle une dérivée en suivant $v$ sur $\mathbb R^2$ ?
+\item La fonction $f$ est-elle différentiable sur $\mathbb R^2$ ?
+\end{enumerate}
+
+%\exo[]
+
+
+\exo{} Soit la fonction $f:(x,y) \mapsto \abs{x} e^{-x^2 - y^2}$ définie sur $\R^2$. 
+ 
+\begin{enumerate}
+    \item Déterminer l'ensemble $D$ de $\R^2$ sur lequel $f$ est $\mathcal C^2$.
+
+        \cor{
+            La fonction $f$ est $\mathcal C^\infty$ sur $D = \R^2 \setminus \{x=0\}$ à cause du point anguleux de la valeur absolue. Reste à voir que $f$ n'est pas  $\mathcal C^2$ sur $\{x=0\}$. En effet $\frac{\partial f}{\partial x}(0,y) = \begin{cases}
+                (1 -2x^2) e^{-x^2 - y^2} \text{ si } x \geq 0 \\
+                (-1 + 2x^2)e^{-x^2 - y^2} \text{ si } x <0
+            \end{cases}$ qui admet $1$ et $-1$ pour limite à gauche et à droite en $0$.
+        }
+    \item Déterminer les valeurs de $f$ sur $\R^2 \setminus D$. En déduire la nature des extremum de $f$ sur cet ensemble.
+
+        \cor{
+
+            La fonction $f$ est identiquement nulle sur cette ensemble. C'est clairement le minimum globale de $f$.
+        }
+
+    \item Calculer les points critiques de la $f$. En donner leur nature. 
+        \cor{
+            On a $\frac{\partial f }{\partial x} (x,y) =(1 - 2x^2) e^{-x^2 - y^2}$ et $\frac{\partial f }{\partial y} (x,y) = -2xy e^{-x^2 - y^2}$. Les points critiques sont $(1/\sqrt 2,0)$ (maximum local) et $(-1/\sqrt 2,0)$ (maximum local). %Après le calcule des dérivées partielles secondes on a :
+        }
+    \item Faire le bilan: lister les extrema de $f$.
+
+        \cor{
+            Minimum globale: 0 sur la droite $x=0$ et deux maximum globaux en $(1/\sqrt 2,0)$  et $(-1/\sqrt 2,0)$ (l'argument n'est pas facile ici\ldots)
+        }
+\end{enumerate}
+
+\section{Intégration}
+
+\exo{Centre de gravité} 
+
+
+exo{} 
+Pour tout entier pair $n\geq 2$ on consid\`ere $\Delta_n$, le domaine du plan d\'elimit\'e par les courbes d'\'equations $y=x^n$ et $x=y^n$.
+\begin{enumerate}
+\item Calculer l'aire $S_n$ de $\Delta_n$. 
+\item V\'erifier que $\lim\limits_{n \to +\infty} S_n =1$ et expliquer pourquoi cette valeur \'etait attendue.
+\end{enumerate}
+
+
+\exo{} 
+Pour $R>0$, on consid\`ere le domaine $\Delta=\{(x,y,z)\in \R^3\;;\; x^2+y^2+z^2\leq R^2\;,\; z\ge 0\}$.
+\begin{enumerate}
+\item  Dessiner et caract\'eriser g\'eom\'etriquement $\Delta$.
+\item  Donner son volume $V$ sans faire obligatoirement de calcul.
+\item Calculer la hauteur $z_G$ de son centre de gravit\'e.%, donn\'ee par $z_G=\frac{1}{V}\intt_\Delta z\,dx\, dy\, dz$.
+\end{enumerate}
+%On rappelle que l'\'el\'ement d'int\'egration en coordonn\'ees sph\'eriques (avec latitude) est $r^2\cos(\varphi)\,dr d\theta d\varphi$.
+
+
+
+
+\end{document}
+

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+ 
+<question type="category">
+  <category>
+    <text>$module$/Integration le long d'une courbe (4pt)</text>
+  </category>
+</question>
+ 
+<question type="multichoice">
+  <name>
+    <text>Calcul de longueur</text>
+  </name>
+  <questiontext format="html">
+    <text><![CDATA[<p>Calculer la longueur de la courbe \(y= x^{3/2}\) pour \(x\in [0,1]\). </p>]]></text>
+  </questiontext>
+  <defaultgrade>4</defaultgrade>
+  <generalfeedback format="html"><text/></generalfeedback>
+  <penalty>.5</penalty>
+  <hidden>0</hidden>
+  <single>true</single>
+  <shuffleanswers>1</shuffleanswers>
+  <answernumbering>abc</answernumbering>
+  <answer fraction="100" format="html">
+    <text><![CDATA[<p>\( \frac {{{13}^{\frac {3}{2}} -8}}{27}\)</p>]]></text>
+  </answer>
+  <answer fraction="0" format="html">
+    <text><![CDATA[<p>\(\sqrt {6}\left ( \frac 5 2 \ln 3 -1 \right )\)</p>]]></text>
+  </answer>
+  <answer fraction="0" format="html">
+    <text><![CDATA[<p>\(\frac 7 4\)</p>]]></text>
+  </answer>
+  <answer fraction="0" format="html">
+    <text><![CDATA[<p>\(\frac 1 2\)</p>]]></text>
+  </answer>
+  <answer fraction="0" format="html">
+    <text><![CDATA[<p>\(\frac 2 5\)</p>]]></text>
+  </answer>
+  <answer fraction="0" format="html">
+    <text><![CDATA[<p>Aucune des autres r&eacute;ponses</p>]]></text>
+  </answer>
+</question>
+<question type="multichoice">
+  <name>
+    <text>Integrale curviligne</text>
+  </name>
+  <questiontext format="html">
+    <text><![CDATA[<p>Calculer l&rsquo;int&eacute;grale \(\int _\Gamma \ln (x + y + z)ds\) o&ugrave; \(\Gamma \) est le segment de droite joignant le point \((1, 1, 1)\) au point \((2, 3, 4)\). \textit {Indication: calculer la d&eacute;riv&eacute;e \(x\mapsto x\ln (x) -x\) d&eacute;finie pour tout \(x&gt;0\)}. </p>]]></text>
+  </questiontext>
+  <defaultgrade>4</defaultgrade>
+  <generalfeedback format="html"><text/></generalfeedback>
+  <penalty>.5</penalty>
+  <hidden>0</hidden>
+  <single>true</single>
+  <shuffleanswers>1</shuffleanswers>
+  <answernumbering>abc</answernumbering>
+  <answer fraction="0" format="html">
+    <text><![CDATA[<p>\(\sqrt {6}\left ( 15 \ln 3 - 6 \right )\)</p>]]></text>
+  </answer>
+  <answer fraction="0" format="html">
+    <text><![CDATA[<p>\(\sqrt {6}\left ( \frac 5 2 \ln 3 -1 \right )\)</p>]]></text>
+  </answer>
+  <answer fraction="0" format="html">
+    <text><![CDATA[<p>\(\sqrt {14}\left ( 15 \ln 3 - 6 \right )\)</p>]]></text>
+  </answer>
+  <answer fraction="100" format="html">
+    <text><![CDATA[<p>\(\sqrt {14}\left ( \frac 5 2 \ln 3 -1 \right )\)</p>]]></text>
+  </answer>
+  <answer fraction="0" format="html">
+    <text><![CDATA[<p>Aucune des autres r&eacute;ponses</p>]]></text>
+  </answer>
+</question>
+ 
+</quiz>

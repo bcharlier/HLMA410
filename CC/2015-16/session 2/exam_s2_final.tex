@@ -1,0 +1,109 @@
+\documentclass{tp_um}
+
+\input{../../TD/header.tex}
+
+%-----------------------------------------------------------------------------
+
+\title{\Large \sffamily\bfseries Examen - Session 2}
+\ue{HLMA410}
+
+
+%-----------------------------------------------------------------------------
+\begin{document}
+
+\maketitle
+
+\bigskip
+\bigskip
+
+\textit{Durée 3h00. Les documents, la calculatrice, les téléphones portables, tablettes, ordinateurs ne sont pas autorisés. La qualité de la rédaction sera prise en compte. Les exercices sont indépendants.} 
+
+\bigskip
+\bigskip
+
+\section{Analyse}
+
+\exo{(Question de cours)} Soit $f:\R^2 \to \R$ une fonction de classe $\mathcal C^1(\R^2)$. Rappeler la définition du gradient de $f$ et la formule liant gradient et différentielle.
+
+%\exo{(Projection de ${\Bbb R}^2$ sur $\Bbb R$)} %Dans cet exercice, il est fortement recommand\'e de dessiner, et de se souvenir qu'un dessin n'est jamais une preuve.  
+%%Si $X$ est un espace vectoriel normé, «$B_x(r)$» désigne la boule ouverte de centre $x\in X$ et de rayon $r>0$. On rappelle que pour une application $p:X\rightarrow Y$, et pour $A\subset X$, l'image de $A$ par $p$ est l'ensemble $p(A)=\{ y\in  Y, \exists x\in A, y=p(x)\}=\{ p(x), x \in A\}$. 
+%Soit $p:{\Bbb R}^2\rightarrow {\Bbb R}$ la premi\`ere projection ($p(x,y)=x$). On munit ${\Bbb R}^2$ de la norme euclidienne et $\Bbb R$ de la valeur absolue. %Dans cet exercice,
+%%\begin{enumerate}
+%%\item Montrer que dans $\Bbb R$, $B(a,\epsilon[=]a-\epsilon,a+\epsilon[$.  
+%%\item Montrer que $p(B((x,y),\epsilon[)=B(x,\epsilon[$. En d\'eduire que l'image d'un ouvert de ${\Bbb R}^2$ par $p$ est un ouvert de $\Bbb R$.
+%%\item Montrer que $F=\{(x,y), xy=1\}$ est un ferm\'e de ${\Bbb R}^2$ mais que $p(F)$ n'est pas ferm\'e.
+%%\item 
+	%On suppose maintenant que $F$ est une partie de ${\Bbb R}^2$ ferm\'ee et born\'ee et on consid\`ere une suite $x_n\in p(F)$ telle que $x_n\rightarrow x$.
+%\begin{enumerate} 
+%\item Montrer qu'il existe une suite $y_n$ telle que $(x_n,y_n)\in F$.
+%\item Montrer qu'il existe une sous suite $(x_{\phi(n)},y_{\phi(n)})$ convergente.
+%\item En d\'eduire que $x\in p(F)$, puis que $p(F)$ est ferm\'e dans $\Bbb R$.
+%\end{enumerate}
+
+
+\exo{} Soit $\phi:\R^2\to\R^2$ l'application définie par 
+\[
+		\phi(x,y) = (u,v) = (x+y,x-y) 
+\]
+\begin{enumerate}
+	\item Démontrer que $\phi$ est un $\mathcal C^1$ difféomorphisme. Calculer son inverse $\phi^{-1}$.
+	\item Calculer le déterminant jacobien de $\phi$ au point $(x,y)$ et le déterminant jacobien de $\phi^{-1}$ au point $(u,v)$.
+	\item On considère l'application $f: \R^2 \to \R$  définie par $f(x,y) = e^{x^2 -y^2}$. Soit
+		$g = f \circ \phi^{-1}$. Calculer les dérivées partielles de $f$ puis calculer les dérivées partielle de $g$ {\bfseries en utilisant la règle de la chaîne}.
+	\item On note $D =\left\{ (x,y) \in \R^2 ,\, x>0,\, (x-1) <y < (1-x) \right\}$. Déterminer le domaine $\Delta$ image de $D$ par $\phi$. Faire un dessin.
+	\item En déduire $\int_D f(x,y) dxdy$.
+\end{enumerate}
+
+\exo{}On consid\`ere la fonction $ f: \R^2 \to \R$, 
+$$
+f(x,y) = x \sqrt{ x^2 + y^2}.
+$$
+\begin{enumerate}
+	\item \'Etudier la continuité de $f$ en chaque point de $ \R^2$. 
+	\item Calculer les dérivées partielles de $f$ en chaque point o\`u elles existent. 
+	\item \'Etudier la continuit\'e des d\'eriv\'ees partielles de $f$ sur $ \R ^2 \setminus{(0,0)}$, puis en $(0,0)$.
+	\item \'Etudier la  différentiabilité de $f$ en chaque point de $ \R^2$.
+	\item %Calculer le développement limité de $f$ à l'ordre 1 en $(1,0)$.
+		En déduire une valeur approchée de $f(1.01,0)$. %$d_{(1, 0) } f ( h_1, h_2)$.
+\end{enumerate}
+
+\exo{} Soit $f(x,y) = \abs{4x^2 + 9y^2 - 8x + 36y + 39}$.% Le but de cet exerci 
+\begin{enumerate}
+	%\item Déterminer les réels $a_1,a_2,c_1,c_2$ et $b$ tels que $f(x , y) = \abs{a_1(x-c_1)^2 + a_2 (y-c_2)^2 -b}$. % Appliquer l'algorithme de la décomposition de Gauss et en déduire le signe de $q$
+	\item Déterminer l'ensemble $ N = \{(x,y) \in \R^2,  4x^2 + 9y^2 - 8x + 36y + 39 <0\}$. 
+	\item Étudier la continuité $f$ et donner l'ensemble image de $f$. 
+	\item Dessiner l'ensemble $L = \{(x,y) \in \R^2 | f(x,y)> 1/2\}$.
+	\item Sur quel ensemble $f$ est-elle $\mathcal C^\infty$ ? Justifier succinctement la réponse.
+	\item Donner les points de minimum de $f$ sur $\R^2$. Indiquer, en justifiant, la nature de ces points (minimum global ou local).
+		\textit{Indication: cette question se traitera sans calcul}
+	\item Calculer le gradient et la Hessienne de $f$ en les points de $\R^2$ pour lesquels ces quantités sont bien définies.
+	\item Déterminer alors le(s) point(s) critique(s) de $f$ donner leur nature (minimum/maximum, local/global, point selle,\ldots).
+	\item Tracer qualitativement le graphe de $f$.
+\end{enumerate}
+
+
+
+
+
+\bigskip
+
+
+\section{Probabilités}
+
+\exo{(Question de cours)} Soient $X$ et $Y$ deux variables aléatoires réelles discrètes admettant un moment d'ordre 2. Démontrer que l'on a 
+\[
+	\E(XY) \leq  \sqrt{\E(X^2)\E(Y^2)}.
+\]
+
+
+
+\exo{(Lois géométriques)} Soit $X$ et $Y$ deux variables aléatoires indépendantes de lois géométriques de paramètre $0<a<1$ et $0<b<1$ respectivement. On note $Z = \min \left\{ X,Y \right\}$. Le but de l'exercice est de déterminer la loi de $Z$.
+\begin{enumerate}
+	\item Calculer $\P\left( X \leq k \right)$ et $\P\left( Y\leq k\right)$ pour tout $k\in \N^*$.
+	\item Calculer alors $\P\left( Z\leq k \right)$ pour tout $k \in \N^*$
+	\item Soit $k\in\N^*$ fixé. Exprimer l'évènement $\left\{ Z = k \right\}$ en fonction des évènements du type $\left\{ Z\leq \ell \right\}$, $\ell\in \N^*$.
+	\item En déduire que $Z$ est une variable aléatoire de loi géométrique dont on déterminera le paramètre.
+\end{enumerate}
+
+
+\end{document}

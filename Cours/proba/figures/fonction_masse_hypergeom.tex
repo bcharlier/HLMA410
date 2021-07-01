@@ -1,0 +1,306 @@
+\begin{tikzpicture}[]
+\def\nparam{5}
+\def\rparam{25}
+\def\roneparam{10}
+\begin{axis}[
+		width=0.45\textwidth,
+		      height=0.35\textwidth,
+		axis y line=left,
+		axis x line=middle,
+		%y post scale=.24,
+		%x post scale=.6,
+		xlabel={$$},
+		ylabel={$$},
+		every axis x label/.style={at={(current axis.right of origin)},anchor=west},
+		y label style={at={(current axis.above origin)},anchor= east},
+		ytick={0,.2,.4,.6},
+		%yticklabels={0,0.1,0.2},
+		xtick={0,10,20},
+		%xticklabels={0,10,20},
+		enlargelimits, %needed to avoid a bug in fillbetween pkg
+		after end axis/.code={\node[anchor=west] at (axis cs:2,.55) {$\mathcal H(\nparam,\rparam,\roneparam)$ };},
+		samples at={0,...,11} 
+		ymin =0, ymax=.7
+]
+\tikzset{declare function={comb(\n,\k)= (\n!) / ((\n-\k)! * \k!);}} 
+\tikzset{declare function={hgeom(\x,\n,\r,\rone)= comb(\rone,\x) * comb(\r-\rone,\n - \x) / comb(\r,\n) ;}} 
+\addplot [ycomb,thick,samples at={0,1,2,...,5},blue] {hgeom(x,\nparam,\rparam,\roneparam)}; %\addlegendentry{$p=0.2$}
+\addplot [ycomb,thick,samples at={0,1,2,...,20},blue] {0}; %\addlegendentry{$p=0.2$}
+\end{axis}
+\end{tikzpicture}
+\begin{tikzpicture}[]
+\def\nparam{10}
+\def\rparam{25}
+\def\roneparam{10}
+\begin{axis}[
+		width=0.45\textwidth,
+		      height=0.35\textwidth,
+		axis y line=left,
+		axis x line=middle,
+		%y post scale=.24,
+		%x post scale=.6,
+		xlabel={$$},
+		ylabel={$$},
+		every axis x label/.style={at={(current axis.right of origin)},anchor=west},
+		y label style={at={(current axis.above origin)},anchor= east},
+		ytick={0,.2,.4,.6},
+		%yticklabels={0,0.1,0.2},
+		xtick={0,10,20},
+		%xticklabels={0,10,20},
+		enlargelimits, %needed to avoid a bug in fillbetween pkg
+		after end axis/.code={\node[anchor=west] at (axis cs:2,.55) {$\mathcal H(\nparam,\rparam,\roneparam)$ };},
+		samples at={0,...,11} 
+		ymin =0, ymax=.7
+]
+\tikzset{declare function={comb(\n,\k)= (\n!) / ((\n-\k)! * \k!);}} 
+\tikzset{declare function={hgeom(\x,\n,\r,\rone)= comb(\rone,\x) * comb(\r-\rone,\n - \x) / comb(\r,\n) ;}} 
+\addplot [ycomb,thick,samples at={0,1,2,...,10},blue] {hgeom(x,\nparam,\rparam,\roneparam)}; %\addlegendentry{$p=0.2$}
+\addplot [ycomb,thick,samples at={0,1,2,...,20},blue] {hgeom(x,\nparam,\rparam,\roneparam)}; %\addlegendentry{$p=0.2$}
+\end{axis}
+\end{tikzpicture}
+%\begin{tikzpicture}[]
+%\def\nparam{15}
+%\def\rparam{25}
+%\def\roneparam{10}
+%\begin{axis}[
+		%width=0.45\textwidth,
+		      %height=0.35\textwidth,
+		%axis y line=left,
+		%axis x line=middle,
+		%%y post scale=.24,
+		%%x post scale=.6,
+		%xlabel={$$},
+		%ylabel={$$},
+		%every axis x label/.style={at={(current axis.right of origin)},anchor=west},
+		%y label style={at={(current axis.above origin)},anchor= east},
+		%ytick={0,.2,.4,.6},
+		%%yticklabels={0,0.1,0.2},
+		%xtick={0,10,20},
+		%%xticklabels={0,10,20},
+		%enlargelimits, %needed to avoid a bug in fillbetween pkg
+		%after end axis/.code={\node[anchor=west] at (axis cs:5,.3) {$\mathcal H(\nparam,\rparam,\roneparam)$ };},
+		%samples at={0,...,\rparam} 
+		%ymin =0, ymax=.7
+%]
+%\tikzset{declare function={comb(\n,\k)= (\n!) / ((\n-\k)! * \k!);}} 
+%\tikzset{declare function={hgeom(\x,\n,\r,\rone)= comb(\rone,\x) * comb(\r-\rone,\n - \x) / comb(\r,\n) ;}} 
+%\addplot [ycomb,thick,samples at={0,1,2,...,\rparam},blue] {hgeom(x,\nparam,\rparam,\roneparam)}; %\addlegendentry{$p=0.2$}
+%\end{axis}
+%\end{tikzpicture}
+\begin{tikzpicture}[]
+\def\nparam{20}
+\def\rparam{25}
+\def\roneparam{10}
+\begin{axis}[
+		width=0.45\textwidth,
+		      height=0.35\textwidth,
+		axis y line=left,
+		axis x line=middle,
+		%y post scale=.24,
+		%x post scale=.6,
+		xlabel={$$},
+		ylabel={$$},
+		every axis x label/.style={at={(current axis.right of origin)},anchor=west},
+		y label style={at={(current axis.above origin)},anchor= east},
+		ytick={0,.2,.4,.6},
+		%yticklabels={0,0.1,0.2},
+		xtick={0,10,20},
+		%xticklabels={0,10,20},
+		enlargelimits, %needed to avoid a bug in fillbetween pkg
+		after end axis/.code={\node[anchor=west] at (axis cs:2,.55) {$\mathcal H(\nparam,\rparam,\roneparam)$ };},
+		samples at={0,...,20} 
+		ymin =0, ymax=.7
+]
+\tikzset{declare function={miin(\n,\k)= min(\n,\k);}} 
+\tikzset{declare function={comb(\n,\k)= (\n!) / ((\n-\k)! * \k!);}} 
+\tikzset{declare function={hgeom(\x,\n,\r,\rone)= comb(\rone,\x) * comb(\r-\rone,\n - \x) / comb(\r,\n) ;}} 
+\addplot [ycomb,thick,samples at={5,6,...,\roneparam},blue] {hgeom(x,\nparam,\rparam,\roneparam)}; %\addlegendentry{$p=0.2$}
+\addplot [ycomb,thick,samples at={0,1,...,20},blue] {0};
+\end{axis}
+\end{tikzpicture}
+\begin{tikzpicture}[]
+\def\nparam{23}
+\def\rparam{25}
+\def\roneparam{10}
+\begin{axis}[
+		width=0.45\textwidth,
+		      height=0.35\textwidth,
+		axis y line=left,
+		axis x line=middle,
+		%y post scale=.24,
+		%x post scale=.6,
+		xlabel={$$},
+		ylabel={$$},
+		every axis x label/.style={at={(current axis.right of origin)},anchor=west},
+		y label style={at={(current axis.above origin)},anchor= east},
+		ytick={0,.2,.4,.6},
+		%yticklabels={0,0.1,0.2},
+		xtick={0,10,20},
+		%xticklabels={0,10,20},
+		enlargelimits, %needed to avoid a bug in fillbetween pkg
+		after end axis/.code={\node[anchor=west] at (axis cs:2,.55) {$\mathcal H(\nparam,\rparam,\roneparam)$ };},
+		samples at={0,...,11} 
+		ymin =0, ymax=.7
+]
+\tikzset{declare function={miin(\n,\k)= min(\n,\k);}} 
+\tikzset{declare function={comb(\n,\k)= (\n!) / ((\n-\k)! * \k!);}} 
+\tikzset{declare function={hgeom(\x,\n,\r,\rone)= comb(\rone,\x) * comb(\r-\rone,\n - \x) / comb(\r,\n) ;}} 
+\addplot [ycomb,thick,samples at={8,9,10},blue] {hgeom(x,\nparam,\rparam,\roneparam)}; %\addlegendentry{$p=0.2$}
+\addplot [ycomb,thick,samples at={0,1,...,20},blue] {0};
+\end{axis}
+\end{tikzpicture}
+
+
+\begin{tikzpicture}[]
+\def\nparam{5}
+\def\rparam{25}
+\def\roneparam{20}
+\begin{axis}[
+		width=0.45\textwidth,
+		      height=0.35\textwidth,
+		axis y line=left,
+		axis x line=middle,
+		%y post scale=.24,
+		%x post scale=.6,
+		xlabel={$$},
+		ylabel={$$},
+		every axis x label/.style={at={(current axis.right of origin)},anchor=west},
+		y label style={at={(current axis.above origin)},anchor= east},
+		ytick={0,.2,.4,.6},
+		%yticklabels={0,0.1,0.2},
+		xtick={0,10,20},
+		%xticklabels={0,10,20},
+		enlargelimits, %needed to avoid a bug in fillbetween pkg
+		after end axis/.code={\node[anchor=west] at (axis cs:2,.55) {$\mathcal H(\nparam,\rparam,\roneparam)$ };},
+		samples at={0,...,11} 
+		ymin =0, ymax=.7
+]
+\tikzset{declare function={comb(\n,\k)= (\n!) / ((\n-\k)! * \k!);}} 
+\tikzset{declare function={hgeom(\x,\n,\r,\rone)= comb(\rone,\x) * comb(\r-\rone,\n - \x) / comb(\r,\n) ;}} 
+\addplot [ycomb,thick,samples at={0,1,2,...,5},blue] {hgeom(x,\nparam,\rparam,\roneparam)}; %\addlegendentry{$p=0.2$}
+\addplot [ycomb,thick,samples at={0,1,2,...,20},blue] {0}; %\addlegendentry{$p=0.2$}
+\end{axis}
+\end{tikzpicture}
+\begin{tikzpicture}[]
+\def\nparam{10}
+\def\rparam{25}
+\def\roneparam{20}
+\begin{axis}[
+		width=0.45\textwidth,
+		      height=0.35\textwidth,
+		axis y line=left,
+		axis x line=middle,
+		%y post scale=.24,
+		%x post scale=.6,
+		xlabel={$$},
+		ylabel={$$},
+		every axis x label/.style={at={(current axis.right of origin)},anchor=west},
+		y label style={at={(current axis.above origin)},anchor= east},
+		ytick={0,.2,.4,.6},
+		%yticklabels={0,0.1,0.2},
+		xtick={0,10,20},
+		%xticklabels={0,10,20},
+		enlargelimits, %needed to avoid a bug in fillbetween pkg
+		after end axis/.code={\node[anchor=west] at (axis cs:2,.55) {$\mathcal H(\nparam,\rparam,\roneparam)$ };},
+		samples at={0,...,11} 
+		ymin =0, ymax=.7
+]
+\tikzset{declare function={comb(\n,\k)= (\n!) / ((\n-\k)! * \k!);}} 
+\tikzset{declare function={hgeom(\x,\n,\r,\rone)= comb(\rone,\x) * comb(\r-\rone,\n - \x) / comb(\r,\n) ;}} 
+\addplot [ycomb,thick,samples at={0,1,2,...,10},blue] {hgeom(x,\nparam,\rparam,\roneparam)}; %\addlegendentry{$p=0.2$}
+\addplot [ycomb,thick,samples at={0,1,2,...,20},blue] {0}; %\addlegendentry{$p=0.2$}
+\end{axis}
+\end{tikzpicture}
+%\begin{tikzpicture}[]
+%\def\nparam{15}
+%\def\rparam{25}
+%\def\roneparam{10}
+%\begin{axis}[
+		%width=0.45\textwidth,
+		      %height=0.35\textwidth,
+		%axis y line=left,
+		%axis x line=middle,
+		%%y post scale=.24,
+		%%x post scale=.6,
+		%xlabel={$$},
+		%ylabel={$$},
+		%every axis x label/.style={at={(current axis.right of origin)},anchor=west},
+		%y label style={at={(current axis.above origin)},anchor= east},
+		%ytick={0,.2,.4,.6},
+		%%yticklabels={0,0.1,0.2},
+		%xtick={0,10,20},
+		%%xticklabels={0,10,20},
+		%enlargelimits, %needed to avoid a bug in fillbetween pkg
+		%after end axis/.code={\node[anchor=west] at (axis cs:5,.3) {$\mathcal H(\nparam,\rparam,\roneparam)$ };},
+		%samples at={0,...,\rparam} 
+		%ymin =0, ymax=.7
+%]
+%\tikzset{declare function={comb(\n,\k)= (\n!) / ((\n-\k)! * \k!);}} 
+%\tikzset{declare function={hgeom(\x,\n,\r,\rone)= comb(\rone,\x) * comb(\r-\rone,\n - \x) / comb(\r,\n) ;}} 
+%\addplot [ycomb,thick,samples at={0,1,2,...,\rparam},blue] {hgeom(x,\nparam,\rparam,\roneparam)}; %\addlegendentry{$p=0.2$}
+%\end{axis}
+%\end{tikzpicture}
+\begin{tikzpicture}[]
+\def\nparam{20}
+\def\rparam{25}
+\def\roneparam{20}
+\begin{axis}[
+		width=0.45\textwidth,
+		      height=0.35\textwidth,
+		axis y line=left,
+		axis x line=middle,
+		%y post scale=.24,
+		%x post scale=.6,
+		xlabel={$$},
+		ylabel={$$},
+		every axis x label/.style={at={(current axis.right of origin)},anchor=west},
+		y label style={at={(current axis.above origin)},anchor= east},
+		ytick={0,.2,.4,.6},
+		%yticklabels={0,0.1,0.2},
+		xtick={0,10,20},
+		%xticklabels={0,10,20},
+		enlargelimits, %needed to avoid a bug in fillbetween pkg
+		after end axis/.code={\node[anchor=west] at (axis cs:2,.55) {$\mathcal H(\nparam,\rparam,\roneparam)$ };},
+		samples at={0,...,11} 
+		ymin =0, ymax=.7
+]
+\tikzset{declare function={miin(\n,\k)= min(\n,\k);}} 
+\tikzset{declare function={comb(\n,\k)= (\n!) / ((\n-\k)! * \k!);}} 
+\tikzset{declare function={hgeom(\x,\n,\r,\rone)= comb(\rone,\x) * comb(\r-\rone,\n - \x) / comb(\r,\n) ;}} 
+\addplot [ycomb,thick,samples at={15,16,...,20},blue] {hgeom(x,\nparam,\rparam,\roneparam)}; %\addlegendentry{$p=0.2$}
+\addplot [ycomb,thick,samples at={0,1,...,20},blue] {0};
+\end{axis}
+\end{tikzpicture}
+\begin{tikzpicture}[]
+\def\nparam{23}
+\def\rparam{25}
+\def\roneparam{20}
+\begin{axis}[
+		width=0.45\textwidth,
+		      height=0.35\textwidth,
+		axis y line=left,
+		axis x line=middle,
+		%y post scale=.24,
+		%x post scale=.6,
+		xlabel={$$},
+		ylabel={$$},
+		every axis x label/.style={at={(current axis.right of origin)},anchor=west},
+		y label style={at={(current axis.above origin)},anchor= east},
+		ytick={0,.2,.4,.6},
+		%yticklabels={0,0.1,0.2},
+		xtick={0,10,20},
+		%xticklabels={0,10,20},
+		enlargelimits, %needed to avoid a bug in fillbetween pkg
+		after end axis/.code={\node[anchor=west] at (axis cs:2,.55) {$\mathcal H(\nparam,\rparam,\roneparam)$ };},
+		samples at={0,...,11} 
+		ymin =0, ymax=.7
+]
+\tikzset{declare function={miin(\n,\k)= min(\n,\k);}} 
+\tikzset{declare function={comb(\n,\k)= (\n!) / ((\n-\k)! * \k!);}} 
+\tikzset{declare function={hgeom(\x,\n,\r,\rone)= comb(\rone,\x) * comb(\r-\rone,\n - \x) / comb(\r,\n) ;}} 
+\addplot [ycomb,thick,samples at={18,19,...,20},blue] {hgeom(x,\nparam,\rparam,\roneparam)}; %\addlegendentry{$p=0.2$}
+\addplot [ycomb,thick,samples at={0,1,...,20},blue] {0};
+\end{axis}
+\end{tikzpicture}
+
+

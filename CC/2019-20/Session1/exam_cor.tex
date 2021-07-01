@@ -1,0 +1,48 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{moodle}
+
+
+\begin{document}
+
+\begin{quiz}[points=2]
+  {Circulation (2pt)}
+
+  \begin{numerical}{Circulation}
+    Calculer la circulation du champs de gradient $\nabla f$ o\`{u} $f(x,y) = x^2 y^3 + \exp(41)$ le long du segment de droite entre le point $(7,1)$ et le point $(5,2)$. On donnera un arrondi \`{a} $10^{-2}$ pr\`{e}s.
+\item 151
+  \end{numerical}
+
+\end{quiz}
+Ici, $\nabla f: \mathbb R^2 \to \mathbb R$ est, par définition, un champs de gradient. La circulation est donc la différence de potentiel: $f(5,2) - f(7,1) =  5^2 * 2^3 - 7^2 = 151$
+
+
+\begin{quiz}[points=3]
+  {Regle de la chaine (3pt)}
+
+  \begin{numerical}{Derivee directionnelle}
+    On pose $\phi: \mathbb R^2 \to \mathbb R^2$ d\'{e}finie par $\phi(x,y) = (x+2y, y)$. Sachant que la fonction $f:\mathbb R^2 \to \mathbb R$ est diff\'{e}rentiable en $p=(3,1)$ et que l'on a $\frac{\partial f}{\partial x}(p) = 2$ et $\frac{\partial f}{\partial y}(p) = 1$. Calculer $D_v (f \circ \phi)(1,1)$ o\`{u} $v=(1,-1)$.
+\item -3
+  \end{numerical}
+\end{quiz}
+On remarque que $\phi$ est une application linéaire et est donc égale à sa différentielle. De plus, en applicant la règle de la chaîne on trouve $\nabla f \circ \phi (1,1) = (2*1 + 1 * 0, 2*2+1*1) = (2,5)$. Enfin, on a  $D_v f(p) = d_p f(v) =  \langle \nabla f, v \rangle = 2 - 5 = -3$. Il fallait donc trouver $-3$.
+% 
+% 
+
+%\begin{quiz}[points=3]
+%  {Application de la diff\'{e}rentielle (3pt)}
+
+%% ----------------------------------------------------------------
+  %\begin{numerical}{Application de la diff\'{e}rentielle}
+    %Sachant que la fonction $f:\mathbb R^3 \to \mathbb R$ est de classe $\mathcal C^2(\mathbb R^2)$. Soit $p=(3,2,1)$ et sachant que l'on a $f(p) = 10$,  $\frac{\partial f}{\partial x}(p) = 2$,  $\frac{\partial f}{\partial y}(p) = 1$ et $\frac{\partial f}{\partial z}(p) = 3$ et que $\operatorname{Hess}_f(p) = \begin{pmatrix}
+      %1& 2& 0\\ 
+      %2& 1& 1\\
+      %0& 1& 3
+    %\end{pmatrix}$. Calculer une valeur approch\'{e}e de $f(2.9,2.1,1.2)$. On donnera une valeur approch\'{e}e \`{a} $10^{-2}$ pr\`{e}s.
+  %\item 10.57
+  %\end{numerical}
+
+%\end{quiz}
+
+
+\end{document}

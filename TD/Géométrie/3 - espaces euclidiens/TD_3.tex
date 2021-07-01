@@ -1,0 +1,166 @@
+\documentclass{tp_um}
+\input{../../header.tex}
+\newcommand{\miniscule}{\@setfontsize\miniscule{5}{6}}
+%-----------------------------------------------------------------------------
+
+
+
+
+	\title{\Large \sffamily\bfseries Espaces euclidiens,  formes bilinéaires et quadratiques}
+\ue{HLMA410}
+%-----------------------------------------------------------------------------
+\begin{document}
+
+
+\maketitle
+
+\bigskip
+
+Les exercices ou les questions marqués d'une étoile ne sont pas prioritaires.
+
+
+\section{Norme Euclidienne}
+
+Dans ces exercices, les normes considérées sont des normes euclidiennes.
+
+
+\exo{} Soit $(E,\prs{\cdot,\cdot})$ un espace euclidien.  Démontrer que deux vecteurs $u$ et $v$ de $E$ qui satisfont $\norm{u-v} = \norm{u+v}$ sont orthogonaux.
+% Yves Noirot: cours de physique mathématiques: exo 6 chap 1.
+
+\newpage
+
+\exo{} Soit $u$ un vecteur d'un espace euclidien $E$. Déterminer l'ensemble $\{ x \in E\  | \  \prs{x,x-u} =0  \}$.
+ {\it Indication: faire un dessin dans le cas $E=\R^2$. }
+
+\newpage
+
+\exo{(Inversion)} Soit $E$ un espace vectoriel euclidien. On définit l'application: $ i(u) = \begin{cases} \frac{u}{\snorm{u}^2} & \text{si $u\neq 0$} \\ \  \   0 & \text{si $u=0$} \end{cases}$.
+\begin{enumerate}
+	\item Montrer que $i$ est une involution ({\it i.e. } $i(i(u)) = u$ pour tout $u\in E \setminus \left\{ 0 \right\}$) et déterminer les points fixes de $i$ ({\it i.e. } les $u\in E$ tels que $i(u) = u$).
+	\item Vérifier que pour tout $u,v \in E \setminus \left\{ 0 \right\}$ on a $\norm{i(u) - i(v)} = \frac{\norm{u-v}}{\norm{u}\norm{v}}$.
+	\item On considère le cas où $E=\R^2$. Déterminer l'image par $i$:
+		\begin{enumerate}
+			\item d'une droite qui passe par $0$.
+			\item d'un cercle passant par $0$,
+			\item d'une droite affine ne passant pas par $0$,
+			%\item d'un cercle ne passant pas $0$.
+		\end{enumerate}
+\end{enumerate}
+% Solution: Exercice 3663 de fic00080.pdf
+
+\newpage
+
+\section{Formes quadratiques}
+
+Dans tous les exercices de cette partie, on précisera le signe (positif, négatif ou aucun des deux) de chaque forme quadratique.
+
+
+
+\exo{} Mettre les formes quadratiques suivantes sous forme de sommes et de différences de carrés de formes linéaires indépendantes: 
+\begin{enumerate}
+	\item $q(x,y) = x^2 + y^2 -3xy$ 
+	\item $q(x,y,z) = 2x^2 - 2y^2 - 6z^2 + 3xy - 4 xz + 7 yz$
+%	\item $q(x_1,x_2,x_3,x_4,x_5) = 2(x_{1}^2+x_{1}x_{2}+x_{2}^2+x_{2}x_{3}+x_{3}^2+x_{3}x_{4}+x_{4}^2+x_{4}x_{5}+x_{5}^2)$
+	\item $q(x,y,z,t) = xy+yz+zt+tx$ %Solution q(x,y,z,t) =( (x+y+z+t)^2 - (x-y-t+z)^2 ) /4  $
+\end{enumerate}
+
+\newpage
+
+\exo{} Déterminer si les formes quadratiques suivantes sont sous forme de sommes et de différences de carrés de formes linéaires indépendantes (sinon les y mettre):   
+\begin{enumerate}
+	\item $q(x,y) = 9\left( \frac{x+2y}{2} \right)^2 + \left( \frac{x - 3y}{2} \right)^2$
+	\item $q(x,y,z) = (x-6y+4z)^2 - (y-4z)^2 + 2z^2$
+	%\item $q(x,y,z,t) = \left( \frac{x+y+t}{2} \right)^2 - \left( \frac{x-y-t}{2} \right)^2 + \left( \frac{y+z + t}{2} \right)^2 - \left( \frac{-y +z-t}{2} \right)^2 $
+	\item $q(x,y) = (x+y)^2 - (x - y)^2 + x^2 +2y^2$
+	\item $q(x,y,z) = (x+y+z)^2 + (-x +y +z)^2 - x^2 $
+	%\item  $q(x_1,x_2,x_3,x_4,x_5) = (x_1+x_4+x_5)^2 + x_3^2 - x_2^2 $ 
+\end{enumerate}
+
+\newpage
+
+
+\exo[*]{} Déterminer si les formes quadratiques suivantes sont définies et positives
+\begin{enumerate}
+\item $q(x,y) = (1-\lambda)x^2 + 2\mu xy + (1+\lambda)y^2$ où $\lambda,\mu\in\R$,
+    %\reponse{Oui ssi $\lambda^2 + \mu^2 \le 1$.}
+\item $q(x,y,z) = x^2 + y^2 + 2z(x\cos\alpha + y\sin \alpha)$ où $\alpha\in\R$.
+    %\reponse{Non, disc $=-1$.}
+%\item $q(x,y,z,t) = x^2 + 3y^2 + 4z^2 + t^2 + 2xy + xt$.
+    %\reponse{Oui, $= \dfrac {5x^2}{12} + 3\left(y+\dfrac x3\right)^2 + 4z^2
+                   %+ \left(t+\dfrac x2\right)^2$.}
+\end{enumerate}
+
+\newpage
+
+\exo{(Décomposition dans différentes bases)}
+Soit la forme quadratique $q(x_1,x_2) = 3(x_1^2 + x_2^2) + 2 x_1 x_2$ définie pour tout $(x_1,x_2)\in\R^2$. On note $A$ la matrice de $q$ dans la base canonique.
+%Soit $A = \begin{pmatrix}
+	%1&1\\1&2
+%\end{pmatrix}$.
+\begin{enumerate}
+	\item Vérifier que $a = (1,1)\frac{1}{\sqrt{2}} $ et $b = (1,-1)\frac{1}{\sqrt{2}}$ sont des vecteurs propres de $A$ et qu'ils forment une base orthonormale de $\R^2$. Écrire alors $q$ sous forme de sommes et de différences de carrés de formes linéaires indépendantes.
+	\item En utilisant l'algorithme de Gauss: mettre $q$ sous forme de sommes et de différences de carrés de formes linéaires indépendantes et écrire cette décomposition sous forme matricielle
+	\item En utilisant les deux questions précédentes, trouver d'autres représentations en sommes et différences de carrés de formes linéaires indépendantes.
+\end{enumerate}
+
+
+
+\newpage
+
+
+\exo[*]{} Soit $\phi$ la forme bilinéaire symétrique sur $\R^3$ définie par
+\[
+	\phi(x,y) = (x_1 - 2x_2)(y_1-2y_2) + x_2y_2 + (x_2+x_3)(y_2 + y_3)
+\]
+\begin{enumerate}
+	\item Vérifier que $\phi$ est un produit scalaire sur $\R^3$ et on note $\norm{\cdot}$ la norme associée.
+	\item Soit $i=(1,0,0)$, $j=(0,1,0)$ et $k =(0,0,1)$. Calculer 
+		$$
+		e_1 = \frac{i}{\norm{i}}, \quad  e_2 = \frac{j - \phi(e_1,j)e_1}{\snorm{j - \phi(e_1,j)e_1}}, \quad  e_3 = \frac{k - \phi(e_1,k)e_1 - \phi(e_2,k)e_2}{\norm{k - \phi(e_1,k)e_1 - \phi(e_2,k)e_2}}
+		$$
+	\item Vérifier que $(e_1,e_2,e_3)$ est une base orthonormale pour $\phi$.
+	\item Déterminer (sans calcul) la matrice de $\phi$ dans la base $(e_1,e_2,e_3)$.
+\end{enumerate}
+% Solution: ex 19 de fic00130.pdf
+
+\newpage
+\section{Pour aller plus loin}
+
+\exo[*]{} Soit $n\in\N$ et $n>2$. La forme bilinéaire dont la matrice est 
+\[
+        A =\frac{1}{2} \begin{pmatrix}
+                2(n-1) & -1 & \cdots & -1 \\
+                -1 & \ddots & \ddots & \vdots \\
+                \vdots & \ddots & \ddots & -1 \\
+                -1 & \cdots & -1 & 2(n-1) \\
+        \end{pmatrix}
+\]
+est-elle positive? définie?
+
+\newpage
+
+\exo[*]{(Identité du parallélogramme)}
+Soit $E$ un $\R$ espace vectoriel de dimension finie. Soit $\snorm{\cdot}$ une norme sur $E$ vérifiant l'identité du parallèlogramme, c'est-à-dire~:
+\[
+\forall(u,v)\in E^2,\;\norm{u+v}^2+\norm{u-v}^2=2(\norm{u}^2+\norm{v}^2).
+\]
+On se propose de démontrer qu'une telle norme $\norm{\cdot}$ est associée à un produit scalaire. On définit sur $E^2$ une application $f$ par~:~
+\[
+\forall(u,v)\in E^2,\;f(u,v)=\frac{1}{4}(\norm{u+v}^2-\norm{u-v}^2).
+\]
+\begin{enumerate}
+\item  Montrer que pour tout $(u,v,w)$ de $E^3$, on a~:~$f(u+w,v)+f(u-w,v)=2f(u,v)$.
+\item  Montrer que pour tout $(u,v)$ de $E^2$, on a~:~$f(2u,v)=2f(u,v)$.
+\item  Montrer que pour tout $(u,v)$ de $E^2$ et tout rationnel $r$, on a~:~$f(ru,v)=rf(u,v)$.
+
+On admettra que pour tout réel $\lambda$ et tout $(u,v)$ de $E^2$ on a~:~$f(\lambda u,v)=\lambda f(u,v)$ (ce résultat provient de la continuité de $f$).
+\item  Montrer que pour tout $(u,v,w)$ de $E^3$, $f(u,w)+f(v,w)=f(u+v,w)$.
+\item  Montrer que $f$ est bilinéaire.
+\item  Montrer que $\norm{\cdot}$ est une norme euclidienne.
+\end{enumerate}
+% Solution: exercice 2 fic0010.pdf
+
+%correction: http://www.mathlaayoune.webs.com/bilineaire/prehilbertien/identiteduparallelogramme.html
+
+
+\end{document}

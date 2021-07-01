@@ -1,0 +1,252 @@
+\documentclass{tp_um}
+\input{../../TD/header.tex}
+\newcommand{\miniscule}{\@setfontsize\miniscule{5}{6}}
+
+%\def\version{eno}
+\def\version{cor}
+%-----------------------------------------------------------------------------
+
+\title{\large \sffamily\bfseries Contrôle Terminal}
+\ue{HLMA410}
+
+
+%-----------------------------------------------------------------------------
+\begin{document}
+
+\maketitle
+\textit{Durée 2h00. Les documents, la calculatrice, les téléphones portables, tablettes, ordinateurs ne sont pas autorisés. Les exercices sont indépendants. La qualité de la rédaction sera prise en compte.} 
+
+\bigskip
+\bigskip
+\exo{}On consid\`ere la fonction $ f: \R^2 \to \R$, 
+$$
+f(x,y) = x \sqrt{ x^2 + y^2}.
+$$
+\begin{enumerate}
+	\item \'Etudier la continuité de $f$ en chaque point de $ \R^2$. 
+
+\cor{
+L'application $(x,y)\mapsto \|(x,y)\|$ (où $\| \cdot \|$ désigne la norme euclidienne) est continue. L'application $f$ est continue comme le produit de deux applications continues.
+}
+
+	\item Calculer les dérivées partielles de $f$ en chaque point o\`u elles existent. 
+
+		\cor{
+
+La fonction est $\mathcal C^1$ partout sauf peut être en $(0,0)$ (à cause de la racine carrée). On a 
+\[\frac{\partial f}{\partial x} (x,y) =
+\begin{cases}
+	\sqrt{x^2+y^2} +\frac{x^2}{\sqrt{x^2+y^2}}, \text{ si $(x,y) \in \R^2 \setminus (0,0)$} \\
+	\lim_{h\to 0} \frac{f(h,0) - f(0,0)}{h} = \lim_{h\to 0} |h| = 0 ,\text{ sinon}
+	\end{cases} \]
+et
+\[\frac{\partial f}{\partial y} (x,y) =
+\begin{cases}
+	\frac{xy}{\sqrt{x^2+y^2}}, \text{ si $(x,y) \in \R^2 \setminus (0,0)$} \\
+	\lim_{h\to 0} \frac{f(0,h) - f(0,0)}{h} = 0 ,\text{ sinon}
+	\end{cases} \]
+
+		}
+
+	\item \'Etudier la continuit\'e des d\'eriv\'ees partielles de $f$ sur $ \R ^2 \setminus{(0,0)}$, puis en $(0,0)$.
+		
+		\cor{		
+		Sur $ \R ^2 \setminus{(0,0)}$, les dérivées partielles sont clairement $\mathcal C^0$. Reste à vérifier en l'origne. On a 
+		\[
+			\left|\frac{\partial f}{\partial x} (x,y) - \frac{\partial f}{\partial x} (0,0) \right| \leq \sqrt{x^2 + y^2} +\frac{{x^2 + y^2} }{\sqrt{x^2 + y^2}} =2 \sqrt{x^2 + y^2}
+	\]
+	et
+	\[
+			\left|\frac{\partial f}{\partial y} (x,y)- \frac{\partial f}{\partial y} (0,0) \right| \leq\frac{{x^2 + y^2} }{\sqrt{x^2 + y^2}} =   \sqrt{x^2 + y^2}
+	\]
+	Ainsi, les dérivée partielles sont continues en l'origine et $f$ est $\mathcal C^1$ sur $\R^2$.
+}
+
+
+	\item \'Etudier la  différentiabilité de $f$ en chaque point de $ \R^2$.
+
+\cor{
+Comme $f$ est $\mathcal C^1$ sur $\R^2$, elle est différentiable partout.
+}
+
+	\item %Calculer le développement limité de $f$ à l'ordre 1 en $(1,0)$. 
+		En déduire une valeur approchée de $f(1.01,0)$. %$d_{(1, 0) } f ( h_1, h_2)$.
+
+		\cor{
+		La différentielle de $f$ en $(1,0)$ est l'application linéaire $L:\R^2 \to \R$ qui $(h_1,h_2) \mapsto (1 + 1) h_1 + 0\times h_2 =2 h_1$. On a donc le DL
+	\[
+	f(1+h_1,h_2) = f(1,0) + L(h_1,h_2) + o(\|(h_1,h_2\|) = 1 + 2h_1 + o(\|(h_1,h_2)\|)
+\]
+Par suite,   $f(1.01,0) \approx 1+0.02 = 1.02$.
+	}
+	%\item Sans calculer la hessienne de $f$, déterminer si l'origine est un point de maximum, de minimum, un point selle,
+\end{enumerate}
+
+\exo{} On considère le champ de vecteurs 
+\begin{align*}
+	F: \R^2 & \to \R^2 \\
+	(x,y) & \mapsto (2xy+y\cos(xy), x\cos(xy) +x^2-1)
+\end{align*}
+%\begin{center}
+	%\begin{tikzpicture}
+		%\begin{axis}[,%xtick=\empty,
+			     %%ytick=\empty,
+			     %ztick=\empty ,
+			     %xlabel=$x$,ylabel=$y$,xlabel=$x$,ylabel=$y$,domain=-2:2,% y domain=-1:1,
+			     %view={0}{90},
+			     %xmax=2, xmin=-2,
+			     %ymax=2, ymin=-2,%axis equal
+			%]
+			%\addplot3[blue, quiver={u={2*x*y+y*cos(x*y)}, v={x*cos(x*y) +x^2-1}, scale arrows=.1}, -stealth,samples=25] {0};
+			%\addplot3[contour gnuplot={number={25}, labels=true},samples=60] gnuplot {sin(x*y) +y* x**2  -y };
+		%\end{axis}
+	%\end{tikzpicture}
+%\end{center}
+
+%\begin{enumerate}
+	%\item Trouver une fonction $f:\R^2 \to \R$ de classe $\mathcal C^2$ telle que $F = \nabla f$, où $\nabla f =(\frac{\partial f}{\partial x} , \frac{\partial f}{\partial y})$.
+	%\item Déterminer les points critiques de la fonction $f$.
+	%\item Calculer la matrice Hessienne de $f$ en tout point de $\R^2$. 
+	%\item Déterminer la nature de la matrice Hessienne en chacun des points critiques  (\textit{i.e.} la forme quadratique associée est-elle définie ? est-elle positive ? est elle négative ?)
+	%\item Peut-on déduire, de la question précédente, la nature des points critiques (\textit{i.e.} minimum, maximum, strict, global) ? Justifier!
+	%\item \'Etudier la restriction de $f$ a la droite $y=0$. Quelle(s) information(s) cela apporte sur la nature des points critiques (\textit{i.e.} minimum, maximum, strict, global) ?
+	%\item Soit $\Gamma$ la courbe paramétrée par $\phi : t \mapsto (t,t^2)$ pour $t \in [0,1]$. Calculer  $\int_{\Gamma} \langle F , d\phi \rangle$.
+%\end{enumerate}
+On admettra provisoirement l'existence d'une fonction $f:\R^2 \to \R$ telle que $F = (\frac{\partial f}{\partial x} , \frac{\partial f}{\partial y})$.
+\begin{enumerate}
+    \item Déterminer les deux points critiques de la fonction $f$. On note $A$ le point critiques avec une abscisse négative et $B$ le point critiques avec une abscisse positive.
+        \cor{
+On cherche $(x,y) \in\R^2$ tel que
+\begin{align*}
+F(x,y) = (0,0) \Leftrightarrow 	\begin{cases}
+		y(2x + \cos(xy) ) = 0 \\
+x\cos(xy) +x^2-1 =0
+	\end{cases}
+\end{align*}
+Il faut alors considérer les deux cas suivants :
+\begin{itemize}
+	\item $y=0$ qui donne $x^2 + x -1 =0$.  On a alors deux solutions $ A=(\frac{-1 -\sqrt{5}}{2} ,0)$ et $ B=(\frac{-1 +\sqrt{5}}{2} ,0)$.
+	\item $\cos(xy) = -2x$ qui donne $-x^2 -1 = 0$ qui n'a pas de solution.
+\end{itemize}
+	En résumé, il y a deux points critiques $A$ et $B$.
+        }
+	\item Calculer la matrice Hessienne de $f$ en tout point de $\R^2$. Vérifier que $\hess_f (A) = - \hess_f (B) = -\sqrt{5} \begin{pmatrix}
+			0 & 1 \\ 1 & 0
+		\end{pmatrix} $.  
+	
+        \cor{
+		On a 
+		\[
+			\hess_f (x,y) = \begin{pmatrix}
+	2 y - y^2 \sin(xy)	& 2x + \cos(xy) - xy\sin(xy)	 \\
+	2x + \cos(xy) - xy\sin(xy)	& -x^2\sin(xy)
+		\end{pmatrix}.
+	\]
+
+        }
+    \item Déterminer la nature de la matrice Hessienne de $f$ en chacun des points critiques  (\textit{i.e.} la forme quadratique associée est-elle définie ? est-elle positive ? est elle négative ?)
+        \cor{
+		On  a $\hess_f(A) = -\sqrt{5} \begin{pmatrix}
+			0 & 1 \\ 1 & 0
+		\end{pmatrix}$. Ainsi la forme quadratique 
+		\begin{align*}
+			Q_A : \R^2 &\to \R \\ (h_1,h_2) &\mapsto (h_1,h_2) \hess_f(A) (h_1,h_2)^t = -2 \sqrt{5} h_1h_2
+		\end{align*}
+		n'est pas définie car $Q_A(0,1) =0 $, n'est pas positive, n'est pas négative car $Q_A(1,1) < 0 < Q(-1,1)$.
+
+		On a $\hess_f (B) = - \hess_f (A)$ et les mêmes remarques s'appliquent.
+
+        }
+	\item Peut-on déduire, de la question précédente, la nature des points critiques de $f$ (\textit{i.e.} minimum, maximum, strict, global) ? Justifier!
+        \cor{
+On ne peut pas appliquer les ``conditions suffisantes d'ordre 2'' pour caractériser les points car les Hessiennes ne sont pas définies. Mais on peut remarquer que $\det(\hess_f(A)), \det(\hess_f(B)) < 0$ et les points  $A,B$  sont donc des points selles.
+
+        }
+%\end{enumerate}
+%On étudie maintenant le potentiel $f$ :  
+%\begin{enumerate}[resume]
+	\item Trouver une fonction $f:\R^2 \to \R$ de classe $\mathcal C^2$ telle que $\nabla f = F$.
+        \cor{
+		On intègre une première fois en $x$ la fonction $\frac{\partial f}{\partial x}$ : 
+\[
+	\int (2xy+y\cos(xy)) dx =  y x^2 +\sin(xy) + \varphi_1(y)
+\]
+où $\varphi_1:\R\to\R $ est $\Cc^1$. Puis on intégre en $y$ la fonction $\frac{\partial f}{\partial y} $ :
+\[
+\int (x\cos(xy) +x^2-1)  dy =  y x^2 +\sin(xy) -y + \varphi_2(x)
+\]
+où $\varphi_2:\R\to\R $ est $\Cc^1$.  Ainsi, la fonction  $f(x,y) = \sin(xy) + x^2 y - y$ convient.
+
+        }
+%	\item \'Etudier la restriction de $f$ à la droite $y=0$. Quelle(s) information(s) cela apporte sur la nature des points critiques (\textit{i.e.} minimum, maximum, strict, global) ?
+	\item Soit $\Gamma$ la courbe paramétrée par $\phi : t \mapsto (t,t^2)$ pour $t \in [0,1]$. Calculer la circulation de $F$  le long de $\Gamma$.
+        \cor{
+Le champ de vecteur $F$ est un champ de gradient. On a 
+		\[\int_{\Gamma} \prs{F,d\phi} = f(\phi(1)) - f(\phi(0)) = f(1,1) - f(0,0)= \sin(1).\]
+
+        }
+\end{enumerate}
+
+
+\exo{}
+\begin{enumerate}
+	\item Soient $\alpha, \beta, R > 0$. Calculer l'aire de l'ellipse $E \subset R^2$ définie par l'équation
+		\[
+			\frac{x^2}{\alpha^2} + \frac{y^2}{\beta^2} < R^2.
+		\]
+		{\it Indication : On pourra utiliser le changement de variables $(u,v) \mapsto (\alpha u, \beta v)$.}
+
+        \cor{
+		On pose $D = \left\{ (x,y) \in\R^2 |	\frac{x^2}{\alpha^2} + \frac{y^2}{\beta^2} < R^2  \right\}$  et $ \phi(u,v) = (\alpha u = x, \beta v = y )$.  On a $\Delta = \phi^{-1}(D) = \left\{ (u,v) \in\R^2 |	u^2 + v^2 < R^2  \right\} $. Comme le changement de variable $\phi $ est linéaire,  le déterminant du Jacobien est constant et égal à $\alpha\beta>0$. On a 
+\[
+    \operatorname{Aire}(E) = \iint_D dx dy = \alpha\beta \iint_\Delta dudv = \alpha\beta \int_0^{2\pi}d\theta \int_0^R rdr = \alpha\beta\pi R^2.
+\]
+où on a utilisé un changement de variables en coordonnées polaires. Remarquer enfin que si $\alpha = \beta =1$ on retrouve une formule bien connue.
+
+        }
+	\item Soit $H_{a,b,c} \subset \R^3$ le solide défini par
+\[
+	H_{a,b,c} = \left\{  (x,y,z) \in \R^2 | -1 < z <2, \frac{x^2}{a^2} + \frac{y^2}{b^2} - \frac{z^2}{c^2} <1 \right\}
+\]
+		où $a$, $b$ et $c$ sont des réels strictement positifs. Calculer le volume de $H_{a,b,c}$.
+       
+
+        \cor{
+
+
+
+On a $ 
+	H_{a,b,c} = \left\{  (x,y,z) \in \R^2 | -1 < z <2, \frac{x^2}{a^2} + \frac{y^2}{b^2} < 1+ \frac{z^2}{c^2}  \right\}
+$ et la formule d'intégration par tranche donne :
+\begin{align*}
+    \operatorname{Vol}(H_{a,b,c}) & = \iiint_{H_{a,b,c}} dxdydz = \int_{-1}^2 \operatorname{Aire}(D_z) dz
+\end{align*}
+où $D_z = \left\{ (x,y) \in\R^2 | \frac{x^2}{a^2} + \frac{y^2}{b^2} < 1 + \frac{z^2}{c^2}.
+\right\}$ et $\operatorname{Vol}(D_z) = ab\pi(1 + \frac{z^2}{c^2} )$ d'après la question 1. On a alors
+ \begin{align*}
+     \operatorname{Vol}(H_{a,b,c}) & = \pi ab\int_{-1}^2 \left(1+\frac{z^2}{c^2}\right)  dz = 3ab\pi\left( 1+ \frac{1}{c^2} \right)
+ \end{align*}
+
+        }
+
+	\item On suppose que $a = b = 1$ et $c = 2$. Calculer l'intégrale
+		\[
+			I = \iiint_{H_{1,1,2}} z e^{x^2+y^2}dxdydz.
+		\]
+        \cor{
+
+		Faire un changement de coordonnées cylindriques:
+\begin{align*}
+	I &= \int_{-1}^2 \left( 2\pi \int_0^{\sqrt{1+ \frac{z^2}{4} }}  e^{r^2} rdr \right)zdz \\
+	 & =  \pi \int_{-1}^{2} \left[ e^{r^2} \right]_0^{\sqrt{1+ \frac{z^2}{4} }}z dz \\
+	 & = \pi \left[  2e^{1+ \frac{z^2}{4} } - \frac{z^2}{2}  \right]_{-1}^{2}  \\
+	 & = \pi (2e^2 -2e^{\frac 5 4} - \frac 3 2)
+\end{align*}
+        }
+\end{enumerate}
+
+
+
+
+\end{document}
+

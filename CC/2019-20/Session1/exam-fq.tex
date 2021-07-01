@@ -1,0 +1,90 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{moodle}
+
+
+\begin{document}
+
+
+\begin{quiz}[points=3, multiple, shuffle, penalty=.5]
+  {Formes quadratiques (3pt)}
+
+  \begin{multi}{Forme quadratique}
+    Soit $q:\mathbb{R}^3\to \mathbb{R}$ la forme quadratique donn\'{e}e par $q(x,y,z)= 10z^2-8yz+4xz+2y^2-2xy+x^2$. D\'{e}terminer lesquelles de ces assertions sont vraies.
+
+  \item* la forme polaire de $q$ d\'{e}finie un produit scalaire sur $\mathbb R^3$
+  \item* $q$ est de signature $(3,0)$
+  \item $q$ est de signature $(0,3)$
+  \item $q$ est de signature $(1,2)$
+  \item $q$ est de signature $(2,1)$
+  \item $q$ peut prendre des valeurs positives ou n\'{e}gatives
+  \end{multi}
+% q_1(x,y,z) = 10 z^2 - 8yz + 4xz + 2y^2 - 2xy + x^2 = (x - y + 2z)^2 + (y - 2z)^2 + 2z^2 
+
+  \begin{multi}{Forme quadratique}
+    Soit $q:\mathbb{R}^3\to \mathbb{R}$ la forme quadratique donn\'{e}e par $q(x,y,z)= -4z^2+10yz+2xz-y^2+2xy+x^2$. D\'{e}terminer lesquelles de ces assertions sont vraies.
+
+  \item* $q$ est de signature $(2,1)$
+  \item* $q$ peut prendre des valeurs positives ou n\'{e}gatives
+  \item la forme polaire de $q$ d\'{e}finie un produit scalaire sur $\mathbb R^3$
+  \item $q$ est de signature $(1,2)$
+  \item $q$ est de signature $(1,1)$
+  \item $q$ est de signature $(3,0)$
+  \item $q$ est de signature $(0,3)$
+  \end{multi}
+% q_1(x,y,z) = -4 z^2 +10yz + 2xz - y^2 + 2 xy+ x^2 = (x+y+z)^2 - 2*(y-2*z)^2 +3*z^2 
+
+  \begin{multi}{Forme quadratique}
+    Soit $q:\mathbb{R}^3\to \mathbb{R}$ la forme quadratique donn\'{e}e par $q(x,y,z)=2x^2+4xy+3y^2+4xz+9z^2$. D\'{e}terminer lesquelles de ces assertions sont vraies.
+
+  \item* $q$ est d\'{e}finie positive
+  \item* $q$ est de signature $(3,0)$
+  \item* le point $(0,0,0)$ est un minimum de $q$
+  \item $q$ est de signature $(2,1)$
+  \item $q$ est de signature $(1,2)$
+  \item $q$ est de signature $(0,3)$
+  \item $q$ peut prendre des valeurs positives ou n\'{e}gatives
+  \end{multi}
+% q_1(x,y,z) = 9 z^2 + 4xz + 3y^2 + 4xy + 2x^2 = 2*(x+y+z)^2 + (y-2*z)^2 + 3*z*z
+
+
+  \begin{multi}{Forme quadratique}
+    Soit $q:\mathbb{R}^3\to \mathbb{R}$ la forme quadratique donn\'{e}e par $q(x,y,z) = (x + y)^2 + (x+z)^2 + (y-z)^2$. D\'{e}terminer lesquelles de ces assertions sont vraies.
+
+  \item* $q$ est de signature $(2,0)$
+  \item* le point $(0,0,0)$ est un minimum de $q$
+  \item $q$ est sous forme de somme de carr\'{e}s de formes lin\'{e}aires ind\'{e}pendantes
+  \item $q$ est d\'{e}finie positive
+  \item $q$ est de signature $(2,1)$
+  \item $q$ est de signature $(3,0)$
+  \end{multi}
+% q_2(x,y,z) = (x + y)^2 + (x+z)^2 + (y-z)^2 = 2*(x + y/2 + z/2)^2 + 3/2 * (y - z)^2
+
+  \begin{multi}{Forme quadratique}
+    Soit $q:\mathbb{R}^3\to \mathbb{R}$ la forme quadratique donn\'{e}e par $q(x,y,z)=(x + 2y + z)^2 - (x + y)^2 - (y + z)^2$
+
+  \item* $q$ est de signature $(1,1)$
+  \item le point $(0,0,0)$ est un minimum de $q$
+  \item $q$ est sous forme de somme de carr\'{e}s de formes lin\'{e}aires ind\'{e}pendantes
+  \item $q$ est d\'{e}finie positive
+  \item $q$ est de signature $(2,1)$
+  \item $q$ est de signature $(3,0)$
+  \end{multi}
+% q_2(x,y,z) = (x + 2y + z)^2 - (x + y)^2 - (y + z)^2 = 2(y+x/2+z/2)^2 -1/2 (x-z)^2 
+
+  \begin{multi}{Forme quadratique}
+    Soit $q:\mathbb{R}^3\to \mathbb{R}$ la forme quadratique donn\'{e}e par $q(x,y,z) = 2(x +y + z)^2 - (x + y)^2 - (y +z)^2 - (x +z)^2$. D\'{e}terminer lesquelles de ces assertions sont vraies.
+
+  \item* $q$ est de signature $(1,2)$
+  \item le point $(0,0,0)$ est un minimum de $q$
+  \item $q$ est sous forme de somme de carr\'{e}s de formes lin\'{e}aires ind\'{e}pendantes
+  \item $q$ est d\'{e}finie positive
+  \item $q$ est d\'{e}finie negative
+  \item $q$ est de signature $(2,1)$
+  \item $q$ est de signature $(3,0)$
+  \end{multi}
+% q_2(x,y,z) = 2*(x +y + z)^2 - (x + y)^2 - (y +z)^2 - (x +z)^2 = 2yz + 2xz + 2xy = (((x+y+2*z)^2 - (x-y)^2 - 4*z^2) /2)
+
+\end{quiz}
+
+\end{document}

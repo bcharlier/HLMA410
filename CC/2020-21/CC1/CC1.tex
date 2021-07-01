@@ -1,0 +1,186 @@
+\documentclass[a4paper]{tp_um}
+\input{../../TD/header.tex}
+\ue{HLMA410}
+%-----------------------------------------------------------------------------
+
+%\def\version{eno}
+\def\version{cor}
+
+\title{\large \sffamily\bfseries Contrôle continu 1}
+
+\begin{document}
+
+\maketitle
+%\textit{Durée 1h30. Les documents, la calculatrice, les téléphones portables, tablettes, ordinateurs ne sont pas autorisés. La qualité de la rédaction sera prise en compte.} 
+
+\bigskip
+\bigskip
+
+
+\exo{}Soit $\Gamma=(\gamma, [-\pi,\pi])$ la courbe paramétrée définie par $\gamma(t)= \begin{pmatrix}x(t) \\ y(t) \end{pmatrix} = \begin{pmatrix}\sin(t) \\ \frac{\cos^2(t)}{2 - \cos(t)} \end{pmatrix}$.
+
+\begin{enumerate}
+    \item    Etudier la parité des fonctions coordonnées de $\gamma$. En déduire les symétries de la courbe.
+        \cor{
+            On a $x(t) = -x(-t)$ et $y(t) = y(-t)$. La courbe est symétrique par rapport à $Oy$. On pourrait se contenter d'étudier la courbe sur l'intervalle $\left[ 0, \pi \right]$et compléter par symétrie.
+        }
+    \item   Calculer $\gamma'$.
+        \cor{
+            On a $x'(t)= \cos t$ et $y'(t) =\frac{\sin t \cos t(\cos t -4)}{(2 - \cos t)^2}$.
+        }
+    \item   Donner les points critiques de $\gamma$.
+
+        \cor{
+            La fonction $x'$ s'annule en $\pm\frac\pi 2$ et $y'$ s'annule en $0, \pm \frac \pi 2, \pm\pi$. $\Gamma$ admet donc deux point critiques en $-\frac\pi 2$ et $\frac\pi 2$.
+        }
+    \item   Faire un DL de $\gamma$ en $t=\frac{\pi}{2}$ et $t=-\frac{\pi}{2}$. En déduire la nature de ces points. Indication : On donne  $y''(t)=\frac{8\sin^2(t) - \cos^4(t) + 6 \cos^3(t) - 8\cos^2(t)}{(2-\cos(t))^3}$ et $y'''(t)=-\frac{24\sin^3(t) + \sin(t) (\cos^4(t) - 8 \cos^3(t) + 44\cos^2(t) -64\cos(t))}{(2-\cos(t))^4}$.
+        \cor{
+       On a pour tout $h$ suffisament petit en module, 
+       \[
+           \phi\left(\tfrac\pi 2 + h\right) = \begin{pmatrix}
+               1\\0
+           \end{pmatrix} + \begin{pmatrix}
+               0\\ 0
+           \end{pmatrix}h + \begin{pmatrix}
+               -1/2 \\ 1/2
+           \end{pmatrix}h^2 + \begin{pmatrix}
+               0\\ -1/4
+           \end{pmatrix}h^3 + o(\abs{h}^3).
+       \] 
+       Avec les notations du cours, on a $p=2$ et $q=3$ et c'est un point de rebroussement de première espèce. La tangente est l'axe des ordonnées (vecteur directeur $(-1,1)/2$). De même, on a pour tout $h$ suffisament petit en module, 
+       \[
+           \phi\left(-\tfrac\pi 2 + h\right) = \begin{pmatrix}
+               -1\\0
+           \end{pmatrix} + \begin{pmatrix}
+               0\\ 0
+           \end{pmatrix}h + \begin{pmatrix}
+               1/2 \\ 1/2
+           \end{pmatrix}h^2 + \begin{pmatrix}
+               0\\ 1/4
+           \end{pmatrix}h^3 + o(\abs{h}^3).
+       \] 
+       Avec les notations du cours, on a $p=2$ et $q=3$ et c'est un point de rebroussement de première espèce. La tangente est l'axe des ordonnées (vecteur directeur $(1,1)/2$).
+ 
+        }
+    \item   Faire le tableau de variation de $\gamma$.
+        \cor{
+            On donne le tableau de variation sur l'intervalle $[0,\pi]$, on en déduit les variations sur $[-\pi,0]$ avec la question 1. 
+	\begin{center}
+				\begin{tabular}{|c|ccccc|}
+					\hline    $t$       & $0$ & \hspace{5cm}   &  \pi/2 &  \hspace{5cm} & $\pi$ \\[0.3cm]\hline\hline
+					signe de $x'(t)$    &           &      +          &  0   &   -                 &          \\[0.4cm]\hline
+       			 variation de $x(t)$    &    0      &      $\nearrow$          &  1  &        $\searrow$         &   0 	 \\[0.4cm]\hline\hline
+					signe de $y'(t)$    &     0      &      -          &  0  &     +               &    0      \\[0.4cm]\hline
+					variation de $y(t)$ &     1     &      $\searrow$          &  0  &   $\nearrow$              &    1/3      \\[0.4cm]\hline
+				\end{tabular}
+			\end{center}
+        }
+    \item   Pour quels $t\in[-\pi,\pi]$, la courbe $\Gamma$ admet-elle une tangente horizontale ?
+        \cor{
+            $\Gamma$ admet une tangeante horizontale en les $t$ pour lesquels $y'$ s'annule. En clair: $t=0,\pi,-\pi$. 
+        }
+    \item   Tracer la courbe.
+        \cor{ 
+            \begin{center}
+                \begin{tikzpicture}\pgfplotsset{compat=newest}
+                    \begin{axis}[height=5cm,width=12cm,enlargelimits=true,grid=major,  axis lines=center, axis on top,
+                        ymin=0,ymax=1.1,xmin=-1,xmax=1]
+                        \draw[ultra thick,red,->] (axis cs:0,.3333) -- (axis cs:-.2,.3333);
+                        \draw[ultra thick,red,->] (axis cs:0,.3333) -- (axis cs:.2,.3333);
+                        \draw[ultra thick,red,->] (axis cs:0,1) -- (axis cs:-.2,1);
+                        \draw[ultra thick,red,->] (axis cs:0,1) -- (axis cs:.2,1);
+                        \draw[ultra thick,red,->] (axis cs:1,0) -- (axis cs:.8,.2);
+                        \draw[ultra thick,red,->] (axis cs:-1,0) -- (axis cs:-.8,.2);
+                        \addplot[grid=both,samples=500, very thick,blue, parametric, domain = 0:pi] gnuplot {sin(t),  cos(t) * cos(t) / (2 - cos(t))};
+                        \addplot[grid=both,samples=500, very thick,blue, parametric, dashed, domain = -pi:0] gnuplot {sin(t),  cos(t) * cos(t) / (2 - cos(t))};
+                    \end{axis}	
+                \end{tikzpicture}
+            \end{center}
+
+        }
+        
+\end{enumerate}
+
+
+
+\exo{(Longueur de courbes)} Calculer la longueur de la courbe param\'etr\'ee suivante $\gamma(t)=((1-t)^2e^t,2(1-t)e^t)$, $t\in [0,1]$.
+
+		\cor{
+
+On a  $\gamma^\prime(t)= (-2(1-t)e^t+(1-t)^2e^t,-2e^t+2(1-t)e^t=((t^2-1)e^t,-2te^t)$. Il vient
+\begin{align*}
+	\|\gamma^\prime(t)\|^2 &= (t^2-1)^2e^{2t}+4t^2e^{2t}\\
+	&= ((t^2-1)^2+4t^2)e^{2t}\\
+	&= (t^4-2t^2+1+4t^2)e^{2t}\\
+	&= (t^4+2t^2+1)e^{2t}\\
+	&= (t^2+1)^2e^{2t}
+\end{align*}
+La longueur de $\gamma$ est donc $\int_0^1 \sqrt{(t^2+1)^2e^{2t}}dt=\int_0^1 (t^2+1)e^tdt$. Une double int\'egration par parties en int\'egrant $e^t$ et en d\'erivant $(t^2+1)$ donne $L=2e-3$.
+}
+
+\exo{(Une norme sur $\boldsymbol{ \mathbb{R}^2}$)} Soit $N(x,y) =\max \left\{ \sqrt{x^2+y^2} , \abs{x-y} \right\}$ définie pour tout $(x,y)\in\R^2$.
+\begin{enumerate}
+	\item Montrer que $N$ est une norme sur $\R^2$.
+
+\cor{On remarque tout d'abord que $N(x,y) =\max \left\{ \snorm{(x,y)}_2 , \abs{x-y} \right\}  $.
+		\begin{enumerate}
+			\item Homogénéité : soit $\lambda\in \R$, on a $N(\lambda x, \lambda y) = \max \left\{\abs{\lambda}\snorm{(x,y)}_2 , \abs{\lambda}\abs{x-y} \right\}=\abs{\lambda}\max \left\{\snorm{(x,y)}_2 , \abs{x-y} \right\} =\abs{\lambda}N(x,y)  $.
+			\item Séparabilité : clairement $N(x,y) \geq 0 $ pour tout  $x,y\in\R$. De plus $N(x,y) =0$ ssi 
+				$\begin{cases} \snorm{(x,y)}_2  = 0\\ \text{ et }\\\abs{x-y} \end{cases}$ ssi $x = y = 0 $ (car $\snorm{ \cdot}_2$  est une norme sur $\R^2$).
+			\item Inégalité triangulaire : soit $x,y,z,t \in \R$ :
+				\begin{align*}
+					N(x + z,y +t) &  = \max \left\{  \snorm{(x+z,y+t)}_2  , \abs{x+z-y-t} \right\} \\
+					& \leq \max \left\{  \snorm{(x,y)}_2 + \snorm{(z,t)}_2  , \abs{x-y}+ \abs{z-t} \right\} \\
+					& \leq \max \left\{  \snorm{(x,y)}_2  , \abs{x-y} \right\} +\max \left\{   \snorm{(z,t)}_2+ \abs{z-t}\right\}  \\
+					& = N(x,y) + N(z,t)
+				\end{align*}
+    \end{enumerate}}
+
+
+	\item Calculer la norme $N$ des points suivants : $(-\frac 1 2, \frac 1 2)$, $(\frac 1 2, -\frac 1 2) $, $( \frac{\sqrt{2}}{2},\frac{\sqrt{2}}{2}) $ et $( -\frac{\sqrt{2}}{2},-\frac{\sqrt{2}}{2})$. 
+
+\cor{
+On a $N(-\frac 1 2, \frac 1 2) = N(\frac 1 2, -\frac 1 2)= N( \frac{\sqrt{2}}{2},\frac{\sqrt{2}}{2})= N( -\frac{\sqrt{2}}{2},-\frac{\sqrt{2}}{2}) =1$. En d'autres termes, tous ces points sont sur le cercle unité de $N$.
+}
+	\item Dessiner (en justifiant) la boule unité de $N$:
+
+
+        \cor{
+		\begin{minipage}	{.45\textwidth}\begin{tikzpicture}[scale=1]
+				\def\xone{-3.1}
+				\def\xtwo{3.1}
+				\def\yone{-3.1}
+				\def\ytwo{3.1}
+
+				\draw[step=1cm,help lines,gray!50] (\xone-.1,\yone-.1) grid (\xtwo+.1,\ytwo+.1);
+				\draw[thick,->] (\xone-.3, 0) -- (\xtwo+.3, 0) node[right] {$x$};
+				\draw[thick,->] (0, \yone-.3) -- (0, \ytwo+.3) node[above] {$y$};
+
+				\draw[] (2,.1) -- (2,-.1) node [below] {1};
+				\draw[] (.1,2) -- (-.1,2) node [left] {1};
+				\draw[] (-2,.1) -- (-2,-.1) node [below] {-1};
+				\draw[] (.1,-2) -- (-.1,-2) node [left] {-1};
+
+				\draw[] (0,0) circle (2cm);
+				\draw[] (-3,-1) -- (1,3);
+				\draw[] (-1,-3) -- (3,1);
+
+\begin{scope}
+				\clip[] (-3,-1) -- (-1,-3) -- (3,1) -- (1,3) -- cycle;
+  \fill[red,opacity=.5] (0,0) circle (2cm);
+\end{scope}
+
+			\end{tikzpicture} \end{minipage}\begin{minipage}{.4\textwidth}
+                On a $N(x,y) \leq 1$ si et seulement si $$\begin{cases}
+				\snorm{(x,y)}_2 \leq 1 \\
+				\text{ et } \\
+				-1 \leq (x-y) \leq 1
+			\end{cases}$$
+			
+			La première condition est satisfaite pour les points du plan situés dans le cercle unité. La seconde condition est satisfaite pour les points du plan situés dans la bande délimité par les droites d'équation $y=x+1 $ et $y=x-1$. L'intersection de ces deux domaines est la boule unité de $N$.\end{minipage}
+        }
+\end{enumerate}
+
+
+
+\end{document}

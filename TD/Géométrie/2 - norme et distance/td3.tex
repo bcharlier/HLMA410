@@ -1,0 +1,164 @@
+\documentclass{tp_um}
+\input{../../header.tex}
+\newcommand{\miniscule}{\@setfontsize\miniscule{5}{6}}
+%-----------------------------------------------------------------------------
+
+\title{\large \sffamily\bfseries Normes dans $\R^n$ et limites}
+\ue{HLMA410}
+
+
+%-----------------------------------------------------------------------------
+\begin{document}
+
+\maketitle
+
+\bigskip
+
+Les exercices ou les questions marqués d'une étoile ne sont pas prioritaires.
+
+
+%\exo{}Montrer que pour tout $x$ dans $\R^n$ on a $\lim_{p\to +\infty} \norm{x}_p = \norm{x}_\infty$
+
+\section{Normes et distances sur $\R^n$}
+
+\exo{(Équivalence des normes usuelles)} Démontrer que les normes $\norm{\cdot}_1$, $\norm{\cdot}_2$ et $\norm{\cdot}_\infty$ de $\R^n$ sont équivalentes.
+
+\bigskip
+\newpage
+
+\exo{(Une norme plus exotique)} Soit $a,b \in \R$ deux réels fixés avec $a\neq 0$. Si $(x,y)\in\R^2$, on pose \[N_{a,b}(x,y) = \max \left\{ \abs{bx+y} , \abs{(a+b)x+y} \right\}.\] 
+\begin{enumerate}
+	\item Montrer que l'application $N_{a,b}:\R^2 \to\R$ définie bien une norme sur $\R^2$.
+	\item Dessiner la boule unité dans le cas où $(a,b) = (1,0)$.
+	{ \it  Indication: montrer que $N_{1,0} (x,y) \leq 1$ ssi $-1\leq y \leq 1$ et $-1\leq x+y\leq 1$.}
+\end{enumerate}
+
+ %A = { (x,y) ² | -1 < x + y < 1 } , B = { (x,y) ² | -1 < x - 2y < 1 } 
+% bouleConverge exo 39 p 25
+
+\bigskip
+
+\newpage
+\exo{(Convexité et inégalité triangulaire)}
+Montrer que la boule unité d'un espace vectoriel normé $E$ est un convexe de cet espace. {\it Indication: une partie $A\subset E$ est convexe ssi $\forall x,y\in A$ on a $\{\lambda x + (1-\lambda) y| \lambda \in [0,1]\} \subset A $  }
+
+\bigskip
+
+\newpage
+\exo[*]{(Distance SNCF)} On note $\norm{\cdot}_2$ la norme euclidienne usuelle sur $\R^2$. On
+note $O=(0,0)$ l'origine du plan et on définit
+\[
+	d(A,B) = \begin{cases}
+		%\snorm{u-v}_2, &\text{si les points $u$, $v$ et $O$ sont alignés  } \\
+		%\snorm{u}_2 + \snorm{v}_2, &\text{sinon.}
+		\snorm{\overrightarrow{AB}}_2, &\text{si les points $A$, $B$ et $O$ sont alignés  } \\
+		\snorm{\overrightarrow{OA}}_2 + \snorm{\overrightarrow{OB}}_2, &\text{sinon.}
+	\end{cases}
+\]
+\begin{enumerate}
+	\item Montrer que $d$ est une distance sur $\R^2$.
+	\item Dessiner l'ensemble des points situés à distance inférieure à 3 du point $C = (2,0)$.
+	\item On considère la suite $u = ( 1, \frac{1}{m+1})_{m\in\N}$ dans $\R^2$. Montrer que $u$ converge vers $\ell=(1,0)$ pour la norme $2$ mais que la suite $d(u_m,\ell)$ ne tend pas vers 0 quand $m \to +\infty$.
+	\item Existe-t-il une norme $\snorm{\cdot}$ sur $\R^2$ telle que $d(A,B) = \snorm{\overrightarrow{AB}}$ pour tout $A,B\in\R^2$? 
+\end{enumerate}
+
+
+\newpage
+
+%\section{Exercices supplémentaires}
+%
+%\noindent Les deux exercices suivants ne sont à traiter qu'en dernier et on pourra admettre les résultats du premier pour traiter le second.
+%
+%\bigskip
+%
+\exo[*]{(Inégalités de \textsc{Hölder} et de \textsc{Minkowski})}. 
+Soit $(p,q)\in [1,+\infty[^2$ tel que $\frac{1}{p}+\frac{1}{q}=1$.
+        \begin{enumerate}
+                \item Montrer que pour $(x,y) \in [0,+\infty[^2$, $xy \leq \frac{x^p}{p}+ \frac{y^q}{q}$.
+                                {\it Indication: étudier le minimum de la fonction $x\mapsto \frac{x^p}{p} + \frac{y^q}{q} -yx$ pour $x\geq 0$}
+                \item En déduire que $\forall (a_1,\cdots,a_n),(b_1,\cdots,b_n)\in \R^n$, 
+                        \[
+                                \bigg\lvert \sum_{k=1}^n a_kb_k\bigg\rvert \leq \bigg(\sum_{k=1}^n \abs{a_k}^p\bigg)^{1/p}\bigg(\sum_{k=1}^n \abs{b_k}^q\bigg)^{1/q}
+                        \]
+                \item 	En déduire que $\forall (a_1,\cdots,a_n),(b_1,\cdots,b_n) \in \R^n$, 
+                        \[
+                                \bigg(\sum^n_{k=1}\abs{a_k+b_k}^p\bigg)^{1/p}\leq\bigg(\sum^n_{k=1}\abs{a_k}^p\bigg)^{1/p}+\bigg(\sum^n_{k=1}\abs{b_k}^p\bigg)^{1/p}.
+        \]
+                \end{enumerate}
+
+\newpage
+
+%
+%
+\exo[*]{(Les normes $\boldsymbol{N_{ \hspace*{-1pt}p}}$)} 
+Soit $p\in [1,+\infty[$, pour $x=(x_1,\cdots,x_n) \in \R^n$, on définit $N_p(x)=(\sum_{k=1}^n|x_k|^p)^{1/p}$.
+\begin{enumerate}
+	\item Montrer que $\forall p \geq 1$, $N_p$ est une norme sur $\R^n$.
+	\item Dessiner les boules unités de $\R^2$ dans le cas où $p =1,3/2,2, 5,+\infty$.
+	\item Montrer que, pour $x\in\R^n$ fixé, $\lim_{p\to+\infty} \limits N_p(x)=\max \{|x_1|,\cdots,\abs{x_n}\}=N_\infty(x)$.
+	\item Montrer que si $0<p<1$, $N_p$ n'est pas une norme sur $\R^n$ (si $n \geq 2$). 
+\end{enumerate}
+
+
+%Jauge d'un convexe 
+%http://denis.monasse.free.fr/livre-html/coursse31.html
+\newpage
+
+
+\section{Limites de suites}
+
+\exo{} Étudier la nature des suites $(u_{n})_{n\in\N}$ de $\R^3$ ci-dessous et déterminer des sous-suites convergentes en fonction des paramètres réels $a$, $b$ et $c$ 
+\begin{enumerate}
+	\item $u_n = \left( \frac{(-1)^n}{n^a}, \frac{1}{n^b}, c^n \right)$
+	\item $u_n = \left( \sum_{k=1}^n\limits \frac{1}{k^a}, \sum_{k=1}^n\limits \frac{b^k}{k!},c \right)$
+	\item $u_n = \left( \sum_{k=1}^n\limits a^k, \sum_{k=1}^n\limits a^{2k},\sum_{k=1}^n\limits a^{3k}  \right) $
+\end{enumerate}
+
+\section{Ouverts et fermés des espaces vectoriels normés $\R^n$}
+
+
+\exo{(Ouvert ou fermé)} Dessiner et déterminer la nature (ouvert ou fermé) du domaine de définition des fonctions $\R^2 \to \R$ suivantes:
+\begin{multicols}{2}
+	\begin{modenumerate}
+		\item  $f(x,y)= \frac{\ln(x) + \ln(y)}{x-y}$.
+		\item  $f(x,y) = \ln\left( ( 16 -x^2 - y^2)(x^2 + y^2 - 4) \right)$
+		\moditem{*}  $f(x,y) = \frac{x^2 - y^2}{\sqrt{x^2 - y}}$
+            \moditem{*}  $f(x,y) = \sqrt{\frac{x+y}{x-y}}$
+	\end{modenumerate}
+\end{multicols}
+\bigskip
+\newpage
+
+\exo{(Stabilité par intersection finie)} Montrer qu'une intersection finie d'ouverts de $\R^n$ est un ouvert de $\R^n$. Montrer qu'une intersection infinie d'ouvert de $\R^n$ n'est pas nécessairement un ouvert. Qu'en est-il pour les parties fermées de $\R^n$?
+
+
+
+\bigskip
+\newpage
+
+\exo{(Adhérence)} Dessiner l'adhérence des ensembles de $\R^2$  suivants: 
+\begin{modenumerate}
+	\item   $A = \left\{ (x,y) \in \R^2| x^2 + 2y^2 <1 \right\}$ 
+    \item	$C = \{\frac{t}{t+1}\left( \cos(t), \sin(t)\right) , t>0 \}$
+        %\begin{center}
+            %\begin{tikzpicture}
+                %\begin{axis}
+                    %\addplot[blue,domain = 0:15 ,samples=500,thick] ({x*cos(deg(x))/(x+1)},{x*sin(deg(x))/(x+1) });
+                %\end{axis}
+            %\end{tikzpicture}
+        %\end{center}
+	\moditem{*}   $B = \left\{ (t,\cos(1/t)) \in \R^2| t>0 \right\}$ 
+        \begin{center}
+            \begin{tikzpicture}
+                \begin{axis}[height=6cm, width=15cm, grid]
+                    %\addplot[domain = 0:6.28 ,samples=500,thick,blue] ({x},{cos(deg(1/x))});
+                    \addplot[domain =0.021:.1,very thick,samples=4500,blue] gnuplot {cos(1/x)};
+                    \addplot[domain =0.1:1,very thick,samples=800,blue] gnuplot {cos(1/x)};
+                \end{axis}
+            \end{tikzpicture}
+        \end{center}
+        \moditem{*}  $D = \left\{ (x,y) \in\R^2 | x \in \mathbb{Q} \cap [0,1], y\in\mathbb Q \cap [0,1] \right\}$ 
+\end{enumerate}
+
+
+\end{document}

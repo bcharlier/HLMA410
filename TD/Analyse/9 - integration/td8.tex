@@ -1,0 +1,253 @@
+\documentclass{tp_um}
+\input{../../header.tex}
+\newcommand{\miniscule}{\@setfontsize\miniscule{5}{6}}
+%-----------------------------------------------------------------------------
+
+\title{\Large \sffamily\bfseries Intégrales doubles, triples et curvilignes}
+\ue{HLMA410}
+
+
+%-----------------------------------------------------------------------------
+\begin{document}
+
+\maketitle
+
+
+\bigskip
+
+Les exercices ou les questions marqués d'une étoile ne sont pas prioritaires.
+
+
+%\section{Intégrales à paramètres}
+
+%\exo{(Intégrale de Gauss)} %Le but de l'exercice est de calculer la valeur de l'intégrale de Gauss 
+%%\[
+	%%
+%%\]
+%Soient $f,g$ deux fonctions de $\R$ dans $\R$ définies par 
+%\[
+	%f(x) = \int_0^x e^{-t^2} dt \qquad \text{ et } \qquad g(x)= \int_0^1 \frac{e^{-(t^2+1)x^2}}{t^2+1} dt.
+%\]
+%\begin{enumerate}
+	%\item Montrer que $g(x)  + f^2(x) = \frac{\pi}{4}$ pour tout $x\in\R$.
+	%\item Montrer que $\lim_{x\to +\infty} g(x) = 0 $.
+	%\item En déduire la valeur de $I = \int_0^{+\infty} e^{-t^2} dt$.
+%\end{enumerate}
+%%bibmath exo 3
+
+%\bigskip
+
+
+%%\exo{(Fonction de Bessel)} Soit $f:\R\to\R$ définie par $f(x) = \int_0^\pi \cos(x\sin\theta) d\theta$.
+%%\begin{enumerate}
+	%%\item Montrer que $f$ est de classe $\reg{2}$ sur $\R$.
+	%%\item Vérifier que $f$ est solution de l'équation différentielle suivante 
+		%%\[
+			%%xf''(x) + f(x) + xf(x) =0,  \quad \text{ pour tout } x\in\R.
+		%%\]
+%%\end{enumerate}
+%%%bibmath exo 1
+
+\section{Intégrales multiples}
+
+
+
+\exo[*]{} Soit $D=[0,1]^2$. Calculer: $\displaystyle{\iint_D \frac{dx\,dy}{(x+y+1)^2}}$.
+%L2PC ex1
+	\begin{center}
+			\begin{tikzpicture}[scale=.5]
+				\begin{axis}[xlabel=$x$,ylabel=$y$]%,xtick=\empty,ytick=\empty,ztick=\empty ]
+					\addplot3[surf,opacity=.7,samples=50,domain=0:1] gnuplot {1 / (1 +x + y)**2};
+				\end{axis}
+			\end{tikzpicture}
+		\end{center}
+\bigskip
+
+
+\exo{ } Calculer l'intégrale $\iint_D e^{x^2} dx dy$ où $D = \left\{ (x,y) \in \R^2 | 0\leq y \leq x \leq 1 \right\}.$ 
+%LM p253
+
+\exo{} Calculer les intégrales multiples suivantes :
+\begin{enumerate}
+	\item $I_1 = \displaystyle \iint_{D} (x + y)e^{-x}e^{-y}\, dx\, dy$ o\`u
+		$D  = \left\{ (x, y)\in \R^{2} \; | \; x, y\geq 0, x + y \leq 1\right\}$.
+	\begin{center}
+			\begin{tikzpicture}[scale=.5]
+				\begin{axis}[xlabel=$x$,ylabel=$y$]%,xtick=\empty,ytick=\empty,ztick=\empty ]
+					\addplot3[surf,opacity=.7,samples=50,domain=0:2] gnuplot {(x + y)*exp(-x)*exp(-y)};
+				\end{axis}
+			\end{tikzpicture}
+		\end{center}
+
+	\item $I_2 = \displaystyle \iint_D x\sin y \,dx \, dy$, o\`u 
+		$D=\{(x,y)\in \R^2 \; | \; 0\leq y\leq\frac{\pi}{2},0\leq x\leq \cos y\}$.
+		Dessiner !
+	\begin{center}
+			\begin{tikzpicture}[scale=.5]
+				\begin{axis}[xlabel=$x$,ylabel=$y$]%,xtick=\empty,ytick=\empty,ztick=\empty ]
+					\addplot3[surf,opacity=.7,samples=50,domain=-pi:pi] gnuplot {x * sin(y)};
+				\end{axis}
+			\end{tikzpicture}
+		\end{center}
+
+	%\item $I_3 = \displaystyle \iint_{D} \frac{xy}{1 + x^{2} + y^{2}}\, dx\, dy$ où $D  = \left\{ (x, y)\in [0, 1]^{2} \; | \; x^{2} + y^{2} \geq 1\right\}$.
+	%\begin{center}
+			%\begin{tikzpicture}[scale=.5]
+				%\begin{axis}[xlabel=$x$,ylabel=$y$]%,xtick=\empty,ytick=\empty,ztick=\empty ]
+					%\addplot3[surf,opacity=.7,samples=50,domain=-3:3] gnuplot {x * y /(1+x**2+y**2)};
+				%\end{axis}
+			%\end{tikzpicture}
+		%\end{center}
+		
+	%\item	$I_4 = \displaystyle \iiint_{D} z \, dx\, dy\, dz$ o\`u 
+		%$D  = \left\{ (x, y, z)\in (\R_{ + })^{3} \;  | \; z \leq \min ( 1 -x^{2}, 1 -y^2 ) \right\}$.
+\end{enumerate}
+%L2PC ex2
+
+\exo{} Soit $D=\{ (x,y,z)\in \R^3 \; | \; x\ge 0, y\ge 0, z\ge 0, x+y+z\le 1\}$. Calculer:
+$\displaystyle \iiint_D \frac{dx\, dy\, dz}{(1+x+y+z)^3}$.
+%L2PC 3 
+
+\bigskip
+
+\exo{}Calculer l'aire de la région grisée de la figure suivante :
+\begin{center}
+	\begin{tikzpicture}[scale=.7]
+			\def\xone{-4};\def\xtwo{4};\def\yone{-4};\def\ytwo{4}
+% grid
+			\draw[step=1cm,help lines] (\xone,\yone) grid (\xtwo,\ytwo);
+			\draw[thick,->] (\xone-.3, 0) -- (\xtwo+.3, 0) node (a) [right] {$x$};
+			\draw[thick,->] (0, \yone-.3) -- (0, \ytwo+.3) node[above] {$y$};
+
+			\draw[dashed,black] (-4,-2) -- (2,4) node[above] {$y=x+2$};
+			\draw[dashed,black] (-4,-2/3) -- (4,-10/3) node[below] {$3y=-x-6$};
+			\draw[dashed,black] (-4,-.5) -- (4,7/2) node[below right] {$2y=x+3$};
+
+			\coordinate (a) at (-1,1);
+			\coordinate (b) at (3,3);
+			\coordinate (c) at (3,-3);
+			\coordinate (d) at (-3,-1);
+		
+			\draw[black,fill=gray!50,fill opacity=.5] (a) -- (b) -- (c) -- (d) -- cycle;
+	\end{tikzpicture}
+\end{center}
+% faccanoni ex 6.11 p 210
+
+
+\bigskip
+
+
+%\exo{} Soit le domaine $\mathcal D = \left\{ (x,y) \in \R^2\   | \    (2x^2 -1) - 2 \abs{x} (y+1) + (y+1)^2 \leq 0 \right\}$
+%\begin{center}
+	%\begin{tikzpicture}[scale=.8]
+		%\begin{axis}
+			%\addplot[very thick, domain=-1:1,samples=500]{-1 + abs(x) + (1 - x^2)^.5 };
+			%\addplot[very thick,domain=-1:1,samples=500]{-1 + abs(x) - (1 - x^2)^.5 };
+		%\end{axis}
+	%\end{tikzpicture}
+%\end{center}
+%\begin{enumerate}
+	%\item Déterminer deux fonctions $\varphi,\phi:[-1,1] \to \R$ telles que \[\mathcal D = \left\{ (x,y)\in\R^2 | -1\leq x \leq 1, \varphi(x)\leq y \leq \phi(x) \right\}.\]
+	%\item Calculer une primitive de $x\mapsto \sqrt{1-x^2}$.
+	%\item Calculer l'aire de $\mathcal D$
+%\end{enumerate}
+%% faccanoni ex 6.19 p 215
+
+\section{Changement de coordonées}
+
+\exo{} En utilisant un changement de variables, calculer l'int\'egrale de $f$ sur $D$ avec
+\begin{modenumerate}
+\item $D=\{ (x,y)\in \R^2 \mid \pi^2 < x^2+y^2 \leq 4\pi^2 \}\; ;\; f(x,y)=\sin \sqrt{x^2+y^2}$ ;
+%\item $D=\left\{ (x,y)\in \R^2 \mid \frac{x^2}{a^2}+\frac{y^2}{b^2} \leq 1 \right\}\; \mbox{avec }a\, ,\, b>0\; ;\; f(x,y)=x^2+y^2$ ;
+\item $D=\{ (x,y,z)\in \R^3 \mid x^2+y^2 \leq 1\, ,\, 0\leq z\leq h \}\; \mbox{avec }h>0 \; ;\; f(x,y,z)=z$ ;
+%\item $D=\{ (x,y)\in \R^2 \mid 
+%0 < x^2\leq y\leq 2x^2\, ,\, 1/x\leq y \leq 2/x \}\; ;\; f(x,y)=x+y$  
+%(changement de variable $u=y/x^2\, ,\, v=xy$) ;
+%\item $D=\{ (x,y,z)\in \R^3 \mid 
+%x\geq 0\, ,\, y\geq 0\, ,\, z\geq 0\, ,\, x^2+y^2+z^2 \leq 1 \}\; ;\; 
+%f(x,y,z)=xyz $ ;
+    \moditem{*} $D=\{ (x,y,z)\in \R^3 \mid 1\leq x^2+y^2+z^2 \leq 4 \}\; ;\; f(x,y,z)=(x^2+y^2+z^2)^\alpha $.
+\end{modenumerate}
+%L2PC 9
+
+\bigskip
+
+%\exo{} Soient $0<a\le b, 0<c\le d,$ et $D= \{ax^2\le y\le bx^2, \frac cx\le y\le \frac d x\}$. Calculer l'aire de $D$.
+%{\it Indication: poser $u=\frac y{x^2}$ et $v=xy$.}
+%%L2PC 13
+
+\bigskip
+
+\exo{}
+Soit $R > 1$. On considère le domaine du plan  \[\mathcal D = \left\{ (x,y) \in \R^2 | y \geq 0 \text{ et } 1 \leq x^2 + y^2  \leq R^2 \right\} \cup \left\{ (x,y)\in\R^2 | xy\geq 0, \text{ et } 1 \leq x^2+y^2 \leq R^2\right\}.\]
+\begin{enumerate}
+	\item Représenter graphiquement le domaine $\mathcal D$.
+	\item Calculer les coordonnées du centre de gravité de  $\mathcal D$ (on suppose que $\mathcal D$ est de densité uniforme).
+	\item À partir de quelle valeur de $R$ le centre de gravité appartient à $\mathcal D$ ?
+\end{enumerate}
+% faccanoni ex 6.32 p 228
+
+\bigskip
+
+\exo{}Calculer le volume :
+\begin{modenumerate}
+	\item du solide en dessous du c\^one $C : z=\sqrt{ x^2+y^2}$ et au dessus de la couronne $A: z=0$ et $ 4\leq x^2+y^2\leq 25$. Dessiner!
+            \moditem{*} du solide qui est \`a la fois \`a l'int\'erieur du cylindre $x^2+y^2=4$ et de l'ellipsoide $4x^2+4y^2+z^2=64$. Dessiner!
+\end{modenumerate}
+%L2PC 8 et 9
+
+\bigskip
+
+
+
+\exo[*]{(Intégrale de Gauss)} Soit $R>0$, $D_R=\{x^2+y^2\le R^2, x>0, y>0\}$ et $K_R=[0,R]^2$.
+\begin{enumerate}
+    \item Montrer que~: 
+        \[\iint_{D_R} e^{-(x^2+y^2)}\, dx\, dy \le \iint_{K_R} e^{-(x^2+y^2)}\, dx\, dy \le
+        \iint_{D_{2R}} e^{-(x^2+y^2)}\, dx\, dy.\]
+
+    \item En d\'eduire l'existence et la valeur de $\displaystyle \lim_{R\rightarrow +\infty} \int_0^R e^{-t^2}\, dt$.
+\end{enumerate}
+%%L2PC ex 15
+
+
+\section{Champ de gradient}
+
+\exo{}
+Soit $A = (1,0)$ et $B = (0,1)$ deux points du plan. On considère le champ de vecteurs $V(x,y) = (2xy+y^2-1 , 2xy + x^2) $ défini sur $\R^2$ :
+\begin{enumerate}
+	\item Exprimer l'intégrale curviligne de $V$ le long du segment reliant les points $A$ et  $B$ (orienté de $A$ vers $B$), puis calculer cette intégrale.
+	\item Trouver une  fonction $f:\R^2 \to \R$ qui satisfait $ \nabla f = V$.
+	\item Calculer alors l'intégrale curviligne de $V$ le long de la courbe $\Gamma$ de paramétrisation $\phi :t \to (\cos^5(t),\sin^4(t))$, $t \in [0; \frac{\pi}{2}]$.
+\end{enumerate}
+%exo 8.22 faccanoni
+
+\bigskip
+
+\exo{ }Calculer la circulation du champ de vecteur  $F(x, y, z) = (yz, zx, xy)$ le long de l'hélice $H$ paramétrée par $t \mapsto (\cos t, \sin t, t)$ où $t$ varie de $0$ à $\frac \pi 4$ . 
+% fic0158 exo 7
+
+\bigskip
+
+\exo{}On considère le champ de vecteurs $V(x,y) = (-y , x) \frac{1}{x^2+y^2}$.
+\begin{center}
+	\begin{tikzpicture}[scale=.8]
+		\begin{axis}[,xtick=\empty,ytick=\empty,ztick=\empty ,xlabel=$x$,ylabel=$y$,xlabel=$x$,ylabel=$y$,domain=-3:3, view={0}{90}]
+			\addplot3[blue, quiver={u={y/(x^2+y^2)}, v={-x/(x^2+y^2)}, scale arrows=.4}, -stealth,samples=10] {0};
+		\end{axis}
+	\end{tikzpicture}
+\end{center}
+\begin{enumerate}
+	\item Quel est le domaine de définition de $V$ ?
+	\item Calculer la circulation du champ de vecteurs $V$ le long du cercle unité parcouru dans le sens direct.
+	%\item Le champ de vecteurs $V$ est-il un champs de gradient?
+\end{enumerate}
+%exo 10 de fic 00158
+
+%\section{Application de la formule de Green-Riemann}
+
+%\exo{}
+%En utilisant la formule de Green-Riemann, calculer $I = \iint_D xy dxdy$ où $ D = \{ (x,y) \in \R^2 | x>0,\    y>0,\    x+y < 1\}$
+%%exo 9 de fic00158
+\end{document}
+

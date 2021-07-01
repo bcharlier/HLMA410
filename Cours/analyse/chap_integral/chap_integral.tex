@@ -1,0 +1,903 @@
+\chapter{Intégrales Multiples}
+
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+
+\section{Détour par les intégrales simples}
+
+\subsection{Construction de l'intégrale de Riemann}
+
+Soit $f:[a,b] \to \R$ une application continue. On construit l'intégrale de Riemann en plusieurs étapes:
+\begin{enumerate}
+	\item l'intégrale des fonctions constantes sur $[a,b]$. 
+		\pl{\rep{3cm}}
+	\item on définit par linéarité l'intégrale des fonctions en escalier (constantes par morceaux).
+		\pl{\rep{3cm}}
+	\item Si $f$ est suffisament régulière (``Riemann intégrable''), on approche $f$ par une suite de fonctions en escalier, puis on définit l'intégrale comme la limite des intégrales des fonctions en escalier. 
+		\pl{\rep{3cm}}
+	\item On montre que les fonctions continues sur un fermé borné sont Riemann intégrable.
+       \end{enumerate}
+               \begin{center}
+               \tikzexternalenable \tikzsetnextfilename{cours-int-riemann}
+                   \begin{tikzpicture}[scale=.6]
+                       \foreach \i/\p/\a in {0/2/2,1/1/3,2/.5/3.5,3/.25/3.75} {%
+                           \begin{scope}[xshift=6*\i cm]
+                               \foreach \x in {0,\p,...,\a} {%
+                                   %\draw[fill=cyan] (\x,0) -- (\x,{.25*pow(\x+\p,2)}) -- (\x+\p,{.25*pow(\x+\p,2)}) -- (\x+\p,0);
+                                   \draw[fill=orange] (\x,0) -- (\x,.25*\x*\x) -- (\x+\p,.25*\x*\x) -- (\x+\p,0);
+                               }
+                               \draw [->] (-.5,0) -- ++(5,0) node[below] {$x$};
+                               \draw [->] (0,-.5) -- ++(0,5) node[left] {$y$};
+                               \draw [thick,black,opacity=.4,domain=0:4] plot (\x,{.25*pow(\x,2)});
+                           \end{scope}
+                       }
+                   \end{tikzpicture} 
+               \tikzexternaldisable
+               \end{center}
+Enfin, on montre le théorème fondamental de l'analyse (lien entre calcul de primitive et intégration).
+
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+\subsection{Intégrales à paramètres}
+
+Soit $a,b \in \R$ avec $a<b$ et $J$ un intervalle non vide de $\R$. On considère une fonction $f$ de $[a,b] \times J$ dans $\R$. On cherche à étudier l'application $\phi$ définie sur $J$ par 
+\[
+\phi(y) = \int_a^b f(t,y) dt.
+\]
+
+\begin{proposition}
+	On suppose que $f$ est continue sur $[a,b] \times J $. Alors $\phi$ est définie et continue sur $J$.
+\end{proposition}
+
+\begin{proof}
+Admis. Mais on peut aller Voir \cite{LM} page 229.
+\end{proof}
+
+\begin{proposition}
+	On suppose que $J$ est un intervalle ouvert. On suppose que $f$ est continue sur $[a,b] \times J$ et admet une dérivée partielle $\frac{\p f}{\p y}$ continue sur $[a,b] \times J $. Alors l'application $\phi$ est défnie et de classe $\Cc^1$ et 
+	\[
+\phi'(y) = \int_a^b \frac{\p f}{\p y}(t,y) dt
+	\]
+\end{proposition}
+
+\begin{proof}
+	Admis. Mais on peut aller Voir \cite{LM} page 230.
+\end{proof}
+
+\begin{remark}
+	Sous les hypothèses de la proposition précédente: la dérivée de l'intégrale est égale à l'intégrale de la dérivée\ldots
+\end{remark}
+
+\begin{exemple}
+	Soit la fonction $f: \R \to \R$ définie par $f(x) = \int_0^1 \frac{e^{-tx}}{1+t^2} dt$. Calcul de $f(0)$ et $f'(0)$. %Voir LM p 231.
+	\pl{\rep{10cm}}
+\end{exemple}
+
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+\section{Intégrales doubles}
+
+La construction de l'intégrale de fonctions de plusieurs variables suit sensiblement le même schéma que pour l'intégrale simple. Au lieu de calculer une aire, on calcul un volume.
+\begin{enumerate}
+    \item On définit l'intégrale de fonctions indicatrices:
+        \begin{center}
+            \tikzexternalenable \tikzsetnextfilename{cours-int-indicatrice}
+            \input{../figures/fig_integration_indicatrice.tex}
+            \tikzexternaldisable
+        \end{center}
+    \item L'intégrale de fonction plus générale est alors définie comme la limite des intégrales de fonctions indicatrices:
+       \end{enumerate}
+               \begin{center}
+               \tikzexternalenable \tikzsetnextfilename{cours-int-riemann2}
+                   \begin{tikzpicture}[scale=1]
+
+                       \newcommand\expr[2]{4*exp(-(#1 * #1 + #2* #2 ) *.3) * #1}
+                       \foreach \b/\p/\j in {3/1/1,7/0.5/2,15/0.25/3} {%
+                           \begin{scope}[xshift=5.5*\j cm]
+                               \begin{axis}[view={60}{45},
+                                grid=minor,
+                                xlabel={$x$},
+                                ylabel={$y$},
+                                zlabel={},
+                                xmin=-0.5, xmax=4.5, ymin=-0.5, ymax=4.5,
+                                %enlargelimits=true,
+                                %axis equal=true,
+                                  width=6cm,
+                                   ]
+                                   \addplot3[samples=50, very thick,black, domain = 0:4, samples y =0] ({x},{0.0},{0.0});
+                                   \addplot3[samples=50, very thick,black, domain = 0:4, samples y =0] ({0.0},{x},{0.0});
+                                   \addplot3[surf, thin, domain=0:4, black, opacity=.1]{\expr{x}{y}};
+                                   \foreach \e in {0,...,\b} {
+                                       \foreach \ee in {\b,...,0} { 
+                                           \addplot3[surf, domain={\e*\p}:{\e*\p+\p}, y domain={\ee*\p}:{\ee*\p+\p} , samples=3,shader=flat]{\expr{\e*\p}{\ee*\p} };
+                                       }
+                                   }
+                                   \addplot3[samples=50, very thick,black, domain = 0:4, samples y =0] ({x},{4.0},{0.0});
+                                   \addplot3[samples=50, very thick,black, domain = 0:4, samples y =0] ({4.0},{x},{0.0});
+                               \end{axis}
+                           \end{scope}
+                       }
+                   \end{tikzpicture}
+                   \tikzexternaldisable
+               \end{center}
+               La difficulté supplémentaire pour les intégrales doubles est que le domaine d'intégration peut être plus compliqué qu'un simple pavé (``un rectangle''). Ici, on souhaite calculer le volume situé sous le graphe d'une focntion et dont la base est un quart de disque.
+               \begin{center}
+               \tikzexternalenable \tikzsetnextfilename{cours-int-riemann3}
+                   \begin{tikzpicture}[scale=1]
+
+                       \newcommand\expr[2]{4*exp(-(#1 * #1 + #2* #2 ) *.3) * #1}
+                       \foreach \b/\p/\j in {3/1/1,7/0.5/2,15/0.25/3} {%
+                           \begin{scope}[xshift=5.5*\j cm]
+                               \begin{axis}[view={60}{45},
+                                grid=minor,
+                                xlabel={$x$},
+                                ylabel={$y$},
+                                zlabel={},
+                                xmin=-0.5, xmax=4.5, ymin=-0.5, ymax=4.5,
+                                %enlargelimits=true,
+                                %axis equal=true,
+                                  width=6cm,unbounded coords=jump,
+                                       filter point/.code={%
+                                           \pgfmathparse {\pgfkeysvalueof{/data point/x}*\pgfkeysvalueof{/data point/x} + \pgfkeysvalueof{/data point/y}*\pgfkeysvalueof{/data point/y}>16}%
+                                           \ifpgfmathfloatcomparison 
+                                               \pgfmathparse {\pgfkeysvalueof{/data point/x}*\pgfkeysvalueof{/data point/x} + \pgfkeysvalueof{/data point/y}*\pgfkeysvalueof{/data point/y}>16}%
+                                               \ifpgfmathfloatcomparison 
+                                                   \pgfkeyssetvalue{/data point/x}{nan}%
+                                               \fi
+                                           \fi
+                                   },,
+                                   ]
+                                   \addplot3[samples=50, very thick,black, domain = 0:4, samples y =0] ({x},{0.0},{0.0});
+                                   \addplot3[samples=50, very thick,black, domain = 0:4, samples y =0] ({0.0},{x},{0.0});
+                                   \addplot3[surf, thin, domain=0:4, black, opacity=.1]{\expr{x}{y}};
+                                   \foreach \e in {0,...,\b} {
+                                       \foreach \ee in {\b,...,0} { 
+                                           \addplot3[surf, domain={\e*\p}:{\e*\p+\p}, y domain={\ee*\p}:{\ee*\p+\p} , samples=3,shader=flat]{\expr{\e*\p}{\ee*\p} };
+                                       }
+                                   }
+                                   \addplot3[samples=50, very thick,black, domain = 0:4, samples y =0] ({x},{sqrt(16-x^2)},{0.0});
+                               \end{axis}
+                           \end{scope}
+                       }
+                   \end{tikzpicture}
+                   \tikzexternaldisable
+               \end{center}
+
+
+\subsection{Intégrales doubles sur un pavé}
+
+\begin{definition}
+	Un \emph{pavé} $P$   est un sous ensemble de $\R^2$ de la forme $P = [a,b] \times [c,d] \subset \R^2$ où $a\leq b$  et $ c\leq d$.	
+\end{definition}
+
+\begin{theorem}[(Fubini pour les pavés)]
+	Soit $f:[a,b] \times [c,d] \to \R$ une application continue. On a alors 
+	\[
+ \int_a^b  \bigg(\int_c^d f(x,y) dy \bigg) dx  = \int_c^d \bigg(\int_a^b   f(x,y) dx \bigg) dy.
+	\]
+\end{theorem}
+
+\begin{proof}
+	Admis. \pl{Mais on peut aller voir \cite{LM} page 250.}
+\end{proof}
+
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+
+\begin{definition}[(Intégrale double sur un pavé)]
+	L'intégrale double sur le pavé $P= [a,b] \times [c,d]$ de la fonction réelle $f$ est la valeur commune des deux intégrales du théorème précédent:
+	\[
+		\iint_P f(x,y) dx dy = \int_a^b  \bigg(\int_c^d f(x,y) dy \bigg) dx  = \int_c^d \bigg(\int_a^b   f(x,y) dx \bigg) dy.
+	\]
+\end{definition}
+
+{\bf\sffamily Notations:} $\iint_P f(x,y) dx dy$ ou $\iint_P f  $ ou $	\int_P f(x,y) dx dy  $ ou $ \int_P f$ si il n'y a pas d'ambigüités.
+
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+
+\begin{remark}
+	On peut calculer l'intégrale double de deux manières différentes:
+%	\begin{enumerate}
+%	\end{enumerate}
+\begin{center}
+	\begin{tabular}{ccc}
+	\tikzexternalenable  \tikzsetnextfilename{cours-int}
+	\begin{tikzpicture}
+	%	\begin{scope}[shift={(+4,0)}]
+			\def\xone{0};\def\xtwo{3};\def\yone{0};\def\ytwo{3}
+% grid
+			%\draw[step=1cm,help lines] (\xone,\yone) grid (\xtwo,\ytwo);
+			\draw[thick,->] (\xone-.3, 0) -- (\xtwo+.3, 0) node (a) [right] {$x$};
+			\draw[thick,->] (0, \yone-.3) -- (0, \ytwo+.3) node[above] {$y$};
+
+			\coordinate (a) at (1,.7);
+			\coordinate (b) at (3,2.5);
+			\coordinate (c) at (2,.7);
+			\coordinate (d) at (2,2.5);
+
+			\draw[color=green!50,thick,fill=green!50,opacity=.5] (a) rectangle (b);
+			\draw[black,fill=gray!50] ($(c) - (.1,0)$) rectangle ($(d) + (.1,0)$);
+
+			\draw (1,.1) -- (1,-.1) node[below] {$a$};
+			\draw (3,.1) -- (3,-.1) node[below] {$b$};
+
+			\draw (.1,.7) -- (-.1,.7) node[left] {$c$};
+			\draw (.1,2.5) -- (-.1,2.5) node[left] {$d$};
+
+			\draw[->,thick] (1, .35) -- (3,.35);
+	%	\end{scope}
+	\end{tikzpicture}& &\tikzsetnextfilename{cours-int2}
+	\begin{tikzpicture}
+		%\begin{scope}[shift={(-4,0)}]
+			\def\xone{0};\def\xtwo{3};\def\yone{0};\def\ytwo{3}
+% grid
+			%\draw[step=1cm,help lines] (\xone,\yone) grid (\xtwo,\ytwo);
+			\draw[thick,->] (\xone-.3, 0) -- (\xtwo+.3, 0) node (a) [right] {$x$};
+			\draw[thick,->] (0, \yone-.3) -- (0, \ytwo+.3) node[above] {$y$};
+
+			\coordinate (a) at (1,.7);
+			\coordinate (b) at (3,2.5);
+			\coordinate (c) at (1,1.5);
+			\coordinate (d) at (3,1.5);
+
+			\draw[color=green!50,thick,fill=green!50,opacity=.5] (a) rectangle (b);
+			\draw[black,fill=gray!50] ($(c) - (0,.1)$) rectangle ($(d) + (0,.1)$);
+
+			\draw (1,.1) -- (1,-.1) node[below] {$a$};
+			\draw (3,.1) -- (3,-.1) node[below] {$b$};
+
+			\draw (.1,.7) -- (-.1,.7) node[left] {$c$};
+			\draw (.1,2.5) -- (-.1,2.5) node[left] {$d$};
+
+			\draw[->,thick] (.4,.7) -- (.4,2.5);
+		%\end{scope}
+	\end{tikzpicture}
+		\tikzexternaldisable\\
+		 \begin{minipage}{7.5cm}2) intégrer par rapport à $y$ (``en colonne''), puis intégrer par rapport à $x$ (``en ligne'')\end{minipage}& &
+		\begin{minipage}{7.5cm}1) intégrer par rapport à $x$ (``en ligne''), puis intégrer par rapport à $y$ (``en colonne'')\end{minipage}
+\end{tabular}
+\end{center}
+
+\end{remark}
+
+
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+
+\begin{proposition}
+	Si $f:P\to \R$ se décompose en $f(x,y) = g(x) \ell(y)$ alors on a:
+	\[
+ \iint_P f(x,y) dxdy = \bigg( \int_a^b g(x) dx \bigg)
+\bigg( \int_c^d \ell(y) dy \bigg)
+	\]
+\end{proposition}
+
+\begin{proof}
+	\pl{\rep{6cm}}	
+\end{proof}
+
+\begin{exemple}$f(x,y) = xy^2$ définie sur $P = [0,1] \times [1,2]$.
+    \pl{\rep{10.5cm}}	
+\end{exemple}
+
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+
+\subsection{Intégrales doubles sur une partie élémentaire}
+
+\begin{definition}[(Partie élémentaire du plan)]
+Une partie $A$ de $\R^2$ est dite élémentaire si elle admet les deux définitions suivantes 
+\[\redspace
+	A  = \left\{ (x,y) \in \R^2 | a \leq x \leq b, \varphi_1(x) \leq y \leq \varphi_2(x) \right\} \tag{1}
+\]
+et
+\[\redspace
+	A  = \left\{ (x,y) \in \R^2 | c \leq y \leq d, \phi_1(y) \leq x \leq \phi_2(y) \right\} \tag{2}
+\]
+où $\varphi_1$, $\varphi_2$ (resp. $\phi_1$, $\phi_2$) sont des fonctions continues sur $[a,b]$ (resp. $[c,d]$)
+\end{definition}
+
+\begin{remark}
+	L'intérieur de $A$ est:
+\[\redspace
+	\mathring{A}  = \left\{ (x,y) \in \R^2 | a < x < b, \varphi_1(x) < y < \varphi_2(x) \right\} \tag{1} \\
+\]
+et
+\[\redspace
+	\mathring{A}  = \left\{ (x,y) \in \R^2 | c < y < d, \phi_1(y) < x < \phi_2(y) \right\} \tag{2}.
+\]
+\end{remark}
+
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+
+\begin{exemple} Voici quelques exemples:
+	\begin{center}
+		\tikzexternalenable  \tikzsetnextfilename{cours-pelem1}
+		\begin{tikzpicture}[scale=.7]
+			\begin{axis}[xticklabel=\empty,yticklabel=\empty, xmin=-3, xmax=3, ymin=-3, ymax=3, extra x ticks={-2.581988897, 2.581988897},  extra x tick style={grid=major},extra x tick labels={$a$,$b$},extra y ticks={-2.581988897, 2.581988897},extra y tick labels={$c$,$d$} ]
+		% plot of x^2+x*y+y^2-5
+		%\addplot[thick,domain=0:2*pi, samples=100] ({ (5^(0.5)) * (-cos(deg(x))+ (1.0/3.0)^(0.5) * sin(deg(x))) },{ 5^(0.5) * (cos(deg(x)) +(1.0/3.0)^.5 *  sin(deg(x)))  });
+				\addplot[ultra thick,blue,domain=pi-0.5236:2*pi-0.5236, samples=100] ({ (5^(0.5)) * (-cos(deg(x))+ (1.0/3.0)^(0.5) * sin(deg(x))) },{ 5^(0.5) * (cos(deg(x)) +(1.0/3.0)^.5 *  sin(deg(x)))  }) node[midway,below]{$\varphi_1$};
+				\addplot[ultra thick,red,domain=-0.5236:pi-0.5236, samples=100] ({ (5^(0.5)) * (-cos(deg(x))+ (1.0/3.0)^(0.5) * sin(deg(x))) },{ 5^(0.5) * (cos(deg(x)) +(1.0/3.0)^.5 *  sin(deg(x)))  }) node[midway,above]{$\varphi_2$};
+	%	\addplot[samples=1000] { (-x - (x^2 - 4*(x^2 -5) )^.5)/2};
+	%	\addplot[samples=1000] { (-x + (x^2 - 4*(x^2 -5) )^.5)/2};
+
+	% bounding box is +/- 2sqrt(5/3)
+			\end{axis}
+		\end{tikzpicture}\tikzsetnextfilename{cours-pelem2}
+		\begin{tikzpicture}[scale=.7]
+			\begin{axis}[xticklabel=\empty,yticklabel=\empty, xmin=-3, xmax=3, ymin=-3, ymax=3,extra y ticks={-2.581988897, 2.581988897}, extra y tick style={grid=major},extra y tick labels={$c$,$d$}, extra x ticks={-2.581988897, 2.581988897},extra x tick labels={ $a$,$b$}  ]
+		% plot of x^2+x*y+y^2-5
+		%\addplot[thick,domain=0:2*pi, samples=100] ({ (5^(0.5)) * (-cos(deg(x))+ (1.0/3.0)^(0.5) * sin(deg(x))) },{ 5^(0.5) * (cos(deg(x)) +(1.0/3.0)^.5 *  sin(deg(x)))  });
+				\addplot[ultra thick,blue,domain=pi+0.5236:2*pi+0.5236, samples=100] ({ (5^(0.5)) * (-cos(deg(x))+ (1.0/3.0)^(0.5) * sin(deg(x))) },{ 5^(0.5) * (cos(deg(x)) +(1.0/3.0)^.5 *  sin(deg(x)))  }) node[midway,below]{$\phi_1$};
+				\addplot[ultra thick,red,domain=0.5236:pi+0.5236, samples=100] ({ (5^(0.5)) * (-cos(deg(x))+ (1.0/3.0)^(0.5) * sin(deg(x))) },{ 5^(0.5) * (cos(deg(x)) +(1.0/3.0)^.5 *  sin(deg(x)))  }) node[midway,above]{$\phi_2$};
+	%	\addplot[samples=1000] { (-x - (x^2 - 4*(x^2 -5) )^.5)/2};
+	%	\addplot[samples=1000] { (-x + (x^2 - 4*(x^2 -5) )^.5)/2};
+
+	% bounding box is +/- 2sqrt(5/3)
+			\end{axis}
+		\end{tikzpicture}
+		\tikzexternaldisable
+	\end{center}
+	\begin{center}
+		\tikzexternalenable  \tikzsetnextfilename{cours-pelem3}
+		\begin{tikzpicture}[scale=.7]
+			\begin{axis}[xticklabel=\empty,yticklabel=\empty, xmin=-.5, xmax=2.5, ymin=-.5, ymax=2.5, disabledatascaling, axis equal,extra y ticks={0,2}, extra x tick style={grid=major},extra y tick labels={$c$,$d$}, extra x ticks={0,2},extra x tick labels={ $a$,$b$} ]
+			%\draw[ ] (1,0) arc (0:90:1);
+				%\draw[ ] (2,0) arc (0:90:2);
+				\draw [ultra thick,red] (axis cs:2,0) arc [radius=2,start angle=0,end angle=90] node[midway,above]{$\varphi_2$};
+				\draw [ultra thick,blue] (axis cs:1,0) arc [radius=1,start angle=0,end angle=90];
+				\draw [ultra thick,blue] (axis cs:1,0) node[below]{$\varphi_1$} -- (axis cs:2,0);
+				\draw [black] (axis cs:0,1) -- (axis cs:0,2);
+
+			\end{axis}
+		\end{tikzpicture}\tikzsetnextfilename{cours-pelem4}
+		\begin{tikzpicture}[scale=.7]
+			\begin{axis}[xticklabel=\empty,yticklabel=\empty, xmin=-.5, xmax=2.5, ymin=-.5, ymax=2.5, disabledatascaling, axis equal,extra y ticks={0,2}, extra y tick style={grid=major},extra y tick labels={$c$,$d$}, extra x ticks={0,2},extra x tick labels={ $a$,$b$} ]
+			%\draw[ ] (1,0) arc (0:90:1);
+				%\draw[ ] (2,0) arc (0:90:2);
+				\draw [ultra thick,red] (axis cs:2,0) arc [radius=2,start angle=0,end angle=90] node[midway,above]{$\phi_2$};
+				\draw [ultra thick,blue] (axis cs:1,0) arc [radius=1,start angle=0,end angle=90];
+				\draw [black] (axis cs:1,0) -- (axis cs:2,0);
+				\draw [ultra thick,blue] (axis cs:0,1) node[left]{$\phi_1$} -- (axis cs:0,2);
+
+			\end{axis}
+		\end{tikzpicture}
+		\tikzexternaldisable
+	\end{center}
+\end{exemple}
+
+
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+
+\begin{theorem}
+	[(Fubini)]
+	Soit $A$ une partie élémentaire définie par les formule $(1)$ et $(2)$ ci dessus. Soit $f: A \to \R^2$ une fonction continue. On a alors:
+	\[
+		\int_a^b \left( \int_{\varphi_1(x)}^{\varphi_2(x)} f(x,y) dy \right) dx = \int_{c}^{d}\left( \int_{\phi_1(y) }^{\phi_2(y)} f(x,y) dx \right)dy.
+	\]
+\end{theorem}
+
+\begin{proof}
+	Admis.
+\end{proof}
+
+\begin{definition}[(Intégrale double sur une partie élémentaire)]
+	L'intégrale double sur $A$ de $f$ est alors la valeur commune des deux intégrales ci-dessus. On a 
+\[
+\iint_A f(x,y) dx dy = 	\int_a^b \left( \int_{\varphi_1(x)}^{\varphi_2(x)} f(x,y) dy \right) dx = \int_{c}^{d}\left( \int_{\phi_1(y) }^{\phi_2(y)} f(x,y) dx \right)dy.
+\]
+\end{definition}
+
+{\bf\sffamily Notations:} $\iint_A f(x,y) dx dy$ ou $\iint_A f  $ ou $	\int_A f(x,y) dx dy  $ ou $ \int_A f$ si il n'y a pas d'ambigüités.
+
+\begin{exemple}
+	$A = \left\{ (x,y) \in \R^2 | 0 \leq x \leq 1 \text{ et } x^2 \leq y \leq \sqrt{x} \right\}$ et $f(x,y) = xy$.
+	\pl{\rep{8cm}}
+\end{exemple}
+
+%\begin{exemple}
+	%exemple p 252 LM \ldots%Soit $D$ l'intérieur du triangle dont les sommets sont l'origine
+%\end{exemple}
+
+\begin{defprop}
+	L'\emph{aire} de la partie élémentaire $A$ est définie par 
+	\[
+		\aire(A) = \iint_A dx dy.
+	\]
+	On a alors 
+	\[
+\aire(A) = \int_a^b \left( \varphi_2(x) - \varphi_1(x) \right) dx = \int_c^d \left( \phi_2(y) - \phi_1(y) \right) dy.
+	\]
+\end{defprop}
+
+\begin{exemple}
+	Soit $A$ de disque de centre $(0,0)$ et de rayon 1. Retrouver $\aire(A) = \pi$ 
+	\pl{\rep{12cm}}
+\end{exemple}
+
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+
+\subsection{Intégrales doubles sur une partie simple}
+
+\begin{definition}
+	On dit que $A$ est une \emph{partie simple} de $\R^2$ si c'est la réunion d'une famille finie de parties élementaires dont les intérieurs sont deux à deux disjoints. 
+\end{definition}
+
+\begin{definition}[(Intégrale double sur une partie simple)]
+	Soit $A$ une partie simple de $\R^2$, on peut écrire $A = \bigcup_{i=1}^n A_i$ où les $A_i$ sont des parties élémentaires. Soit $f:A \to \R$ une fonction continue, on définit l'intégrale double de $f$ sur $A$ par 
+\[
+	\iint_A f(x,y) dx dy =  \sum_{i=1}^n \iint_{A_i} f(x,y) dx dy.
+\]
+\end{definition}
+
+{\bf\sffamily Notations:} $\iint_A f(x,y) dx dy$ ou $\iint_A f  $ ou $	\int_A f(x,y) dx dy  $ ou $ \int_A f$ si il n'y a pas d'ambigüités.
+
+
+\begin{exemple}
+	\plprof{La couronne:} 
+	\pl{\rep{6cm}}
+\end{exemple}
+
+\begin{definition}
+	L'\emph{aire} $\aire(A)$ d'une partie simple de $A$ de $\R^2$ est définie par 
+	\[
+		\aire (A) = \iint_A dx dy =  \sum_{i=1}^n \iint_{A_i} dx dy = \sum_{i=1}^n \aire(A_i).
+	\]
+\end{definition}
+
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+
+\subsection{Propriétés}
+
+\begin{proposition}
+	[(Linéarité)]
+	Soit $A$ une partie simple de $\R^2$. Soient $f,g:A \to \R$ continues et $\lambda,\mu\in\R$. On a 
+	\[
+		\iint_A \lambda f+ \mu g= \lambda \iint_A f+  \mu \iint_A g.
+	\]
+\end{proposition}
+
+
+\begin{proposition}
+	[(Croissance)]
+	Soit $A$ une partie simple de $\R^2$ et $f,g:A \to \R$ continues telles que $f\leq g$. Alors 
+	\[
+		\iint_A f \leq \iint_A g.
+	\]
+\end{proposition}
+
+\begin{proposition}
+	Soient $A_1$ et $A_2$ deux parties simples de $\R^2$ telles que $A_1 \subset A_2$ et $f$ une fonction continue et positive sur $A_2$. Alors
+	\[
+		\iint_{A_1} f\leq \iint_{A_2} f.
+	\]
+\end{proposition}
+
+\begin{definition}
+	Soit  $A$  une partie simple de $\R^2$. On appelle centre de gravité de $A$, le point de coordonnées:
+	\[
+            \frac{1}{\aire A} \left( \iint_A x dxdy, \iint_A y dxdy \right).
+	\]
+\end{definition}
+
+\begin{exemple}
+	Calculer le centre de gravité du disque de centre $(0,0)$ et de rayon 1. 
+\pl{\rep{6cm}}
+\end{exemple}
+
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+
+\section{Intégrales triples}
+
+Les définitions des domaines élémentaires peuvent être généralisées de manière évidente à $\R^n$. On se contente ici de traiter le cas $n=3$.
+
+\subsection{Intégrales triples sur un pavé}
+\begin{definition}
+	Soient $a<a'$, $b<b'$ et $c<c'$ des réels. L'ensemble $P = [a,a'] \times [b,b'] \times [c,c']$ est un pavé de $\R^3$.
+\end{definition}
+
+\begin{definition}
+	L'intégrale triple sur $P$ de $f:P \to \R$ est définie par:
+	\[
+		\iiint_{P} f(x,y,z) dx dy dz = \int_{a}^{a'} \left( \int_{b}^{b'} \left( \int_{c}^{c'} f(x,y,z) dz \right) dy  \right) dx 
+	\]
+\end{definition}
+{\bf\sffamily Notations:} $\iiint_P f(x,y) dx dy$ ou $\iiint_P f  $ ou $\int_P f(x,y) dx dy  $ ou $ \int_P f$ si il n'y a pas d'ambigüités.
+
+
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+
+\begin{remark}
+	Les propriétés de l'intégrale triples sont identiques à l'intégrale double:
+	\begin{enumerate}
+		\item on peut permuter l'ordre d'intégration.
+		\item si $f(x,y,z) = \alpha(x)\beta(y)\gamma(z)$ alors 
+		$$\iiint_{P} f(x,y,z) dxdydz = \left( \int_{a}^{a'} \alpha(x)dx \right)\left( \int_{b}^{b'} \beta(y) dy \right) \left( \int_{c}^{c'} \gamma(z) dz\right).$$
+	\end{enumerate}
+\end{remark}
+
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+
+\subsection{Formule de sommation par piles}
+
+
+\begin{definition}
+On suppose que $\Delta = \left\{ (x,y,z) \in\R^3 |  u(x,y) \leq z \leq v(x,y) , (x,y) \in \mathcal D\right\}$ où $\mathcal D$ est une partie simple de $\R^2$ et $u,v:\mathcal D \to \R $ sont deux fonctions continues. L'intégrale d'une fonction $f:\R^3 \to \R$ continue sur $\Delta$ est 
+\[
+		\iiint_{\Delta} f(x,y,z) dxdydz = \iint_{\mathcal D} \left( \int_{u(x,y)}^{v(x,y)} f(x,y,z) dz \right) dxdy.
+\]
+\end{definition}
+
+\begin{definition}
+	Le \emph{volume} de $\Delta$ est noté $\vol(\Delta)$ et est défini par
+	\[
+		\vol(\Delta) = \iiint_{\Delta} dxdydz = \iint_{\mathcal D} \left( v(x,y) - u(x,y) \right) dxdy 
+	\]
+\end{definition}
+%\begin{tikzpicture}
+    %\begin{axis}[
+    %view = {120}{35},% important to draw x,y in increasing order
+    %xmin = 0,
+    %ymin = 0,
+    %xmax = 3,
+    %ymax = 3,
+    %zmin = 0,
+    %unbounded coords = jump,
+    %colormap={pos}{color(0cm)=(white); color(6cm)=(blue)}
+    %]
+    %\addplot3[surf,mark=none] coordinates {
+        %(0,0,0) (0,0,0) (0,1,0) (0,1,0) (0,2,nan) (0,2,nan) (0,3,nan) (0,3,nan)
+
+        %(0,0,0) (0,0,2) (0,1,2) (0,1,3) (0,2,3) (0,2,1) (0,3,1) (0,3,0)
+
+        %(1,0,0) (1,0,2) (1,1,2) (1,1,3) (1,2,3) (1,2,1) (1,3,1) (1,3,0)
+
+        %(1,0,0) (1,0,0) (1,1,0) (1,1,6) (1,2,6) (1,2,0) (1,3,0) (1,3,0)
+
+        %(2,0,nan) (2,0,nan) (2,1,0) (2,1,6) (2,2,6) (2,2,0) (2,3,nan) (2,3,nan)
+
+        %(2,0,0) (2,0,1) (2,1,1) (2,1,0) (2,2,0) (2,2,0) (2,3,nan) (2,3,nan)
+
+        %(3,0,0) (3,0,1) (3,1,1) (3,1,0) (3,2,nan) (3,2,nan) (3,3,nan) (3,3,nan)
+
+        %(3,0,0) (3,0,0) (3,1,0) (3,1,0) (3,2,nan) (3,2,nan) (3,3,nan) (3,3,nan)
+    %};
+    %\end{axis}
+%\end{tikzpicture}
+
+\begin{exemple}
+	Calculer le volume du simplexe $T_3 = \left\{ (x,y,z) \in [0,1]^3 | x+y+z \leq 1 \right\}$.
+\pl{\rep{12cm}}
+\end{exemple}
+%\begin{exemple}
+	%Montrer que le volume de la boule unité de $\R^3$ vaut $\frac{4\pi}{3}$
+%%\begin{center}
+	%%\begin{tikzpicture}
+		%%\begin{axis}[%restrict z to domain*=-inf:inf
+			%%]
+%%%			\addplot3[opacity=.6,surf,domain=-1:1] gnuplot {( x**2 + y**2<1 ?(1 - x**2 - y**2 )**(.5): NaN)};
+			%%%\addplot3[surf,domain=-1:1]  { (1 - x^2 - y^2 )^(.5) };
+			%%\addplot3[opacity=.6,surf] gnuplot[parametric=true] {set vrange [0:pi]; cos(u)*cos(v),sin(u)*cos(v),sin(v)};
+		%%\end{axis}
+	%%\end{tikzpicture}
+%%\end{center}
+%\end{exemple}
+
+\subsection{Formule de sommation par tranches}
+
+\begin{definition}
+	On suppose que $\Delta = \left\{ (x,y,z) \in \R^3 | (x,y) \in \mathcal D_z, a\leq z \leq b \right\}$ où $\mathcal D_z$ est une partie simple de $\R^2$ pour tout $z \in [a,b]$.
+	L'intégrale de la fonction $f:\R^3 \to \R$ continue est 
+	\[
+		\iiint_{\Delta} f(x,y,z) dxdydz = \int_a^b \left( \iint_{\mathcal D_z} f(x,y,z) dxdy \right) dz.
+	\]
+\end{definition}
+
+
+\begin{definition}
+	Le volume de $\Delta$ est noté $\vol(\Delta)$ et est défini par 
+	\[
+		\vol (\Delta) =  \iiint_{\Delta} dxdydz = \int_a^b \aire(\mathcal D_z ) dz.
+	\]
+\end{definition}
+
+\begin{exemple}
+	Montrer que le volume de la boule unité de $\R^3$ vaut $\frac{4\pi}{3}$
+        \pl{\rep{5cm}\rep{7cm}}
+\end{exemple}
+
+\begin{definition}
+	Soit  $A$  une partie simple de $\R^3$. On appelle centre de gravité de $A$, le point de coordonnées:
+	\[
+            \frac{1}{\vol A} \left( \iiint_A x dxdydz, \iiint_A y dxdydz , \iiint_A z dxdydz \right).
+	\]
+\end{definition}
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+
+\section{Formule de changement de variables}
+
+\begin{proposition}
+	Soient $\U$ et $\V$ deux ouverts bornés de $\R^n$  et $\varphi: \U \to \V$ un $\Cc^1$-difféomorphisme tel que $\varphi(\U) = \V$. Alors pour toute fonction $f:\V \to \R$ continue:
+	\[
+		\int_{\varphi(\U) } f(x_1,\cdots,x_n) dx_1\cdots dx_n = \int_{\U} f(\varphi(u_1,\cdots,u_n)) \abs{\det J_{\varphi}(u)} du_1\cdots du_n.
+	\]
+où $\det J_\varphi$ est le déterminant de la matrice jacobienne de $\varphi$.
+\end{proposition}
+\begin{proof}
+	Admis.
+\end{proof}
+
+La formule précédente généralise la formule de changement de variables dans les intégrales simples:
+\[
+	\int_{\varphi(a)}^{\varphi(b)} f(x) dx = \int_a^b f \circ \varphi (t)\   \varphi'(t) dt. 
+\]
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+
+\subsection{Cas des intégrales doubles}
+
+Dans le cas où $n=2$ on a $\varphi: \R^2 \to \R^2$ avec $ \varphi(u_1,u_2 ) = (\varphi_1(u_1,u_2 ) = x_1,\varphi_2 (u_1,u_2 )= x_2) $  et 
+\[
+	\iint_{\varphi(\U)} f(x_1,x_2) dx_1dx_2  = \iint_{ \U } f( \varphi(u_1,u_2)) \abs{\det J_\varphi(u_1,u_2)}du_1du_2,
+\]
+où $\det J_\varphi(\cdot) = \begin{vmatrix}
+	\frac{\p \varphi_1}{\p u_1} & \frac{\p \varphi_1}{\p u_2}\\ \frac{\p \varphi_2}{\p u_1} & \frac{\p \varphi_2}{\p u_2} 
+\end{vmatrix}$.
+
+
+\begin{exemple}
+Changement de coordonnées polaires: $\varphi: ]0,+\infty[ \times ]-\pi,\pi[: \R^2 \setminus ( \R^- \times \left\{ 0 \right\} ) $ défini par $(r,\theta) \mapsto (r\cos \theta,r\sin\theta)$. On a alors $\det J_\varphi (r,\theta) = r$ et la formule du changement de variable s'écrit:
+	\[
+	\iint_{\Delta} f(x,y) dx dy = \iint_{\varphi^{-1}(\Delta)} f(r\cos\theta,r\sin\theta) rdrd\theta .
+	\]
+\tikzexternalenable \tikzsetnextfilename{cours-chgtvar}
+	\begin{center}
+		\begin{tikzpicture}
+			\begin{scope}
+				[shift={(-7,0)}, scale=.8]
+				\def\xone{-3};\def\xtwo{3};\def\yone{-3};\def\ytwo{3}
+% grid
+				\draw[step=1cm,help lines] (\xone,\yone) grid (\xtwo,\ytwo);
+				\draw[thick,->] (\xone-.3, 0) -- (\xtwo+.3, 0) node (a) [right] {$x$};
+				\draw[thick,->] (0, \yone-.3) -- (0, \ytwo+.3) node[above] {$y$};
+% ball
+				%\draw[color=red,thick,fill=red!50,opacity=.5] (0,0) circle (1cm);
+				%\draw[color=red,thick,fill=red!50,opacity=.5] (0,0) circle (1cm);
+				\draw[color=red,thick,fill=red!50,opacity=.5] (0,0) circle (1cm);
+\filldraw[green,fill=green!50,opacity=.5,even odd rule]
+                 (0cm,0cm) circle (1.5cm)
+                 (0cm,0cm) circle (2.5cm) ;
+				\node[]  at (45:2) {$B$};
+				\node[]  at (45:.5) {$A$};
+
+			\end{scope}
+
+			\begin{scope}[scale=.8]
+				\def\xone{0};\def\xtwo{5};\def\yone{-pi};\def\ytwo{pi}
+% grid
+				\draw[step=1cm,help lines] (\xone,\yone) grid (\xtwo,\ytwo);
+				\draw[thick,->] (\xone-.3, 0) node (fa) {} -- (\xtwo+.3, 0) node[right] {$r$};
+				\draw[thick,->] (0, \yone-.3) -- (0, \ytwo+.3) node[above] {$\theta$};
+% ball
+				\draw[color=red,thick,fill=red!50,opacity=.5] (0,-pi) -- (0,pi) -- (1,pi) -- (1,-pi) -- cycle;
+				\draw[color=green!50,thick,fill=green!50,opacity=.5] (1.5,-pi) -- (1.5,pi) -- (2.5,pi) -- (2.5,-pi) -- cycle;
+				\node[]  at (2,2) {$\varphi^{-1}(B)$};
+				\node[]  at (.5,-2) {$\varphi^{-1}(A)$};
+			\end{scope}
+\draw[blue,thick] ($(a) +(.2,.2)$) edge[out=45, in= 135,<-,%looseness=.5
+] node[midway, above ] {$\varphi$}  ($(fa) + (-.2,.2)$);
+		\end{tikzpicture}\tikzexternaldisable
+	\end{center}
+	L'aire du rectangle rouge $\varphi^{-1}(A)$ et du rectangle vert $\varphi(B)$ dans le plan $(r,\theta)$ sont égales. Pour retrouver les aires des couronnes $A$ et $B$ correspondantes dans le plan $(x,y)$ il faut multiplier par un facteur correctif  $\abs{\det J_\varphi (r,\theta) } = r$: 
+
+	\begin{align*}
+		\aire(A) &=  \iint_A  dxdy = \iint_{\varphi^{-1}(A)} r dr d\theta  = \int_0^1 rdr \int_{-\pi}^{\pi}d\theta = \frac 1 2 (2\pi)  = \pi\\
+		\aire(B) & =  \iint_B  dxdy = \iint_{\varphi^{-1}(B)} r dr d\theta  = \int_{\frac 3 2 }^{\frac 5 2} rdr \int_{-\pi}^{\pi}d\theta = 2 (2\pi) = 4\pi
+	\end{align*}
+
+\end{exemple}
+
+\begin{exemple}
+	Changement de coordonnées affines. 
+\pl{\rep{16cm}}
+\end{exemple}
+
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+
+\subsection{Cas des intégrales triples}
+
+Dans le cas où $n=3$ on a $\varphi: \R^3 \to \R^3$ avec $ \varphi(u_1,u_2,u_3) = (\varphi_1(u_1,u_2,u_3 )= x_1,\varphi_2 (u_1,u_2,u_3 )= x_2, \varphi_3(u_1,u_2,u_3) = x_3)$  et 
+\[
+	\iiint_{\varphi(\U)} f(x_1,x_2,x_3) dx_1dx_2dx_3  = \iiint_{ \U } f( \varphi(u_1,u_2,u_3)) \abs{\det J_\varphi(u_1,u_2,u_3)}du_1du_2du_3,
+\]
+où $\det J_\varphi = \begin{vmatrix}
+	\frac{\p \varphi_1}{\p u_1}& \frac{\p \varphi_1}{\p u_2} & \frac{\p \varphi_1}{\p u_3}  \\ \frac{\p \varphi_2}{\p u_1} & \frac{\p \varphi_2}{\p u_2} & \frac{\p \varphi_2}{\p u_3} \\
+	\frac{\p \varphi_3}{\p u_1}& \frac{\p \varphi_3}{\p u_2} & \frac{\p \varphi_3}{\p u_3} 
+\end{vmatrix}$.
+
+
+\begin{exemple}
+	Changement de coordonnées cylindriques.
+\pl{\rep{12cm}}
+\end{exemple}
+
+\begin{exemple}
+	Changement de coordonnées sphériques.
+\pl{\rep{12cm}}
+\end{exemple}
+
+
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Circulation d'un champ de vecteurs}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Définitions et propriétés}
+
+Soit $(E,\prscd)$ un espace euclidien et $\norm{ \cdot}$ est la norme euclidienne. 
+
+\begin{definition}
+	[(Intégrale d'une fonction le long d'une courbe)] Soit $\Gamma=([a,b],\phi)$ un arc paramétré de classe $\Cc^1$. On considère $f: E \to \R$ une fonction continue sur un ouvert $\U\subset  E$. On suppose que $\phi([a,b]) \subset U$. L'intégrale de $f$ le long de la courbe $\Gamma=([a,b],\phi)$ est
+	\[
+		\int_{\Gamma} f d\phi =  \int_a^b f(\phi(t)) \norm{\phi'(t)} dt.
+	\]
+\end{definition}
+
+%Une application $V:E\to E$ est appelée \emph{champ de vecteurs}. 
+
+\begin{definition}
+	Soit $\Gamma=([a,b],\phi)$ un arc paramétré de classe $\Cc^1$. On considère le champ de vecteurs $V:\U  \to E$ continue sur un ouvert $\U\subset  E$. On suppose que $\phi([a,b]) \subset U$. On appelle \emph{circulation} du champ de vecteurs $V$ le long de $\Gamma$ le réel:
+	\[
+		\int_{\Gamma} \prs{V,d\phi} = \int_a^b \prs{V(\phi(t)), \phi'(t)} dt.
+	\]
+\end{definition}
+
+\noindent {\bf\sffamily Notation:} Si $E=\R^2$ on pose $V = (V_1,V_2)$ et $\phi =(\phi_1,\phi_2)$ définie sur $[a,b]$, alors
+\[
+	\int_{\Gamma} \prs{V,d\phi} = \int_a^b  V_1(\phi(t)) \phi_1(t) dt + \int_a^b V_2(\phi(t)) \phi_2(t) dt = \int_\Gamma V_1 dx + V_2 dy. 
+\]
+
+\begin{remark}
+	Les fonctions $\phi$ et $\phi'$ sont continues sur $[a,b]$ et $V$ est continu sur $\U \supset \phi([a,b])$. Ansi, $t \mapsto \prs{V(\phi(t)), \phi'(t)} $ est continue et l'intégrale est bien définie.
+\end{remark}
+
+\begin{proposition}
+	[(Relation de Chasles)] Avec les notations de la définition précédente. Pour $c\in[a,b]$ on note:
+	\[
+		\Gamma_{a,c} = ( [a,c] , \phi), \quad
+		\Gamma_{c,b} = ( [c,b] , \phi), \quad
+		\Gamma_{a,b} = ( [a,b] , \phi)
+	\]
+	Alors,
+	\[
+		\int_{\Gamma_{a,b}} \prs{V,d\phi} = \int_{\Gamma_{a,c}} \prs{V,d\phi} + \int_{\Gamma_{c,b}} \prs{V,d\phi}  
+	\]
+\end{proposition}
+
+Cette formule se généralise à un nombre fini de point de $]a,b[$. On étend alors la définition de l'intégrale curviligne aux arcs continues de classe $\Cc^1$ par morceaux. Si $\Gamma=([a,b],\phi)$ est $\Cc^1$ par morceau pour la subdivision $a=a_0 < \cdots< b=a_m $ alors on pose 
+\[
+	\int_{\Gamma} \prs{V,d\phi} = \sum_{i=0}^{m-1} \int_{\Gamma_{a_{i},a_{i+1}}} \prs{V,d\phi}.
+\]
+
+
+\begin{proposition}
+	[(Changement de paramétrage)]
+	Soit $\Gamma=([a,b],\phi)$ un arc paramétré de classe $\Cc^1$. \'Etant donné le $\Cc^1$-difféomorphisme $\theta: [c,d] \to [a,b]$ considérons la courbe $\Gamma'$ définie par la paramétrisation $([c,d] , \psi = \phi \circ \theta)$. Alors,
+	\[
+		\int_{\Gamma} \prs{V,d\phi}= \varepsilon \int_{\Gamma'} \prs{V,d\psi}
+	\]
+	où $\varepsilon = \operatorname{sign}(\theta')=  \begin{cases} \hphantom{-}1  \text{ si  $\theta$ est croissant}\\ -1 \text{ si  $\theta$ est décroissant} \end{cases}$. 
+\end{proposition}
+
+\begin{proof}
+	\pl{\rep{5cm}}
+\end{proof}
+
+\begin{exemple}
+	Soit $V:\R^3\to\R^3$ définie par $V(x,y,z) = (y^2,x^2,z)$. Calculer la circulation de $V$ le long du segment reliant $(0,0,0)$ à $(1,2,3)$.
+	\pl{\rep{5cm}}
+\end{exemple}
+
+\subsection{Champs de Gradient}
+
+\begin{definition}
+	$V:E\to E$ est un champ de gradient  s'il existe une fonction $f:E \to \R$ telle que $V= \nabla f$.  
+\end{definition}
+
+\begin{exemple}
+	Voici deux exemples de champs de vecteurs:
+	\begin{center}
+	\begin{tabular}{cc}
+		\tikzexternalenable %\begin{tabular}{cc}\tikzsetnextfilename{cours-vfgrad}
+			\begin{tikzpicture}[scale=.8]
+			%\def\length{sqrt(x^2+y^2)}
+				\def\length{1}
+				\begin{axis}[domain=-3:3, view={0}{90},xlabel = $x$,ylabel=$y$,ylabel style={rotate=-90},]
+					\addplot3[blue, quiver={u={x/(\length)}, v={-y/(\length)}, scale arrows=0.15}, -stealth,samples=20] {0};
+				\end{axis}
+			\end{tikzpicture} &
+			%\tikzsetnextfilename{cours-vfngrad}
+			\begin{tikzpicture}[scale=.8]
+				\def\length{1}
+				\begin{axis}[domain=-3:3, view={0}{90},xlabel = $x$,ylabel=$y$,ylabel style={rotate=-90},]
+					\addplot3[blue, quiver={u={-y/(\length)}, v={x/(\length)}, scale arrows=0.15}, -stealth,samples=20] {0};
+				\end{axis}
+			\end{tikzpicture} \\ 
+		$V(x,y) = (x,-y)$ (champ de gradient) & $V(x,y) = (-y,x) $ \end{tabular}
+	\tikzexternaldisable	
+	\end{center}
+\end{exemple}
+
+
+\begin{theorem}
+	On suppose que $V$ est un champ de gradient continue. Alors pour tout courbe paramétrée $\Gamma = (I,\phi)$ d'origine $A$ et d'extrémité $B$ incluse dans $\U$, on a
+	\[
+		\int_{\Gamma} \prs{V,d\phi} = f(B) - f(A).
+	\]
+\end{theorem}
+
+\begin{proof}
+	\pl{\rep{6cm}}	
+\end{proof}
+
+\begin{definition}
+	Un ouvert $\U$ est dit \emph{étoilé} si il existe $a\in\U$ tel que pour tout $\omega \in \U$ on a $[a,\omega] \in \U$.
+\end{definition}
+\pl{\rep{3cm}}
+
+\begin{theorem}[(Poincaré, cas $n=2$)]
+	Soit $V: \R^2 \to \R^2$ un champ de vecteur défini sur $\U$ et de classe $\Cc^1$. Si $\U$ est un ouvert étoilé alors $V=(V_1,V_2)$ est un champ de gradient si et seulement si $\frac{\p V_1}{\p x_2} = \frac{\p V_2}{\p x_1}$.
+\end{theorem}
+
+\begin{proof}
+Admis.
+\end{proof}
+\subsection{Formule de Green-Riemann (cas $n=2$)}
+
+On considère  $\R^2$ muni de la base canonique $(i,j)$.
+
+\begin{theorem}
+	Soit $\Delta$ une partie de $\R^2$ dont le bord est le support d'une courbe paramétrée $\partial \Delta$ fermée, orientée positivement et de classe $\Cc^1$ par morceaux.  Soit $V = (V_1, V_2)$ un champ de vecteur de classe $\Cc^1$ sur un ouvert contenant $\Delta$. On a alors,
+	\[
+		\int_{\partial \Delta} \prs{V,d\phi} = \iint_{\Delta} \left( \frac{\p V_2}{\p x} - \frac{\p V_1}{\p y} \right) dxdy,
+	\]
+\end{theorem}
+
+\begin{proof}
+	Admis.
+\end{proof}
+
+\begin{remark}
+	Orientation positive de $\p \Delta$: le point $\phi(t)$ qui parcourt le bord de $\Delta$ se déplace pour $t$ croissant ``en laissant le domaine $\Delta$ à gauche''.
+\pl{\rep{3cm}}
+\end{remark}
+
+{\bf\sffamily Notation:}  le théorème de Green-Riemann est le plus souvent énoncé en introduisant la notion de forme différentielle. La notation utilisée dans ce cas est $\int_{\Gamma} V_1 dx + V_2 dy =  \int_a^b  V_1(\phi(t)) \phi_1'(t) + V_2(\phi(t)) \phi_2'(t) dt = \int_{\Gamma}\prs{V,d\phi}$. 
+
+
+\begin{proposition}
+	[(Calcul d'aire planes)] Avec les notations différentielle on a
+	\[\aire(\Delta) = \int_{\p \Delta} x dy = - \int_{\p\Delta} y dx  = \frac{1}{2} \int_{\p\Delta} x dy - ydx.\]
+\end{proposition}
+
+\begin{proof}
+\pl{\rep{4cm}}	
+\end{proof}
+
+\begin{exemple}
+	Calcul de l'aire de la partie du plan $\Delta$ délimitée par l'axe $Ox$ et l'arc paramétré $\gamma: [0,2\pi ] \to \R^2$, $t\mapsto (t-\sin t, 1 -\cos t)$
+	\begin{center}
+		\begin{tikzpicture}
+			\begin{axis}[xmin=-0.1,xmax=2*pi+.1,]
+				\addplot[blue, samples=100, very thick, domain = -0:2*pi] ({x - sin(deg(x))},{1 - cos( deg(x))}) node (a) [midway]{};
+				\addplot[blue, samples=100, very thick, domain = -0:2*pi] ({x},{0});
+
+				%\draw[<-] (a) --(a);
+			\end{axis}
+		\end{tikzpicture}
+	\end{center}
+\pl{\rep{8cm}}	
+\end{exemple}
+
+
+
+
+
+
+

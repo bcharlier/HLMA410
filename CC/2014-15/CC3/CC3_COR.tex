@@ -1,0 +1,155 @@
+\documentclass[a4paper]{article}
+\input{../../td/header.tex}
+
+%-----------------------------------------------------------------------------
+\begin{document}
+
+\noindent Université Montpellier 2 \hfill Année 2014-2015
+
+\noindent HLMA 410
+ 
+
+
+\bigskip
+
+\begin{center}
+{\large \sffamily\bfseries Contrôle continu 3 - correction}
+\end{center}
+
+
+\bigskip
+\bigskip
+
+\exo{(Question de cours)}Soit $A$ un événement aléatoire. On appelle variable aléatoire indicatrice de $A$ une variable aléatoire $\one_A$ qui vaut $1$ si $A$ est réalisé et $0$ sinon. Soit $A,B,C \subset \Omega$ :
+\begin{enumerate}
+	\item Exprimer en fonction de $\one_A$ et $\one_B$ les variables $\1_{A\cup B}$, $\1_{A \cap B}$ et $\one_{A\Delta B}$. Faire les démontrations!
+
+		\medskip
+
+		Remarquer que les évenements $A\setminus B$, $A\cap B$, $B \setminus A$ et $(A \cup B)^c$  forment une partition de $\Omega$. On récapitule sous forme de tableau les valeurs prises par les indicatrices:
+		\begin{center}\begin{tabular}[]{|c|cccc|}
+				\hline
+				& $A\setminus B$ & $A\cap B$ & $B \setminus A$ & $(A \cup B)^c$  \\\hline 
+				$\one_A$ & 1 & 1 & 0 & 0 \\
+				$\one_B$ & 0 & 1 & 1 & 0 \\ \hline
+				$\one_{A\cap B}$ & 0 & 1 & 0 & 0 \\
+				$\one_{A \Delta B}$ & 1 & 0 & 1 & 0 \\
+				$\one_{A \cup B}$ & 1 & 1 & 1 & 0 \\\hline
+			\end{tabular}\end{center}
+		Donc $\one_{A\cap B} = \min \left\{ \one_A,\one_B \right\} = \one_A \one_B$, $\one_{A \Delta B} = \abs{\one_A - \one_B}$ et $\one_{A\cup B} = \max\left\{ \one_A,\one_B \right\} = \one_A + \one_B - \one_{A\cup B}$.
+
+		\medskip
+
+	\item Que dire de $A$ et $B$ si $\1_A \leq \1_B$
+
+		\medskip
+
+
+		Si pour tout $\omega \in \Omega$ on a  $\1_A(\omega) \leq \1_B(\omega)$ on a : si $\1_{A}(\omega) = 1$ alors $\1_B(\omega) =1$ (en particulier $\1_{A \setminus B}=0$). Ainsi on a  $A \subset B$. 
+
+		\medskip
+
+
+\end{enumerate}
+
+
+\exo{(Longueur de courbes)} Calculer la longueur des courbes param\'etr\'ees suivantes :
+\begin{enumerate}
+\item $\gamma(t)=((1-t)^2e^t,2(1-t)e^t)$, $t\in [0,1]$.
+
+		\medskip
+
+On a  $\gamma^\prime(t)= (-2(1-t)e^t+(1-t)^2e^t,-2e^t+2(1-t)e^t=((t^2-1)e^t,-2te^t)$. Il vient
+\begin{align*}
+	\|\gamma^\prime(t)\|^2 &= (t^2-1)^2e^{2t}+4t^2e^{2t}\\
+	&= ((t^2-1)^2+4t^2)e^{2t}\\
+	&= (t^4-2t^2+1+4t^2)e^{2t}\\
+	&= (t^4+2t^2+1)e^{2t}\\
+	&= (t^2+1)^2e^{2t}
+\end{align*}
+
+La longueur de $\gamma$ est donc $\int_0^1 \sqrt{(t^2+1)^2e^{2t}}dt=\int_0^1 (t^2+1)e^tdt$. Une double int\'egration par parties en int\'egrant $e^t$ et en d\'erivant $(t^2+1)$ donne $L=2e-3$.
+	\medskip
+\item $\gamma$ est la courbe d'\'equation polaire $r(t)=\sin(t)$, $\theta(t)=t$, $t \in [0,2\pi]$.
+	\medskip
+	\begin{itemize}
+		\item Méthode 1 : On a $r^\prime(t)=\cos(t)$ donc $\sqrt{r^\prime(t)^2+r(t)^2}=\sqrt{\cos^2(t)+\sin^2(t)}=1$. La longueur de $\gamma$ est donc $\int_0^{2\pi}dt=2\pi$.
+		\item Méthode 2 : On passe en coordonnées cartésiennes $\varphi : t \mapsto (\sin(t) \cos(t),\sin^2(t))$ et on fait les calculs directement. On a $\|\varphi'(t)\|^2 = ( \cos^2(t)-\sin^2(t))^2 + 4 \sin^2(t) \cos^2(t) = 1$. Et on retrouve la longueur de $\Gamma$ égale à $2\pi$. 
+	\end{itemize}
+
+
+
+\end{enumerate}
+
+\bigskip
+
+
+\exo{(Int\'egrale de Gauss)} Pour $R>0$, on pose $D_R=\{ (x,y)\in\R^2, x^2 + y^2\le R^2\}$ et $\Delta_R=[-R,R]\times [-R,R]$.
+\begin{enumerate}
+\item Montrer que $D_R\subset \Delta_R\subset D_{\sqrt{2}R}$.  En d\'eduire que :
+	\[\iint_{D_R} e^{-x^2-y^2}dxdy\le\iint_{\Delta_R} e^{-x^2-y^2}dxdy\le  \iint_{D_{\sqrt{2}R}} e^{-x^2-y^2}dxdy.\]
+
+	\medskip
+
+	Pour $(x,y)\in D_R$, on a $|x|\le \sqrt{x^2+y^2}\le R$, d'uù $x\in [-R,R]$, de m\^eme pour $y$.
+
+Pour $(x,y)\in \Delta_R$, on a $x^2+y^2\le R^2+R^2=2R^2$, donc $\sqrt{x^2+y^2}\le \sqrt 2R$ et $(x,y)\in D_{\sqrt 2R}$.
+
+Puisque $e^{-x^2-y^2}$ est {\bf\sffamily positive}, on a imm\'ediatement l'in\'egalit\'e demand\'ee.
+
+
+	\medskip
+
+\item En utilisant les coordonn\'ees polaires, calculer $\displaystyle \iint_{D_R} e^{-x^2-y^2}dxdy$.
+
+	\medskip
+
+
+On pose $x=r\cos(\theta)$, $y=r\sin(\theta)$. On a alors $x^2+y^2=r^2$, $D_R=\{(r,\theta)\in [0,R]\times [0,2\pi]\}$, et $dxdy=rdrd\theta$.
+
+Ainsi, $I=\iint_{D_R} e^{-x^2-y^2}dxdy=\int_0^{2\pi}\int_0^R re^{-r^2} drd\theta$. On reconnait une forme $u^\prime e^u$. Pour finir, on a donc $I=\int_0^{2\pi} \left[-1/2e^{-r^2}\right]_0^R d\theta=\pi(1-e^{-R^2})$.
+
+
+	\medskip
+
+
+
+\item Montrer que $\displaystyle \iint_{\Delta_R} e^{-x^2-y^2}dxdy=\left(\int_{-R}^R e^{-t^2}dt\right)}^2$
+
+	\medskip
+Il suffit de remarquer que $e^{-x^2-y^2}=e^{-x^2}e^{-y^2}$ et que $\int_{-R}^R e^{-y^2}dy$ ne d\'epend pas de $x$.
+
+\medskip
+
+\item En d\'eduire la valeur de $\displaystyle \int_{-\infty}^\infty e^{-t^2}dt = \lim_{R\to + \infty} \int_{-R}^R e^{-t^2} dt$.
+
+	\medskip
+
+L'in\'egalit\'e de la question 1 et le calcul de la question 2 donnent : 
+
+$$\pi\left(1-e^{-R^2}\right)\le \bigg(\int_{-R}^R e^{-t^2}dt\bigg)}^2\le \pi\left(1-e^{-2R^2}\right).$$ 
+
+Pour $R\rightarrow \infty$, le th\'eorème des gendarmes donne $\left(\int_{-\infty}^\infty e^{-t^2}dt\right)}^2=\pi$ soit $
+\int_{-\infty}^\infty e^{-t^2}dt=\sqrt{\pi}$.
+
+
+\end{enumerate}
+
+%\exo{Longueur de la Deltoïde }Considérons la courbe $\Gamma$ paramétrée $\phi : [0; 2\pi ] \to \R^2$ définie par $\phi(t) = (2 \cos(t ) + \cos(2t ), 2\sin(t ) - \sin(2t))$.
+%Calculer la longueur de  $\Gamma$.
+%\vspace*{12cm}
+
+
+%\exo{}Calculer l'aire de 
+%\[
+	%\mathcal D = \left\{ (x,y) \in \R^2 | y<0, x^2 < y^4(y+4) \right\}.
+%\]
+%\begin{center}
+	%\begin{tikzpicture}
+		%\begin{axis}
+			%\addplot[domain=-4:0,samples=100] { - x^1 * (x+4 )^(.5) };		
+			%\addplot[domain=-4:0,samples=100] {  x^1 * (x+4 )^(.5) };		
+		%\end{axis}
+	%\end{tikzpicture}
+%\end{center}
+\end{document}

@@ -1,0 +1,42 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{moodle}
+
+
+\begin{document}
+
+\begin{quiz}[points=4, shuffle, penalty=.5]
+  {Integration le long d'une courbe (4pt)}
+
+  \begin{multi}{Calcul de longueur}
+    Calculer la longueur de la courbe $y= x^{3/2}$ pour $x\in[0,1]$.
+  \item* $ \frac{{{13}^{\frac{3}{2}} -8}}{27}$
+  \item $\sqrt{6}\left( \frac 5 2 \ln 3 -1 \right)$
+  \item $\frac 7 4$
+  \item $\frac 1 2$
+  \item $\frac 2 5$
+  \item Aucune des autres r\'{e}ponses
+  \end{multi}
+%\noindent
+%%%%%%%%%
+%%% INPUT:
+%\begin{minipage}[t]{\textwidth}\color{blue}
+%integrate(sqrt(diff(t, t)\^{}2 + diff(t\^{}(3/2),t )\^{}2), t,0,1) ;
+%\end{minipage}
+%%%% OUTPUT:
+%\[
+%\frac{{{13}^{\frac{3}{2}}}}{27}-\frac{8}{27}\mbox{}
+%\]
+%%%%%%%%%%%%%%%%
+  \begin{multi}{Integrale curviligne}   
+    Calculer l'int\'{e}grale $\int_\Gamma \ln(x + y + z)ds$ o\`{u} $\Gamma$ est le segment de droite joignant le point $(1, 1, 1)$ au point $(2, 3, 4)$. \textit{Indication: calculer la d\'{e}riv\'{e}e $x\mapsto x\ln(x) -x$ d\'{e}finie pour tout $x>0$}.
+  \item  $\sqrt{6}\left( 15 \ln 3 - 6 \right)$
+  \item  $\sqrt{6}\left( \frac 5 2 \ln 3 -1 \right)$
+  \item  $\sqrt{14}\left( 15 \ln 3 - 6 \right)$
+  \item* $\sqrt{14}\left( \frac 5 2 \ln 3 -1 \right)$
+  \item Aucune des autres r\'{e}ponses
+  \end{multi}
+\end{quiz}
+
+
+\end{document}

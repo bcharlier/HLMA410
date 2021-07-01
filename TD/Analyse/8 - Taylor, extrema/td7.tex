@@ -1,0 +1,183 @@
+\documentclass{tp_um}
+\input{../../header.tex}
+\newcommand{\miniscule}{\@setfontsize\miniscule{5}{6}}
+%-----------------------------------------------------------------------------
+
+\title{\Large \sffamily\bfseries Dérivées d'ordres supérieurs et applications }
+\ue{HLMA410}
+
+
+%-----------------------------------------------------------------------------
+\begin{document}
+
+\maketitle
+
+\bigskip
+
+Les exercices ou les questions marqués d'une étoile ne sont pas prioritaires.
+
+\section{Dérivées du second ordre}
+
+\exo{} Calculer un développement limité en l'origine et à l'ordre 2 des fonctions suivantes:
+\begin{enumerate}
+	\item $f(x,y) = x^2 (x+y)$.
+	%\item $f(x,y) = e^{xy}$.
+	\item $f(x,y,z) = ze^{xy}$.
+\end{enumerate}
+% exo bibmat ex 10 p2
+
+
+\exo[*]{(Contre exemple au théorème de Schwarz)} Soit $f:\R^2 \to \R$ la fonction définie par $f(x,y) = \frac{x^3y - xy^3}{x^2+y^2}$ si $(x,y) \neq(0,0)$ et $f(0,0) = 0$. 
+	\begin{center}
+			\begin{tikzpicture}[scale=.75]
+				\begin{axis}[,xlabel=$x$,ylabel=$y$]%,xtick=\empty,ytick=\empty,ztick=\empty ]
+					\addplot3[surf,opacity=.7,samples=50,domain=-1:1] gnuplot {x**3 * y - x* y**3 /(x**2 + y**2)};
+				\end{axis}
+			\end{tikzpicture}
+		\end{center}
+
+\begin{enumerate}
+	\item La fonction $f$ est-elle continue en $(0,0)$ ?
+	\item La fonction $f$ admet-elle des dérivées partielles en $(0,0)$?%en Calculer $\nabla f (x,y)$ pour tout $(x,y) \in \R^2 $.
+	\item La fonction $f$ est elle de classe $\reg{1}$ sur $\R^2$?\item La fonction $f$ est-elle différentiable en $(0,0)$ ?
+	\item	La fonction $f$ est-elle $\reg{2}$ sur $\R^2$ ? 
+\end{enumerate}
+%Faccanoni exo 4.23 p91 et exo bibmath derivée partielle 11
+
+
+
+%\exo{(Prolongement)} 
+%Pour $(x,y) \neq (0,0)$ on pose 
+%\[
+	%f(x,y) = xy \frac{x^2 -y^2}{x^2 +y^2}
+%\]
+%\begin{enumerate}
+	%\item	La fonction $f$ admet-elle un prolongement continue sur $\R^2$ ? 
+	%\item	La fonction $f$ admet-elle un prolongement $\reg{1}$ sur $\R^2$ ? 
+	%\item	La fonction $f$ est-elle $\reg{2}$ sur $\R^2$ ?
+%\end{enumerate}
+
+
+\exo{} Trouver toutes les fonctions $f:\R^2\to\R$, de classe $\reg{2}$ sur $\R^2$ qui v\'erifient
+\begin{enumerate}
+	\item $\frac{\partial^2 f}{\partial x^2} = 0$.
+	\item $ \frac{\partial^2 f}{\partial x \partial y} = 0$.
+	\item $\frac{\partial^2 f}{\partial x^2}(x,y) = \cos(x+y)$.
+\end{enumerate}
+%
+
+
+\section{Extrema}
+
+\exo{} Voici les courbes de niveau de la fonction $f:\R^2 \to \R$ définie par  $f(x,y) = 3x-x^3-2y^2+y^4$.
+\begin{center}
+\begin{tikzpicture}
+    \begin{axis}[ylabel style={rotate=-90},xlabel = $x$,ylabel=$y$,width=.40\textwidth,height=4cm,view={0}{90},domain=-2:2,colormap={bw}{gray(0cm)=(0); gray(1cm)=(1)},colorbar]
+					\addplot3[samples=90,contour gnuplot={levels={-2,-1.5,-1,-2.5,-2.7,-2.9,0,0.5,1,1.5,1.7,1.9},labels=false,contour label style={font=\miniscule},label distance=1000pt,
+					},thick] gnuplot {3*x-x**3-2*y**2+y**4 };
+				\end{axis}
+			\end{tikzpicture}	
+	
+\end{center}
+\begin{enumerate}
+	\item \`A partir de la figure : identifier les points critiques de $f$ et préciser leur nature.
+	\item Retrouver les résultats de la question 1. par le calcul.
+\end{enumerate}
+%faccanoni p142 
+
+
+%\exo{} \'Etudier les points critiques des fonctions suivantes :
+%\begin{enumerate}
+	%\item $(x,y,z) \mapsto x^2 + y^2 + z^3$.
+	%\item $(x,y,z) \mapsto x^2 + y^2 + z^4$.
+	%\item $(x,y,z) \mapsto x^2 + y^2 + z^2 +xy+yz + 2x -2y -4z +5$.
+%\end{enumerate}
+%% Niglio 5 et 11 p 66-67
+
+
+\exo{} \'Etudier les extrema de la fonction $f$ définie par $f(x,y) = (x^2 + y^2) e^{x^2 - y^2}$.
+% Niglio exo 12p67
+	\begin{center}
+			\begin{tikzpicture}[scale=.7]
+				\begin{axis}[,xlabel=$x$,ylabel=$y$]%,xtick=\empty,ytick=\empty,ztick=\empty ]
+					\addplot3[surf,opacity=.9,samples=50,domain=-1:1,y domain=-5:5] gnuplot { (x**2 + y**2)*exp(x**2 - y**2)};
+				\end{axis}
+			\end{tikzpicture}
+		\end{center}
+
+%\exo{} Soit $a$, $b$ et $c$ des nombres réels tels que $c\neq 0$ et soit $f:\R^2 \to \R$ la fonction définie par $f(x,y) = \frac{ax+by+c}{\sqrt{x^2 + y^2 +1}}$. Montrer que $f$ a un unique maximum et le calculer. 
+%%Liret-Martinais exo 20 p 194.
+
+
+\exo{(Droite des moindres carrés)} Soient $n$ points $(x_1,y_1), \cdots, (x_n,y_n)$ de  $\R^2$ tels que 
+\begin{equation}
+	\frac{1}{n}\sum_{i=1}^n \bigg(x_i - \frac{1}{n}\sum_{i=1}^n x_i \bigg)^2 >0. \tag{$*$}
+\end{equation}
+On cherche à minimiser la fonctionnelle $d(a,b) = \sum_{i=1}^{n} (y_i - a x_i -b)^2$ définie pour tout $(a,b) \in \R^2$. 
+\begin{enumerate}
+	\item Que signifie la condition $(*)$ ?
+	\item Démontrer qu'il existe un unique point critique $(a^*,b^*)$ de $d$.
+	\item Démontrer que ce point critique est un minimum.
+	\item On donne  les points suivants 
+		\begin{center}
+			{\small	\begin{tabular}[]{cccccc}\hline
+				$i$ & 1 & 2 & 3 & 4 & 5 \\\hline
+				$x_i$ & 1 & 2 & 3 &  4& 5  \\
+				$y_i$ & 0.9 & 1.5 & 3.5  & 4.2 & 4.9 \\ \hline
+			\end{tabular}}
+		\end{center}
+		Calculer $(a^*,b^*)$ et représenter graphiquement la droite des moindres carrés.
+\end{enumerate}
+% faccanoni p126-7
+
+\section{\'Equations aux dérivées partielles}
+
+
+
+\exo{} Soit $f : \R^2 \to \R $ une fonction de classe $\reg{2}$. On pose $g(x,y) = f(x^2 -y^2, 2 xy)$. Calculer $\Delta g$ en fonction de $\Delta f$ o\`u $\Delta = \frac{\partial ^2 }{\partial x^2 } +  \frac{\partial ^2 }{\partial y^2 }.$ 
+
+
+
+\exo[*]{(\'Equation des cordes vibrantes)}
+Soit $c$ un réel non nul. Chercher les solutions de classe $\reg{2}$ de l'équation aux dérivées partielles suivante
+\[
+	c^2 \frac{\partial^2 f}{\partial x^2}(x,t) = \frac{\partial^2 f}{\partial t^2}(x,t) \qquad \text{pour tout } x,t\in\R.
+\]
+{\it Indication : utiliser un changement de variables de la forme $u=x+at$, $v=x+bt$.}
+%exo bibmath 
+\begin{minipage}{6cm}
+			\begin{tikzpicture}[scale=.7]
+				\begin{axis}[,xlabel=$x$,ylabel=$t$,view={40}{75}]%,xtick=\empty,ytick=\empty,ztick=\empty ]
+					\addplot3[surf,opacity=.9,samples=50,domain=-10:10,y domain=-4:2] gnuplot { .5*exp(- (x - y-1)**2) +exp(- (x + y+1)**2) };
+				\end{axis}
+			\end{tikzpicture}
+		\end{minipage}
+                \begin{minipage}{.63\textwidth}
+                    Un exemple de solution: $f(x,t) = \frac 1 2\exp(- (x - t-1)^2) + \exp(- (x + t+1)^2) $
+                \end{minipage}
+%\exo{(\'Equation des cordes vibrantes)}
+%Soit $f$ et $g$ deux fonctions d'une variable réelle, de classe $\reg{2}$. On pose $w(x,t) = f(u) +g(v)$ avec $u=x-at$ et $v = x+at$ où $a\in [0,+\infty[$ est un paramètre. Montrer que $w$ est solution de l'équation des cordes vibrantes : $\frac{\partial^2 w}{\partial t^2} = a^2 \frac{\partial w}{\partial x^2} $.
+% Niglio exo 15 p. 44
+
+
+\exo[*]{(Fonctions harmoniques)}
+Une fonction $f:\R^2 \to \R$ de classe $\reg{2}$ est dite harmonique si son laplacien est nul :
+\[
+\frac{\partial^2 f}{\partial x^2} + \frac{\partial^2 f}{\partial y^2} =0. \]
+Dans toute la suite, on fixe $f$ une fonction harmonique.
+
+\begin{enumerate}
+    \item	On suppose que $f$ est de classe $\reg{3}$. Démontrer que $\frac{\partial f}{\partial x}$, $\frac{\partial f}{\partial y}$ et  $x\frac{\partial f}{\partial x} + y\frac{\partial f}{\partial y}$ sont harmoniques.
+    \item On suppose désormais que $f$ est radiale, c'est-à-dire qu'il existe $\varphi:\R\to\R$ de classe $\reg{1}$ telle que $f(x,y)=\varphi(x^2+y^2)$. Démontrer que $\varphi$ est solution d'une équation différentielle linéaire du premier ordre.
+    \item En déduire toutes les fonctions harmoniques radiales.
+\end{enumerate}
+%%exo bibmath 18
+
+\exo[*]{}  Soit l'op\'erateur de Laplace $n$-dimensionnel $\Delta = \frac{\partial^2}{\partial x_1^2}+\cdots + \frac{\partial^2}{\partial x_n^2}$.
+\begin{enumerate}
+    \item Montrer que pour $n\ge 3$ on a $\Delta \left( \frac{1}{\snorm{x}^{n-2}} \right) = 0\mbox{ pour tout } x\not= 0$ o\`u $\| x \| = \left( x_1^2+\dots +x_n^2  \right)^{1/2}$ est la norme euclidienne.
+    \item  Pour $n=2$ on a $\Delta \left( \ln \frac{1}{\|x\|} \right) = 0 \mbox{ pour tout } x\neq 0.$
+\end{enumerate}
+%% Exo L2PC Maris
+
+\end{document}

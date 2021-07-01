@@ -1,0 +1,80 @@
+\documentclass[a4paper]{article}
+\input{../../td/header.tex}
+
+%-----------------------------------------------------------------------------
+\begin{document}
+
+\noindent Université Montpellier 2 \hfill Année 2014-2015
+
+\noindent HLMA 410
+ 
+
+
+\bigskip
+
+\begin{center}
+{\large \sffamily\bfseries Contrôle continu 3}
+\end{center}
+
+\textit{Durée 1h30. Les documents, la calculatrice, les téléphones portables, tablettes, ordinateurs ne sont pas autorisés. La qualité de la rédaction sera prise en compte.} 
+
+\bigskip
+\bigskip
+
+\exo{(Question de cours)}Soit $A$ un événement aléatoire. On appelle variable aléatoire indicatrice de $A$ une variable aléatoire $\one_A$ qui vaut $1$ si $A$ est réalisé et $0$ sinon. Soit $A,B,C \subset \Omega$ :
+\begin{enumerate}
+	\item Exprimer en fonction de $\one_A$ et $\one_B$ les variables $\1_{A\cup B}$, $\1_{A \cap B}$ et $\one_{A\Delta B}$. Faire les démontrations!
+		\vspace*{15cm}
+
+	\item Que dire de $A$ et $B$ si $\1_A \leq \1_B$
+		\vspace*{3cm}
+\end{enumerate}
+
+\newpage
+
+\exo{(Longueur de courbes)} Calculer la longueur des courbes param\'etr\'ees suivantes :
+\begin{enumerate}
+\item $\gamma(t)=((1-t)^2e^t,2(1-t)e^t)$, $t\in [0,1]$.
+	\vspace*{16cm}
+\item $\gamma$ est la courbe d'\'equation polaire $r(t)=\sin(t)$, $\theta(t)=t$.
+	\vfill
+	\vspace*{8cm}
+\end{enumerate}
+
+
+\exo{(Int\'egrale de Gauss)} Pour $R>0$, on pose $D_R=\{ (x,y)\in\R^2, x^2 + y^2\le R^2\}$ et $\Delta_R=[-R,R]\times [-R,R]$.
+\begin{enumerate}
+\item Montrer que $D_R\subset \Delta_R\subset D_{\sqrt{2}R}$.  En d\'eduire que :
+	\[\iint_{D_R} e^{-x^2-y^2}dxdy\le\iint_{\Delta_R} e^{-x^2-y^2}dxdy\le  \iint_{D_{\sqrt{2}R}} e^{-x^2-y^2}dxdy\].
+
+	\vspace*{7cm}
+
+
+\item En utilisant les coordonn\'ees polaires, calculer $\displaystyle \iint_{D_R} e^{-x^2-y^2}dxdy$.
+	\vspace*{7cm}
+
+\item Montrer que $\displaystyle \iint_{\Delta_R} e^{-x^2-y^2}dxdy=\left(\int_{-R}^R e^{-t^2}dt\right)}^2$
+	\vspace*{7cm}
+
+\item En d\'eduire la valeur de $\displaystyle \int_{-\infty}^\infty e^{-t^2}dt = \lim_{R\to + \infty} \int_{-R}^R e^{-t^2} dt$.
+
+\end{enumerate}
+
+%\exo{Longueur de la Deltoïde }Considérons la courbe $\Gamma$ paramétrée $\phi : [0; 2\pi ] \to \R^2$ définie par $\phi(t) = (2 \cos(t ) + \cos(2t ), 2\sin(t ) - \sin(2t))$.
+%Calculer la longueur de  $\Gamma$.
+%\vspace*{12cm}
+
+
+%\exo{}Calculer l'aire de 
+%\[
+	%\mathcal D = \left\{ (x,y) \in \R^2 | y<0, x^2 < y^4(y+4) \right\}.
+%\]
+%\begin{center}
+	%\begin{tikzpicture}
+		%\begin{axis}
+			%\addplot[domain=-4:0,samples=100] { - x^1 * (x+4 )^(.5) };		
+			%\addplot[domain=-4:0,samples=100] {  x^1 * (x+4 )^(.5) };		
+		%\end{axis}
+	%\end{tikzpicture}
+%\end{center}
+\end{document}

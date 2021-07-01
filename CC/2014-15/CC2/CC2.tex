@@ -1,0 +1,93 @@
+\documentclass[a4paper]{article}
+\input{../../td/header.tex}
+
+%-----------------------------------------------------------------------------
+\begin{document}
+
+\noindent Université Montpellier 2 \hfill Année 2014-2015
+
+\noindent HLMA 410
+ 
+
+
+\bigskip
+
+\begin{center}
+{\large \sffamily\bfseries Contrôle continu 2}
+\end{center}
+
+\textit{Durée 1h30. Les documents, la calculatrice, les téléphones portables, tablettes, ordinateurs ne sont pas autorisés. La qualité de la rédaction sera prise en compte.} 
+
+\bigskip
+\bigskip
+
+\exo{(Question de cours)} Soit $E$ et $F$ deux espaces vectoriels normés et $a\in E$. 
+\begin{enumerate}
+	\item Donner la définition de la dérivée directionnelle d'une fonction $f:E\to F$. Une fonction qui admet des dérivées partielles en $a$ est-elle nécessairement continue en $a$ (justifier) ?
+		\vspace*{5cm}
+
+
+	\item Donner la définition d'un $\reg{1}$-difféomorphisme de $E$ sur $F$. En donner une caractérisation (autrement dit, énoncer le ``théorème d'inversion globale'').
+		\vspace*{7cm}
+\end{enumerate}
+
+
+\exo{Forme quadratique} Les formes quadratiques suivantes sont elles positives? sont elles définies ? :
+\begin{enumerate}
+	\item $q(x,y,z,t) = 2xz + 2xy +x^2 + 2tx$
+\vspace*{5cm}
+	\item $q(x,y,z) = -2(x+y)^2 + (x+y+z)^2 + (x+y-z)^2  $
+\vspace*{5cm}
+	\item $q(x,y)=e^{\sqrt{\pi}} x^2 + \ln(1+e) y^2 - xy$
+\vspace*{5cm}
+\end{enumerate}
+
+
+
+%\exo{Valeur absolue}
+%\begin{enumerate}
+%\item 		Rappeler la définition de la valeur absolue.
+%\vspace*{3cm}
+%\item 		Démontrer que la valeur absolue est bien une norme sur $\R$.
+%\vspace*{7cm}
+%\item 		Est-ce la seule norme sur $\R$ ?
+%\vspace*{5cm}
+%\end{enumerate}
+
+\exo{(\'Etude de fonctions de plusieurs variables)}Soit $m\in \N\setminus \left\{ 0 \right\}$ et $f : \R^2 \to \R$ la fonction définie comme suit :
+\[
+	f(x,y) = \begin{cases}
+		\frac{x^m y^2}{x^2 + y^2} \text{ si } \R^2 \setminus \{ (0, 0) \} \\
+		0 \text{ sinon}.
+	\end{cases}
+\]
+
+\begin{enumerate}
+	\item  Étude de la fonction sur $\R^2 \setminus \{ (0, 0) \}$ :
+		\begin{enumerate}
+			\item Montrer que $f$ est continue sur $\R^2 \setminus \{ (0,0) \}$ pour tout $m \in \N\setminus \left\{ 0 \right\}$ 
+\vspace*{3cm}
+			\item Calculer le gradient de $f$ pour $(x, y) \in \R^2 \setminus \{ (0, 0) \}$ pour tout $m \in \N\setminus \left\{ 0 \right\}$ ;
+\vspace*{5cm}
+			\item Montrer que $f$ est de classe $\reg{1}$ sur $\R^2 \setminus \{ (0, 0) \}$ pour tout $m \in \N\setminus \left\{ 0 \right\}$ ;
+\vspace*{3cm}
+			\item Que peut-on conclure sur la différentiabilité de $f$ sur $\R^2 \setminus \{ (0, 0) \}$ ?
+\vspace*{3cm}
+		\end{enumerate}
+	\item  Étude de la fonction en $(0, 0)$ :
+		\begin{enumerate}
+			\item Pour quelles valeurs de $m\in\N\setminus \left\{ 0 \right\}$ la fonction $f$ est-elle continue en $(0, 0)$ ?
+\vfill
+			\item La fonction $f$ admet-elle des dérivées partielles en $(0, 0)$ pour tout $m\in\N\setminus \left\{ 0 \right\}$ ? si oui, les calculer.
+\vspace*{5cm}
+			\item Pour quelles valeurs de $m\in\N\setminus \left\{ 0 \right\}$ la fonction $f$ est-elle différentiable en $(0, 0)$ ?
+\vspace*{12cm}
+			\item Pour quelles valeurs de $m\in\N\setminus \left\{ 0 \right\}$ la fonction $f$ est-elle de classe $\reg{1}$ en $(0, 0)$ ?
+\vfill
+		\end{enumerate}
+\end{enumerate}
+%faccanoni 4.39 p108
+
+%\exo{(Différentielle)} Pour $( x,y,z)\in \R^3$ on note : $f(x,y,z) = (\cos(xy) \cos(z),(1+x^2)^{yz} )$. Montrer que la fonction $f$ est différentiable au point $(a,1,0)$ pour tout $a$ de $\R$ puis calculer sa différentielle en ce point.
+
+\end{document}

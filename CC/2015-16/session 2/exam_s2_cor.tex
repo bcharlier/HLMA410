@@ -1,0 +1,365 @@
+\documentclass{tp_um}
+
+\input{../../TD/header.tex}
+\usepgfplotslibrary{fillbetween}
+\usetikzlibrary{intersections,decorations.markings}
+
+\makeatletter
+\tikzset{
+  use path for main/.code={%
+    \tikz@addmode{%
+      \expandafter\pgfsyssoftpath@setcurrentpath\csname tikz@intersect@path@name@#1\endcsname
+    }%
+  },
+  use path for actions/.code={%
+    \expandafter\def\expandafter\tikz@preactions\expandafter{\tikz@preactions\expandafter\let\expandafter\tikz@actions@path\csname tikz@intersect@path@name@#1\endcsname}%
+  },
+  use path/.style={%
+    use path for main=#1,
+    use path for actions=#1,
+  }
+}
+\makeatother
+
+
+%-----------------------------------------------------------------------------
+
+\title{\Large \sffamily\bfseries Examen - Session 2}
+\ue{HLMA410}
+
+
+%-----------------------------------------------------------------------------
+\begin{document}
+
+\maketitle
+
+\bigskip
+\bigskip
+
+\textit{Durée 3h00. Les documents, la calculatrice, les téléphones portables, tablettes, ordinateurs ne sont pas autorisés. La qualité de la rédaction sera prise en compte. Les exercices sont indépendants.} 
+
+\bigskip
+\bigskip
+
+\section{Analyse}
+
+\exo{(Question de cours)} Soit $f:\R^2 \to \R$ une fonction de classe $\mathcal C^1(\R^2)$. Rappeler la définition du gradient de $f$ et la formule liant gradient et différentielle.
+
+%\exo{(Projection de ${\Bbb R}^2$ sur $\Bbb R$)} %Dans cet exercice, il est fortement recommand\'e de dessiner, et de se souvenir qu'un dessin n'est jamais une preuve.  
+%%Si $X$ est un espace vectoriel normé, «$B_x(r)$» désigne la boule ouverte de centre $x\in X$ et de rayon $r>0$. On rappelle que pour une application $p:X\rightarrow Y$, et pour $A\subset X$, l'image de $A$ par $p$ est l'ensemble $p(A)=\{ y\in  Y, \exists x\in A, y=p(x)\}=\{ p(x), x \in A\}$. 
+%Soit $p:{\Bbb R}^2\rightarrow {\Bbb R}$ la premi\`ere projection ($p(x,y)=x$). On munit ${\Bbb R}^2$ de la norme euclidienne et $\Bbb R$ de la valeur absolue. %Dans cet exercice,
+%%\begin{enumerate}
+%%\item Montrer que dans $\Bbb R$, $B(a,\epsilon[=]a-\epsilon,a+\epsilon[$.  
+%%\item Montrer que $p(B((x,y),\epsilon[)=B(x,\epsilon[$. En d\'eduire que l'image d'un ouvert de ${\Bbb R}^2$ par $p$ est un ouvert de $\Bbb R$.
+%%\item Montrer que $F=\{(x,y), xy=1\}$ est un ferm\'e de ${\Bbb R}^2$ mais que $p(F)$ n'est pas ferm\'e.
+%%\item 
+	%On suppose maintenant que $F$ est une partie de ${\Bbb R}^2$ ferm\'ee et born\'ee et on consid\`ere une suite $x_n\in p(F)$ telle que $x_n\rightarrow x$.
+%\begin{enumerate} 
+%\item Montrer qu'il existe une suite $y_n$ telle que $(x_n,y_n)\in F$.
+%\item Montrer qu'il existe une sous suite $(x_{\phi(n)},y_{\phi(n)})$ convergente.
+%\item En d\'eduire que $x\in p(F)$, puis que $p(F)$ est ferm\'e dans $\Bbb R$.
+%\end{enumerate}
+
+
+\exo{} Soit $\phi:\R^2\to\R^2$ l'application définie par 
+\[
+		\phi(x,y) = (u,v) = (x+y,x-y) 
+\]
+\begin{enumerate}
+	\item Démontrer que $\phi$ est un $\mathcal C^1$ difféomorphisme. Calculer son inverse $\phi^{-1}$.
+	
+	\bigskip 
+		On remarque que $\phi$ est une application linéaire de matrice $M =\begin{pmatrix}1 & 1 \\ 1& -1 \end{pmatrix}$. C'est une bijection  car le déterminant de $M$ est non nul. Comme $\phi$ et $\phi^{-1}$ sont linéaires, elles sont donc $\mathcal C^{1}(\R^2)$. L'application $\phi$ est bien un difféomorphisme de $\R^2$ dans lui même (on peut aussi utiliser le théorème d'inversion globale).
+		
+		En calculant $M^{-1} = \frac 1 2 \begin{pmatrix} 1 & 1\\ 1 & -1 \end{pmatrix}$ on a $\phi^{-1}: \R^2 \to \R^2$ qui est définie par $\phi^{-1} (u,v) = (x,y)=(\frac{u+v}{2}, \frac{u-v}{2})$.
+	\bigskip
+	
+	\item Calculer le déterminant jacobien de $\phi$ au point $(x,y)$ et le déterminant jacobien de $\phi^{-1}$ au point $(u,v)$.
+	
+	\bigskip
+	On vient de montrer que $\phi$ est un changement de variable linéaire. Sa matrice jacobienne est constante sur $\R^2$ et $\operatorname{Jac}_\phi (x,y) = M$ et $ \operatorname{Jac}_{\phi^{-1}} (x,y) = M^{-1}$. Les déterminant jacobien sont donc constants et valent $-2$ et $-1/2$ respectivement. 
+	
+	\bigskip
+	
+	\item On considère l'application $f: \R^2 \to \R$  définie par $f(x,y) = e^{x^2 -y^2}$. Soit
+		$g = f \circ \phi^{-1}$. Calculer les dérivées partielles de $f$ puis calculer les dérivées partielle de $g$ {\bfseries en utilisant la règle de la chaîne}.
+
+\bigskip
+On a  
+\[
+\frac{\partial f}{\partial x}(x,y)  = 2xe^{x^2-y^2}  \qquad \frac{\partial f}{\partial y}(x,y) = - 2y e^{x^2-y^2} 
+\]
+Ainsi:
+\begin{align*}
+	\frac{\partial g}{\partial u}(u,v)& = \frac{\partial f}{\partial x}(x,y) \frac{\partial x}{\partial u}(u,v) + \frac{\partial f}{\partial y}(x,y) \frac{\partial y}{\partial u}(u,v) \\ & = 2xe^{x^2-y^2} \times \frac 1 2 - 2y e^{x^2-y^2} \times \frac 1 2  =  (x-y) e^{x^2 - y^2} = v e^{uv},
+\end{align*}
+et
+\begin{align*}
+	\frac{\partial g}{\partial v}(u,v)& = \frac{\partial f}{\partial x}(x,y) \frac{\partial x}{\partial v}(u,v) + \frac{\partial f}{\partial y}(x,y) \frac{\partial y}{\partial v}(u,v) \\ & = 2xe^{x^2-y^2} \times \frac 1 2 - 2y e^{x^2-y^2} \times \frac {-1}{2}  =  (x+y) e^{x^2 - y^2} = u e^{uv},
+\end{align*}
+\bigskip
+
+%\item Calculer le vecteur normal au plan tangent au graphe de la fonction $g$ e 
+	\item On note $D =\left\{ (x,y) \in \R^2 ,\, x>0,\, (x-1) <y < (1-x) \right\}$. Déterminer le domaine $\Delta$ image de $D$ par $\phi$. Faire un dessin.
+
+\bigskip
+
+Le domaine $ \Delta = \{(u,v)\in\R^2, u+v>0 ,u<1, v<1 \}$ est le triangle (on devrait s'en douter car $\phi$ est linéaire):
+\begin{center}
+	\begin{tikzpicture}[scale=1]
+			\def\xone{-3};\def\xtwo{3};\def\yone{-3};\def\ytwo{3}
+% grid
+			\draw[step=1cm,help lines] (\xone,\yone) grid (\xtwo,\ytwo);
+			\draw[thick,->] (\xone-.3, 0) -- (\xtwo+.3, 0) node (a) [right] {$u$};
+			\draw[thick,->] (0, \yone-.3) -- (0, \ytwo+.3) node[above] {$v$};
+
+			\draw[dashed,black] (1,-3) node[below] {$u=1$} -- (1,3);
+			\draw[dashed,black] (-3,1) -- (3,1) node[above] {$v=1$};
+			\draw[dashed,black] (-3,3) node[above left] {$v=-u$} -- (3,-3);
+			\coordinate (a) at (-1,1);
+			\coordinate (b) at (1,1);
+			\coordinate (c) at (1,-1);
+		
+			\draw[black,fill=gray!50,fill opacity=.5] (a) -- (b) -- (c) -- cycle;
+	\end{tikzpicture}
+\end{center}
+
+
+\bigskip
+	\item En déduire $\int_D f(x,y) dxdy$.
+
+\bigskip
+On a 
+\begin{align*}
+\int_D f(x,y) dxdy &= \int_\Delta e^{uv} \frac{dudv}{2} \\
+& = \frac 1 2 \int_{-1}^1 \left( \int_{-u}^1 e^{uv} dv\right)du \\
+& = \frac 1 2 \int_{-1}^1 \left[ \frac{e^{uv}}{u}\right]_{v=-u}^1du \\
+& = \frac 1 2 \int_{-1}^1  e^u - \frac{e^{-u^2}}{u}du \\
+& = \frac 1 2 \int_{-1}^1  e^u du = \frac 1 2 (e - e^{-1}) = \sinh(1).
+\end{align*}
+On  a utilisé le fait que $u \mapsto - \frac{e^{-u^2}}{u}du$ est impaire et son intégrale sur $[-1,1]$ est nulle.
+\bigskip
+\end{enumerate}
+
+\exo{}On consid\`ere la fonction $ f: \R^2 \to \R$, 
+$$
+f(x,y) = x \sqrt{ x^2 + y^2}.
+$$
+\begin{enumerate}
+	\item \'Etudier la continuité de $f$ en chaque point de $ \R^2$. 
+
+\bigskip
+L'application $(x,y)\mapsto \|(x,y)\|$ (où $\| \cdot \|$ désigne la norme euclidienne) est continue. L'application $f$ est continue comme le produit de deux applications continues.
+\bigskip
+
+	\item Calculer les dérivées partielles de $f$ en chaque point o\`u elles existent. 
+
+		\bigskip
+
+La fonction est $\mathcal C^1$ partout sauf peut être en $(0,0)$ (à cause la racine carrée). On a 
+\[\frac{\partial f}{\partial x} (x,y) =
+\begin{cases}
+	\sqrt{x^2+y^2} +\frac{x^2}{\sqrt{x^2+y^2}}, \text{ si $(x,y) \in \R^2 \setminus (0,0)$} \\
+	\lim_{h\to 0} \frac{f(h,0) - f(0,0)}{h} = \lim_{h\to 0} |h| = 0 ,\text{ sinon}
+	\end{cases} \]
+et
+\[\frac{\partial f}{\partial y} (x,y) =
+\begin{cases}
+	\frac{xy}{\sqrt{x^2+y^2}}, \text{ si $(x,y) \in \R^2 \setminus (0,0)$} \\
+	\lim_{h\to 0} \frac{f(0,h) - f(0,0)}{h} = 0 ,\text{ sinon}
+	\end{cases} \]
+
+		\bigskip
+
+
+	\item \'Etudier la continuit\'e des d\'eriv\'ees partielles de $f$ sur $ \R ^2 \setminus{(0,0)}$, puis en $(0,0)$.
+		
+		\bigskip
+		
+		Sur $ \R ^2 \setminus{(0,0)}$, les dérivées partielles sont clairement $\mathcal C^0$. Reste à vérifier en l'origne. On a 
+		\[
+			\left|\frac{\partial f}{\partial x} (x,y) - \frac{\partial f}{\partial x} (0,0) \right| \leq \sqrt{x^2 + y^2} +\frac{{x^2 + y^2} }{\sqrt{x^2 + y^2}} =2 \sqrt{x^2 + y^2}
+	\]
+	et
+	\[
+			\left|\frac{\partial f}{\partial y} (x,y)- \frac{\partial f}{\partial y} (0,0) \right| \leq\frac{{x^2 + y^2} }{\sqrt{x^2 + y^2}} =   \sqrt{x^2 + y^2}
+	\]
+	Ainsi, les dérivée partielles sont continues en l'origine et $f$ est $\mathcal C^1$ sur $\R^2$.
+	\bigskip
+
+
+	\item \'Etudier la  différentiabilité de $f$ en chaque point de $ \R^2$.
+
+\bigskip
+Comme $f$ est $\mathcal C^1$ sur $\R^2$, elle est différentiable partout.
+\bigskip
+
+	\item %Calculer le développement limité de $f$ à l'ordre 1 en $(1,0)$. 
+		En déduire une valeur approchée de $f(1.01,0)$. %$d_{(1, 0) } f ( h_1, h_2)$.
+
+		\bigskip
+
+		La différentielle de $f$ en $(1,0)$ est l'application linéaire $L:\R^2 \to \R$ qui $(h_1,h_2) \mapsto (1 + 1) h_1 + 0\times h_2 =2 h_1$. On a donc le DL
+	\[
+	f(1+h_1,h_2) = f(1,0) + L(h_1,h_2) + o(\|(h_1,h_2\|) = 1 + 2h_1 + o(\|(h_1,h_2)\|)
+\]
+Par suite,   $f(1.01,0) \approx 1+0.02 = 1.02$.
+		\bigskip
+	%\item Sans calculer la hessienne de $f$, déterminer si l'origine est un point de maximum, de minimum, un point selle,
+\end{enumerate}
+
+\exo{} Soit $f(x,y) = \abs{4x^2 + 9y^2 - 8x + 36y + 39}$.% Le but de cet exerci 
+\begin{enumerate}
+	%\item Déterminer les réels $a_1,a_2,c_1,c_2$ et $b$ tels que $f(x , y) = \abs{a_1(x-c_1)^2 + a_2 (y-c_2)^2 -b}$. % Appliquer l'algorithme de la décomposition de Gauss et en déduire le signe de $q$
+	\item Déterminer l'ensemble $ N = \{(x,y) \in \R^2,  4x^2 + 9y^2 - 8x + 36y + 39 <0\}$. 
+	
+		\bigskip
+		On a $N = \{(x,y) \in \R^2,  4(x - 1)^2 + 9(y + 2)^2  <1 \}$. C'est l'intérieur d'une ellipse centrée en $(1,-2)$.
+
+		\bigskip
+	\item Étudier la continuité $f$ et donner l'ensemble image de $f$. 
+
+\bigskip
+		La fonction $f$ est définie et continue sur $\R^2$ (composée d'un polynome et de la valeur absolue). Elle est à valeurs dans $[0,+\infty[$ car le polynôme s'annule (cf question précédente) et n'est pas borné sur $\R^2$.
+\bigskip
+
+	\item Dessiner l'ensemble $L = \{(x,y) \in \R^2 | f(x,y)> 1/2\}$.
+\bigskip
+
+Il faut séparer les cas $N$ et $N^c$. Ainsi, dans $N$ 
+\[
+	f(x,y) = -4x^2 - 9y^2 + 8x - 36y - 39 = -4(x - 1)^2 - 9(y + 2)^2  +1
+\]
+et $L_N = \{(x,y) \in \R^2 | 4(x - 1)^2 + 9(y - 2)^2  <1/2 \}$. Et dans $N^c$ on a 
+\[
+	f(x,y) = 4x^2 + 9y^2 - 8x + 36y + 39 = 4(x - 1)^2 + 9(y + 2)^2  -1
+\]
+et $L_{N^c}= \{(x,y) \in \R^2 | 4(x - 1)^2 + 9(y - 2)^2  > 3/2 \}$. L'ensemble recherché est $L = L_N \cup L_{N^c}$ et est le complémentaire d'une couronne ellipsoïdale centrée en $(1,-2)$.
+	\begin{center}
+			\begin{tikzpicture}[scale=1]
+				\begin{axis}[xlabel=$x$,ylabel=$y$, view={0}{90}, axis equal]%,xtick=\empty,ytick=\empty,ztick=\empty ]
+					\addplot3[name path=poly,samples=100,contour gnuplot={levels={.5},labels=false}] gnuplot {(-4*(x - 1)**2 - 9*(y + 2)**2  +1)};
+					\addplot3[name path=poly2,samples=100,contour gnuplot={levels={.5},labels=false}] gnuplot {-(-4*(x - 1)**2 - 9*(y + 2)**2  +1)};
+					 \fill[blue,use path=poly] (axis cs:.5,-2.5) rectangle (axis cs:1,1);
+				\end{axis}
+			\end{tikzpicture}
+		\end{center}
+
+\bigskip
+
+	\item Sur quel ensemble $f$ est-elle $\mathcal C^\infty$ ? Justifier succintement la réponse.
+	
+		\bigskip
+		Soit  $Z =\{ (x,y) , 4x^2 + 9y^2 - 8x + 36y + 39= 0 \}$. La fonction $f$ est $\mathcal C^\infty$ sur $Z$ (car c'est la composée de 2 fonctions régulières). Sur $Z$, la fonction $f$ n'est pas différentiable (point anguleux dû à la non dérivabilité de la fonction valeur absolue en $0$). Cette dernière affirmation mériterait une étude un peu plus poussée\ldots
+		\bigskip
+
+	\item Donner les points de minimum de $f$ sur $\R^2$. Indiquer, en justifiant, la nature de ces points (minimum global ou local).
+		\textit{Indication: cette question se traitera sans calcul}
+	
+		\bigskip
+	On a vu à la question 2 que $f$ est à valeurs positives. Sur $Z$ elle s'annule. L'ensemble des points de $Z$ sont des minima globaux.
+		\bigskip
+	\item Calculer le gradient et la Hessienne de $f$ en les points de $\R^2$ pour lesquels ces quantités sont bien définies.
+		\bigskip
+
+	Attention: bien séparer les cas $N$ et $N^c\setminus Z$ (car $f$ n'est pas différentiable en $Z$):
+	\[
+		\nabla f(x,y) = \begin{cases}
+		(-8x+8,-18y-36)  \text{ si $(x,y) \in N$}\\
+		(8x-8,18y +36)	 \text{ si $(x,y) \in N^c\setminus Z$}
+		\end{cases}
+	\]
+	et
+	\[
+		\operatorname{Hess}_f (x,y) = \begin{cases}
+			\begin{pmatrix}
+				 -8 & 0 \\ 0 & -18
+			 \end{pmatrix} \text{ si $(x,y) \in N$}\\
+			 \begin{pmatrix}
+				 8 & 0 \\ 0 & 18
+			 \end{pmatrix}\text{ si $(x,y) \in N^c\setminus Z$}
+		\end{cases}
+	\]
+
+		\bigskip
+
+	\item Déterminer alors le(s) point(s) critique(s) de $f$ donner leur nature (minimum/maximum, local/global, point selle,\ldots).
+
+		\bigskip
+On a $\nabla f (x,y) = (0,0)$ si et seulement si $(x,y) =(1,-2)$. La Hessienne en $(1,-2)\in N$ est definie négative et $(1,-2) $ est un maximum local.
+		\bigskip
+	\item Tracer qualitativement le graphe de $f$.
+
+	\begin{center}
+			\begin{tikzpicture}[scale=1]
+				\begin{axis}[xlabel=$x$,ylabel=$y$, view={10}{35}]%,xtick=\empty,ytick=\empty,ztick=\empty ]
+					\addplot3[surf,opacity=.7,samples=50,domain=0:2,y domain=-2.5:-1.5] gnuplot {abs(-4*(x - 1)**2 - 9*(y + 2)**2  +1)};
+				\end{axis}
+			\end{tikzpicture}
+		\end{center}
+\end{enumerate}
+
+
+
+
+
+\bigskip
+
+
+\section{Probabilités}
+
+\exo{(Question de cours)} Soient $X$ et $Y$ deux variables aléatoires réelles discrètes admettant un moment d'ordre 2. Démontrer que l'on a 
+\[
+	\E(XY) \leq  \sqrt{\E(X^2)\E(Y^2)}.
+\]
+
+C'est l'inégalité de Cauchy-Schwarz.
+
+
+\exo{(Lois géométriques)} Soit $X$ et $Y$ deux variables aléatoires indépendantes de lois géométriques de paramètre $0<a<1$ et $0<b<1$ respectivement. On note $Z = \min \left\{ X,Y \right\}$. Le but de l'exercice est de déterminer la loi de $Z$.
+\begin{enumerate}
+	\item Calculer $\P\left( X \leq k \right)$ et $\P\left( Y\leq k\right)$ pour tout $k\in \N^*$.
+
+		\bigskip
+
+		 Par définition, on a $\P\left( X=k \right) = a (1-a)^{k-1}$ pour $k>0$. Cela donne 
+		 \[
+		 \P(X\leq k) = a \sum_{\ell=1}^k (1-a)^{\ell-1} = 1 - (1-a)^{k}
+	 \]
+	 pour $k>0$. De même $\P(Y\leq k) = 1 - (1-b)^{k}$ pour $k>0$.
+	
+		\bigskip
+
+	\item Calculer alors $\P\left( Z\leq k \right)$ pour tout $k \in \N^*$
+
+
+		\bigskip
+
+		On a $\left\{ Z \leq k \right\} = \left\{ X \leq k\right\} \cup \left\{ Y \leq k \right\}$. En utilisant les lois de De Morgan on a $\left\{ Z > k \right\} = \left\{ X > k\right\} \cap \left\{ Y > k \right\}$.  Ainsi, par indépendance de $X$ et $Y$, on a
+		\[
+\P(Z \leq k) = 1 - \P( Z>k) = 1 - \P(X>k)\P(Y>k)  = 1 - (1-a)^k (1-b)^k.
+		\]
+
+
+	\item Soit $k\in\N^*$ fixé. Exprimer l'évènement $\left\{ Z = k \right\}$ en fonction des évènements du type $\left\{ Z\leq \ell \right\}$, $\ell\in \N^*$.
+		\bigskip
+
+		On a $\left\{ Z = k \right\} =  \left\{ Z \leq k \right\} \setminus \left\{ Z \leq k-1 \right\} =  \left\{ Z \leq k \right\} \cap \left\{ Z \leq k-1 \right\}^c$.
+		\bigskip
+	\item En déduire que $Z$ est une variable aléatoire Géométrique dont on déterminera le paramètre.
+		\bigskip
+
+		D'après la question précédente et comme $\left\{ Z \leq k-1 \right\}\subset \left\{ Z \leq k\right\}  $ on a
+		$\P(Z=k ) = \P(Z \leq k ) - \P(Z\leq k-1)$. Ainsi, pour tout $k>0$,
+			\begin{align*}
+				\P(Z= k ) &= 1 - (1-a)^k (1-b)^k - 1 + (1-a)^{k-1} (1-b)^{k-1} \\
+				&= (1-a)^{k-1} (1-b)^{k-1} \left( 1 -(1-a) (1-b) \right) \\
+				&= \big((1-a)(1-b)\big)^{k-1} \left( 1 -\big((1-a) (1-b)\big) \right). 
+			\end{align*}
+			La variable aléatoire $Z$ est une geométrique de paramètre $1 - (1-a)(1-b) = a + b - ab$.
+		\bigskip
+
+\end{enumerate}
+
+
+\end{document}

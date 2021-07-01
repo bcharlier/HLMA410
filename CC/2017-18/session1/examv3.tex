@@ -1,0 +1,408 @@
+\documentclass[a4paper]{tp_um}
+\input{../../TD/header.tex}
+%\input{header.tex}
+\ue{HLMA410}
+
+%-----------------------------------------------------------------------------
+
+\title{\large \sffamily\bfseries Examen}
+
+\begin{document}
+
+\maketitle
+\textit{Durée 3h00. Les documents, la calculatrice, les téléphones portables, tablettes, ordinateurs ne sont pas autorisés. Les exercices sont indépendants. La qualité de la rédaction sera prise en compte.} 
+
+\bigskip
+\bigskip
+
+
+\exo
+\noindent On consid\`ere le domaine $D=\{(x,y,z)\in \R^3\; ;\quad  0\leq z\leq 1, \;\; x^2+y^2\leq z^4\,\}$.
+\begin{enumerate}
+\item Dessiner $D$.
+
+    %\medskip
+
+    %On a $D=\{ (x,y,z)\in \R^3 | 0\leq z\leq 1, \underbrace{0\leq \sqrt{x^2 + y^2} \leq z^2}_{=A_{z^2}}\, \}$. On note $A_{z^2}$ le disque de rayon $z^2>0$.  Le domaine $D$ est donc la partie comprise  au dessus du graphe de la fonction $(x,y)\mapsto (x^2+y^2)^{1/4}$:
+        %\begin{center}
+            %\begin{tikzpicture}[scale=.5]
+                %\begin{axis}[,xlabel=$x$,ylabel=$y$,xmin=-1,xmax=1,xmin=-1,ymax=1,zmin=0, zmax=1]%,xtick=\empty,ytick=\empty,ztick=\empty ]
+                    %% \addplot3[surf,opacity=.7,samples=50, domain=-1:1] gnuplot {( (x**2+y**2) <1)?(x**2 + y**2)**(0.25):3};
+                    %%\addplot[domain = -pi:pi, parametric, samples = 100] gnuplot {sin(t),cos(t)};
+                    %\addplot3[surf,opacity=.7,samples=70, domain=-1:1] gnuplot {( (x**2+y**2) <1)?(x**2 + y**2)**(.25):1};
+                %\end{axis}
+            %\end{tikzpicture}
+        %\end{center}
+\item Calculer son volume $V$.
+
+    %\medskip
+
+     %En appliquant la formule de sommation par tranche on a:
+    %\[
+        %V = \int_0^1 \Big( \underbrace{\iint_{A_{z^2}} dxdy}_{=\pi z^4}\Big)dz % =\int_0^1 \int_0^{z^2} \int_0^{2\pi}d\theta rdr dz 
+        %=  \pi \int_0^1  z^4 dz = \frac \pi 5 
+    %\]
+
+\item Calculer son centre de gravit\'e  $G =  \frac{1}{V} \left( \iiint_D x dxdydz, \iiint_D y dxdydz , \iiint_D z dxdydz \right)$.
+
+%\bigskip
+
+
+    %Le centre de gravité de $D$ appartient clairement à l'axe de révolution $Oz$. On peut se convaincre que les 2 premières coordonnées s'annulent bien, car on a 
+    %\[
+        %\iiint_D x dxdydz =  \int_0^1 \left( \iint_{A_{z^2}} x dxdy \right)dz =  \int_0^1 \big( \int_0^{z^2} r^2 dr \underbrace{\int_0^{2\pi} \cos \theta d\theta}_{=0} \big ) dz =0, 
+    %\]
+    %et
+    %\[
+        %\iiint_D y dxdydz =  \int_0^1 \left( \iint_{A_{z^2}} y dxdy \right)dz =  \int_0^1 \big( \int_0^{z^2} r^2 dr \underbrace{\int_0^{2\pi} \sin \theta d\theta}_{=0} \big ) dz =0 .
+    %\]
+%Reste à déterminer la coordonnée sur $Oz$:
+%\[
+   %\frac 1V \iiint_D z dxdydz = \frac 1V \int_0^1 z \left( \iint_{A_{z^2}} dxdy \right)dz = \frac \pi V \int_0^1 z^5 dz =  \frac 5 6.
+%\]
+%Pour conclure on a $G = (0,0,5/6)$.
+\end{enumerate}
+
+\bigskip
+
+
+\exo{} Un joueur dispose d'un dé et d'une pièce. Le dé est équilibré et la pièce a une probabilité $p$ $(0 < p < 1)$ de tomber sur pile. Le joueur lance d'abord le dé, puis lance la pièce autant de fois que le résutlat du dé.  Il compte enfin le nombre de piles obtenu au cours des lancers. Les résultats de chaque lancer sont indépendants. On note $q= 1-p$.  On note également $D$ la variable aléatoire correspondant à la valeur du dé et $X$ celle correspondant au nombre de piles obtenus à la fin du jeu.
+
+\begin{enumerate}
+    \item  Soit  $i\in \{ 1 ,\cdots, 6 \}$ et $j\in \{ 0,1 ,\cdots, 6 \}$.   Que  vaut $\P ( X = j | D = i)$?
+
+        %\medskip
+
+        %Le nombre $D$ étant fixé à $i$ (probabilité conditionelle), $X$ est le nombre de pile en $i$ lancers. C'est donc le nombre de succès dans $i$ répétition d'un schéma de Bernoulli i.i.d. et  $X \sim \mathcal B(i,p)$. Donc si $j > i$ on a $\P(X= j | D=i) = 0$ et si $0\leq j \leq i$ on a $\P(X=j|D=i) = \binom{i}{j} p^j q^{i-j}$.
+
+        %\medskip
+
+    \item Montrer que $\P(X=0) = \frac q 6 \left( \frac{1-q^6}{1-q} \right) $
+
+        %\medskip
+
+        %Il faut utiliser la formule des probabilités totale (principe de partition)
+        %\[
+            %\P(X=0) = \sum_{i=1}^{6} \P(X=0 |D=i) \P(D=i) = \frac 1 6 \sum_{i=1}^6 q^i = \frac q 6 \left( \frac{1-q^6}{1-q} \right)
+        %\]
+
+        %\medskip
+
+
+    \item Sachant que l'on n'a obtenu aucun pile au cours du jeu, quelle était la probabilité que le résultat du dé était 1?  Évaluer cette quantité quand $ p = q =\frac 1 2$.
+%%\vspace*{8cm}
+
+        %\medskip
+        %Dans cette question on demande de calculer $P(D = 1|X = 0)$. On utilise ici la formule de Bayes:
+        %\[
+            %P(D = 1|X = 0) = \frac{\P(X = 0| D=1) \P(D = 1)}{\P(X=0)} = \frac{\frac q 6}{\frac q 6 \left(\frac{1-q^6}{1-q} \right)} = \frac{1 -q}{1-q^6}.
+        %\]
+        %Dans le cas $p=1/2$ on trouve $32/63 \approx 0.508$.
+        %\medskip
+
+\end{enumerate}
+
+\bigskip
+
+
+\exo{}
+On note $\Delta = ]-\infty,0]\times \{0\}$ et $\mathcal O = \mathbb R^2 \setminus \Delta$
+et on pose: 
+\[
+\begin{array}{rrcl}
+\Phi : & \mathcal O  & \longrightarrow & ]0,\infty[ \times ]-\pi,\pi[  \\
+		& (x,y) & \longmapsto & \left( \sqrt{x^2+y^2}, 2 \arctan\left( \dfrac{y}{x+ \sqrt{x^2+y^2}}\right) \right)
+\end{array}
+\]
+
+\begin{enumerate}
+\item Montrer que $\Delta$ est un ferm\'e de $\mathbb R^2.$ Que peut-on dire de $\mathcal O$?
+
+    %\medskip
+
+%Soit $(x_n,y_n)_{n\in \mathbb N}$ suite de  $\Delta$ convergente dans $\mathbb R^2$ de limite $(\bar x,\bar{y}).$
+%On a $y_n = 0$ et $x_n \leq 0$ pour tout $n \in \mathbb N$ donc, par passage \`a la limite $\bar{y} = 0$ et $\bar{x} \leq 0.$
+%Donc $(\bar{x},\bar{y}) \in \Delta$ et $\Delta$ est un ferm\'e de $\mathbb R^2$. $\mathcal O$ est alors le compl\'ementaire
+%d'un ferm\'e. C'est donc un ouvert.
+
+    %\medskip
+
+ 
+\item Montrer que $\Phi \in \mathcal C^1(\mathcal O)$ et calculer la matrice jacobienne de $\Phi.$ 
+
+    %\medskip
+
+    %Posons \[ \begin{cases} r(x,y) = \sqrt{x^2 + y^2}$  \\ $\theta(x,y) = 2 \arctan({y}/(x+ \sqrt{x^2+y^2)}) \end{cases}\] pour $(x,y) \in \mathcal O.$
+    %De plus, on  a $\mathcal O \subset \mathbb R^2 \setminus \{(0,0)\}$. Sur ce second ensemble, $(x,y) \mapsto (x^2+y^2)$
+%est une fonction polynomiale donc $\mathcal C^1$ qui ne s'annule pas. Comme $t \to \sqrt{t}$ est $\mathcal C^1$ sur $]0,\infty[,$
+%par composition $(x,y) \to r(x,y)$ est $C^1$ sur $ \mathbb R^2 \setminus \{(0,0)\}$ et donc sur $\mathcal O$.
+%De m\^eme, on a que $(x,y) \to x+ \sqrt{x^2+y^2}$ est $\mathcal C^1$ sur $\mathbb R^2 \setminus \{(0,0)\}$ et ne s'annule
+%que pour $y=0$ et $x<0.$ La fraction $(x,y) \to y/(x+ \sqrt{x^2+y^2})$ est donc $C^1$ sur $\mathcal O$
+%et, par composition $(x,y) \to \theta(x,y)$ est $\mathcal C^1$ sur ce m\^eme ensemble.
+
+%Par calcul direct, on obtient:
+%\[
+    %J_{\Phi}(x,y) = \begin{pmatrix} \frac{\partial r}{\partial x} (x,y) & \frac{\partial r}{\partial y}(x,y)  \\  \frac{\partial \theta}{\partial x}(x,y) & \frac{\partial \theta}{\partial y}(x,y)\end{pmatrix}
+%\]
+%avec 
+%\begin{align*}
+%\frac{\partial r}{\partial x}(x,y) &= \dfrac{x}{\sqrt{x^2+y^2}}  \\  
+%\frac{\partial r}{\partial y}(x,y) &= \dfrac{y}{\sqrt{x^2+y^2}} \\
+%\frac{\partial \theta}{\partial x}(x,y) &=  -\dfrac{2y}{y^2 + (x+\sqrt{x^2+y^2})^2}  \left( 1 + \dfrac{x}{\sqrt{x^2+y^2}}  \right) \\
+%\frac{\partial \theta}{\partial y}(x,y) &= \dfrac{2}{y^2 + (x+\sqrt{x^2+y^2})^2} \left( x+ \sqrt{x^2+y^2} - \dfrac{y^2}{\sqrt{x^2+y^2}}\right).
+%\end{align*}
+
+
+ %\medskip 
+
+
+\item En d\'eduire que le déterminant $J$ de la matrice jacobienne de $\Phi$ satisfait $J(x,y) = 1/\sqrt{x^2+y^2}$ pour tout
+$(x,y) \in \mathcal O.$
+
+%\medskip
+
+%On rappelle que $J(x,y) = \det (J_{\Phi}(x,y))$. En rempla\c{c}ant, on obtient que:
+%\[
+%J(x,y) = \dfrac{x}{\sqrt{x^2+y^2}} \frac{\partial \theta}{\partial y}(x,y) - \dfrac{y}{\sqrt{x^2+y^2}} \frac{\partial \theta}{\partial x}(x,y).
+%\]
+%Apr\`es compensation, ceci-donne:
+%\[
+%J(x,y) = \dfrac{1}{\sqrt{x^2+y^2}} \, \dfrac{2}{y^2 + (x+\sqrt{x^2+y^2})^2} \left( x(x+\sqrt{x^2+y^2}) + y^2\right).
+%\]
+%On remarque alors en d\'eveloppant que:
+%\[
+%y^2 + (x+\sqrt{x^2+y^2})^2 = 2 \left( x(x+\sqrt{x^2+y^2}) + y^2 \right) = 2\left(x^2 + y^2 + x\sqrt{x^2+y^2}\right).
+%\]
+%On peut donc simplifier l'expression de $J$ ci-dessus et obtenir le r\'esultat escompt\'e.
+%\bigskip
+\end{enumerate}
+
+\exo{}
+Soit $f : \mathbb R^2 \to \mathbb R$ la fonction d\'efinie par
+\[
+f(x,y) =
+\left\{
+\begin{aligned}
+&\frac{2x^3 + x y^2}{x^2 + y^2} \quad &\text{si } (x,y) \neq (0,0) \\
+& \qquad 0 \quad &\text{si } (x,y) = (0,0)
+\end{aligned}
+\right.
+\]
+\begin{enumerate}
+\item La fonction $f$ est-elle continue?
+
+%\medskip
+
+%Sur $\mathbb R^2 \setminus \{(0,0)\}$, $f$ est une fraction de polynome donc c'est une fonction de classe $\mathcal C^{\infty}.$ Elle est en particulier, continue, admet des d\'eriv\'ees partielles, est diff\'erentiable
+%et est de classe $\mathcal C^1$. On \'etudie donc plus pr\'ecis\'ement la continuit\'e en l'origine. Pour $(x,y) \in \mathbb R^2$ on a 
+%\[
+%|x^2 + y^2| \geq \|(x,y)\|^2_{\infty} \qquad |2x^3+xy^2|  \leq 3 \|(x,y)\|^3_{\infty}
+%\]   
+%Par cons\'equent, $|f(x,y)| \leq 3 \|(x,y)\|_{\infty}.$ Par comparaison, on a donc que $f(x,y) \to 0$ quand
+%$(x,y) \to (0,0)$ et $f$ est donc \'egalement continue en l'origine. 
+
+
+%\medskip
+
+\item La fonction $f$ admet-elle des d\'eriv\'ees partielles? Les calculer.
+
+%\medskip
+
+%On a d\'ej\`a vu que $f$ admet des d\'eriv\'ees partielles en dehors de l'origine et 
+%\begin{align*}
+%\dfrac{\partial f}{\partial x}(x,y) & = \dfrac{6x^2 + y^2}{x^2 +y^2}  - 2 x \dfrac{2x^3 + x y^2}{(x^2+y^2)^2} \\
+%\dfrac{\partial f}{\partial y}(x,y) & = \dfrac{ 2xy}{x^2 +y^2}  - 2y \dfrac{2x^3 + x y^2}{(x^2+y^2)^2}.
+%\end{align*}
+%En l'origine, on remarque que 
+%\[
+%f(x,0) = 2x \quad \forall \, x \in \mathbb R ; \quad f(0,y) = 0 \quad \forall \, y \in \mathbb R,
+%\]
+%qui sont toutes deux d\'erivables en $x=0$ et $y=0$ respectivement. Donc $f$ admet des d\'eriv\'ees partielles en l'origine
+%avec: 
+%\[
+%\dfrac{\partial f}{\partial x}(0,0) = 2 \quad \dfrac{\partial f}{\partial y}(0,0) = 0.    
+%\]
+
+%\medskip
+
+\item La fonction $f$ est-elle diff\'erentiable?
+
+%\medskip
+
+%En dehors de l'origine $f$ est $\mathcal C^1$ donc diff\'erentiable.
+
+%Pour \'etudier la diff\'erentiabilit\'e en l'origine, on remarque que, pour tout $(a,b) \in \mathbb R^2 \setminus \{(0,0)\}$, on a
+%\[
+%f(at,bt) = \dfrac{2a^3 + ab^2}{a^2+b^2} \quad \forall \,  t \in \mathbb R
+%\]
+%qui est d\'erivable en $t=0$ de d\'eriv\'ee $3.$ Par cons\'equent, en $(0,0)$
+%$f$ admet une d\'eriv\'ee selon le vecteur $(a,b)$ qui vaut $f'_{a,b} = (2a^3 + ab^2)(a^2+b^2).$ 
+%Or si $f$ \'etait diff\'erentiable en $(0,0)$ on devrait donc avoir que:
+%\[
+%f'_{a,b} = a \dfrac{\partial f}{\partial x}(0,0)  + b \dfrac{\partial f}{\partial y}(0,0)  = 2a.
+%\]
+%Ceci n'est pas vrai pout $a=1$ et $b=1$ par exemple. Donc $f$ n'est pas diff\'erentiable en l'origine.
+
+%\medskip
+
+\item La fonction $f$ est-elle de classe $\mathcal C^1$?
+
+    %\medskip
+
+%On a d\'ej\`a dit que $f$ est $\mathcal C^1$ en dehors de l'origine. En l'origine $f$ n'est pas diff\'erentiable. 
+%A fortiori elle n'est pas $\mathcal C^1.$
+\end{enumerate}
+
+%\bigskip
+%\noindent
+%{\it Solution.}
+%Sur $\mathbb R^2 \setminus \{ (0,0)\}$ $f$ est de classe $\mathcal C^1$ car fraction rationelle dont le d\'enominateur ne s'annule pas. Ceci implique que sur $\mathbb R^2 \setminus \{ (0,0)\}$ $f$ est aussi diff\'erentiable, admet des d\'eriv\'ees partielles et est continue. De plus on a, pour tout $(x,y) \in \mathbb R^2 \setminus \{ (0,0)\}$,
+%$$
+%\frac{\partial f}{\partial x} (x,y) = \frac{2x^4+5x^2y^2+y^4}{(x^2+y^2)^2} , \quad
+%\frac{\partial f}{\partial y} (x,y) = -\frac{2x^3y}{(x^2+y^2)^2} .
+%$$
+%
+%Montrons que $f$ est continue en $(0,0)$ : pour tout $(x,y) \in \mathbb R^2 \setminus \{ (0,0)\}$ on a
+%$$
+%|f(x,y)| \le \frac{2|x|^3 + |x| |y|^2}{\| (x,y )\|^2} \le \frac{3 \| (x,y )\|^3}{\| (x,y )\|^2}
+%= 3 \| (x,y )\| \xrightarrow[(x,y)\to (0,0)]{} 0 ,
+%$$
+%c'est-\`a-dire que $\lim_{(x,y)\to (0,0)} f(x,y) = 0 = f(0,0)$.
+%
+%Montrons que $f$ admet des d\'eriv\'ees partielles en $(0,0)$ : pour tout $t\neq 0$ on a
+%$$
+%f(t,0) = 2t \quad\text{et}\quad  f(0,t) = 0,
+%$$
+%alors
+%$$
+%\begin{aligned}
+%\frac{\partial f}{\partial x} (0,0) = \lim_{t \to 0} \frac{f(t,0) - f(0,0)}{t} = \lim_{t \to 0} 2 = 2,\\
+%\frac{\partial f}{\partial y} (0,0) = \lim_{t \to 0} \frac{f(0,t) - f(0,0)}{t} = \lim_{t \to 0} 0 = 0.
+%\end{aligned}
+%$$
+%
+%Montrons que $f$ n'est pas diff\'erentiable en $(0,0)$ (et donc que domaine o\`u $f$ est de classe $\mathcal C^1$ est $\mathbb R^2 \setminus \{ (0,0)\}$) : si $f$ \'etait diff\'erentiable on aurait d'une part
+%$$
+%d_{(0,0)} f (h_1, h_2) = 2 h_1, \quad \forall (h_1,h_2) \in \mathbb R^2,
+%$$
+%en utilisant les calculs des d\'eriv\'ees partielles en $(0,0)$ ; d'autre part toutes les d\'eriv\'ees partielles en $(0,0)$ suivant des vecteurs non nuls $(v_1,v_2) \in \mathbb R^2$ existeraient, avec 
+%$$
+%D_{(v_1,v_2)} f (0,0) = d_{(0,0)} f (v_1,v_2) = 2 v_1,
+%$$
+%et en particulier on aurait $D_{(1,1)} f (0,0) = 2$. Par contre, par d\'efinition on a
+%$$
+%D_{(1,1)} f (0,0) = \lim_{t \to 0} \frac{f(t,t) - f(0,0)}{t}
+% = \lim_{t \to 0} \frac{2t^3 + t^3}{t (t^2+t^2)} = \frac{3}{2},
+%$$
+%ce qui est une contradiction.
+
+\bigskip
+
+\exo{}
+Soit $(a,b)\in \mathbb R^2.$ On pose:
+\[
+\begin{array}{rrcl} 
+N: & \mathbb R^2 & \longrightarrow & \mathbb R \\
+	& (x,y) & \longmapsto & a \|(x,y)\|_{\infty} + b\|(x,y)\|_1
+\end{array}
+\] 
+\begin{enumerate}
+    \item Dans cette question, on considère un cas particulier en posant $a=-1$ et $b=1$.
+\begin{enumerate}
+    \item Tracer alors $L$, l'ensemble de niveau 1 de $N$.  
+    
+%\medskip
+%On a alors
+%$N(x,y) = \begin{cases}
+    %\abs{x} \text{ si }  \abs{x} \leq \abs{y} \\
+    %\abs{y} \text{ si }  \abs{x} > \abs{y} 
+%\end{cases}$. On demande de tracer $L = \{ (x,y) \in \R^2 | N(x,y) =1 \}$ qui est en rouge sur le dessin suivant:
+        %\begin{center}
+            %\begin{tikzpicture}[scale=3]
+                %\def\xone{-1.2}
+                %\def\xtwo{1.2}
+                %\def\yone{-1.2}
+                %\def\ytwo{1.2}
+%% grid
+                %\draw[step=.2cm,help lines,gray!50] (\xone,\yone) grid (\xtwo,\ytwo);
+                %\draw[thin,->] (\xone-.1, 0) -- (\xtwo+.1, 0) node[right] {$x$};
+                %\draw[thin,->] (0, \yone-.1) -- (0, \ytwo+.1) node[above] {$y$};
+		
+                %\draw (.4,-0.01) node {$\bullet$} ;
+		%\draw (.4,0) node [below]{$(1,0)$} ;  
+
+                %\draw (0,.4-0.01) node {$\bullet$} ;
+                %\draw (0,.4) node [below]{$(0,1)$} ;  
+
+                   %\draw [black]  (\xone,\xone) -- (\xtwo,\xtwo) ;
+                   %\draw [black]  (\yone,-\yone) -- (\ytwo,-\ytwo) ;
+
+                  %\draw [red, very thick]  (.4,.4) -- (.4,\ytwo) ;
+                  %\draw [red, very thick]  (-.4,.4) -- (-.4,\ytwo) ;
+                  %\draw [red, very thick]  (.4,-.4) -- (.4,-\ytwo) ;
+                  %\draw [red, very thick]  (-.4,-.4) -- (-.4,-\ytwo) ;
+
+                  %\draw [red, very thick]  (-.4,.4) -- (-\xtwo,.4) ;
+                  %\draw [red, very thick]  (-.4,-.4) -- (-\xtwo,-.4) ;
+                  %\draw [red, very thick]  (.4,.4) -- (\xtwo,.4) ;
+                  %\draw [red, very thick]  (.4,-.4) -- (\xtwo,-.4) ;
+		  %%\draw [green] (-2/5,-1/5) -- (1/5,-2/5) -- (2/5,1/5)--  (-1/5,2/5) -- cycle ; 
+						  
+            %\end{tikzpicture}
+        %\end{center}
+
+%\medskip
+
+    \item $N$ est définit-elle une norme?
+
+        %\medskip
+        %Non, $N$ n'est pas séparable: on a par exemple $N(0,1) = 0$.
+        %\medskip
+        
+\end{enumerate}
+
+
+\item On revient au cas général avec $a,b\in\R$. On suppose que $N$ est  une norme: montrer qu'alors $a+b > 0$ et $(a+2b) > 0$.
+
+%\medskip
+
+%Si $N$ est une norme alors $N(1,0) > 0$ et $N(1,1) > 0.$
+%Or $N(1,0) = a+b$ et $N(1,1) = a+2b.$ 
+
+
+%\medskip
+
+\item On suppose maintenant que $(a,b) \in [0,+\infty[^2 \setminus \{(0,0)\}.$
+L'application $N$ est-elle une norme? 
+
+%\medskip
+
+%On v\'erifie les diff\'erents axiomes de la norme. 
+%\begin{itemize}
+%\item $N$ est séparable: En effet, pour tout $(x,y) \in \mathbb R^2$ on a $\|(x,y)\|_1 \geq \|(x,y)\|_{\infty} \geq 0$ 
+%donc, comme $a$ et $b$ sont positifs $N(x,y) \geq 0.$ De plus, si $N(x,y) = 0$ alors, 
+%si $a >0,$ $\|(x,y)\|_{\infty}  \leq N(x,y)/a = 0$ donc $(x,y) = (0,0);$  sinon $b >0$ et $\|(x,y)\|_1 \leq N(x,y)/b = 0$
+%donc \`a nouveau $(x,y) = (0,0).$
+%\item $N$ est homog\`ene: En effet, pour tout $(x,y) \in \mathbb R^2$ et $\lambda \in \mathbb R$ on a:
+%\begin{align*}
+%N(\lambda x, \lambda y) & = a \|(\lambda x,\lambda y)\|_{\infty} + b \|(\lambda x, \lambda y)\|_{1} \\
+				%& = a |\lambda| \|(x,y)\|_{\infty} + b |\lambda \|(x,y)\|_1 \\
+				%& = |\lambda |  N(x,y).
+%\end{align*}
+%\item $N$ satisfait l'in\'egalit\'e triangulaire.
+%En effet, pour tout $(x,y) \in \mathbb R^2$ et $(x',y') \in \mathbb R^2$ on a:
+%\begin{align*}
+%\|(x+x',y+y')\|_{1} \leq \|(x,y)\|_1 + \|(x',y')\|_1\\ 
+%\|(x+x',y+y')\|_{\infty} \leq \|(x,y)\|_{\infty} + \|(x',y')\|_{\infty}\\ 
+ %\end{align*}
+ %en multipliant ces inégalité par $a$ et $b$ (positifs) et en les ajoutant, on obtient:
+%\begin{multline*}
+%a \|(x+x',y+y')\|_{\infty} + b \|(x+x',y+y')\|_{1}  \\ \leq  \left(a\|(x,y)\|_{\infty}  + b\|(x,y)\|_1\right) +  \left( a \|(x',y')\|_{\infty} + b \|(x',y')\|\right)
+ %\end{multline*}
+ %soit 
+ %\[
+ %N(x+x',y+y') \leq N(x,y) + N(x',y').
+ %\]
+\end{itemize}
+
+\end{document}

@@ -1,0 +1,191 @@
+\documentclass[a4paper]{article}
+\input{../../td/header.tex}
+
+%-----------------------------------------------------------------------------
+\begin{document}
+
+\noindent Université Montpellier 2 \hfill Année 2014-2015
+
+\noindent HLMA 410
+ 
+
+
+\bigskip
+
+\begin{center}
+{\large \sffamily\bfseries Contrôle continu 2}
+\end{center}
+
+%\textit{Durée 1h30. Les documents, la calculatrice, les téléphones portables, tablettes, ordinateurs ne sont pas autorisés. La qualité de la rédaction sera prise en compte.} 
+
+\bigskip
+\bigskip
+
+\exo{(Question de cours)} Soit $E$ et $F$ deux espaces vectoriels normés et $a\in E$. 
+
+
+\begin{enumerate}
+	\item Donner la définition de la dérivée directionnelle d'une fonction $f:E\to F$. Une fonction qui admet des dérivées partielles en $a$ est-elle nécessairement continue en $a$ (justifier) ?
+\medskip
+		\begin{enumerate}
+			\item Soient $\U$ un ouvert de $E$ et soit $a\in \U$ et $v\in E$ avec $v\neq 0$. On dit que $f$ admet une dérivée en $a$ suivant la direction $v$ si l'application $t\mapsto f(a+tv) $ est dérivable en $0$. Dans ce cas on note :
+\[
+	D_v f(a) = \lim_{t\to 0} \frac{f(a+tv) - f(a)}{t}.
+\]
+			\item Non, prendre $f:\R^2 \to \R $ définie par $f(x,y)= \begin{cases}\frac{xy}{x^2+y^2}, &\text{si $(x,y) \neq (0,0)$} \\ 0, & \text{si $(x,y) =(0,0)$ }\end{cases} $ qui admet des dérivées partielles en $a=(0,0)$ mais n'est pas continue en $(0,0)$.
+		\end{enumerate}
+
+\medskip
+
+	\item Donner la définition d'un $\reg{1}$-difféomorphisme de $E$ sur $F$. En donner une caractérisation (autrement dit, énoncer le ``théorème d'inversion globale'').
+
+\medskip
+		\begin{enumerate}
+			\item Soient $\U$ un ouvert de $E$ et $\mathcal V$ un ouvert de $F$. On dit que $f$ est un $\Cc^1$-difféomorphisme de $\U$ vers $\mathcal V$ si $f$ est une bijection de classe $\Cc^1$ de $\U$ sur $\mathcal V$  dont la réciproque $f^{-1}$ est de classe $\Cc^1$ sur $\mathcal V$.
+\item Soit $\U$ un ouvert de $E$ et $f:\U \to F$ une application injective de classe $\Cc^1$. Alors $f$ définit un $\Cc^1$ difféomorphisme du $\U$ sur $f(\U)$ si et seulement si $d_a f$ est un isomorphisme pour tout $a\in\U$.
+		\end{enumerate}
+\medskip
+\end{enumerate}
+
+
+\exo{Forme quadratique} Les formes quadratiques suivantes sont elles positives? sont elles définies ? :
+\begin{enumerate}
+	\item $q(x,y,z,t) = 2xz + 2xy +x^2 + 2tx$
+	\begin{align*}
+		q(x,y,z,t)& =  (x^2 + 2x\left( z+y+t \right) +{\color{gray} \left( z+y+t \right)^2} ) - {\color{gray} \left( z+y+t \right)^2} \\
+		& = (x+y+z+t)^2 - (z+y+t)^2
+	\end{align*}
+	N'est pas définie car $q(0,1,0,-1) = 0$ et n'est pas positive car  $ q(3,-1,-1,-1) < 0 < q(1,0,0,0) $.
+\medskip
+	
+\item $q(x,y,z) = -2(x+y)^2 + (x+y+z)^2 + (x+y-z)^2$
+	\medskip 
+
+	Attention, la décomposition n'est pas en somme de carrée de formes linéaires indépendantes. Il faut développer :
+	\begin{align*}
+		q(x,y,z) =  2 z^2
+	\end{align*}
+	C'est donc clairement un forme quadratique positive. Mais elle n'est pas définie car $q(1,0,0) = 0 $.
+\medskip
+
+	\item $q(x,y)=e^{\sqrt{\pi}} x^2 + \ln(1+e) y^2 - xy$
+		
+		\medskip
+
+On peut utiliser la méthode des mineurs pour éviter des calculs fastidieux. La matrice associée à $q$ est
+\[
+	\begin{pmatrix}
+		e^{\sqrt{\pi}} & -1/2 \\ -1/2 & \ln(1+e) 
+	\end{pmatrix}
+\]
+Avec les notations du cours : on a $\Delta_1 =e^{\sqrt{\pi}} x^2  >0$ et $\Delta_2 = 	e^{\sqrt{\pi}}\ln(1+e) -1/4 >0$ (car $\sqrt{\pi} >0$ implique $e^{\sqrt{\pi}}>1$ et $1+e >e$ implique $\ln(1+e)>1$)  et $q$ est définie positive.
+\end{enumerate}
+
+\bigskip
+
+
+%\exo{Valeur absolue}
+%\begin{enumerate}
+%\item 		Rappeler la définition de la valeur absolue.
+%\vspace*{3cm}
+%\item 		Démontrer que la valeur absolue est bien une norme sur $\R$.
+%\vspace*{7cm}
+%\item 		Est-ce la seule norme sur $\R$ ?
+%\vspace*{5cm}
+%\end{enumerate}
+
+\exo{(\'Etude de fonctions de plusieurs variables)}Soit $m\in \N\setminus \left\{ 0 \right\}$ et $f : \R^2 \to \R$ la fonction définie comme suit :
+\[
+	f(x,y) = \begin{cases}
+		\frac{x^m y^2}{x^2 + y^2} \text{ si } \R^2 \setminus \{ (0, 0) \} \\
+		0 \text{ sinon}.
+	\end{cases}
+\]
+
+\begin{enumerate}
+	\item  Étude de la fonction sur $\R^2 \setminus \{ (0, 0) \}$ :
+		\begin{enumerate}
+			\item Montrer que $f$ est continue sur $\R^2 \setminus \{ (0,0) \}$ pour tout $m \in \N\setminus \left\{ 0 \right\}$ 
+	\medskip 
+
+$f$ est continue sur $\R^2 \setminus \{ (0,0) \}$ car quotient de fonctions continues dont le dénominateur ne s’annule pas.
+\medskip
+
+			\item Calculer le gradient de $f$ pour $(x, y) \in \R^2 \setminus \{ (0, 0) \}$ pour tout $m \in \N\setminus \left\{ 0 \right\}$ ;
+				
+				\medskip
+
+				\begin{align*}
+					\frac{\p f}{\p x} (x,y) = \frac{x^{m-1} y^2 \left( mx^2 + my^2 -2x^2\right)}{ (x^2+y^2)^2} \\
+					\frac{\p f}{\p y} (x,y) = \frac{2 x^{m+2} y }{ (x^2+y^2)^2}
+				\end{align*}
+	\medskip		
+			\item Montrer que $f$ est de classe $\reg{1}$ sur $\R^2 \setminus \{ (0, 0) \}$ pour tout $m \in \N\setminus \left\{ 0 \right\}$ ;
+
+				\medskip
+
+$f$ est continue et dérivable sur $\R^2 \setminus \{ (0, 0) \}$. Ses dérivées partielles sont continues sur $\R^2 \setminus \{ (0, 0) \}$ car quotients de
+fonctions continues dont les dénominateurs ne s'annulent pas. Alors $f$ est de classe $\Cc^1 (\R^2 \setminus \{ (0, 0) \} )$.
+
+\medskip
+
+			\item Que peut-on conclure sur la différentiabilité de $f$ sur $\R^2 \setminus \{ (0, 0) \}$ ?
+
+\medskip
+
+Comme $f$ est de classe $\Cc^1 (\R^2 \setminus \{ (0, 0) \} )$ alors $f$ est différentiable sur sur $\R^2 \setminus \{ (0, 0) \} $.
+
+\medskip
+		\end{enumerate}
+	\item  Étude de la fonction en $(0, 0)$ :
+		\begin{enumerate}
+			\item Pour quelles valeurs de $m\in\N\setminus \left\{ 0 \right\}$ la fonction $f$ est-elle continue en $(0, 0)$ ?
+				
+				\medskip
+
+				Pour que $f$ soit continue en $(0, 0)$ il faut que  $\lim_{(x,y) \to (0,0)} f(x,y) = 0$. En passant en coordonnées polaires  on a 
+				\[
+					\abs{f(x,y) } \leq r^m 
+				\]
+Le membre de droite de l'inégalité $r^m \xrightarrow[ (x,y) \to (0,0)]{} 0  $ pour tout $m \in \N^*$. Donc (théorème des gendarmes) $f$ est continue en $(0, 0)$ pour tout $m \in \N^* $.
+
+			\item La fonction $f$ admet-elle des dérivées partielles en $(0, 0)$ pour tout $m\in\N\setminus \left\{ 0 \right\}$ ? si oui, les calculer.
+				
+				\medskip
+
+Le gradient de $f$ en $(0, 0)$ est le vecteur de composantes
+\begin{align*}
+	\frac{\p f}{\p x} (0,0) =  \lim_{h\to 0} \frac{f(h,0) - f(0,0)}{h} = 0\\
+\frac{\p f}{\p y} (0,0) =  \lim_{k\to 0} \frac{f(0,k) - f(0,0)}{k} = 0
+				\end{align*}
+
+			\item Pour quelles valeurs de $m\in\N\setminus \left\{ 0 \right\}$ la fonction $f$ est-elle différentiable en $(0, 0)$ ?
+				
+				\medskip
+
+				$f$ est différentiable en (0, 0) si et seulement si $\lim_{(h,k) \to (0,0)} \frac{f(h,k) - f(0,0) -	\frac{\p f}{\p x} (0,0) h -	\frac{\p f}{\p y} (0,0)  k}{ \sqrt{h^2 + k^2} } = 0  $.
+				On note $r(h,k) = \frac{f(h,k) - f(0,0) -	\frac{\p f}{\p x} (0,0) h -	\frac{\p f}{\p y} (0,0)  k}{ \sqrt{h^2 + k^2} } = \frac{ h^m k^2}{(h^2 + k^2)^{3/2} }$.
+				\begin{enumerate}
+					\item Si $m=1$ : $r(k,k) = 1/2^{3/2} \neq 0$ et $f$ n'est pas différentiable en $(0,0)$.
+					\item Si $m>1$ : $\abs{r(h,k)} \leq r^{m-1}\xrightarrow[ (x,y) \to (0,0)]{} 0 $ et $f$ est bien différentiable en $(0,0)$.
+				\end{enumerate}
+\medskip
+
+			\item Pour quelles valeurs de $m\in\N\setminus \left\{ 0 \right\}$ la fonction $f$ est-elle de classe $\reg{1}$ en $(0, 0)$ ?
+				\begin{enumerate}
+					\item si $m = 1$, $f$ n'est pas différentiable en $(0, 0)$ donc elle n'est pas de classe $\reg 1$.
+					\item si $m>1$, on vérifie que les dérivées partielles sont continues en $(0,0)$. En passant en coordonnées polaires  on a :
+						\[
+							\abs{	\frac{\p f}{\p x}(x,y) } \leq m r^{m-1} \text{ et } \abs{	\frac{\p f}{\p y}(x,y) } \leq 2 r^{m-1} 
+						\]
+						On en déduit (théorème des gendarmes) que $\lim_{(x,y) \to (0,0)} \frac{\p f}{\p x}(x,y) =  0 $ et $\lim_{(x,y) \to (0,0)} \frac{\p f}{\p y}(x,y) =  0 $. La fonction $f$ est donc de classe $\reg 1$ sur $\R^2$.
+				\end{enumerate}
+
+
+		\end{enumerate}
+\end{enumerate}
+%faccanoni 4.39 p108
+
+%\exo{(Différentielle)} Pour $( x,y,z)\in \R^3$ on note : $f(x,y,z) = (\cos(xy) \cos(z),(1+x^2)^{yz} )$. Montrer que la fonction $f$ est différentiable au point $(a,1,0)$ pour tout $a$ de $\R$ puis calculer sa différentielle en ce point.
+
+\end{document}

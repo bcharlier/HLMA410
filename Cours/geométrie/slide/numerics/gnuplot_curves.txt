@@ -1,0 +1,52 @@
+set parametric
+set size square
+
+
+
+set trange[0:pi]
+set xlabel "x"
+set ylabel "y"
+p t*cos(3*t), t*sin(3*t)
+
+set urange[0:pi]
+set xlabel "x"
+set ylabel "y"
+sp u*cos(3*u), u*sin(3*u), u
+
+
+
+set urange[-10:10]
+set xlabel "x"
+set ylabel "y"
+sp cos(u)/cosh(u), sin(u)/cosh(u),sinh(u)/cosh(u)
+
+set urange[0:2*pi]
+set xlabel "x"
+set ylabel "y"
+sp cos(u) + 2*cos(2*u), sin(u) - 2*sin(2*u),-2*sin(3*u)
+
+
+
+
+set size square
+set urange[-10:10]
+set xrange[-10:10]
+set yrange[-10:10]
+set zrange[-10:10]
+set xlabel "t"
+set ylabel "x"
+set zlabel "y"
+set isosample 20
+sp u, u,u with points, u, u,u 
+
+set size square
+set urange[-pi/2:pi/2]
+set xrange[-10:10]
+set yrange[-10:10]
+set zrange[-10:10]
+set xlabel "t"
+set ylabel "x"
+set zlabel "y"
+set isosample 20
+sp u, sin(u)/cos(u),sin(u)/cos(u)with points, u, sin(u)/cos(u),sin(u)/cos(u)
+

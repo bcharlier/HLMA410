@@ -1,0 +1,201 @@
+\documentclass[a4paper]{tp_um}
+\input{../../TD/header.tex}
+\ue{HLMA410}
+%-----------------------------------------------------------------------------
+
+\title{\large \sffamily\bfseries Contrôle continu 1}
+
+\begin{document}
+
+\maketitle
+\textit{Durée 1h30. Les documents, la calculatrice, les téléphones portables, tablettes, ordinateurs ne sont pas autorisés. La qualité de la rédaction sera prise en compte.} 
+
+\bigskip
+\bigskip
+
+\exo{(Question de cours)}Calculer la moyenne et la variance d'une variable aléatoire suivant une loi de Poisson de paramètre $\lambda>0$. (On demande la démonstration complète)
+
+\bigskip
+On a $\P(X=i) = \frac{\lambda^i}{i!} e^{-\lambda}$ pour tout $i\in\N$.
+
+\begin{itemize}
+	\item On a:
+		$$ \mathbb{E} (X) = \sum_{i=0}^{+ \infty} i \frac{\lambda^i}{i!}e^{-\lambda}  = e^{-\lambda} \sum_{i=1}^{+ \infty} \frac{\lambda^i}{(i-1)!} =e^{-\lambda}  \, \lambda \, \sum_{j=0}^{+ \infty} \frac{\lambda^j}{j!} = \lambda. $$
+
+
+	\item Calculons d'abord:
+		$$ \mathbb{E} \big( X (X-1) \big) = \sum_{i=0}^{+ \infty} i (i-1) e^{-\lambda} \frac{\lambda^i}{i!} = e^{-\lambda} \sum_{i=2}^{+ \infty} \frac{\lambda^i}{(i-2)!} =e^{-\lambda}  \, \lambda^2 \, \sum_{j=0}^{+ \infty} \frac{\lambda^j}{j!} = \lambda^2, $$
+		ce qui nous permet d'obtenir:
+		$$ \mathbb{V} (X) = \mathbb{E}(X^2) - [\mathbb{E}(X)]^2 = \mathbb{E} \big( X (X-1) \big) + \mathbb{E}(X) - [\mathbb{E}(X)]^2 =  \lambda^2 + \lambda - \lambda^2 = \lambda.$$
+\end{itemize}
+On remarque que, pour une variable aléatoire de Poisson, le paramètre représente à la fois la moyenne et la variance.
+
+\exo{} On jette 2 dés équilibrés.
+\begin{enumerate}
+\item Quelle est la probabilité qu'au moins l'un d'entre eux montre 6, sachant que les 2 résultats sont différents?
+
+	On a $\Omega = \left\{ 1,\cdots,6 \right\}^2$ munie de la probabilité uniforme. On note $\neq$ l'évènement ``les deux résultats sont différents''. 
+	\[
+		\P\left( \bigcup_{i=1}^5 (i,6) \cup \bigcup_{i=1}^5 (6,i) \bigg\vert \neq \right) = \frac{5+5}{36 -6} = \frac 1 3.
+	\]
+
+\item Quelle est la probabilité qu'au moins l'un d'entre eux montre 6, sachant
+que leur somme vaut $i$ ? Calculer le résultat pour toutes les valeurs possibles de $i$.
+
+\bigskip
+
+Soient $X$ le résultat du premier tirage et   $Y$ le résultat du second tirage. On pose $A = \left\{ X=6 \right\} \cup \left\{ Y=6 \right\}$. Les résultats possibles de $S = X+Y$ sont $i = 2,3,\cdots,12$. On cherche la valeur de $\P(A | S = i)$ en fonction de $i$.
+\begin{align*}
+	\P(A | S=i) & = 0, \qquad \forall i =2, \cdots,6 \\
+\P(A | S=7) &= \P( \left\{ (1,6) \right\} \cup \left\{ (6,1) \right\} | S=7 ) = \frac 1 3,\\
+\P(A | S=8) & = \frac 2 5 ,\\
+\P(A | S=9) & = \frac 1 2 ,\\
+\P(A | S=10)& = \frac 2 3 ,\\
+\P(A | S=11) & = \P(A| S=12) =1.
+\end{align*}
+
+
+\end{enumerate}
+%1.9
+
+\exo{} Une machine à sous fonctionne de la manière suivante : on introduit une pièce de 1 euro et 3 roues se mettent à tourner : ces roues représentent les dix chiffres de 0 à 9 et chaque roue s'arrête en montrant un chiffre au hasard. Si les trois chiffres sont différents, le joueur perd sa mise ; s'il y a un "double", le joueur récupère sa mise plus deux euros ; s'il y a un "triple", le joueur récupère sa mise plus $a$ euros.
+\begin{enumerate}
+\item Soit $X$ la variable aléatoire associée au gain d'un joueur. Déterminer la loi de $X$.	
+
+\bigskip
+
+
+	Le support de $X$ est $\left\{ -1, 2, a \right\}$. On a:
+	\begin{align*}
+		\P\left( X=2 \right) &= \frac{9 \times 10 \times 3}{10^3} = 0.27,  && \begin{cases}\text{nbre de places possible pour l'élément singulier}\\ \text{nbre de possibilités pour l'élément singulier}\\ \text{nbre de possibilités pour l'élément doublé}\end{cases} \\
+		\P\left( X=a \right) &= \frac{10 }{10^3} = 0.01,  && \begin{cases}\text{nbre de possibilités pour l'élément triplé.}\end{cases}\\
+		\P\left( X=2 \right) &= \frac{9 \times 10 \times 8}{10^3} = 0.72,  && \begin{cases}\text{nbre d'injections de $\left\{ 1,2,3\right\}$ dans $\left\{ 1,\cdots,10 \right\}$.}\end{cases}
+	\end{align*}
+
+\item On dit que le jeu est favorable au propriétaire de la machine si l'espérance de gain du joueur est négative. Jusqu'à quelle valeur de $a$ le jeu est-il favorable au propriétaire de la machine ?	
+
+\bigskip
+
+
+	$\E(X) = 0.01 (18 +a)$. Le jeu est donc favorable au propriétaire de la machine pour $a <18$.
+\end{enumerate}
+%TD3 cucala
+
+%\exo{} Dans un pays où il naı̂t autant de filles que de garçons, le docteur Gluck prévoit le sexe des enfants à naı̂tre. Il se trompe 1 fois sur 10 si c'est un garçon et 1 fois sur 20 si c'est une fille. Aujourd'hui il vient de dire à Mme Parisod qu'elle aurait une fille. Quelle est la probabilité pour que cela soit vrai?  %1.13
+%\vspace*{8cm}
+
+\exo{} 0n r\'ealise une suite de lancers ind\'ependants d'une pi\`ece \'equilibr\'ee, chaque
+lancer amenant donc ``Pile'' ou ``Face'' avec la probabilit\'e $1/2$.
+
+On note $P_k$ (resp. $F_k$) l'\'ev\'enement~: ``on obtient Pile (resp. Face) au
+$k$-i\`eme lancer''. Pour ne pas surcharger l'\'ecriture on \'ecrira, par exemple,
+$P_1 F_2$ \`a la place de $P_1\cap F_2$.
+On note $X$ la variable al\'eatoire qui prend la valeur $k$ si l'on obtient, pour
+la premi\`ere fois, ``Pile'' puis ``Face'' dans cet ordre aux lancers $k-1$ et
+$k$ ($k$ d\'esignant un entier sup\'erieur ou \'egal \`a $2$), $X$ prenant la valeur
+$0$ si l'on n'obtient jamais une telle succession.
+
+%On note $Y$ la variable al\'eatoire qui prend la valeur $k$ si l'on obtient, pour
+%la premi\`ere fois, ``Pile'' suivi de ``Pile'' aux lancers $k-1$ et $k$ ($k$
+%d\'esignant un entier sup\'erieur ou \'egal \`a $2$), $Y$ prenant la valeur $0$ si l'on
+%n'obtient jamais une telle succession.
+%
+%L'objet de l'exercice est de calculer les esp\'erances de $X$ et $Y$ et de
+%v\'erifier que, ``contre toute attente'', $E(Y) > E(X)$.
+L'objet de l'exercice est de calculer l'esp\'erances de $X$ (i.e. la durée moyenne d'une partie)
+\begin{enumerate}
+
+\item  Calculer $\P(X=2)$.
+	
+\bigskip
+
+
+
+	On a $\P(\left\{ X=2 \right\}) = \P(P_1 F_2) = 1/4$ par indépendance. 
+
+\bigskip
+
+
+
+\item  Soit $k$ un entier sup\'erieur ou \'egal \`a $3$.
+
+ \begin{enumerate}
+\item Remarquer que  que si le premier lancer est un ``Pile'', alors il faut et il suffit que $P_2 P_3 \dots P_{k-1}F_k$ se
+	r\'ealise pour que $\{X=k\}$ se r\'ealise.  En d\'eduire que~: $\forall k\ge 3$, on a $\P(X=k)={1\over 2} \P(X=k-1)+{1\over
+2^k}$
+
+\bigskip
+
+
+
+
+Les évènements $P_1$ et $P_1^c$ forment un système complet. On a donc
+\begin{align*}
+	\P( \left\{ X=k \right\}) & = 	\P( \left\{ X=k\right\} \cap P_1 ) + 	\P( \left\{ X=k \right\} \cap P_1^c) \\
+	& = \P( P_2 P_3 \cdots P_{k-1}F_k \cap P_1) + \P( \left\{ X=k \right\} | F_1) \P(F_1) \\
+	& = \P( P_2 P_3 \cdots P_{k-1}F_k) \P(P_1) + \P(\left\{ X = k-1 \right\}) \times \frac 1 2 \\
+	& = {1\over 2^k} + {1\over 2} \P(X=k-1)
+\end{align*}
+
+
+
+\item On pose, pour tout entier $k$ sup\'erieur ou \'egal \`a $2$, $u_k= 2^k\P(X = k)$. D\'eterminer $u_k$,
+	
+\bigskip
+
+
+
+
+On a	$ u_k = 2^k  \P( \left\{ X=k \right\}) =  2^{k-1} \P(\left\{ X = k-1 \right\})+1 = u_{k-1} +1$. On reconnaît une suite arithmétique de raison 1. Ainsi $u_k = k-1$ pour tout $k\geq 2$.
+
+\bigskip
+
+
+
+
+\item Donner alors la loi de $X$.
+
+	\bigskip
+En compilant les résultats de la question 1) et 2 b) on a  $\P(X=k)= \frac{u_k}{2^k} = \frac{k-1}{2^k} $ pour $k\geq 2$.
+\bigskip
+
+\end{enumerate}
+\item Montrer que $X$ a une esp\'erance, not\'ee $\E(X)$, et la calculer.
+
+\bigskip
+
+La variable aléatoire $X$ admet bien une espérance car la série de terme générale $\frac{k(k-1)}{2^k} $ est convergente.
+On a ;
+\begin{align*}
+	\E(X) &= \sum_{k=2}^{+ \infty} k (k-1) (1/2)^{k} = \frac 1 4 \rst{\sum_{k=0}^{+ \infty} k (k-1) x^{k-2} }{x=1/2 } \\
+	& =  \frac 1 4\rst{\sum_{k=0}^{+ \infty} \frac{\partial^2}{\partial x^2}x^{k} }{x=1/2 }  \\
+	& = \frac 1 4 \rst{ \frac{\partial^2}{\partial x^2}(1-x)^{-1} }{x=1/2 } \\
+	& = \frac 2 4 \rst{ (1-x)^{-3} }{x=1/2 } \\
+	& = \frac{2 \times 8}{4} = 4
+\end{align*}
+
+En moyenne, une partie dure 4 lancers.
+
+%
+%\qsquest
+%Montrer que $(F_1, P_1P_2, P_1F_2)$ est un syst\`eme complet d'\'ev\'enements.
+%
+%\squest
+%En d\'eduire que, pour pour tout entier $k$ sup\'erieur ou \'egal \`a $4$~:
+%$$P(Y=k)= {1\over 2} P(Y=k-1) + {1\over 4} P(Y=k-2)$$
+%
+%\squest
+%On pose, pour tout entier $k$ sup\'erieur ou \'egal \`a $2$, $v_k=P(Y=k)$.
+%
+%D\'eterminer $v_2$ et $v_3$ puis montrer qu'en posant $v_0=1$ et $v_1=0$, on a,
+%pour tout entier $k$ sup\'erieur ou \'egal \`a $2$~: $\displaystyle v_k={1\over 2}
+%v_{k-1} + {1\over 4} v_{k-2}$.
+%
+%\squest
+%En d\'eduire la suite $(v_k)_{k\ge 0}$, puis donner la loi de $Y$.
+%
+%\squest
+%Montrer que $Y$ a une esp\'erance, not\'ee $E(Y)$, et la calculer.
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,29 @@
+\begin{tikzpicture}[]
+\def\dinf{1};
+\def\dsup{5};
+\begin{axis}[
+		width=0.45\textwidth,
+		height=0.35\textwidth,
+		axis y line=middle,
+		axis x line=middle,
+		%y post scale=.24,
+		%x post scale=.6,
+		xlabel={$E$},
+		ylabel={$f^X$},
+		every axis x label/.style={at={(current axis.right of origin)},anchor=west},
+		y label style={at={(current axis.above origin)},anchor= east},
+	ytick={0,.25},
+		yticklabels={0,$\frac{1}{n}$},
+		xtick={1,1.5,5},
+		xticklabels={$x_1$,$x_2$,$x_n$},
+		enlargelimits, %needed to avoid a bug in fillbetween pkg
+		after end axis/.code={},
+		samples at={0,...,9},
+	ymin=0,ymax=.3,	
+	xmin=-1,xmax=5.5,	
+]
+\tikzset{declare function={unif(\k,\n)=1/ (\k-\n);}} 
+\addplot [ycomb,thick,samples at={\dinf,\dinf+.5,...,\dsup},blue] {unif(\dsup,\dinf)}; %\addlegendentry{$p=0.2$}
+
+\end{axis}
+\end{tikzpicture}

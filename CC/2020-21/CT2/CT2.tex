@@ -1,0 +1,120 @@
+\documentclass{tp_um}
+\input{../../TD/header.tex}
+\newcommand{\miniscule}{\@setfontsize\miniscule{5}{6}}
+
+%\def\version{eno}
+\def\version{cor}
+%-----------------------------------------------------------------------------
+
+\title{\large \sffamily\bfseries Contrôle Terminal}
+\ue{HLMA410}
+
+
+%-----------------------------------------------------------------------------
+\begin{document}
+
+\maketitle
+\textit{Durée 1h30. Les documents, la calculatrice, les téléphones portables, tablettes, ordinateurs ne sont pas autorisés. Les exercices sont indépendants. La qualité de la rédaction sera prise en compte.} 
+
+\bigskip
+\bigskip
+
+\exo{} On consid\`ere le domaine $D=\{(x,y,z)\in \R^3\; ;\quad  0\leq z\leq 1, \;\; x^2+y^2\leq z^4\,\}$.
+\begin{enumerate}
+\item Dessiner $D$.
+
+    \cor{
+
+    On a $D=\{ (x,y,z)\in \R^3 | 0\leq z\leq 1, \underbrace{0\leq \sqrt{x^2 + y^2} \leq z^2}_{=A_{z^2}}\, \}$. On note $A_{z^2}$ le disque de rayon $z^2>0$.  Le domaine $D$ est donc la partie comprise  au dessus du graphe de la fonction $(x,y)\mapsto (x^2+y^2)^{1/4}$:
+        \begin{center}
+            \begin{tikzpicture}[scale=.5]
+                \begin{axis}[,xlabel=$x$,ylabel=$y$,xmin=-1,xmax=1,xmin=-1,ymax=1,zmin=0, zmax=1]%,xtick=\empty,ytick=\empty,ztick=\empty ]
+                    % \addplot3[surf,opacity=.7,samples=50, domain=-1:1] gnuplot {( (x**2+y**2) <1)?(x**2 + y**2)**(0.25):3};
+                    %\addplot[domain = -pi:pi, parametric, samples = 100] gnuplot {sin(t),cos(t)};
+                    \addplot3[surf,opacity=.7,samples=70, domain=-1:1] gnuplot {( (x**2+y**2) <1)?(x**2 + y**2)**(.25):1};
+                \end{axis}
+            \end{tikzpicture}
+        \end{center}
+    }
+
+\item Calculer son volume $V$.
+
+    \cor{
+     En appliquant la formule de sommation par tranche on a:
+    \[
+        V = \int_0^1 \Big( \underbrace{\iint_{A_{z^2}} dxdy}_{=\pi z^4}\Big)dz % =\int_0^1 \int_0^{z^2} \int_0^{2\pi}d\theta rdr dz 
+        =  \pi \int_0^1  z^4 dz = \frac \pi 5 
+    \]
+}
+\item Calculer son centre de gravit\'e  $G =  \frac{1}{\vol D} \left( \iiint_D x dxdydz, \iiint_D y dxdydz , \iiint_D z dxdydz \right)$.
+    % sur l'axe $Oz$: $z_G=\frac{1}{V}\iiint_D z\;dx\, dy\, dz$. 
+
+\cor{
+
+
+    Le centre de gravité de $D$ appartient clairement à l'axe de révolution $Oz$. On peut se convaincre que les 2 premières coordonnées s'annulent bien, car on a 
+    \[
+        \iiint_D x dxdydz =  \int_0^1 \left( \iint_{A_{z^2}} x dxdy \right)dz =  \int_0^1 \big( \int_0^{z2} r dr \underbrace{\int_0^{2\pi} \cos \theta d\theta}_{=0} \big ) dz =0, 
+    \]
+    et
+    \[
+        \iiint_D y dxdydz =  \int_0^1 \left( \iint_{A_{z^2}} y dxdy \right)dz =  \int_0^1 \big( \int_0^{z^2} r dr \underbrace{\int_0^{2\pi} \sin \theta d\theta}_{=0} \big ) dz =0 .
+    \]
+Reste à déterminer la coordonnée sur $Oz$:
+\[
+   \frac 1V \iiint_D z dxdydz = \frac 1V \int_0^1 z \left( \iint_{A_{z^2}} dxdy \right)dz = \frac \pi V \int_0^1 z^5 dz =  \frac 5 6.
+\]
+Pour conclure on a $G = (0,0,5/6)$.
+}
+\end{enumerate}
+
+
+
+
+\exo{} Dans cet exercice, étant donné $r>0$, on note:
+\[
+D_{r}=\left\{(x, y) \in \mathbb{R}^{2} \text { t.q. } x^{2}+y^{2}<r^{2}\right\} \quad \bar{D}_{r}=\left\{(x, y) \in \mathbb{R}^{2} \text { t.q. } x^{2}+y^{2} \leq r^{2}\right\}
+\]
+Dans la première partie de cet exercice, on se donne $f: D_{2} \rightarrow \mathbb{R}$ et on suppose que $f$ satisfait:
+\begin{equation}\label{eq.hyp}\tag{H}
+    f \in \mathcal{C}^{2}\left(D_{2}\right), \quad \frac{\partial^{2} f}{\partial x^{2}}(x, y)+\frac{\partial^{2} f}{\partial y^{2}}(x, y)>0 \quad \forall(x, y) \in D_{1}
+\end{equation}
+\begin{enumerate}
+    \item Justifier en une phrase que la restriction de $f$ à $\bar{D}_{1}$ (notée $f_{\bar{D}_{1}}$ dans la suite) est bornée et atteint ses bornes.
+        \cor{
+
+        }
+    \item On se donne $\left(x_{0}, y_{0}\right) \in D_{1}$.
+        \begin{enumerate}
+            \item  Donner le développement limité à l'ordre 2 de $f$ en $\left(x_{0}, y_{0}\right)$.
+            \item  En considérant $t \mapsto f\left(x_{0}+t, y_{0}\right)$ et $t \mapsto f\left(x_{0}, y_{0}+t\right)$ pour $t$ proche de 0, montrer que l'hypothèse (H) implique que $f_{\bar{D}_{1}}$ ne peut pas atteindre son maximum en $\left(x_{0}, y_{0}\right)$.
+        \end{enumerate}
+    \item  On suppose maintenant que $f_{\bar{D}_{1}}$ atteint son maximum en $\left(x_{0}, y_{0}\right) \in \bar{D}_{1} \backslash D_{1} .$ On introduit:
+        \[
+            \begin{aligned}
+                f_{\Gamma}: \quad \mathbb{R} & \longrightarrow \mathbb{R} \\
+                t & \longmapsto f(\cos (t), \sin (t))
+            \end{aligned}
+        \]
+        \begin{enumerate}
+            \item Justifier qu'il existe $t_{0} \in \mathbb{R}$ tel que $\left(x_{0}, y_{0}\right)=\left(\cos \left(t_{0}\right), \sin \left(t_{0}\right)\right)$ puis que $f_{\Gamma}$ admet un maximum en $t_{0}$.
+            \item En déduire que
+                \[
+                    y_{0} \frac{\partial f}{\partial x}\left(x_{0}, y_{0}\right)-x_{0} \frac{\partial f}{\partial y}\left(x_{0}, y_{0}\right)=0
+                \]
+            \item  Quelle propriété satisfont alors les vecteurs $\nabla f\left(x_{0}, y_{0}\right)$ et $\left(x_{0}, y_{0}\right)$ ?
+        \end{enumerate}
+\end{enumerate}
+Dans la deuxième partie de l'exercice, on pose:
+\[
+f(x, y)=\frac{y}{(x-4)^{2}+y^{2}}+\frac{1}{2}\left(x^{2}+y^{2}\right), \quad \forall(x, y) \in \mathbb{R}^{2} \backslash\{(4,0)\}
+\]
+On rappelle qu'on peut utiliser les résultats de la première partie de l'exercice même sans avoir répondu à ces questions.
+\begin{enumerate}[resume]
+    \item Justifier que $f$ satisfait \eqref{eq.hyp}.
+        \item En déduire que $f_{\bar{D}_{1}}$ est bornée et atteint ses bornes puis que sa valeur maximale ne peut pas être atteinte en un $\left(x_{0}, y_{0}\right) \in D_{1}$.
+        \item Soit $\left(x_{0}, y_{0}\right) \in \bar{D}_{1} \backslash D_{1}$ tel que $f_{\bar{D}_{1}}$ est maximale en $\left(x_{0}, y_{0}\right)$. Trouver une équation satisfaite par $\left(x_{0}, y_{0}\right) .$ Puis, en utilisant que $y_{0}^{2}=1-x_{0}^{2}$, montrer que $x_{0}=8 / 17$.
+\end{enumerate}
+\end{enumerate}
+\end{document}
+

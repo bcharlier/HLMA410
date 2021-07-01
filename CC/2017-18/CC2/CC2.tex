@@ -1,0 +1,160 @@
+\documentclass[a4paper]{tp_um}
+\input{../../TD/header.tex}
+%\input{header.tex}
+\ue{HLMA410}
+
+%-----------------------------------------------------------------------------
+
+\title{\large \sffamily\bfseries Contrôle continu 2}
+
+\begin{document}
+
+\maketitle
+\textit{Durée 1h10. Les documents, la calculatrice, les téléphones portables, tablettes, ordinateurs ne sont pas autorisés. La qualité de la rédaction sera prise en compte.} 
+
+\bigskip
+\bigskip
+
+\exo{} Soit $u = (2,1)$ et $D$ la droite vectorielle dirigee par $u$ (\textit{i.e.} $D = \R u$). Soit $x = (x_1,x_2) \in \mathbb R^2$:
+
+\begin{enumerate}
+    \item Calculer $d_1(x)$ la distance de $x$ a $D$ en fonction de $x_1$ et $x_2$. 
+        \blanc{4cm}
+        
+    \item Calculer $d_2(x) = \prs{x,u}$ en fonction de $x_1$ et $x_2$.
+
+        \blanc{4cm}
+
+    \item Montrer que $N(x) = \sqrt{5}|d_1(x)| + |d_2(x)| $ définit une norme sur $\R^2$.
+
+        \blanc{8cm} \pagebreak
+    \item  Dessiner la boule unité pour la norme $N$.
+        \begin{center}
+            \begin{tikzpicture}[scale=2]
+                \def\xone{-1.2}
+                \def\xtwo{1.2}
+                \def\yone{-1.2}
+                \def\ytwo{1.2}
+% grid
+                \draw[step=.2cm,help lines,gray!50] (\xone,\yone) grid (\xtwo,\ytwo);
+                \draw[thin,->] (\xone-.1, 0) -- (\xtwo+.1, 0) node[right] {$x$};
+                \draw[thin,->] (0, \yone-.1) -- (0, \ytwo+.1) node[above] {$y$};
+		
+			   \draw (1,-0.01) node {$\bullet$} ;
+			   \draw (1,0) node [below]{$1$} ;  
+
+			   \draw (0,1-0.01) node {$\bullet$} ;
+			   \draw (0,1) node [right]{$1$} ;  
+
+% 	          \draw [red, very thick]  (\xone,\xone/2) -- (\xtwo,\xtwo/2) ;
+% 	          \draw [red, very thick]  (-\yone/2,\yone) -- (-\ytwo/2,\ytwo) ;
+%				\draw [green] (-2/5,-1/5) -- (1/5,-2/5) -- (2/5,1/5)--  (-1/5,2/5) -- cycle ; 
+					          
+            \end{tikzpicture}
+        \end{center}
+        
+        \item Montrer que $N$ et $\|\cdot\|_2$ sont \'equivalentes.
+         \blanc{6cm}
+       
+\end{enumerate}
+
+%\exo[]{(Distance SNCF)} On note $\norm{\cdot}_2$ la norme euclidienne usuelle sur $\R^2$. On
+%note $O=(0,0)$ l'origine du plan et on définit
+%\[
+	%d(A,B) = \begin{cases}
+		%%\snorm{u-v}_2, &\text{si les points $u$, $v$ et $O$ sont alignés  } \\
+		%%\snorm{u}_2 + \snorm{v}_2, &\text{sinon.}
+		%\snorm{\overrightarrow{AB}}_2, &\text{si les points $A$, $B$ et $O$ sont alignés  } \\
+		%\snorm{\overrightarrow{OA}}_2 + \snorm{\overrightarrow{OB}}_2, &\text{sinon.}
+	%\end{cases}
+%\]
+%\begin{enumerate}
+    %\item Donner la définition d'une distance. 
+        %\blanc{6cm}        
+%On admettra dans la suite que $d$ est une distance sur $\R^2$.
+	%\item Dessiner l'ensemble des points situés à distance inférieure à 2 du point $C = (2,0)$.  Puis dessiner l'ensemble des points situés à distance inférieure à 3 du point $C = (2,0)$.
+				%\begin{center}
+				%\begin{tikzpicture}[scale=.5]
+					%\def\xone{-5}
+					%\def\xtwo{5}
+					%\def\yone{-5}
+                    %\def\ytwo{5}
+%% grid
+					%\draw[step=1cm,help lines,gray!50] (\xone-.2,\yone-.2) grid (\xtwo+.2,\ytwo+.2);
+					%\draw[thin,->] (\xone-.3, 0) -- (\xtwo+.3, 0) node[right] {$x$};
+					%\draw[thin,->] (0, \yone-.3) -- (0, \ytwo+.3) node[above] {$y$};
+                %\end{tikzpicture}\hspace{2cm}
+				%\begin{tikzpicture}[scale=.5]
+					%\def\xone{-5}
+					%\def\xtwo{5}
+					%\def\yone{-5}
+                    %\def\ytwo{5}
+%% grid
+					%\draw[step=1cm,help lines,gray!50] (\xone-.2,\yone-.2) grid (\xtwo+.2,\ytwo+.2);
+					%\draw[thin,->] (\xone-.3, 0) -- (\xtwo+.3, 0) node[right] {$x$};
+					%\draw[thin,->] (0, \yone-.3) -- (0, \ytwo+.3) node[above] {$y$};
+				%\end{tikzpicture}
+			%\end{center}
+	%\item On considère la suite $u = ( 1, \frac{1}{m+1})_{m\in\N}$ dans $\R^2$. Montrer que $u$ converge vers $\ell=(1,0)$ pour la norme $2$ mais que la suite $d(u_m,\ell)$ ne tend pas vers 0 quand $m \to +\infty$.
+        %\blanc{5cm}
+	%\item Existe-t-il une norme $\snorm{\cdot}$ sur $\R^2$ telle que $d(A,B) = \snorm{\overrightarrow{AB}}$ pour tout $A,B\in\R^2$? 
+        %\blanc{2cm}
+%\end{enumerate}
+		
+		
+		
+		
+		
+\exo{}  Soit la courbe paramétrée $\Gamma=\left( \R, \phi \right)$ définie par $ \phi(t) = \begin{cases}x(t)= t - \tanh t \\ y(t) = \frac{1}{\cosh t} \end{cases}$ pour $t\in\R$
+
+	\begin{enumerate}
+        \item \'Etudier la parité des fonctions $x(\cdot)$ et $y(\cdot)$. Quelle(s) symétrie(s) cela implique-t-il sur le support de la courbe $\Gamma$? Peut on réduire le domaine d'étude ?
+			\blanc{5cm}
+
+
+                    \item Calculer $\phi', \phi''$ (on donne $\phi'''(t)=\begin{pmatrix}
+                                2(1- 2\sinh^2 t) /\cosh^4t \\ (5\tanh t - 6 \tanh^3 t ) / \cosh t  
+                    \end{pmatrix}$) et déterminer si $\Gamma$ à un/des point(s) stationnaire(s).
+			\blanc{9cm}
+
+
+        \item On se place en $t=0$: donner la nature du point $\Gamma(0)$ ainsi que le comportement local de la courbe (faire un petit dessin).
+			\blanc{13cm}
+	%	\item Y a t il des point de la courbe avec une tangente verticale ? horizontal ? de direction $(1,1)$ ?
+			%\blanc{6cm}
+	
+        \item On se place au voisinage de $t=+\infty$. Étudier la branche infinie (asymptote et position relative).
+
+			\blanc{7cm}
+		
+		\item Compléter le tableau de variations suivant:
+			\begin{center}
+				\begin{tabular}{|c|ccccc|}
+					\hline    $t$       & $-\infty$ & \hspace{5cm}   &  0 &  \hspace{5cm} & $\infty$ \\[0.3cm]\hline\hline
+					signe de $x'(t)$    &           &                &    &                 &          \\[0.4cm]\hline
+       			 variation de $x(t)$    &           &                &    &                 &     	 \\[0.9cm]\hline\hline
+					signe de $y'(t)$    &           &                &    &                 &          \\[0.4cm]\hline
+					variation de $y(t)$ &           &                &    &                 &          \\[0.9cm]\hline
+				\end{tabular}
+			\end{center}
+                        \vfill
+		\item  Sur le graphique suivant, tracer la courbe $\Gamma$ ainsi que les tangentes et asymptotes étudiées aux questions précédentes. 
+				\begin{center}
+				\begin{tikzpicture}[scale=.5]
+					\def\xone{-12}
+					\def\xtwo{12}
+					\def\yone{-1}
+                    \def\ytwo{5}
+% grid
+					\draw[step=1cm,help lines,gray!50] (\xone-.2,\yone-.2) grid (\xtwo+.2,\ytwo+.2);
+					\draw[thin,->] (\xone-.3, 0) -- (\xtwo+.3, 0) node[right] {$x$};
+					\draw[thin,->] (0, \yone-.3) -- (0, \ytwo+.3) node[above] {$y$};
+				\end{tikzpicture}
+			\end{center}
+			%\blanc{8cm}
+
+
+
+	\end{enumerate}
+ 
+\end{document}

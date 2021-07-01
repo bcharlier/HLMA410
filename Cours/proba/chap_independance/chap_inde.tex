@@ -1,0 +1,289 @@
+\chapter{Indépendance et conditionnement}
+
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+
+
+\section[Indépendance]{Indépendance d'événements et de variables aléatoires}
+
+\subsection{Événements indépendants}
+
+
+\begin{definition}
+Soit $(\Omega,\mathcal{A},\mathbb{P})$ un espace probabilisé. 
+\begin{enumerate}[label=(\roman*)]
+	\item Deux événements $A \in \mathcal{A}$ et $B \in \mathcal{A}$ sont \emph{indépendants} si:
+		\begin{equation*}
+			\mathbb{P} (A \cap B) = \mathbb{P} (A) \,\mathbb{P} (B).
+		\end{equation*}
+	\item Soit $(A_i)_{i \in I}$ une famille quelconque d'événements. Ces événements sont dits \emph{indépendants} (dans leur ensemble) si, pour toute partie non vide $J$ de $I$, on a:
+		\begin{equation*}
+			\mathbb{P} \Big( \bigcap_{j \in J} A_j \Big) = \prod_{j \in J}  \mathbb{P} (A_j).
+		\redspace 
+		\end{equation*}
+\end{enumerate}
+\end{definition}
+
+\begin{remark}
+	\begin{enumerate}
+		\item L'indépendance des événements $A_1, A_2, \cdots, A_n$ représente $2^n - n -1$ conditions (nombre de parties de $I=\{1,\cdots,n\}$ de cardinal $\geq 2$).
+		\item Si $n$ événements sont indépendants dans leur ensemble, ils sont indépendants deux à deux. La réciproque est fausse en générale.% (on peut avoir $\mathbb{P} (A \cap B \cap C) = \mathbb{P} (A) \mathbb{P} (B)\mathbb{P} (C)$ sans que les événements soient indépendants deux à deux).
+	\end{enumerate}
+\end{remark}
+
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+
+
+\begin{exemple}
+On lance deux dés et on pose
+\begin{itemize}
+	\item	$A$ : le résultat du lancer du dé numéro 1 est pair,
+	\item	$B$ : le résultat du lancer du dé numéro 2 est pair,
+	\item	$C$ : la somme des résultats des 2 lancers est impaire.
+\end{itemize}
+\sld{On a  $\Omega =\left\{ \drawdie{1},\cdots,\drawdie{6} \right\}^2$ et $|\Omega| = 6^2 = 36$. De plus, 
+\begin{align*}
+	\P(A) &= \frac{ |\left\{ \drawdie{2},\drawdie{4},\drawdie{6} \right\} \times \left\{ \drawdie{1},\cdots,\drawdie{6} \right\}|}{36} =\frac 1 2 \\
+	\P(B) &= \frac{ |\left\{ \drawdie{1},\cdots,\drawdie{6} \right\} \times \left\{ \drawdie{2},\drawdie{4},\drawdie{6} \right\}|}{36} =\frac 1 2\\
+	\P(C) &= \frac{ |\left\{ \drawdie{1},\drawdie{3},\drawdie{5} \right\} \times \left\{ \drawdie{2},\drawdie{4},\drawdie{6} \right\}| + |\left\{ \drawdie{2},\drawdie{4},\drawdie{6} \right\} \times \left\{ \drawdie{1},\drawdie{3},\drawdie{5} \right\}|}{36} =\frac 1 2
+\end{align*}
+et $\P(A \cap B) = \P(A \cap C) = \P(B \cap C) = \frac 1 4$ (indépendants 2 à 2). Mais
+\[
+	\mathbb{P} (A \cap B \cap C) =  \P(\left\{ \emptyset \right\}) = 0 \neq \frac 1 8 = \P(A)\P(B)\P(C) .
+\]
+et les événements $A$, $B$ et $C$ ne sont pas indépendants dans leur ensemble.
+}\pl{\rep{6cm}}
+\end{exemple}
+
+%\subsection{Événements indépendants et passage au complémentaire}
+
+Dire que $A$ et $B$ sont indépendants signifie que la réalisation ou la non-réalisation de $B$ n'influe pas sur la probabilité de voir $A$ se réaliser. %Il est naturel de penser qu'on peut remplacer dans cette formulation $B$ par l'événement contraire B$^c$.
+
+\begin{proposition}
+Soit $(\Omega,\mathcal{A},\mathbb{P})$ un espace probabilisé. Si $A$ et $B$ sont deux événements indépendants, les événements $A$ et $B^c$ d'une part, $A^c$ et $B$ d'autre part, $A^c$ et $B^c$ enfin, sont indépendants.
+\end{proposition}
+
+\begin{proof}
+	\sld{Nous ne faisons la démonstration que pour $A$ et $B^c$. On a 
+		\[ \mathbb{P} (A \cap B^c) = \mathbb{P} (A) - \mathbb{P} (A \cap B) \]
+	et, par indépendance de A et B:
+\[ \mathbb{P} (A \cap B^c) = \mathbb{P} (A) - \mathbb{P} (A) \, \mathbb{P} (B) = \mathbb{P} (A) \big( 1 - \mathbb{P} (B) \big) =  \mathbb{P} (A) \, \mathbb{P} (B^c).\] \qedhere}\pl{\rep{4cm}}
+
+	%Cette proposition se généralise à toute famille $(A_i)_{i \in I}$ d'événements indépendants. Supposons que l'ensemble $I$ soit partitionné en deux parties $I_1$ et $I_2$. Les événements $(B_i)_{i \in I}$ définis par:
+	%$$ B_i = \begin{cases}
+		%A_i \text{ si $i \in I_1$,}\\
+		%A_i^c \text{ si $i \in I_2$,}
+	%\end{cases} $$
+	%forment une famille d'événements indépendants.
+\end{proof}
+
+
+\subsection{Variables aléatoires indépendantes}
+
+\subsubsection{Généralités}
+
+\begin{definition}
+	Soit $(\Omega,\mathcal{A},\mathbb{P})$ un espace probabilisé et  $X:(\Omega,\mathcal{A},\mathbb{P}) \to (E_1, \mathcal{E}_1)$ et  $Y:(\Omega,\mathcal{A},\mathbb{P}) \to (E_2, \mathcal{E}_2)$ deux variables aléatoires.  Les variables aléatoires $X$ et $Y$  sont \emph{indépendantes} si pour tous ensembles $A_1 \in \mathcal E_1$ et $A_2\in \mathcal E_2$, les événements $\{X \in A_1\}$ et $\{ Y \in A_2\} $ sont indépendants.
+	%\item Soient $X_1$ et $X_2$ deux variables aléatoires à valeurs dans des espaces probabilisables $(E_1, \mathcal{E}_1)$ et $(E_2, \mathcal{E}_2)$ respectivement. Les variables aléatoires $X_1$ et $X_2$ sont \emph{indépendantes} si, pour tout $A_1 \in \mathcal{E}_1$ et pour tout $A_2 \in \mathcal{E}_1$, les événements $\{X_1 \in A_1\}$ et $\{X_2 \in A_2\}$ sont indépendants.
+\end{definition}
+
+\begin{proposition}
+	Avec les notations de la définition précédente. % où $I$ un ensemble fini non vide. %Soit $(X_i)_{i \in I}$ une famille de variables aléatoires à valeurs respectivement dans des espaces probabilisables $(E_i, \mathcal{E}_i)$. 
+	Les variables aléatoires $X$ et $Y$ sont indépendantes si et seulement si on a
+	$$ \mathbb{P} \Big( \{X \in A_1\} \cap \left\{ Y\in A_2 \right\} \Big) = \mathbb{P} ( \{X \in A_1  \}) \mathbb{P} ( \{Y \in A_2  \}). $$
+pour tous ensembles $A_1 \in \mathcal E_1$ et $A_2\in \mathcal E_2$.
+\end{proposition}
+
+
+\subsubsection{Fonctions de variables aléatoires}
+
+On note  $(\Omega,\mathcal{A},\mathbb{P})$ un espace probabilisé et $(E_i,\mathcal E_i)$ ou $(F_i,\mathcal F_i) $ désignent des espaces probabilisables.
+
+Soit une variable aléatoire $X:(\Omega,\mathcal{A},\mathbb{P}) \to(E, \mathcal{E})$ et une fonction $f : (E,\mathcal E) \to (F, \mathcal \F)$ mesurable (c'est à dire telle que pour tout $A\in \mathcal F$  on ait $f^{-1}(A) \in \mathcal E$ où $f^{-1} (A)\subset F$ est l'image réciproque de $A$ par $f$). Alors $f(X) = f \circ X$ est une variable aléatoire de $(\Omega,\mathcal{A},\mathbb{P})$ dans $(F, \mathcal{F})$.
+\pl{\rep{2cm}}
+
+\sld{Diagramme commutatif}
+
+\begin{proposition}
+Soient $X:(\Omega,\mathcal{A},\mathbb{P}) \to (E_1, \mathcal{E}_1)$ et  $Y:(\Omega,\mathcal{A},\mathbb{P}) \to (E_2, \mathcal{E}_2)$ deux variables aléatoires indépendantes. Soient deux fonctions $f : (E_1, \mathcal{E}_1) \to (F_1, \mathcal{F}_1)$ et $g : (E_2, \mathcal{E}_2) \to (F_2, \mathcal{F}_2)$. Alors les variables aléatoires $f_1(X)$ et $f_2(Y)$ sont indépendantes.
+\end{proposition}
+
+\begin{exemple}
+	\sld{	On peut affirmer sans calcul que si $X_1$ et $X_2$ sont deux variables aléatoires indépendantes à valeurs dans $\mathbb{R}$, les variables aléatoires $X_1^2$ et $\exp(X_2)$ sont indépendantes. }\pl{\rep{2cm}}
+\end{exemple}
+
+\section[Conditionnement]{Probabilités conditionnelles}
+
+Dans la suite, $(\Omega,\mathcal{A},\mathbb{P})$ est un espace probabilisé quelconque.
+
+
+\subsection{Définitions. Formule des probabilités totales}
+
+\begin{definition}
+	Soit $B \in \mathcal{A}$ un événement tel que $\mathbb{P} (B) >0$. Soit $A \in \mathcal{A}$ un événement; on appelle \emph{probabilité de $A$ conditionnée par $B$}(ou \emph{sachant B})  le nombre réel, noté $\mathbb{P} (A | B)$ ou $\mathbb{P}^B(A)$, défini par:
+$$ \mathbb{P} (A | B) = \mathbb{P}^B(A) = \frac{\mathbb{P} (A \cap B)}{\mathbb{P} (B)}. $$
+\end{definition}
+
+
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+
+\begin{proposition}
+	Soit $B \in \mathcal{A}$ un événement tel que $\mathbb{P} (B) >0$. L'application $\mathbb{P}^B$ de $\mathcal{A}$ dans $\mathbb{R}^+$ qui à tout $A \in \mathcal{A}$ fait correspondre $\mathbb{P}^B(A)$ est une probabilité sur l'espace probabilisable $(\Omega,\mathcal{A})$. Elle est appelée \emph{probabilité conditionnée à $B$} (ou \emph{probabilité conditionnelle sachant $B$}).
+\end{proposition}
+
+\begin{proof}
+	 On a d'abord
+	 \[ \mathbb{P}^B(\Omega) = \frac{\mathbb{P} (\Omega \cap B)}{\mathbb{P} (B)} = \frac{\mathbb{P} (B)}{\mathbb{P} (B)} =1 .\]
+On montre ensuite que l'application $\mathbb{P}^B$ est $\sigma$-additive: en effet, pour toute suite $(A_i)_{i \in \mathbb{N}}$ d'événements disjoints deux à deux on a
+\[ 
+\redspace
+\Big( \bigcup_{i \in \mathbb{N}} A_i \Big) \cap B =  \bigcup_{i \in \mathbb{N}} (A_i \cap B), \]
+les $A_i \cap B$ étant disjoints deux à deux, et donc 
+\[ 
+\redspace
+\mathbb{P}^B \Big( \bigcup_{i \in \mathbb{N}} A_i \Big) = \frac{ \sum_{i \in \mathbb{N}} \mathbb{P} (A_i \cap B)}{\mathbb{P} (B)} = \sum_{i \in \mathbb{N}} \mathbb{P}^B (A_i) .\]\qedhere
+\end{proof}
+
+\begin{remark}
+	\begin{enumerate}
+		\item Cette proposition est très importante puisqu'elle dit que toutes les propriétés établies jusqu'à maintenant pour une probabilité quelconque sont vraies pour la probabilité conditionnelle $\mathbb{P}^B$.
+		\item Pour que les événements A et B soient \emph{indépendants}, il faut et il suffit que: $\mathbb{P}^B (A) = \mathbb{P} (A)$.
+	\end{enumerate}
+\end{remark}
+
+\begin{exemple}
+On jette deux fois un dé à 6 faces. Soit $A$ l'événement ``\textit{on obtient un 6 au premier jet}'', et soit $B_k, 2 \leq k \leq 12$, les événements ``\textit{la somme des deux résultats est $k$}''. On modélise les deux lancers de dé par l'espace probabilisé $\big( \Omega,\mathcal{P} (\Omega), \mathbb{P} \big)$, où $\Omega=\{1,2,\cdots,6\}^2$ et $\mathbb{P}$ est la probabilité uniforme. \sld{	On a: 
+	\[\redspace
+	A = \{6\} \times \{1,2,\cdots,6\} \]
+	et
+	\[ 
+\redspace
+B_k = \{ (\omega_1,\omega_2) \in \Omega | \omega_1 + \omega_2 = k \} .\]
+	En particulier, on a $B_{12} \subset A$ et $B_{11}= \{ (5,6),(6,5) \}$ donc
+		\[ 
+			\mathbb{P}(A) = \frac{1}{6}, \quad \mathbb{P}(A | B_{11}) = \frac{1}{2}, \quad \mathbb{P}(A | B_{12}) = 1. 
+		\]
+} \pl{\rep{4cm}}
+\end{exemple}
+
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+
+
+D'après la définition des probabilités conditionnelles on a $\P(A \cap B) = \P(A) \P(B|A)$. On a la généralisation suivante :
+\begin{proposition}[(Probabilités conditionnelles en cascade)]
+Soit $(A_i)_{1 \leq i \leq n}$ une suite finie d'événements tels que $\mathbb{P} \Big( \bigcap_{1 \leq i \leq n-1} A_i \Big) > 0$. On a:
+\[
+	\mathbb{P} \Big( \bigcap_{1 \leq i \leq n} A_i \Big) =  \mathbb{P} (A_1) \, \mathbb{P} (A_2 | A_1) \, \mathbb{P} (A_3 | A_1 \cap A_2) \cdots \mathbb{P} (A_n | A_1 \cap \cdots \cap A_{n-1}).
+\]
+\end{proposition}
+
+\begin{proof}
+ On remarque que toutes les probabilités conditionnelles introduites sont bien définies puisque, pour tout $j \in \{1, \cdots,n-1\}$, on a:
+ \[  \mathbb{P} \Big( \bigcap_{1 \leq i \leq j} A_i \Big) \geq \mathbb{P} \Big( \bigcap_{1 \leq i \leq n-1} A_i \Big) > 0.\]
+La formule s'obtient ensuite par simple récurrence. 
+\end{proof}
+
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+
+
+\begin{exemple}
+	On tire successivement 4 cartes d'un jeu de 52 cartes. Quelle est la probabilité de tirer les 4 as?
+\sld{
+	Pour $1 \leq i \leq 4$ on note l'événement $A_i$ : ``\textit{la $i$-ème carte tirée est un as}''. On demande de calculer $\mathbb{P} (A_1 \cap A_2 \cap A_3 \cap A_4)$. Les probabilités immédiatement accessibles, en dehors de $\mathbb{P}(A_1)$, sont les probabilités conditionnelles
+ \[ \mathbb{P}(A_2 | A_1) = \frac{3}{51}, \quad \mathbb{P}(A_3 | A_1 \cap A_2) = \frac{2}{50}, \quad \mathbb{P}(A_4 | A_1 \cap A_2 \cap A_3) = \frac{1}{49}.\]
+On a donc
+\[ \begin{split}\mathbb{P}(A_1 \cap A_2 \cap A_3 \cap A_4) & = \mathbb{P}(A_1) \, \mathbb{P}(A_2 | A_1) \, \mathbb{P}(A_3 | A_1 \cap A_2) \, \mathbb{P}(A_4 | A_1 \cap A_2 \cap A_3) \\ &= \frac{4 \times 3 \times 2 \times 1}{52 \times 51 \times 50 \times 49} \approx 0,000004.\end{split}\]
+Nous ne sommes pas préoccupés dans cet exemple de la construction d'un espace $\Omega$.}\pl{\rep{6cm}}
+\end{exemple}
+
+
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+
+
+\begin{definition}
+Soit $(A_i)_{i \in I}$ une famille \emph{dénombrable} d'événements disjoints deux à deux telle que
+\[ \mathbb{P} \Big( \bigcup_{i \in I} A_i \Big) = 1\]
+Une telle famille est appelée \emph{système complet d'événements}.
+\end{definition}
+
+Soit $N$ le complémentaire de $\bigcup_{i \in I} A_i$ dans $\Omega$. On a $\mathbb{P} (N) = 0$. Les événements $(A_i)_{i \in I}$ et $N$ forment une partition de $\Omega$. On traduit cette situation en termes probabilistes: avec probabilité 1, l'un des événements $A_i$ et un seul se réalise.
+
+\begin{exemple}
+	On lance une pièce de monnaie jusqu'à ce qu'on obtienne un ``pile''. Pour tout $i\in\N \setminus \left\{ 0 \right\}$ on note l'événement $A_i$ : ``\textit{pile apparaît pour la première fois au $i$-ème lancer}''.\sld{ Les $A_i$ sont évidemment deux à deux disjoints. D'autre part, il est possible qu'aucun des $A_i$ ne se réalise mais la probabilité de cet événement est nulle. La famille des événements $(A_i)_{i\geq 1}$ est donc un système complet.} \pl{\rep{2cm}}
+\end{exemple}
+
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+
+
+\begin{theorem}[(Formule des probabilités totales)] \label{th.probtot}
+Soit $(A_i)_{i \in I}$ un système complet d'événements tel que $\mathbb{P} (A_i) >0$ pour tout $i \in I$. On a alors, pour tout événement $A \in \mathcal{A}$:
+$$ \mathbb{P} (A) = \sum_{i \in I} \mathbb{P} (A | A_i) \, \mathbb{P} (A_i) .$$
+\end{theorem}
+
+\begin{proof}
+	 Soit $N$ le complémentaire de $\bigcup_{i \in I} A_i$.
+$$ A = \Big( \bigcup_{i \in I} (A \cap A_i) \Big) \cup (A \cap N) ,$$
+les deux événements étant disjoints. Comme on a $\mathbb{P} (A \cap N) \leq \mathbb{P} (N) = 0$, on obtient immédiatement
+$$ \mathbb{P} (A) = \mathbb{P} \Big( \bigcup_{i \in I} (A \cap A_i) \Big)  = \sum_{i \in I} \mathbb{P}(A \cap A_i) $$
+car les $A \cap A_i$ sont eux aussi disjoints deux à deux. Il ne reste plus alors qu'à utiliser la définition des probabilités conditionnelles.
+\end{proof}
+
+\begin{remark}
+	Un cas particulier de système complet est le système $(B, B^c)$ où B est un événement tel que $0< \mathbb{P} (B) < 1$. La formule des probabilités totales devient dans ce cas
+	\[
+		\mathbb{P} (A) = \mathbb{P} (A | B) \, \mathbb{P} (B) + \mathbb{P} (A | B^c) \, \mathbb{P} (B^c).\]
+\end{remark}
+
+\begin{exemple}
+Une urne $U_1$ (respectivement $U_2$) contient $b_1$ (respectivement $b_2$) boules blanches et $n_1$ (respectivement $n_2$) boules noires. On choisit au hasard une urne et on tire ensuite une boule dans cette urne. On cherche la probabilité de tirer une boule noire.
+
+\sld{Notons $N$, $U_1$ et $U_2$ les événements ``\textit{on tire une boule noire}'', ``\textit{le tirage a lieu dans l'urne $U_1$}'' et ``\textit{le tirage a lieu dans l'urne $U_2$}''. On a: 
+\begin{center}
+$ \mathbb{P}(U_i) = \frac{1}{2}$ et $ \mathbb{P}(N | U_i) = \frac{n_i}{n_i+b_i}$.
+\end{center}
+Les événements $U_1$ et $U_2$ forment un système complet donc
+$$ \mathbb{P}(N) = \mathbb{P}(U_1) \, \mathbb{P}(N | U_1) + \mathbb{P}(U_2) \, \mathbb{P}(N | U_2) = \frac{1}{2} \Big( \frac{n_1}{n_1 + b_1} + \frac{n_2}{n_2 + b_2} \Big).$$}\pl{\rep{4cm}}
+\end{exemple}
+
+
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+
+
+\subsection{Formule de Bayes}
+
+\begin{proposition}\label{prop_baye}
+Soit deux événements $A_1, A_2 \in \mathcal{A}$ de probabilités non nulles. Alors:
+\[
+\mathbb{P}(A_2 | A_1) = \mathbb{P}(A_1 | A_2) \, \frac{\mathbb{P}(A_2)}{\mathbb{P}(A_1)}.  
+\]
+\end{proposition}
+
+Cette proposition s'obtient juste en utilisant la définition d'une probabilité conditionnelle.
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+
+
+\begin{theorem}[(Formule de Bayes)]
+Soit $(A_i)_{i \in I}$ un système complet d'événements tel que $\mathbb{P} (A_i) >0$ pour tout $i \in I$. On a alors, pour tout événement $A \in \mathcal{A}$ de probabilité non nulle et pour tout $i \in I$:
+\[ \mathbb{P} (A_i | A) = \frac{\mathbb{P} (A | A_i) \, \mathbb{P} (A_i)}{\sum_{j \in I} \mathbb{P} (A | A_j) \, \mathbb{P} (A_j)} .\]
+\end{theorem}
+
+
+\begin{proof}
+	Il résulte de la proposition \ref{prop_baye} que, pour tout $i \in I$:
+	\[
+		\mathbb{P}(A_i | A) = \mathbb{P}(A | A_i) \, \frac{\mathbb{P}(A_i)}{\mathbb{P}(A)}. 
+	\]
+	Il suffit alors d'appliquer le théorème \ref{th.probtot}. 
+\end{proof}
+
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+
+
+\begin{exemple}
+	On reprend l'exemple des deux urnes. On cherche maintenant la probabilité \textit{a posteriori} d'avoir tiré dans l'urne $U_i$, sachant qu'une boule noire a été tirée.
+\sld{	
+	On applique le théorème de Bayes avec le système complet formé des événements $U_1$ et $U_2$. Il vient, pour $i=1,2$,
+	$$ \mathbb{P} (U_i | N) = \frac{\mathbb{P} (N | U_i) \, \mathbb{P} (U_i)}{\mathbb{P} (N | U_1) \, \mathbb{P} (U_1) + \mathbb{P} (N | U_2) \, \mathbb{P} (U_2)} = \frac{ \frac{n_i}{n_i+b_i}}{\frac{n_1}{n_1+b_1}+\frac{n_2}{n_2+b_2}}. $$
+	On remarque qu'on a bien $\mathbb{P} (U_1 | N) + \mathbb{P} (U_2 | N) = \mathbb{P} (U_1 \cup U_2 | N) = \mathbb{P} (\Omega | N) = 1$.}\pl{\rep{4cm}}
+\end{exemple}
+
+

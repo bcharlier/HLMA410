@@ -1,0 +1,282 @@
+\documentclass[a4paper]{tp_um}
+\input{../../TD/header.tex}
+%\input{header.tex}
+\ue{HLMA410}
+
+%-----------------------------------------------------------------------------
+
+\title{\large \sffamily\bfseries Contrôle continu 2}
+
+\begin{document}
+
+\maketitle
+\textit{Durée 1h10. Les documents, la calculatrice, les téléphones portables, tablettes, ordinateurs ne sont pas autorisés. La qualité de la rédaction sera prise en compte.} 
+
+\bigskip
+\bigskip
+
+\exo{} Soit $u = (2,1)$ et $D$ la droite vectorielle dirigee par $u$ (\textit{i.e.} $D = \R u$). Soit $x = (x_1,x_2) \in \mathbb R^2$:
+
+\begin{enumerate}
+    \item Calculer $d_1(x)$ la distance de $x$ a $D$ en fonction de $x_1$ et $x_2$.
+
+	\bigskip
+
+        On applique la formule du cours en remarquant que la droite passe par l'origine $O$ du rep\`ere. On obtient  
+        \[
+        d_1(x) =  \dfrac{\det({x},u)}{\|u\|} = \dfrac{|x_1-2x_2|}{\sqrt{5}}.
+        \]
+      
+\medskip
+        
+    \item Calculer $d_2(x) = \prs{x,u}$ en fonction de $x_1$ et $x_2$.
+
+	\bigskip
+
+	On applique la d\'efinition du cours:
+	\[
+	d_2(x) = 2x_1+x_2.
+	\]
+	
+	\medskip
+	
+
+    \item Montrer que $N(x) = \sqrt{5}|d_1(x)| + |d_2(x)| $ définit une norme sur $\R^2$.
+
+	\bigskip
+
+	Il est clair que $N:\mathbb R^2 \to [0,\infty[.$ On envisage donc les trois points caract\'eristiques d'une norme: \\
+	{\bf S\'eparation:} $N(x_1,x_2)$ \'etant la somme de deux termes positifs, si $N(x_1,x_2)=0$ on a $d_1(x) = d_2(x) =0.$ En particulier, on obtient $x_1-2x_2 = 0$ et $2x_1+x_2=0.$ En ajoutant $2$ fois la deuxi\`eme \'equation \`a la premi\`ere, on obtient $x_1=0$ et donc $x_2=0.$ Si $N(x_1,x_2)= 0$ on a donc $x =0.$
+	
+	{\bf Homog\'en\'eit\'e:} Pour $x=(x_1,x_2) \in \mathbb R^2$ et $\lambda \in \mathbb R,$ on a:
+	\begin{align*}
+	N(\lambda x) & = |\lambda x_1-2\lambda x_2| + |2\lambda x_1 + \lambda x_2| \\
+						& = |\lambda| \left(  |x_1-2x_2| + |2x_1 + x_2| \right) \\
+						& = |\lambda| N(x).
+	\end{align*}
+ 	
+	{\bf In\'egalit\'e triangulaire :} Pour tout $x=(x_1,x_2)$ et $y=(y_1,y_2)$ dans $\mathbb R^2,$ on remarque que, 
+	en appliquant l'in\'egalit\'e triangulaire dans $\mathbb R:$
+	\begin{align*}
+	N(x+y) & =  |(x_1 + y_1 - 2(x_2+y_2) | + |2(x_1+y_1) + (x_2+y_2)| \\
+				& \leq    |x_1- 2x_2 |+  |y_1 - 2y_2 | + |2x_1 + x_2 | + |2y_1 + y_2| \\
+				& \leq N(x) + N(y). 	 
+	\end{align*} 
+	
+	\medskip
+
+    \item  Dessiner la boule unité pour la norme $N$.
+
+	\bigskip
+
+On note que l'expression de $N$ d\'epend du signe de $x_1-2x_2$ et de $2x_1+x_2.$ Ceci correspond au d\'ecoupage de $\mathbb R^2$ en les quatre quarts de plan d\'elimit\'e par les deux droites $D$  et  $D^{\bot} := \{2x_1+x_2 = 0\}.$ 
+
+Si $x_1 -2 x_2 >0,$ et $2x_1+x_2>0,$ $N(x) < 1$ 
+\'equivaut \`a 
+\[
+{x_1 - 2 x_2} + 2x_1 + x_2 < 1 
+\Leftrightarrow 
+3 x_1 - x_2 < 1.   
+\]  
+Ceci correspond au triangle d\'elimit\'e par les trois droites $D,D^{\bot}$ et la droite d'\'equation $
+3x_1 - x_2 = 1$ ou au triangle dont les sommets sont l'origine, 
+$(2/5,1/5)$ et $(1/5,-2/5).$ Par sym\'etrie, la boule unit\'e pour $N$ est donc le quadrilat\`ere dont les sommets sont les points de coordonn\'ees $(-2/5,-1/5),(1/5,-2/5),(2/5,1/5),(-1/5,2/5).$
+
+    
+        \begin{center}
+            \begin{tikzpicture}[scale=3]
+                \def\xone{-1.2}
+                \def\xtwo{1.2}
+                \def\yone{-1.2}
+                \def\ytwo{1.2}
+% grid
+                \draw[step=.2cm,help lines,gray!50] (\xone,\yone) grid (\xtwo,\ytwo);
+                \draw[thin,->] (\xone-.1, 0) -- (\xtwo+.1, 0) node[right] {$x$};
+                \draw[thin,->] (0, \yone-.1) -- (0, \ytwo+.1) node[above] {$y$};
+		
+			   \draw (1,-0.01) node {$\bullet$} ;
+			   \draw (1,0) node [below]{$(1,0)$} ;  
+
+			   \draw (0,1-0.01) node {$\bullet$} ;
+			   \draw (0,1) node [below]{$(0,1)$} ;  
+
+ 	          \draw [red, very thick]  (\xone,\xone/2) -- (\xtwo,\xtwo/2) ;
+ 	          \draw [red, very thick]  (-\yone/2,\yone) -- (-\ytwo/2,\ytwo) ;
+				\draw [green] (-2/5,-1/5) -- (1/5,-2/5) -- (2/5,1/5)--  (-1/5,2/5) -- cycle ; 
+					          
+            \end{tikzpicture}
+        \end{center}
+
+	\item Montrer que $N$ est $\|\|_{2}$ sont \'equivalentes.
+
+	\bigskip
+
+La boule unit\'e pour la norme $N$ contient la boule euclidienne de rayon $1/5$ et est contenue dans la boule euclidienne de rayon $1$ (voir l'illustration ci-dessous, la boule euclidienne de rayon 1/5 est en bleu et la boule euclidienne de rayon 1 en gris). Par cons\'equent, pour tout $x \in \mathbb R^2 \setminus \{(0,0)\},$ en consid\'erant que $x/N(x)$ se trouve sur le bord de la boule unit\'e pour $N,$ on obtient que:
+$$
+  1/5  \leq  \|x /N(x)\|_2    \leq 1 \quad \text{ et donc } \quad
+  \dfrac{N(x)}{5} \leq \|x\|_2 \leq N(x). 
+$$
+
+        \begin{center}
+            \begin{tikzpicture}[scale=3]
+                \def\xone{-1.2}
+                \def\xtwo{1.2}
+                \def\yone{-1.2}
+                \def\ytwo{1.2}
+% grid
+                \draw[step=.2cm,help lines,gray!50] (\xone,\yone) grid (\xtwo,\ytwo);
+                \draw[thin,->] (\xone-.1, 0) -- (\xtwo+.1, 0) node[right] {$x$};
+                \draw[thin,->] (0, \yone-.1) -- (0, \ytwo+.1) node[above] {$y$};
+		
+			   \draw (1,-0.01) node {$\bullet$} ;
+			   \draw (1,0) node [below]{$(1,0)$} ;  
+
+			   \draw (0,1-0.01) node {$\bullet$} ;
+			   \draw (0,1) node [below]{$(0,1)$} ;  
+
+				\draw [fill, gray!30, opacity=0.5](0,0) circle (1) ; 
+				\draw [fill, blue!30, opacity=0.5] (0,0) circle (1/5) ; 			
+								\draw [green] (-2/5,-1/5) -- (1/5,-2/5) -- (2/5,1/5)--  (-1/5,2/5) -- cycle ; 
+						          
+            \end{tikzpicture}
+            
+            
+        \end{center}
+
+\end{enumerate}
+
+\newpage
+
+%\exo[]{(Distance SNCF)} On note $\norm{\cdot}_2$ la norme euclidienne usuelle sur $\R^2$. On
+%note $O=(0,0)$ l'origine du plan et on définit
+%\[
+	%d(A,B) = \begin{cases}
+		%%\snorm{u-v}_2, &\text{si les points $u$, $v$ et $O$ sont alignés  } \\
+		%%\snorm{u}_2 + \snorm{v}_2, &\text{sinon.}
+		%\snorm{\overrightarrow{AB}}_2, &\text{si les points $A$, $B$ et $O$ sont alignés  } \\
+		%\snorm{\overrightarrow{OA}}_2 + \snorm{\overrightarrow{OB}}_2, &\text{sinon.}
+	%\end{cases}
+%\]
+%\begin{enumerate}
+    %\item Donner la définition d'une distance. 
+        %\blanc{6cm}        
+%On admettra dans la suite que $d$ est une distance sur $\R^2$.
+	%\item Dessiner l'ensemble des points situés à distance inférieure à 2 du point $C = (2,0)$.  Puis dessiner l'ensemble des points situés à distance inférieure à 3 du point $C = (2,0)$.
+				%\begin{center}
+				%\begin{tikzpicture}[scale=.5]
+					%\def\xone{-5}
+					%\def\xtwo{5}
+					%\def\yone{-5}
+                    %\def\ytwo{5}
+%% grid
+					%\draw[step=1cm,help lines,gray!50] (\xone-.2,\yone-.2) grid (\xtwo+.2,\ytwo+.2);
+					%\draw[thin,->] (\xone-.3, 0) -- (\xtwo+.3, 0) node[right] {$x$};
+					%\draw[thin,->] (0, \yone-.3) -- (0, \ytwo+.3) node[above] {$y$};
+                %\end{tikzpicture}\hspace{2cm}
+				%\begin{tikzpicture}[scale=.5]
+					%\def\xone{-5}
+					%\def\xtwo{5}
+					%\def\yone{-5}
+                    %\def\ytwo{5}
+%% grid
+					%\draw[step=1cm,help lines,gray!50] (\xone-.2,\yone-.2) grid (\xtwo+.2,\ytwo+.2);
+					%\draw[thin,->] (\xone-.3, 0) -- (\xtwo+.3, 0) node[right] {$x$};
+					%\draw[thin,->] (0, \yone-.3) -- (0, \ytwo+.3) node[above] {$y$};
+				%\end{tikzpicture}
+			%\end{center}
+	%\item On considère la suite $u = ( 1, \frac{1}{m+1})_{m\in\N}$ dans $\R^2$. Montrer que $u$ converge vers $\ell=(1,0)$ pour la norme $2$ mais que la suite $d(u_m,\ell)$ ne tend pas vers 0 quand $m \to +\infty$.
+        %\blanc{5cm}
+	%\item Existe-t-il une norme $\snorm{\cdot}$ sur $\R^2$ telle que $d(A,B) = \snorm{\overrightarrow{AB}}$ pour tout $A,B\in\R^2$? 
+        %\blanc{2cm}
+%\end{enumerate}
+		
+		
+		
+		
+		
+\exo{}  Soit la courbe paramétrée $\Gamma=\left( \R, \phi \right)$ définie par $ \phi(t) = \begin{cases}x(t)= t - \tanh t \\ y(t) = \frac{1}{\cosh t} \end{cases}$ pour $t\in\R$
+
+	\begin{enumerate}
+        \item \'Etudier la parité des fonctions $x(\cdot)$ et $y(\cdot)$. Quelle(s) symétrie(s) cela implique-t-il sur le support de la courbe $\Gamma$? Peut on réduire le domaine d'étude ?
+
+            \bigskip
+
+			
+            On a $x(-t) = -t - \tanh(-t) = - (t - \tanh(t)) = -x(t)$ et $y(-t) = 1/\cosh(-t) = 1/cosh(t) = y(t)$. Ainsi, on remarque que le support de la courbe $\Gamma$ admet une symétrie axiale par rapport à l'axe $Oy$.
+
+
+                    \item Calculer $\phi', \phi''$ (on donne $\phi'''(t)=\begin{pmatrix}
+                                2(1- 2\sinh^2 t) /\cosh^4t \\ (5\tanh t - 6 \tanh^3 t ) / \cosh t  
+                    \end{pmatrix}$) et déterminer si $\Gamma$ à un/des point(s) stationnaire(s).
+
+On  a $\phi'(t)=\begin{pmatrix}
+                                1- 1 /\cosh^2t \\ - \sinh t / \cosh^2 t  
+                    \end{pmatrix}$ et 
+On  a $\phi''(t)=\begin{pmatrix}
+2\sinh t /\cosh^3t \\  (2 \sinh^2 t - \cosh^2 t) / \cosh^3 t 
+                    \end{pmatrix}$
+                    L'unique point stationnaire ( $\phi'(t) = \begin{pmatrix}
+                            0\\0
+                    \end{pmatrix}$) est en $t=0$.
+
+            \bigskip
+
+
+        \item On se place en $t=0$: donner la nature du point $\phi(0)$ ainsi que le comportement local de la courbe (faire un petit dessin).
+
+            \bigskip
+
+
+            On a $\phi''(t) = \begin{pmatrix}
+                0\\ -1
+            \end{pmatrix}$ et $\phi'''(t) = \begin{pmatrix}
+                2\\ 0
+            \end{pmatrix}$. Autrement dit, avec les notations du cours: on a $p=2$ et $q=3$. C'est donc un point de rebroussement de 1ère espèce admettant une tangente verticale:
+            \begin{center}
+                \begin{tikzpicture}[scale=1]
+
+
+                        \draw[->, thick, red] (0,0)--(0,-1) node[left] {${v}$}; 
+                        \draw[->, thick, red] (0,0)--(2,0) node[above] {${w}$}; 
+                    \begin{scope}[rotate=90] 
+                        \draw [<-<,>=latex,very thick, color=blue] (-1,-1) .. controls (-0.5,0) and (-0.2,0) .. (-0.05,0) .. controls (-0.1,0.05) and (-0.5,0) .. (-1,1);
+                        \fill (0,0) circle (1pt);
+                    \end{scope}
+                \end{tikzpicture}
+            \end{center}
+
+            \bigskip
+
+	
+				
+        \item On se place au voisinage de $t=+\infty$. Étudier la branche infinie (asymptote et position relative).
+
+            \bigskip
+
+            On a $\lim_{t\to +\infty} x(t) = +\infty$ et $\lim_{t\to +\infty} y(t) = 0 $. La courbe $\Gamma$ admet dont une asymptote horizontale en $t=+\infty$. De plus, on a $y(t) >0$ et $\Gamma$ est située au dessus de son asymptote.
+		\item Compléter le tableau de variations suivant:
+			\begin{center}
+				\begin{tabular}{|c|ccccc|}
+					\hline    $t$       & $-\infty$ & \hspace{5cm}   &  0 &  \hspace{5cm} & $\infty$ \\[0.3cm]\hline\hline
+					signe de $x'(t)$    &           &      +          &  0   &   +                 &          \\[0.4cm]\hline
+       			 variation de $x(t)$    &           &      $\nearrow$          &    &        $\nearrow$         &     	 \\[0.9cm]\hline\hline
+					signe de $y'(t)$    &           &      +          &  0  &     -               &          \\[0.4cm]\hline
+					variation de $y(t)$ &           &      $\nearrow$          &    &   $\searrow$              &          \\[0.9cm]\hline
+				\end{tabular}
+			\end{center}
+		\item  Sur le graphique suivant, tracer la courbe $\Gamma$ ainsi que les tangentes et asymptotes étudiées aux questions précédentes. 
+                    \begin{center}
+                        \begin{tikzpicture}\pgfplotsset{compat=newest}
+                            \begin{axis}[height=5cm,width=13cm,enlargelimits=true,grid=major,  axis lines=center, axis on top, xlabel={$x$}, ylabel={$x$}, zlabel={$y$},
+                                ymin=-.5,ymax=1.5,xmin=-12,xmax=12]
+                                \draw[ultra thick,blue!50] (axis cs:3,0) -- (axis cs:12,0);
+                                \draw[ultra thick,blue!50] (axis cs:-3,0) -- (axis cs:-12,0);
+                                \addplot[grid=both,samples=500, very thick,red, parametric, domain = -10:10] gnuplot {t - tanh(t), 1 /cosh(t) };
+                                \draw[ultra thick,blue!50,->] (axis cs:0,1) -- (axis cs:0,.5);
+                            \end{axis}	
+                        \end{tikzpicture}
+                    \end{center}
+
+	\end{enumerate}
+ 
+\end{document}

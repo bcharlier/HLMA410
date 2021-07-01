@@ -1,0 +1,112 @@
+% version with pst-figure3d
+%\psset{viewpoint=50 20 30 rtp2xyz,Decran=50}
+%\begin{pspicture}[solidmemory](-4,-4)(6,5)
+%%\psset{unit=0.5}
+
+%\psSolid[object=plan,action=draw,definition=equation,args={[0 0 1 0]}, base=-4 4 -4 4,fillcolor=black!15,fillstyle=solid,name=P0]
+%\psProjection[object=texte,fontsize=100,linecolor=red,text=slice,phi=90,plan=P0]
+
+%%\psSolid[object=cube,a=8,action=draw,name=A,linecolor=red]
+
+%%\psSolid[object=plan,action=none,definition=solidface,args=A 4,name=P1]
+%%\psProjection[object=texte,fontsize=50,text=lateral,phi=-90,plan=P1](-5,0)
+
+%\psSolid[object=plan,action=draw,definition=equation,args={[0 1 0 0]},opacity=.2, base=-4 4 -4 4,fillcolor=black!15,name=P2]
+%%\psProjection[object=texte,fontsize=50,text=axial,phi=90,plan=P2](0,7)
+%%\psSolid[object=plan,action=none,definition=equation,args={[1 0 0 0]},name=P3]
+%%\psProjection[object=texte,action=draw,fontsize=50,text=temporal,phi=90,plan=P3](4,8)
+%\axesIIID(0,0,0)(4,4,4)
+%\end{pspicture}
+
+%\psset{unit=0.45}
+%\psset{viewpoint=50 40 30 rtp2xyz,Decran=50}
+%\psset{lightsrc=viewpoint}
+%\begin{pspicture}(-7,-8)(7,8)
+%\psSurface[ngrid=.25 .25](-4,-4)(4,4){((y^2)-(x^2))/4 }
+%\end{pspicture}
+
+%\psset{viewpoint=30 40 20 rtp2xyz,Decran=30}
+  %\begin{pspicture}(-3.5,-3.5)(3.5,3.5)
+%%  \axesIIID(2,2,2)(4,4,4)
+   %\psSolid[object=cube,a=4,fillcolor=blue,opacity=0.2,action=draw*]%
+   %\psSolid[object=sphere,r=1.5,linewidth=0.1pt,ngrid=20 20,fillcolor=red,opacity=0.2,action=draw*]%
+   %\psSolid[object=vecteur,args=0 -2 0](2,2,-2)
+   %\psSolid[object=vecteur,args=-2 0 0](2,2,-2)
+   %\psSolid[object=vecteur,args=0 0 2](2,2,-2)
+   %\psPoint(2,2,0.2){Z}\rput(Z){z}\psPoint(2,-0.2,-2){X}\rput(X){x}\psPoint(-0.2,2,-2){Y}\rput(Y){y}
+   %\psPoint(2,-1.6,-2){a1}\psPoint(2,-1.6,2){a2}\pcline{<->}(a1)(a2)\ncput*{d}
+   %\psPoint(2,-1.6,2){a1}\psPoint(-2,-1.6,2){a2}\pcline{<->}(a1)(a2)\ncput*{d}
+   %\psPoint(-1.6,2,-2){a1}\psPoint(-1.6,2,2){a2}\pcline{<->}(a1)(a2)\ncput*{d}
+   %\psPoint(0,0,0){a1}\psPoint(1,-1,0){a2}\pcline{->}(a1)(a2)\ncput*{r}
+  %\end{pspicture}
+
+%\begin{tikzpicture}
+%\def\zlength{-0.5cm}
+%\foreach \zangle [count=\i from 0] in {10,30,...,80}{
+%\begin{scope}[shift={({mod(\i,2)*4cm},{-floor(\i/2)*4cm})}, 
+    %x=(0:1cm), y=(90:1cm),z=(\zangle:\zlength)]
+%%\def\zangle{80}
+    %\def\sliceZ{0}
+    %\def\side{2}
+    %% draw plane
+    %\filldraw[color=gray!40] (0,0,0) -- (0,0,\side) -- (\side,0,\side) -- (\side,0,0) -- cycle;
+    %\filldraw[color=gray!40] (0,0,0) -- (0,\side,0) -- (\side,\side,0) -- (\side,0,0) -- cycle;
+    %\filldraw[color=gray!40] (0,0,0) -- (0,0,\side) -- (,0\side,\side) -- (0,\side,0) -- cycle;
+     %%\draw[dashed] (0,\sliceZ,0) -- (0,\sliceZ,\side) -- (\side,\sliceZ,\side) -- (\side,\sliceZ,0) -- cycle;
+    %% draw axes
+    %\draw[->] (0,0,0) -- (\side+.3,0,0) node[right] {$x$};
+    %\draw[->] (0,0,0) -- (0,\side+.3,0) node[below] {$y$};
+    %\draw[->] (0,0,0) -- (0,0,\side+.3) node[below] {$z$};
+    %\node[cm={1,0,cos(\zangle),sin(\zangle),(0,0)}] at (1,1,0){plan $x-y$};
+    %\node[cm={1,0,cos(\zangle),sin(\zangle),(0,0)}] at (1,0,1){plan $x-z$};
+    %\node[cm={1,0,cos(\zangle),sin(\zangle),(0,0)}] at (0,1,1){plan $x-z$};
+%\end{scope}
+%}
+%\end{tikzpicture}
+\begin{tikzpicture}
+    [%x={(-0.5cm,-0.5cm)},
+%	    y={(1cm,0cm)},
+%	    z={(0cm,1cm)}, 
+    scale=1,
+    fill opacity=1,%0.80,
+    very thin,
+    every node/.append style={transform shape}]
+\newcommand\drawface{\draw[fill=gray!100] (-.2,-.2) rectangle (2,2)}
+
+\def\ctr{1}
+\def\side{2}
+\def\sideT{.4}
+\filldraw[color=green!40] (-\sideT,-\sideT,0) -- (-\sideT,\side,0) -- (\side,\side,0) -- (\side,-\sideT,0) -- cycle;
+\filldraw[color=blue!40] (-\sideT,0,-\sideT) -- (-\sideT,0,\side) -- (\side,0,\side) -- (\side,0,-\sideT) -- cycle;
+\filldraw[color=gray!40] (0,-\sideT,-\sideT) -- (0,-\sideT,\side) -- (0,\side,\side) -- (0,\side,-\sideT) -- cycle;
+
+\def\sideT{0}
+\filldraw[color=green!40] (-\sideT,-\sideT,0) -- (-\sideT,\side,0) -- (\side,\side,0) -- (\side,-\sideT,0) -- cycle;
+\filldraw[color=blue!40] (-\sideT,0,-\sideT) -- (-\sideT,0,\side) -- (\side,0,\side) -- (\side,0,-\sideT) -- cycle;
+\filldraw[color=gray!40] (0,-\sideT,-\sideT) -- (0,-\sideT,\side) -- (0,\side,\side) -- (0,\side,-\sideT) -- cycle;
+	% face #3
+	\begin{scope}[canvas is zx plane at y=0]
+	   %\drawface;
+		\draw[thick,->] (1.5,1) arc (0:90:.5cm) node[above right,midway]{$+$};
+	   \node[rotate=90] at (\ctr/2,\ctr) {plan $xy$};
+	\end{scope}
+	% face #2
+	\begin{scope}[canvas is yx plane at z=0]
+	   %\drawface;
+		\draw[thick,<-] (1.5,1) arc (0:90:.5cm) node[above right,midway]{$+$};
+	   \node[yscale=-1,rotate=-90] at (\ctr/2,\ctr) {plan $yz$};
+	\end{scope} 
+
+       % face #1
+	\begin{scope}[canvas is yz plane at x=0]
+	    %\drawface;
+		\draw[thick,->] (1.5,1) arc (0:90:.5cm) node[above right,midway]{$+$};
+	    \node[rotate=-90] at (\ctr/2,\ctr) {plan $xz$};
+	\end{scope}
+
+
+
+	\draw[thick,->] (0,0,0) -- (\side+.3,0,0) node[right,text width=2.1cm, align=center] {$y$ (index)};
+	\draw[thick,->] (0,0,0) -- (0,\side+.3,0) node[above,text width=2.4cm, align=center]{$z$ (majeur)} ;
+	\draw[thick,->] (0,0,0) -- (0,0,\side+.3) node[below left,text width=2cm, align=center] {$x$ (pouce)};
+\end{tikzpicture}

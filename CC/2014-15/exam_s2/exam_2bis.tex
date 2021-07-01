@@ -1,0 +1,126 @@
+\documentclass{article}
+\input{./header.tex}
+
+%-----------------------------------------------------------------------------
+\begin{document}
+
+\begin{center}
+{\large \sffamily\bfseries RENDRE LE SUJET AVEC LA COPIE. }
+\end{center}
+
+
+
+\noindent Université Montpellier 2 \hfill Année 2014-2015
+
+\noindent HLMA 410
+ 
+
+
+\bigskip
+
+\begin{center}
+{\large \sffamily\bfseries Examen - session 2}
+\end{center}
+
+\textit{Durée 2h00. Les documents, la calculatrice, les téléphones portables, tablettes, ordinateurs ne sont pas autorisés. La qualité de la rédaction sera prise en compte.} 
+
+\bigskip
+\bigskip
+
+\section{Analyse}
+
+\exo{Question de cours}
+Soient $u=(u_1,u_2,u_3)$ et $v = (v_1,v_2,v_3)$ deux vecteurs de $\R^3$.  On note également $\prs{\cdot,\cdot}$ le produit scalaire canonique de $\R^3$.
+\begin{enumerate}
+	\item Donner la définition du produit vectoriel $u\wedge v$.
+%	\item Donner l'interprétation géométrique (faire un dessin!) et rappeler les règles de calculs élémentaires.
+	\item Montrer que $\prs{u, u\wedge v}  = 0$.
+	\item Soient $(e_1,e_2,e_3)$ une base orthonormale directe de $\R^3$. Calculer : \\
+		\begin{enumerate*}
+			\item $e_1\wedge e_2 \qquad$
+			\item $e_3 \wedge e_2 \qquad$
+			\item $e_2 \wedge e_2 $
+		\end{enumerate*}
+		\item L'application $ v \mapsto (1,2,3) \wedge v$ est-elle continue ? Est-elle différentiable ?
+\end{enumerate}
+
+\bigskip
+
+\exo{}
+On considère l'application 
+\begin{align*}
+	f : \R^3 & \to \R^2 \\
+(x,y,z) & \mapsto (xye^z,\cos(yz))
+\end{align*}
+\begin{enumerate}
+	\item Justifier que $f$ est de classe $\mathcal C^\infty$ sur $\R^3$.
+	\item Donner la différentielle de $f$ au point $(1,2,3)$.
+\end{enumerate}
+
+\bigskip
+
+\bigskip
+
+\exo{}
+Pour tout $(x,y) \in \R^2 \setminus \left\{ (0,0) \right\}$ on note $f(x,y) = \frac{xy^2}{x^2 + y^2}$.
+\begin{enumerate}
+	\item Montrer que $f$ se prolonge en une fonction continue $\tilde f$ définie sur $\R^2$.
+	\item En quels points de $\R^2$ la fonction $\tilde f$ est elle différentiable ?
+\end{enumerate}
+
+\bigskip
+
+%\exo{Question de cours}
+%Soit $E$ un espace vectoriel de dimension finie et $q:E\to \R$ une forme quadratique.
+%\begin{enumerate}
+	%\item Comment peut-on calculer la forme bilinéaire symétrique $\varphi:E\times E \to \R$ associée à $q$?
+	%\item Application : on pose $E =\R^2$, et $q(x,y) = (x+y)^2 + 2 y^2$ 
+		%\begin{enumerate}
+			%\item Calculer la forme bilinéaire $\varphi $ associée à $q$.
+			%\item Montrer que $\varphi$ est un produit scalaire.
+		%\end{enumerate}
+%\end{enumerate}
+
+%\bigskip
+
+
+
+\exo{} Soit $f(x,y) = \exp \left ( -9x^2 - \frac{y^2}{4} +36 x -y -37 \right)$.% 4*(x-2)^2 + (y+2)^2/4
+\begin{enumerate}
+	\item \'Etudier la continuité $f$. Sur quel ensemble $f$ est-elle $\mathcal C^\infty$  ?
+	%\item Donner les points de minimums de $f$ sur $\R^2$. Indiquer aussi la nature de ces points (minimum global ou local).
+	\item Calculer le gradient et la Hessienne de $f$ en les points de $\R^2$ pour lesquels ces quantités sont bien définies.
+	\item Déterminer alors le(s) point(s) critique(s) de $f$ et donner leur nature (minimum/maximum, local/global, point selle,\ldots).
+	\item On pose $D_1=\left\{ (X,Y)\in\R^2 | X^2 + Y^2 < 1 \right\}$ et on donne $\iint_{D_1} \exp(-X^2 -Y^2 )dXdY  = \pi(1 - e^{-1})$.
+	%\item On rappelle que $\iint_{\R^2} \exp(-X^2 -Y^2 )dXdY  = \pi$.
+		%\begin{enumerate}
+			%\item Déterminer les réels $a_1,a_2,c_1,c_2$ tels que $f(x , y) =  \exp (-a_1(x-c_1)^2 - a_2 (y-c_2)^2 )$. % Appliquer l'algorithme de la décomposition de Gauss et en déduire le signe de $q$
+En déduire de  la valeur de 
+\[
+\iint_{D_2} f(x,y) dxdy\] où $D_2 = \{ (x,y)\in\R^2 | 9(x-2)^2 + \frac {1}{4} (y+2)^2  < 1 \}$.
+		%\end{enumerate}
+\end{enumerate}
+
+
+\section{Probabilité}
+
+\exo{}Soit $X$ une variable aléatoire réelle telle que $\E(X^2) < +\infty$. Montrer que 
+\[
+	\E( (X-\E(X))^2) = \E(X^2) - (\E(X))^2.
+\]
+
+\bigskip
+
+\exo{} On vous propose un jeu d'argent : vous lancez trois fois une pièce équilibrée et si vous n'obtenez que des ``pile'' ou que des ``face'', vous empochez $5$ euros. Sinon, c'est à vous de débourser 2 euros.
+\begin{enumerate}
+	\item  Donner la loi de probabilité de $X$, le gain associé à ce jeu.
+	\item  Calculer l'espérance de $X$. Ce jeu vaut-il le coup ?
+	\item  Calculer la variance de $X$.
+\end{enumerate}
+
+\begin{center}
+{\large \sffamily\bfseries RENDRE LE SUJET AVEC LA COPIE. }
+\end{center}
+
+\end{document}
+

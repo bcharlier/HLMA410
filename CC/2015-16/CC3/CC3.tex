@@ -1,0 +1,68 @@
+\documentclass[a4paper]{tp_um}
+\input{../../TD/header.tex}
+\ue{HLMA410}
+%-----------------------------------------------------------------------------
+
+\title{\large \sffamily\bfseries Contrôle continu 3}
+
+\begin{document}
+
+\maketitle
+\textit{Durée 1h30. Les documents, la calculatrice, les téléphones portables, tablettes, ordinateurs ne sont pas autorisés. La qualité de la rédaction sera prise en compte.} 
+
+\bigskip
+\bigskip
+
+\exo{(Question de cours)} 
+\begin{enumerate}
+	\item Soit $q:\R^n \to\R$ une forme quadratique. Donner la définition et les propriétés élémentaires de la forme polaire $B$ de $q$.
+		\blanc{5cm}
+	\item Démontrer la proposition suivante : Soit $\mathcal B = (e_1 ,\cdots , e_n )$ une base de $\R^n$ et $h = h_1 e_1 + \cdots + h_n e_n \in \R^n$. Soit $f : \R^n \to\R^p$ une application différentiable en $a \in \R^n$, alors $d_a f (h) = h_1 \frac{\partial f}{\partial x_1}(a) + \cdots+ h_n \frac{\partial f}{\partial x_n}(a)$.
+	%\item	Soit une fonction $f:\R^n \to \R^p$. Donner la définition de la différentiabilité en $a \in \R^p$.
+		\blanc{8cm}
+\end{enumerate}
+
+
+\exo{} Soit $\phi$ la forme bilinéaire symétrique sur $\R^3$ définie par
+\[
+	\phi(x,y) = (x_1 - 2x_2)(y_1-2y_2) + x_2y_2 + (x_2+x_3)(y_2 + y_3)
+\]
+pour tout $x=(x_1,x_2,x_3)$ et $y=(y_1,y_2,y_3)$.
+\begin{enumerate}
+	\item Vérifier que $\phi$ est un produit scalaire sur $\R^3$.
+		\blanc{8cm}
+	\item  On note $\norm{\cdot}_\phi$ la norme associée à $\phi$. Soit $i=(1,0,0)$, $j=(0,1,0)$ et $k =(0,0,1)$. Calculer les coordonnées de 
+\[
+		e_1 = \frac{i}{\norm{i}_\phi}, \quad  e_2 = \frac{j - \phi(e_1,j)e_1}{\snorm{j - \phi(e_1,j)e_1}_\phi}, \quad  e_3 = \frac{k - \phi(e_1,k)e_1 - \phi(e_2,k)e_2}{\norm{k - \phi(e_1,k)e_1 - \phi(e_2,k)e_2}_\phi}
+	\]
+		\blanc{15cm}
+	\item Vérifier que $(e_1,e_2,e_3)$ est une base orthonormale pour $\phi$.
+		\blanc{8cm}
+	\item Déterminer (sans calcul) la matrice de $\phi$ dans la base $(e_1,e_2,e_3)$.
+		\blanc{8cm}
+\end{enumerate}
+
+\pagebreak	
+		
+\exo{}Soit la fonction $f:\R^2 \to \R$ définie par $f(x,y) = \frac{xy^2}{x^2 + y^2}$ si $(x,y) \neq (0,0)$ et $f(0,0) = 0$.
+\begin{enumerate}
+	\item  \'Etudier la continuité de $f$.
+		\blanc{8cm}
+	\item Soit $v \in \R^2$. Montrer que la dérivée directionnelle $D_v f(x,y)$ existe en tout point $(x,y)\in\mathbb R^2 \setminus\left\{ (0,0) \right\}$.
+		\blanc{5cm}
+	\item Soit $v \in \R^2$. Montrer que la dérivée directionnelle $D_v f(0,0)$ existe. La fonction $f$ est elle différentiable en l'origine?
+		\blanc{8cm}
+\end{enumerate}	
+	
+	
+	\exo{} \begin{enumerate}
+	\item Trouver l'équation du plan tangent au graphe de la fonction $(x,y) \mapsto 4x^2 + y^2$, au point $(x_0,y_0) = (1,-1)$.
+%$(x_0,y_0) = (-1/8,-1)$.
+	\blanc{8cm}	
+	\item Trouver les points sur le paraboloïde $z=4x^2+y^2$ où le plan tangent est parallèle au plan $x+2y+z=6$.
+		
+\blanc{8cm}
+\end{enumerate}	
+	
+
+\end{document}

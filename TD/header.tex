@@ -1,0 +1,159 @@
+\makeatletter
+%--------------------------------------------------------------------------------
+
+\usepackage[french]{babel}
+\usepackage{amsmath}
+\usepackage{amsbsy}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amscd}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{eurosym}
+\usepackage{nicefrac}
+
+\usepackage{latexsym}
+\usepackage[a4paper,hmargin=20mm,vmargin=25mm]{geometry}
+\usepackage{dsfont}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+\usepackage{multicol}
+\usepackage[inline]{enumitem}
+\setlist{nosep}
+\setlist[itemize,1]{,label=$-$}
+
+
+\newenvironment{modenumerate}
+  {\enumerate\setupmodenumerate}
+  {\endenumerate}
+
+\newif\ifmoditem
+\newcommand{\setupmodenumerate}{%
+  \global\moditemfalse
+  \let\origmakelabel\makelabel
+  \def\moditem##1{\global\moditemtrue\def\mesymbol{##1}\item}%
+  \def\makelabel##1{%
+    \origmakelabel{##1\ifmoditem\rlap{\mesymbol}\fi\enspace}%
+    \global\moditemfalse}%
+}
+
+
+\usepackage{sectsty}
+%\sectionfont{}
+\allsectionsfont{\color{astral}\normalfont\sffamily\bfseries\normalsize}
+
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{babel}
+\usepackage{tikz,tkz-tab}
+
+\usepackage[babel=true, kerning=true]{microtype}
+
+
+\usepackage{pgfplots}
+\usepgfplotslibrary{fillbetween}
+\pgfplotsset{compat=newest}
+\usepgfplotslibrary{external} 
+\tikzexternalize[prefix=./output_latex/]
+%\DeclareSymbolFont{RalphSmithFonts}{U}{rsfs}{m}{n}
+%\DeclareSymbolFontAlphabet{\mathscr}{RalphSmithFonts}
+%\def\mathcal#1{{\mathscr #1}}
+
+
+
+\providecommand{\abs}[1]{\left|#1\right|}
+\providecommand{\norm}[1]{\left\Vert#1\right\Vert}
+\providecommand{\U}{\mathcal{U}}
+\providecommand{\R}{\mathbb{R}}
+\providecommand{\Cc}{\mathcal{C}}
+\providecommand{\reg}[1]{\mathcal{C}^{#1}}
+\providecommand{\1}{\mathds{1}}
+\providecommand{\N}{\mathbb{N}}
+\providecommand{\Z}{\mathbb{Z}}
+\providecommand{\p}{\partial}
+\providecommand{\one}{\mathds{1}}
+\providecommand{\E}{\mathbb{E}}\providecommand{\V}{\mathbb{V}}
+\renewcommand{\P}{\mathbb{P}}
+
+
+%Operateur
+\providecommand{\abs}[1]{\left\lvert#1\right\rvert}
+\providecommand{\sabs}[1]{\lvert#1\rvert}
+\providecommand{\babs}[1]{\bigg\lvert#1\bigg\rvert}
+\providecommand{\norm}[1]{\left\lVert#1\right\rVert}
+\providecommand{\bnorm}[1]{\bigg\lVert#1\bigg\rVert}
+\providecommand{\snorm}[1]{\lVert#1\rVert}
+\providecommand{\prs}[1]{\left\langle #1\right\rangle}
+\providecommand{\sprs}[1]{\langle #1\rangle}
+\providecommand{\bprs}[1]{\bigg\langle #1\bigg\rangle}
+
+\DeclareMathOperator{\deet}{Det}
+\DeclareMathOperator{\hess}{Hess}
+\DeclareMathOperator{\jac}{Jac}
+
+
+\newcommand\rst[2]{{#1}_{\restriction_{#2}}}
+
+
+
+% generate breakable white space allowing students to write notes.
+
+\usepackage[framemethod=tikz]{mdframed}
+
+\mdfdefinestyle{response}{
+	leftmargin=.01\textwidth,
+	rightmargin=.01\textwidth,
+	linewidth=1pt
+	hidealllines=false,
+	leftline=true,
+	rightline=true,topline=true,bottomline=true,
+	skipabove=0pt,
+	%innertopmargin=-5pt,
+	%innerbottommargin=2pt,
+	linecolor=black,
+	innerrightmargin=0pt,
+	}
+
+
+
+\newcommand*{\DivideLengths}[2]{%
+  \strip@pt\dimexpr\number\numexpr\number\dimexpr#1\relax*65536/\number\dimexpr#2\relax\relax sp\relax
+}
+
+\providecommand{\rep}[1]{$ $ \newline \begin{mdframed}[style=response]  
+	
+	\vspace*{\DivideLengths{#1}{3cm}cm}
+	\pagebreak[1]	
+	\vspace*{\DivideLengths{#1}{3cm}cm}
+	\pagebreak[1]		
+	\vspace*{\DivideLengths{#1}{3cm}cm}   \end{mdframed}}
+
+\providecommand{\blanc}[1]{$ $ \newline 
+	
+	\vspace*{\DivideLengths{#1}{3cm}cm}
+	\pagebreak[1]	
+	\vspace*{\DivideLengths{#1}{3cm}cm}
+	\pagebreak[3]		
+	\vspace*{\DivideLengths{#1}{3cm}cm}}
+
+\usepackage{ifthen}
+
+\newcommand{\eno}[1]{%
+	\ifthenelse{\equal{\version}{eno}}{#1}{}%
+}
+\newcommand{\cor}[1]{%
+        \ifthenelse{\equal{\version}{cor}}{
+\medskip 
+
+{\small \color{gray} #1}
+
+\medskip 
+}{}
+}
+
+%------------------------------------------------------------------------------
+%\DeclareUnicodeCharacter{00A0}{~}
+\makeatother
+

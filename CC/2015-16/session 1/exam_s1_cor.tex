@@ -1,0 +1,393 @@
+\documentclass{tp_um}
+
+\input{../../TD/header.tex}
+
+%-----------------------------------------------------------------------------
+
+\title{\Large \sffamily\bfseries Examen - Session 1}
+\ue{HLMA410}
+
+
+%-----------------------------------------------------------------------------
+\begin{document}
+
+\maketitle
+
+\bigskip
+
+\textit{Durée 3h00. Les documents, la calculatrice, les téléphones portables, tablettes, ordinateurs ne sont pas autorisés. La qualité de la rédaction sera prise en compte. Les exercices sont indépendants.} 
+
+\bigskip
+\bigskip
+
+\section{Analyse}
+
+\exo{} Soit $(E,\langle\cdot,\cdot\rangle)$ un espace euclidien. Montrer que pour tout $u,v\in E$ 
+\[
+	\abs{\prs{u,v}} \leq \sqrt{\prs{u,u} \prs{v,v}}.
+\]
+
+\bigskip 
+On considère plusieurs cas:
+\begin{enumerate}
+		\item 	Cas $u=0$ ou $v=0$: tout est facilement vérifiable et découle des propriétés du produit scalaire.
+	\item 	Cas $u \neq 0$ et $v\neq 0$: on note $\norm{u}^2 = \prs{u,u}$ pour tout $u\in E$. De plus, on remarque que l'on a pour tout $u\in E \setminus \{0\}$ on a 
+			\[
+				\prs{u,u} >0 \text{ et }\prs{ \frac{u}{{\norm{u}}},\frac{u}{{\norm{u}}} } = 1
+			\]
+			Cela implique que:
+			\begin{equation*}\label{eq.cs1}
+				0 \leq \norm{ \frac{u}{{\norm{u}}} + \frac{v}{{\norm{v}}} }^2  = 2 + 2 \frac{\prs{u,v}}{{\norm{u}}{\norm{v}} }
+			\end{equation*}
+			Ainsi, on en déduit que  $-{\norm{u}} {\norm{v}} \leq \prs{u,v} $. De même
+			\begin{equation*}
+				0 \leq \norm{ \frac{u}{{\norm{u}}} - \frac{v}{{\norm{v}}} }^2  = 2 - 2 \frac{\prs{u,v}}{{\norm{u}}{\norm{v}} }
+			\end{equation*}
+			Ainsi, on en déduit que $\abs{\prs{u,v}} \leq {\norm{u}} {\norm{v}} $. %On a donc $-\sqrt{\prs{x,x}} \sqrt{\prs{y,y}} \leq \prs{x,y} \leq \sqrt{\prs{x,x}} \sqrt{\prs{y,y}} $, 
+			Cela termine la démonstration de l'inégalité. 
+
+%			Pour le cas d'égalité, on a $v=\lambda u$ pour $\lambda \in \R\setminus\{0\}$ si et seulement si $\norm{ \frac{v}{{\norm{u}}} + \frac{v}{{\norm{v}}} }^2 = 0$  ou $ \norm{ \frac{u}{{\norm{u}}} - \frac{v}{{\norm{v}}}} =0$ si et seulement si $ -\prs{u,v} = {\norm{u}} {\norm{v}}$ ou $ \prs{u,v} = {\norm{u}} \norm{v}$. 
+
+	\end{enumerate}
+
+
+
+\exo{}
+On considère l'application 
+\begin{align*}
+	f : \R^3 & \to \R^2 \\
+(x,y,z) & \mapsto (xye^z,\cos(yz))
+\end{align*}
+\begin{enumerate}
+	\item Justifier que $f$ est de classe $\mathcal C^1$ sur $\R^3$.
+
+		\bigskip
+
+		La fonction $( x,y,z) \mapsto  xy e^z$ est de classe $\mathcal C^1$ comme produit de fonctions de classe $\mathcal C^1$. De même pour $( x,y,z) \mapsto  yz$ qui est de classe $\mathcal C^1$. Et donc $( x,y,z) \mapsto  \cos(yz)$ est $\mathcal C^1$ comme composée de fonctions $\mathcal C^1$ 
+
+		\bigskip
+
+	\item Calculer la différentielle $L$ de $f$ au point $(1,2,3)$.
+		\bigskip
+
+Pour tout $(x,y,z)\in\R^3$ on a \[
+	\jac_f (x,y,z) = \begin{pmatrix}
+		ye^z & xe^z & xy e^z \\
+		0 & -z\sin(yz) & -y\sin(yz)
+	\end{pmatrix}
+\]
+Pour on a $	\jac_f (1,2,3) = \begin{pmatrix}
+		2e^3 & e^3 & 2 e^3 \\
+		0 & -3\sin(6) & -2\sin(6)
+	\end{pmatrix} $.  Ainsi $L: \R^3 \to \R^2$ est l'application linéaire définie par
+\[
+	(h_1,h_2,h_3) \mapsto  (2e^3 h_1 + e^3 h_2 + 2e^3h_3 ,-3\sin(6) h_2 -2\sin(6) h_3 ) \in \R^2
+\]
+	\item Détermniner l'ensemble $\{ (x,y,z)\in \R^3 | L(x,y,z) = (0,0) \}$. 
+
+		\bigskip
+Attention: ici, les variables «$x,y,z$» correspondent aux variables «$h_1,h_2,h_3$» de la question précédente.
+
+		On cherche le noyau d'une application linéaire. Ici, c'est un sous espace vectoriel de dimension 1 car $\jac_f(1,2,3)$ est de rang 2 (ses colonnes forment un espace de dimension 2 dans $\R^2$). On a 
+		\begin{align*}
+			L(h_1,h_2,h_3) = (0,0) & \Leftrightarrow \begin{cases}
+				2e^3 h_1 + e^3 h_2 + 2e^3h_3 = 0  \\
+				-3\sin(6) h_2 -2\sin(6) h_3 =0
+			\end{cases}\\ & \Leftrightarrow \begin{cases}
+				2 h_1 + h_2 + 2 h_3 = 0   \\
+				h_2  = - \frac 2 3 h_3
+			\end{cases}\\ &\Leftrightarrow \begin{cases}
+				h_1 = -\frac 2 3 h_3   \\
+				h_2  = - \frac 2 3 h_3
+			\end{cases} 
+		\end{align*}
+C'est la droite $Vect\left\{ (-2,-2,3 )\right\}$.
+\end{enumerate}
+
+\exo{} On considère le domaine 
+\[
+	D = \left\{ (x,y) \in\R^2 | x <7, 8-x <y<x+1 \right\}
+\]
+\begin{enumerate}
+	\item Dessiner $D$.
+
+		\bigskip
+		
+\begin{center}
+	\begin{tikzpicture}[scale=.5]
+			\def\xone{-1};\def\xtwo{9};\def\yone{-1};\def\ytwo{8}
+% grid
+			\draw[step=1cm,help lines] (\xone,\yone) grid (\xtwo,\ytwo);
+			\draw[thick,->] (\xone-.3, 0) -- (\xtwo+.3, 0) node (a) [right] {$x$};
+			\draw[thick,->] (0, \yone-.3) -- (0, \ytwo+.3) node[above] {$y$};
+
+			\draw[dashed,black] (7,9) node[above] {$x=7$} -- (7,-2);
+			\draw[dashed,black] (-1,9) -- (10,-2) node[below] {$y=8-x$};
+			\draw[dashed,black] (-1,0) node[above left] {$y=x+1$} -- (7,8);
+
+			\coordinate (a) at (7/2,9/2);
+			\coordinate (b) at (7,8);
+			\coordinate (c) at (7,1);
+		
+			\draw[black,fill=gray!50,fill opacity=.5] (a) -- (b) -- (c) -- cycle;
+	\end{tikzpicture}
+\end{center}
+
+
+		\bigskip
+	\item Calculer $\iint_D \frac{dxdy}{(x+y)^2}$
+
+		\bigskip
+
+Pour $x\in\R$ on a
+\[
+	8-x < x+1 \Leftrightarrow x > \frac 7 2.
+\]
+Ainsi
+\begin{align*}
+	\iint_D \frac{dxdy}{(x+y)^2} &= \int_{7/2}^{7}\left( \int_{8-x}^{x+1}  \frac{1}{(x+y)^2} dy \right)dx \\
+	& = \int_{7/2}^{7}\left[ - \frac{1}{x+y}\right]_{8-x}^{x+1} dx \\
+	& =  \int_{7/2}^{7} \left( -\frac{1}{2x+1} + \frac 1 8 \right) dx \\
+	& = \left[ -\frac 1 2 \ln\left( 2x+1 \right) \right]_{7/2}^{7} + \frac{7}{16} \\
+	&= \frac 1 2 \ln\left( \frac{8}{15} \right) + \frac{7}{16}
+\end{align*}
+
+\end{enumerate}
+
+
+\exo{} Pour $(x,y) \in \R^2\setminus\left\{ (0,0) \right\}$, on note 
+\[
+	f(x,y) = \frac{xy^2}{x^2 + y^2}
+\]
+\begin{enumerate}
+	\item Montrer que $f$ se prolonge en une fonction $\check f$ continue sur $\R^2$.
+
+		\bigskip
+
+On commence par observer que la fonction $f$ est de classe $\mathcal C^\infty$ (et donc en particulier continue et différentiable) sur $\R^2 \setminus \{(0, 0)\}$ comme fraction rationnelle dont le
+dénominateur ne s'annule pas. 
+On observe que $0 \leq y^2 \leq x^2 + y^2$ et donc
+\[
+\abs{f(x,y)} \leq \abs{x} \xrightarrow[(x,y) \to (0,0)]{} 0 
+\]
+Cela prouve que $f$ tend vers 0 en $(0,0)$. Ainsi on peut prolonger $f$ par continuité en posant
+$\check f (x, y) = \begin{cases} 0 & \text{ si $x=y=0$}  \\ f(x,y) & \text{sinon} \end{cases}$.
+
+		\bigskip
+
+
+
+
+	\item En quels points de $\R^2$ la fonction $\check f$ est-elle différentiable ?
+	
+		\bigskip
+
+
+	Pour tous $x, y\in\R^*$ on a $f (x, 0) = f (0, y) = 0$. Cela implique que les dérivées partielles de $f$ existent en $(0,0)$ et sont nulles. Ainsi, si $f$ est différentiable en $(0,0)$, sa différentielle est nécessairement nulle. Ainsi pour tout $v \in\R^2$ la dérivée de $f$ en $(0,0)$ et dans la direction $v$ est nulle. Or pour $v = (1, 1)$ on a
+	\[
+	\frac{f(t,t) - f(0,0)}{t} = \frac 1 2 \xrightarrow[(x,y) \to (0,0)]{} \frac 1 2 \neq  0.
+	\]
+	D'où la contradiction. On a prouvé que $f$ n'est pas différentiable en $(0,0)$. Ainsi l'ensemble des points en lesquels $f$ est différentiable est $\R^2 \setminus \{(0, 0)\}$.
+\end{enumerate}
+
+\exo{} Soit la fonction \[f(x,y) = \exp \left ( -4x^2 - y^2 + 8x +4y -8 \right)\]
+définie sur $\R^2$.% 9*(x-2)^2 + (y+2)^2/4
+\begin{enumerate}
+	\item \'Etudier la régularité $f$ (continuité, différentiabilité, etc\ldots).
+
+		\bigskip
+
+
+La fonction $f$ est $\mathcal C^\infty$ comme composée et produit de fonction $\mathcal C^\infty$ sur $\R^2$. Elle est donc continue, différentiable et $\mathcal C^1$ partout sur le plan.
+
+		\bigskip
+
+
+	\item Déterminer le signe de  $(x,y)  \mapsto   -4x^2 - y^2 + 8x +4y -8$. En déduire l'ensemble image de $f$.
+
+		\bigskip
+
+
+Pour étudier le signe, on cherche à mettre sous forme de somme de carré. On trouve
+\[
+ -4x^2 - y^2 + 8x +4y -8 =  -4(x-1)^2 - (y-2)^2.
+\]
+C'était écrit à la fin de l'exercice.  La réponse est: cette forme quadratique décentrée est de signe négatif pour tout $(x,y) \in \R^2$ et l'image de $f$ est alors $]0,1]$.
+		\bigskip
+
+
+
+	\item Soit  \[E_\lambda =  \left\{ (x,y) \in\R^2 | f(x,y) \geq \lambda \right\}.\] Dessiner $E_{e^{-1}}$, $E_{e^{-2}}$ et  $E_{e^{-3}}$. L'ensemble $E_{e^{-1}} \cup E_{e^{-2}} \cup E_{e^{-3}}$ est-il ouvert, fermé, les deux, ni l'un ni l'autre? Faire une démonstration.
+
+
+		\bigskip
+On a $(x,y) \in E_\lambda \Leftrightarrow 4( x -1)^2 + ( y -2)^2  \leq -\ln\lambda$. Ainsi, les ensembles $E_{e^{-1}}$, $E_{e^{-2}}$ et  $E_{e^{-3}}$ sont l'intérieur d'ellipses concentriques centrées en $(1,2)$. On a : 
+		
+		\begin{center}
+			\begin{tikzpicture}[scale=.7]
+				\begin{axis}[xlabel=$x$,ylabel=$y$,ymin=0,ymax=4,xmin=-.5,xmax=2.5,zmin=0,zmax=1,view={0}{90},ztick=\empty,axis equal]
+					\addplot3[domain=-1:5,contour gnuplot={levels={exp(-1),exp(-2),exp(-3)}, labels=false},samples=400] gnuplot {exp( -4*(x-1)**2 - (y-2)**2)};
+		\newcommand\expR[2]{exp(-4 * #1^2 -  #2^2 + 8* #1 + 4* #2 -8 ) * (+8 - 8* #1)}
+		\newcommand\expRR[2]{exp(-4 * #1^2 -  #2^2 + 8* #1 + 4* #2 -8 ) *(-2* #2 +4)}
+		%\newcommand\expr[2]{exp(-#1^2/4) * sin(deg(#2))}
+					
+					\addplot3[domain=0:2, y domain=0:4,blue, quiver={u={ \expR{x}{y} }, v={\expRR{x}{y} }, scale arrows=0.3}, -stealth,samples=10] {0};
+				\end{axis}
+			\end{tikzpicture}
+		\end{center}
+
+
+		On a $E_{e^{-1}} \cup E_{e^{-2}} \cup E_{e^{-3}} =E_{e^{-3}}$. Il suffit de montrer que  $E_{e^{-3}}$ contient les limites de ses sous suites convergentes. Soit $u_n = (x_n,y_n)$ une suite de $E_{e^{-3}}$ qui converge vers $\ell = (x,y)$. Alors 
+		\[
+			-4( x_n -1)^2 - (y_n -2)^2 \geq -3 
+		\]
+en passant à la limite on a 
+\begin{align*}
+			-4( \lim_n x_n -1)^2 - ( \lim_n y_n -2)^2 & \geq -3  \\
+			-4( x -1)^2 - ( y -2)^2 & \geq -3 
+\end{align*}
+ce qui montre que $\ell \in E_{e^{-3}}$.
+
+
+	%\item Donner les points de minimums de $f$ sur $\R^2$. Indiquer aussi la nature de ces points (minimum global ou local).
+	\item Calculer le gradient de $f$ et le représenter succinctement sur la figure de la question 3.
+		\bigskip
+	
+		On a $\nabla f (x,y) = ( -8x+ 8 , - 2y +4 ) e^{ -4x^2 - y^2 + 8x +4y -8 } $. Pour la représentation graphique, on se rappelle que les vecteurs du champ de gradients sont perpendiculaires aux lignes de niveau.   
+	
+		\bigskip
+
+
+	\item Calculer la hessienne de $f$.
+		\bigskip
+
+
+		On a $\hess_f (x,y) = \begin{pmatrix}
+			-8 + (-8x+8)^2 & (-8x+8 )(-2y+4) \\(-8x+8 )(-2y+4)  & -2 +\left(-2y +4 \right)^2 
+		\end{pmatrix} e^{ -4x^2 - y^2 + 8x +4y -8 } $. 
+
+	\item Déterminer le(s) point(s) critique(s) de $f$ et donner leur nature (minimum, maximum, point selle,\ldots).
+	
+		On calcule la solution de $\nabla f(x,y) = (0,0)$. L'unique point critique est donc $(1,2)$. On a $\hess_f(1,2) = \begin{pmatrix}
+		-8 & 0 \\ 0 & -2	
+		\end{pmatrix}$. Le critère de Sylvester donne immédiatement que $f$ a un maximum local en $(1,2)$ (c'est en fait un maximum global).
+
+
+		\bigskip
+
+
+	\item On pose $D_1=\left\{ (X,Y)\in\R^2 | X^2 + Y^2 < 1 \right\}$ et on donne $\iint_{D_1} \exp(-X^2 -Y^2 )dXdY  = \pi(1 - e^{-1})$.
+	%\item On rappelle que $\iint_{\R^2} \exp(-X^2 -Y^2 )dXdY  = \pi$.
+		%\begin{enumerate}
+			%\item Déterminer les réels $a_1,a_2,c_1,c_2$ tels que $f(x , y) =  \exp (-a_1(x-c_1)^2 - a_2 (y-c_2)^2 )$. % Appliquer l'algorithme de la décomposition de Gauss et en déduire le signe de $q$
+En déduire de  la valeur de 
+\[
+\iint_{D_2} f(x,y) dxdy\] où $D_2 = \{ (x,y)\in\R^2 | 4(x-1)^2 +  (y-2)^2  < 1 \}$.
+		%\end{enumerate}
+
+
+		\bigskip
+
+
+Soit $\phi: \R^2 \to \R^2$ tel que $\phi(x,y) = (2(x-1), (y-2)) = (X,Y)$. C'est un changement de variable affine tel que $\phi(D_2) = D_1$ et de jacobien $\det \phi(x,y) =2$. Il suffit donc de remarquer que 
+\[
+	 \iint_{D_1} \exp(-X^2 -Y^2 )dXdY = \iint_{D_2} 2f(x,y) dxdy
+\]
+et $\iint_{D_2} f(x,y) dxdy   = \frac{\pi}{2}(1 - e^{-1})$.
+
+\end{enumerate}
+
+%\exo{} On considère l'arc paramétré 
+%\begin{align*}
+	%\phi:[0,1] &\to \R^2
+	%t & \mapsto \left( \frac{t}{1+t^4} , \frac{t^3}{1+t^4} \right)
+%\end{align*}
+%et le champs de vecteurs 
+%\begin{align*}
+	%\omega:\R^2 &\to \R^2
+	%(x,y) &\mapsto (-y, x)
+%\end{align*}
+%\begin{enumerate}
+	%\item Calculer la circulation de $\omega$ le long de $\phi$
+	%\item Calculer la circulation de $\omega$ le long du segment $s$ joignant $\phi(0)$ à $\phi(1)$.
+	%%\item Montrer que le support de la courbe $\phi$ est incluse dans le domaine $D = \{(x,y)\in\R^2 | y\leq x\}$.
+	%%\item Calculer l'aire du domaine délimité par l'arc $\phi$ et le segment $s$ (on admettra que le bord de ce domaine est l'union des support de $\phi$ et de $s$)
+%\end{enumerate}
+
+
+
+
+
+\section{Probabilités}
+
+\exo{}Soit $X$ une variable aléatoire réelle telle que $\E(X^2) < +\infty$. Montrer que 
+\[
+	\E( (X-\E(X))^2) = \E(X^2) - (\E(X))^2.
+\]
+
+C'est du cours!
+
+
+
+
+\exo{}Sachant que l'on a obtenu 12 fois «face» en 20 lancers d'une pièce équilibrée, calculer la probabilité que:
+\begin{enumerate}
+	\item le premier lancer ait amené «face»
+
+		\bigskip
+
+		Soit $E_i =$``le $i$-ème lancer donne «face»'' et on note $X_i$ l'indicatrice de $E_i$. Par définition on a $X_i \sim Bin(1,1/2)$ et $X=\sum_{i=1}^{20} X_i \sim Bin(20,1/2)$ et $\P( X=k) = \binom{20}{k} \frac{1}{2^{20}}$. 
+On cherche à calculer 
+\[\P(X_1 =1 | X= 12) = \frac{\P( \{X_1=1\} \cap \{X= 12\} }{\P( \{X=12\} )} = \]
+Or
+\begin{align*}
+	\P\left(\left\{ X_1=1\right\} \cap\left\{ X= 12\right\}\right)  &= \P\left( \left\{ X_1=1\right\} \cap\left\{\sum_{i=2}^{20} X_i=11 \right\} \right) \\& = \P\left( \left\{ X_1=1\right\}\right)  \P\left( \left\{\sum_{i=2}^{20} X_i =11 \right\} \right)  \\ &= 1/2 \binom{19}{11} 1/2^{19} = 1/2^{20}\binom{19}{11}. 
+\end{align*}
+Ainsi
+\[
+	\P(X_1 =1 | X= 12) = \frac{ \binom{19}{11}}{ \binom{20}{12}} = \frac{ 12 }{20}.
+\]
+		\bigskip
+
+	\item au moins deux des cinq premiers lancers aient amené «face» (on ne demande pas de calculer la valeur numérique approchée, c'est le raisonnement qui sera évalué).
+
+		\bigskip
+
+		Soit $B =$`` au moins deux des cinq premiers lancers aient amené «face»''.  On a
+			\begin{align*}
+				%B^c &= \left\{ \bigcap_{i=1}^5 X_i = 0 \right\} \\ &\qquad  \cup \left\{ X_1 = 1 \cap \bigcap_{i=2}^5 X_i = 0 \right\} \\&\qquad  \cup \left\{ X_1 = 0 \cap X_2=1 \cap \bigcap_{i=3}^5 X_i = 0 \right\}\\& \qquad  \cup \left\{ \bigcap_{i=1}^2 X_i = 0 \cap X_3 =1\cap \bigcap_{i=4}^5 X_i = 0 \right\}\\& \qquad   \cup \left\{ \bigcap_{i=1}^3 X_i = 0 \cap X_4=1 \cap  X_5 = 0 \right\}\\& \qquad   \cup  \left\{ \bigcap_{i=1}^4 X_i = 0\cap  X_5 = 1 \right\} 
+				B^c &= \left\{ \sum_{i=1}^5 X_i = 0 \right\} \cup \left\{ \sum_{i=1}^5 X_i = 1 \right\}
+			\end{align*}
+			C'est une union d'évènements disjoints. On a de plus,
+			\[
+				%\P\left(\left\{ \bigcap_{i=1}^5 X_i = 0 \right\}  \cap X=12 \right) =\P\left(\left\{ \bigcap_{i=1}^5 X_i = 0 \right\}  \right)\P\left( \sum_{i=6}^{20} X_i = 12 \right) = 1/2^5 \binom{15}{12} 1/2^{15}.
+				\P\left(\left\{ \sum_{i=1}^5 X_i = 0 \right\}  \cap X=12 \right) =\P\left(\left\{ \sum_{i=1}^5 X_i = 0 \right\}  \right)\P\left( \sum_{i=6}^{20} X_i = 12 \right) = 1/2^5 \binom{15}{12} 1/2^{15}.
+			\]
+			et
+			\begin{align*}
+				\P\left( \left\{\sum_{i=1}^5 X_i = 1 \right\}   \cap X=12 \right) & =	\P\left( \left\{\sum_{i=1}^5 X_i = 1 \right\}  \right) \P\left( \sum_{i=6}^{20} X_i = 11 \right) \\ &= 5/2^5 \binom{15}{11} 1/2^{15}.
+				%\P\left( \left\{ X_1 = 1 \cap \bigcap_{i=2}^5 X_i = 0 \right\}   \cap X=12 \right) & =	\P\left( \left\{ X_1 = 1 \cap \bigcap_{i=2}^5 X_i = 0 \right\}  \right) \P\left( \sum_{i=6}^{20} X_i = 11 \right) \\ &= 1/2^5 \binom{15}{11} 1/2^{15}.
+			\end{align*}
+Pour conclure on a:
+\[
+	\P(B^c | X=12) = \frac{ \binom{15}{12} 1/2^{20} +  5\binom{15}{11} 1/2^{20} }{\binom{20}{12} 1/2^{20}} = \frac{ \binom{15}{12} +  5\binom{15}{11} }{\binom{20}{12}} = 16 \frac{8!15!}{3! 20!},
+\]
+et $\P(B | X=12) =1 -  16 \frac{8!15!}{3! 20!} \approx 0.9422$.
+
+\end{enumerate}%Dossier 3 MArin
+
+%\exo{} Soit $X$ et $Y$ deux variables aléatoires indépendantes de lois géométriques de paramètre $a$ et $b$ respectivement. On note $Z = \min \left\{ X,Y \right\}$. Le but de l'exercice est de déterminer la loi de $Z$.
+%\begin{enumerate}
+	%\item Calculer $\P\left( X \leq k \right)$ et $\P\left( Y\leq k\right)$ pour tout $k\in \N^*$.
+	%\item Calculer alors $\P\left( Z\leq k \right)$ pour tout $k \in \N^*$
+	%\item Soit $k\in\N^*$ fixé. Exprimer l'évènement $\left\{ Z = k \right\}$ en fonction des évènements du type $\left\{ Z\leq \ell \right\}$, $\ell\in \N^*$.
+	%\item En déduire la loi de $Z$.
+%\end{enumerate}
+\end{document}
+
+
+
+
+
+
+

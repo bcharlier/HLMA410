@@ -1,0 +1,458 @@
+%\chapter{Développement de Taylor de fonctions à plusieurs variables}
+\chapter{Dérivées d'ordres supérieurs et études des extrema}
+
+
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+\section{Dérivées partielles d'ordre supérieur}
+
+Soit $E$ un \rev{} et $\U$ un ouvert de $E$. On suppose  que $\dim E = n$ et $\mathcal B = \left( e_1,\cdots,e_n \right)$ est une base de $E$.
+
+\subsection{Définitions et propriétés}
+
+\begin{definition}
+	%[(Dérivée partielle seconde)]
+	Soit $f: \U \to F$ et  $a\in\U$. On suppose que $f$ admet une $j$-ème dérivée partielle $\frac{\partial f}{\partial x_j} (a)$ pour $j=1,\cdots,n$. Si $\frac{\partial f}{\partial x_j}$ admet en $a$ une $k$-ème dérivée partielle $\frac{\partial \left(\frac{\partial f}{\partial x_j}\right)}{\partial x_k} $, $1 \leq k \leq n$, on dit que $f$ admet en $a$ une $(k,j)$-ième \emph{dérivée partielle seconde} que l'on note $\frac{\partial^2 f}{\partial x_k \partial x_j} (a)$.
+\end{definition}
+
+\begin{remark}
+	En itérant le procédé, on définit les dérivées partielles triples, quadruples\ldots
+\end{remark}
+
+
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+\begin{definition}
+	%[(Classe $\Cc^k$)]
+	Une fonction $f:\U \to F$ est de \emph{classe $\Cc^k$} sur $\U$ si pour tout $j_1,j_2,\cdots,j_k \in \left\{ 1,\cdots,n \right\}$
+la fonction $\frac{\p^k f}{\p x_{j_k} \cdots   \p x_{j_2}\p x_{j_1} }: \U \to F$ est continue sur $\U$.
+
+On dit que $f$ est de classe $\Cc^\infty$ si $f$ est de classe $\Cc^k$ pour tout $k\in\N$.
+\end{definition}
+
+
+\begin{exemple}
+Calcul des dérivées partielles secondes de la fonction
+$
+%f_1(x,y) = x^2; \quad 
+f(x,y)= x^2\cos(y)
+%; \quad f_3(x,y) = x^y.
+$.
+\sld{
+    On a fait le calcul directement et on remarque que $\frac{\partial^2f}{\\partial x \partial y}(x,y) = \frac{\partial^2f}{\\partial x \partial y} (x,y) = $. 
+
+    La question qui va nous occuper dans la suite de ce chapitre est: quelles sont les conditions sur la fonction $f$ pour que cela soit toujours le cas.
+}
+\pl{\rep{5cm}}
+\end{exemple}
+
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+Le calcul des dérivées secondes de l'exemple précédent semble suggérer que les dérivées secondes $\frac{\p^2 f}{\p x_i \p x_j}$ et $\frac{\p^2 f}{\p x_j \p x_i} $ sont égales. C'est le cas pour les fonctions suffisamment régulières:
+\begin{theorem}
+	[(Schwarz)]
+	On suppose que $f:\U \to F$ est de classe $\Cc^2$ sur $\U$. Alors,  pour tout $i,j \in \left\{ 1,\cdots,n \right\}$ on a sur $\U$  %$\frac{\p^2 f}{\p x_i \p x_j} $ et $\frac{\p^2 f}{\p x_j \p x_i}$ existent sur un ouvert $\U$ de $E$. Si ces fonctions sont continues en $a\in\U$, alors 
+	\[\frac{\p^2 f}{\p x_i \p x_j}=\frac{\p^2 f}{\p x_j \p x_i} \]
+\end{theorem}
+
+\begin{proof}
+    \sld{ 
+L'idée de la preuve est de montrer que l'on a l'interversion de limite suivante:
+
+    }
+	\pl{\rep{25cm}}	
+\end{proof}
+
+
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+Le résultat s'étend aux dérivées partielles d'ordre supérieur: 
+\begin{proposition}
+	Si $f:E\to F$ est de classe $\Cc^k$ sur $\U$, alors pour tout $j_1,\cdots,j_k \in \left\{ 1,\cdots,n \right\}$ et toute permutation $\sigma$ de $\left\{ 1,\cdots,k \right\}$, on a:
+	\[
+		\frac{\p^k f}{ \p x_{j_k} \cdots \p x_{j_1}  }	= \frac{\p^k f}{ \p x_{j_{\sigma(k)}} \cdots \p x_{j_{\sigma(1)}}  }
+	\]
+\end{proposition}
+
+\begin{proof}
+	C'est un corollaire du théorème de Schwarz.
+\end{proof}
+
+{\bf\sffamily Notations: }  
+	Par exemple, si $f$ est de classe $\Cc^4$ sur $\U$ les calculs de dérivées partielles d'ordres $\leq 4$ peuvent se faire dans un ordre arbitraire et on écrit: $\frac{\p^{4} f}{\p x_1^{2}\p x_2^{2} }$ pour $\frac{\p^{4} f}{\p x_2 \p x_1 \p x_2   \p x_1 }$. 
+
+%Plus généralement, si $f$ est de classe $\Cc^k$, $h = (h_1,\cdots,h_n) \in \R^n$ et $\alpha = (\alpha_1,\cdots,\alpha_n) \in \N^n$, on note $\abs{\alpha} = \alpha_1 + \cdots+ \alpha_n$, $h^\alpha =  h_1^{\alpha_1}h_2^{\alpha_2}\cdots h_n^{\alpha_n}$ et 
+%\[
+	%\frac{\p^{\abs{\alpha}} f}{\p x^\alpha}  =  \frac{\p^{\alpha_1} f}{\p x_1^{\alpha_1}} \frac{\p^{\alpha_2} f}{\p x_2^{\alpha_2}} \cdots\frac{\p^{\alpha_n} f}{\p x_n^{\alpha_n}} 
+%\]
+
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+\subsection{Opérations sur les fonctions de classe $\Cc^k$}
+
+\begin{proposition} Soient $E,F,G$ trois espaces vectoriels normés, $\U \subset E$ et $\V \subset F $ des ouverts~: 
+	\begin{enumerate}[label=$(\roman*)$]
+		\item Addition: $f,g: \U \to F$ de classe $\Cc^k$ sur $\U$ alors $f+g$ est de classe $\Cc^k$ sur $\U$. 
+		\item Multiplication par un scalaire: $f:\U\to F$  de classe $\Cc^k$ sur $\U$ alors $\lambda f$ est  de classe $\Cc^k$ sur $\U$.
+		\item Multiplication (cas de $F=\R$): $f,g:\U\to \R$  de classe $\Cc^k$ sur $\U$ alors $fg$ est  de classe $\Cc^k$ sur $\U$.
+		\item Inverse (cas de $F=\R$): $f:\U\to \R$  de classe $\Cc^k$ sur $\U$ et $a \in \U$ tel que $f(a) \neq 0$ alors $\frac{1}{f}$ est  de classe $\Cc^k$ sur un voisinage de $a\in \U$.
+		\item Composition: $f: \U \to F$ et $g: F \to G $. Si $f$ est  de classe $\Cc^k$ sur $\U$ et $g$ est  de classe $\Cc^k$ sur $\V\supset f( \U)$, alors $g\circ f:E \to G$ est  de classe $\Cc^k$ sur $\U$. 
+	\end{enumerate}
+\end{proposition}
+
+
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+\subsection{Formules de Taylor et matrice hessienne}
+
+%\begin{theorem}
+	%[(Formule de Taylor-Young)]
+	%Soit $f:\U \to F$ une fonction de classe $\Cc^k$ et $ a \in \U$ et $h \in E $ tel que le segment $ [a,a+h] \subset \U$. Alors on a
+	%\[
+		%f(a+h) = f(a) + d_a f(h) + d_a^2 f (h,h) \cdots + d^k_af(\underbrace{h,\cdots,h}_{k \text{ fois} }) + \underset{h\to 0}{o} (\norm{h}^k)
+	%\]
+	%où pour tout $\ell =1 ,\cdots,k$  on a noté  
+	%\[
+	%d^\ell_a f(\underbrace{h,\cdots,h}_{\ell \text{ fois} }) =  \sum_{j_1,\ldots,j_\ell =1}^n \frac{\p^\ell f}{ \p x_{j_1} \cdots \p x_{j_\ell} } (a) h_{j_1}\cdots h_{j_\ell}  \]
+%\end{theorem}
+\begin{theorem}
+	[(Formule de Taylor-Young)]
+	Soit $f:\U \to F$ une fonction de classe $\Cc^2$ et $ a \in \U$. Alors il existe une fonction $\omega: E \to F$ définie au voisinage de 0 telle que pour tout $h\in E$ assez petit en norme,
+	\[
+		f(a+h) = f(a) + d_a f(h) + \frac{1}{2}d_a^2 f (h,h) + \snorm{h }^2 \omega(h) \text{ avec } \snorm{\omega(h) }'\xrightarrow[\snorm{h} \to 0]{} 0
+	\]
+	où $
+	d^2_a f(h,h) =  \sum_{i,j=1}^n \frac{\p^2 f}{ \p x_{i} \p x_{j} } (a) h_{i}h_{j}$.
+\end{theorem}
+
+\begin{proof}
+%\'Ebauche. %Dans le cas $E = \R^2$ et $F=\R$.
+	\pl{\rep{6cm}}
+\end{proof}
+\begin{exemple}
+	Développement  limité en $(0,0)$  et à l'ordre 2 de $(x,y) \mapsto (ye^x,\cos(x+y))$. \plprof{On pose $h = (h_1,h_2) \in \R^2:$
+	\begin{enumerate}
+		\item $f_1(x,y) = y e^x$ et $f_1(h_1,h_2) = h_2 + h_1h_2 + \snorm{h}^2\omega_1(h)$ où $\snorm{h }^2 \omega_1(h) = o(\norm{h}^2)$.
+		\item $f_2(x,y) = \cos(x+y)$ et $f_2(h_1,h_2) = 1 - \frac 1 2  (h_1 + h_2)^2 + \snorm{h}^2\omega_2(h)$ où $\snorm{h }^2 \omega_2(h) = o(\norm{h}^2)$.
+		% Dans Maxima: taylor(cos(x+y),[x,y],0,8);
+	\end{enumerate}
+	Ainsi, on a $f(h_1,h_2) = (0,1) + (h_2,0) + \frac 1 2 (2h_1h_2,(h_1 + h_2)^2 )  + \snorm{h}^2 (\omega_1(h)  ,\omega_2(h)  ) $ }
+	\pl{\rep{9cm}}
+\end{exemple}
+
+%\begin{exemple}
+	%Calcul du développement  limité en $(0,0)$  et à l'ordre 3 de la fonction $(x,y) \mapsto (ye^x,\cos(x+y))$.
+	%\begin{enumerate}
+		%\item $f_1(x,y) = y e^x$ et $f_1(h_1,h_2) = h_2 + h_1h_2 + \frac 1 2 h_1^2 h_2 + o(\norm{h}^3)$
+%%\begin{center}
+	%%\tikzexternalenable
+
+	%%\begin{tabular}	{ccc}
+		%%\begin{tikzpicture}[scale=.95]
+			%%\begin{axis}[z post scale=1.5,zlabel style={rotate=-90},zlabel=$z$,xlabel = $x$,ylabel=$y$,width=.3\textwidth, ,domain=-2:2,zmax=15,zmin=-15,view/h=70] 
+				%%\addplot3[surf,opacity=.9,samples=20] gnuplot { y*exp(x)  };
+				%%\addplot3[colormap/greenyellow,surf,opacity=.5,samples=20] gnuplot { y};
+			%%\end{axis} 
+		%%\end{tikzpicture}&
+		%%\begin{tikzpicture}[scale=.95]
+			%%\begin{axis}[z post scale=1.5,zlabel style={rotate=-90},zlabel=$z$,xlabel = $x$,ylabel=$y$,width=.3\textwidth, ,domain=-2:2,zmax=15,zmin=-15,view/h=70] 
+				%%\addplot3[surf,opacity=.9,samples=20] gnuplot { y*exp(x)  };
+				%%\addplot3[colormap/greenyellow,surf,opacity=.5,samples=20] gnuplot { y +x*y};
+			%%\end{axis} 
+		%%\end{tikzpicture} &
+		%%\begin{tikzpicture}[scale=.95]
+			%%\begin{axis}[z post scale=1.5,zlabel style={rotate=-90},zlabel=$z$,xlabel = $x$,ylabel=$y$,width=.3\textwidth, ,domain=-2:2,zmax=15,zmin=-15,view/h=70] 
+				%%\addplot3[surf,opacity=.9,samples=20] gnuplot { y*exp(x)  };
+				%%\addplot3[colormap/greenyellow,surf,opacity=.5,samples=20] gnuplot { y+x*y+.5*x**2 *y};
+			%%\end{axis} 
+																										%%\end{tikzpicture}
+%%\\ Ordre 1 & Ordre 2 & Ordre 3																									\end{tabular}
+	%%\tikzexternaldisable
+%%\end{center}
+
+		%\item $f_2(x,y) = \cos(x+y)$ et $f_2(h_1,h_2) = 1 - \frac 1 2  (h_1 + h_2)^2 + \frac{1}{4!} (h_1 + h_2)^4 + \frac{1}{6!} (h_1 + h_2)^6 + \frac{1}{8!} (h_1 + h_2)^8 + o(\norm{h}^8)$
+		%% Dans Maxima: taylor(cos(x+y),[x,y],0,8);
+%\begin{center}
+	%\tikzexternalenable
+	%\begin{tabular}{c}
+		%\begin{tabular}	{ccc}
+			%\tikzsetnextfilename{cours-dlsin1}	
+			%\begin{tikzpicture}[scale=.95]
+
+				%\begin{axis}[z post scale=1.5,zlabel style={rotate=-90},zlabel=$z$,xlabel = $x$,ylabel=$y$,width=.3\textwidth, ,domain=-2:2,zmax=4,zmin=-7,view/h=70,point meta min=-3, point meta max=3] 
+					%\addplot3[colormap/greenyellow,surf,opacity=.5,samples=20] gnuplot { 1-.5 *(x+y)**2};
+					%\addplot3[surf,opacity=.9,samples=20] gnuplot { cos(x+y)  };
+				%\end{axis} 
+			%\end{tikzpicture}&
+			%\tikzsetnextfilename{cours-dlsin2}	
+			%\begin{tikzpicture}[scale=.95]
+				%\begin{axis}[z post scale=1.5,zlabel style={rotate=-90},zlabel=$z$,xlabel = $x$,ylabel=$y$,width=.3\textwidth, ,domain=-2:2,zmax=4,zmin=-7,view/h=70,point meta min=-1, point meta max=1] 
+					%\addplot3[surf,opacity=.9,samples=20] gnuplot { cos(x+y) };
+					%\addplot3[colormap/greenyellow,surf,opacity=.5,samples=20] gnuplot {  1-.5 *(x+y)**2  + (x+y)**4 /24};
+				%\end{axis} 
+			%\end{tikzpicture} &
+			%\tikzsetnextfilename{cours-dlsin3}	
+			%\begin{tikzpicture}[scale=.95]
+				%\begin{axis}[z post scale=1.5,zlabel style={rotate=-90},zlabel=$z$,xlabel = $x$,ylabel=$y$,width=.3\textwidth, ,domain=-2:2,zmax=4,zmin=-7,view/h=70] 
+					%\addplot3[surf,opacity=.9,samples=20] gnuplot { cos(x+y)  };
+					%\addplot3[colormap/greenyellow,surf,opacity=.5,samples=20] gnuplot { 1-.5 *(x+y)**2  + (x+y)**4 /24 - (x+y)**6 /720  +(x+y)**8 /40320};
+				%\end{axis} 
+			%\end{tikzpicture}
+			%\\ Ordre 2 & Ordre 4 & Ordre 8																				\end{tabular} \\
+		%Illustration de l'approximation de  fonction $(x,y) \mapsto \cos(x+y) $ par des polynômes.
+	%\end{tabular}
+	%\tikzexternaldisable
+%\end{center}
+	%\end{enumerate}
+
+%\end{exemple}
+
+%\subsection{Matrice Hessienne}
+
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+\emph{Dans le cas $F=\R$}: Pour une fonction $f: \R^n \to \R$ de classe $\Cc^2$ et $a,h\in\R^n$, la formule de Taylor donne:
+	\[
+		f(a+h) = f(a) + \sum_{j=1}^n \frac{\p f}{\p x_j}(a) h_j + \frac{1}{2} \sum_{i,j=1}^n \frac{\p^2 f}{\p x_i \p x_j}(a) h_i h_j + \underset{h\to 0}{o} (\norm{h}^2).
+	\]
+
+L'application $Q_a f: h \mapsto d_a^2 f(h,h) =  \frac{1}{2} \sum_{i,j=1}^n \frac{\p^2 f}{\p x_i \p x_j}(a) h_i h_j  $ est une forme quadratique sur $\R^n$. On peut donc l'écrire sous forme matricielle:
+	\begin{definition}
+		Soit $f$ une fonction de classe $\Cc^2$ de $\U \subset \R^n$ dans $\R$ et $a\in\U$. On appelle \emph{matrice Hessienne} de $f$ en $a$ la matrice 
+		\[
+			\hess_f (a) =\left(\frac{\p^2 f}{\p x_i \p x_j}(a)  \right)_{i,j=1}^n = \begin{pmatrix}
+			\frac{\p^2 f}{\p x_1^2}(a) & \frac{\p^2 f}{\p x_1 \p x_2}(a) & \cdots & \frac{\p^2 f}{\p x_1 \p x_n}(a)	\\
+			\frac{\p^2 f}{\p x_2 \p x_1}(a)&   \frac{\p^2 f}{\p x_2^2}(a) & \cdots &  \frac{\p^2 f}{\p x_2 \p x_n}(a)	\\
+			\vdots & \vdots& & \vdots \\
+			\frac{\p^2 f}{\p x_n \p x_1}(a)& \frac{\p^2 f}{\p x_n \p x_2}(a)& \cdots & \frac{\p^2 f}{\p x_n^2}(a) 	\\
+
+			\end{pmatrix}
+		\]
+	\end{definition}
+
+En notations matricielles on a alors:
+\[
+f(a+h) = f(a) + [J_f (a)] h + \frac{1}{2} h^t \hess_f (a) h + o(\snorm{h}^2)
+\]
+
+
+	\begin{exemple}
+	Soit $f_1(x,y) = y e^x$  \plprof{alors $J_f (0,0) = \begin{pmatrix}
+		0	\\ 1
+	\end{pmatrix}$ et $ \hess_f (0) = \begin{pmatrix}
+		0 & 1 \\ 1& 0
+	\end{pmatrix}$. On a:
+	\[
+		f_1(h_1,h_2) = 0 + (h_1,h_2)\begin{pmatrix}
+			0\\1
+		\end{pmatrix} + \frac{1}{2}(h_1,h_2) \begin{pmatrix}
+		0 & 1 \\ 1& 0
+	\end{pmatrix}\begin{pmatrix}
+			h_1\\h_2
+		\end{pmatrix} + o(\norm{h}^2) = h_2 + h_1h_2 + o(\norm{h}^2)
+	\]}
+	\pl{\rep{4cm}}
+	\end{exemple}
+
+
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+\section{Étude des extrema locaux}
+
+\subsection{Définitions}
+
+\begin{definition}
+	Soit $f:E\to \R$ une fonction définie sur un domaine $\D \subset E$ et $a\in \D$. La fonction $f$ admet en $a$ 
+	\begin{enumerate}
+		\item un \emph{maximum} (resp. \emph{minimum}) \emph{global} si pour tout $x \in \D $ on a $f(x) \leq f(a)$ (resp. $f(x) \geq f(a)$).
+		\item un \emph{maximum} (resp. \emph{minimum}) \emph{strict} si pour tout $x \in \D\setminus \left\{ a \right\} $ on a $f(x) < f(a)$ (resp. $f(x) > f(a)$).
+		\item un \emph{maximum} (resp. \emph{minimum}) \emph{local} si il existe un voisinage $\V$ de $a$ tel que pour tout $x \in \D\cap \V $ on a $f(x) \leq f(a)$ (resp. $f(x) \geq f(a)$).
+	\end{enumerate}
+	On dit que $f$ admet en $a \in \D$ un \emph{extremum global} (resp. \emph{strict} ou \emph{local}) si $f$ admet un maximum ou un minimum global (resp. strict, local).
+\end{definition}
+%\pl{
+\begin{center}
+%%%%%%%%%%%%%%%%%%%%% ICI
+\begin{tabular}{c}
+\begin{tikzpicture}[scale=1]
+			\begin{axis}[z post scale=1.5,zlabel=$z$,xlabel = $x$,ylabel=$y$,width=.3\textwidth,domain=-2:2] 
+			\addplot3[surf,opacity=.6,samples=40] gnuplot {((x-1)**2-2*y**2)*exp(-2*x**2-y**2)};
+			\end{axis} 
+		\end{tikzpicture}%
+		\hspace{10pt}
+		\begin{tikzpicture}[scale=1]
+			\begin{axis}[ylabel style={rotate=-90},xlabel = $x$,ylabel=$y$,width=.3\textwidth, ,domain=-2:2,view={0}{90},] 
+				\addplot3[samples=60,contour gnuplot={levels={0, 1.2,0.8,1,1.4,0.2,0.4,0.6,-0.01,-0.1,-0.2,-0.3,-0.4},labels=false},thick] { ( (x -1 )^2 - 2*y^2 )* exp(-2*x^2 - y^2)  };
+			\end{axis} 
+		\end{tikzpicture}
+		\\
+		Graphe et lignes de niveau de la fonction $(x,y) \mapsto ( (x -1 )^2 - 2y^2 ) e^{-2x^2 - y^2}$. 
+		\end{tabular}
+\end{center}
+%}
+%\sld{
+%\begin{center}
+%	\begin{tabular}{c}
+%		\tikzexternalenable
+%		\tikzsetnextfilename{cours-extremal}
+%		\begin{tikzpicture}[scale=1.5]
+%			\begin{axis}[z post scale=1.5,zlabel style={rotate=-90},zlabel=$z$,xlabel = $x$,ylabel=$y$,width=.3\textwidth, ,domain=-2:2,] 
+%				\addplot3[surf,opacity=.6,samples=40] gnuplot {((x-1)**2-2*y**2)*exp(-2*x**2-y**2)};
+%			\end{axis} 
+%		\end{tikzpicture}%
+%	\tikzsetnextfilename{cours-extremallc}%
+%		\begin{tikzpicture}[scale=1.5]
+%			\begin{axis}[ylabel style={rotate=-90},xlabel = $x$,ylabel=$y$,width=.3\textwidth, ,domain=-2:2,view={0}{90},] 
+%				\addplot3[samples=60,contour gnuplot={levels={0, 1.2,0.8,1,1.4,0.2,0.4,0.6,-0.01,-0.1,-0.2,-0.3,-0.4},labels=false},thick] { ( (x -1 )^2 - 2*y^2 )* exp(-2*x^2 - y^2)  };
+%			\end{axis} 
+%		\end{tikzpicture}
+%		\tikzexternaldisable \\
+%		Graphe et lignes de niveau de la fonction $(x,y) \mapsto ( (x -1 )^2 - 2y^2 ) e^{-2x^2 - y^2}$. \end{tabular}
+%\end{center}
+%}
+
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+\subsection{Condition nécessaire d'ordre 1}
+
+\begin{definition}
+	On suppose que $\dim E = n$. On dit que $f:\U \to F$ de classe $\Cc^1$ sur $\U$ admet un point critique en $a\in\U$ si $\frac{\p f}{\p x_i}(a) = 0 $ pour tout $i=1,\cdots,n$.
+\end{definition}
+
+\begin{theorem}
+	Soit  $f:\U \to F$ de classe $\Cc^1$ sur $\U$. Si $f$ admet un extremum local en $a\in \U$ alors $a$ est un point critique de $f$.
+\end{theorem}
+\begin{proof}
+	\pl{\rep{4cm}}	
+\end{proof}
+
+\begin{exemple}
+	La condition n'est pas suffisante: prendre $f(x,y) = xy$ en $(0,0)$.
+	\pl{\rep{6cm}}	
+\end{exemple}
+
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+\subsection{Condition suffisante d'ordre 2}
+
+On suppose maintenant que $f:E \to \R$ est de classe $\Cc^2$ et que $a$ est un point critique de $f$. D'après la formule de Taylor-Young on a:
+\[
+	f(a+h) = f(a) + \frac{1}{2} Q_a f(h) + o(\snorm{h}^2)
+\]
+Le signe de la forme quadratique $Q_a f:h \mapsto d_a^2f(h,h) = h^t \hess_f (a) h$  permet dans certains cas de caractériser les extrema:
+
+\begin{proposition}
+	Soit $a \in \D$ un point critique de $f:E \to \R$. Si la forme quadratique $Q_a f $ est~:
+	\begin{enumerate}
+		\item définie et positive alors $f$ admet un minimum local strict en $a$. 
+		\item définie et négative alors $f$ admet un maximum local strict en $a$. 
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	\pl{\rep{7cm}}	
+\end{proof}
+
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+\begin{remark}
+	Ne pas oublier la condition ``définie'': soit $f_1:(x,y) \mapsto \frac 1 2 x^2 - y^4$ et $f_2:(x,y) \mapsto \frac 1 2 x^2 + y^4$. On a $J_{f_1} (a) = J_{f_2} (a) = (0,0)$ et $\hess_{f_1}(0,0)=\hess_{f_2}(0,0)= \begin{pmatrix}
+		1 & 0 \\ 0 & 0
+	\end{pmatrix}$. Ainsi, l'origine est un point critique de $f_1$ et $f_2$, les formes quadratiques $Q_a f_1$ et $Q_a f_2$ sont positives non-définies. 
+
+	\begin{enumerate}
+		\item  l'origine n'est pas un extremum de $f_1$: 
+			\begin{center}
+				\tikzexternalenable%\tikzsetnextfilename{cours-pcdegener}
+					\begin{tikzpicture}[scale=.95]
+						\begin{axis}[z post scale=1.5,zlabel style={rotate=-90},zlabel=$z$,xlabel = $x$,ylabel=$y$,width=.3\textwidth, ,domain=-2:2,] 
+							\addplot3[surf,opacity=.6,samples=40] gnuplot { x**2 - y**4  };
+						\end{axis} 
+					\end{tikzpicture}				
+				\end{center}
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+		\item  l'origine est un minimum (global) de $f_2$: 
+			\begin{center}
+				\tikzsetnextfilename{cours-pcdegener1}
+					\begin{tikzpicture}[scale=.95]
+						\begin{axis}[z post scale=1.5,zlabel style={rotate=-90},zlabel=$z$,xlabel = $x$,ylabel=$y$,width=.3\textwidth, ,domain=-2:2,] 
+							\addplot3[surf,opacity=.6,samples=40] gnuplot { x**2 + y**4  };
+						\end{axis} 
+					\end{tikzpicture}	%\tikzexternaldisable  
+			  \end{center}
+	\end{enumerate}
+\end{remark}
+
+
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+\subsection{Fonctions de $\R^2$ dans $\R$}
+
+{\bf\sffamily Notation de Monge:} Si $f:\R^2 \to \R$ est de classe $\Cc^2$ sur $\U$ et $(a,b) \in \U \subset \R^2$. On note $p=\frac{\p f}{\p x}(a,b)$, $q=\frac{\p f}{\p y}(a,b)$, $r=\frac{\p^2 f}{\p x^2}(a,b)$, $s=\frac{\p^2 f}{\p x\p y}(a,b)$, $t=\frac{\p^2 f}{\p y^2}(a,b)$. La formule de Taylor-Young devient:
+\[
+f(a+h,b+k) = f(a,b) + ph +qk +\frac 1 2 \left( rh^2 + 2shk+tk^2 \right) + o(h^2 + k^2)
+\]
+
+\begin{defprop}
+	Soit $f:\R^2 \to \R$ de classe $\Cc^2$ sur $\U$ et $(a,b) \in \U$ un point critique de $f$:
+	\begin{enumerate}
+		\item si $rt - s^2 \neq 0 $ on dit que $(a,b)$ est un \emph{point critique non dégénéré}. Dans ce cas:
+			\begin{enumerate}
+				\item si $ rt -s^2 > 0$ et $r>0$:  $(a,b)$ est un minimum  local de $f$.
+				\item si $ rt -s^2 > 0$ et $r<0$:  $(a,b)$ est un maximum local de $f$.
+				\item si $ rt -s^2 < 0$: $(a,b)$ est un \emph{point selle} de $f$.
+			\end{enumerate}
+		\item si $ rt -s^2 = 0 $ on dit que $(a,b)$ est un \emph{point critique dégénéré}.
+	\end{enumerate}
+\end{defprop}
+
+\begin{proof}
+	\pl{\rep{6cm}}
+\end{proof}
+
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+\begin{center}
+	\begin{tabular}{ccc}%\tikzexternalenable%\tikzsetnextfilename{cours-ptcrit1}
+		\begin{tikzpicture}[scale=.95]
+			\begin{axis}[z post scale=1.5,zlabel style={rotate=-90},zlabel=$z$,xlabel = $x$,ylabel=$y$,width=.3\textwidth, ,domain=-2:2,] 
+				\addplot3[surf,opacity=.6,samples=40] gnuplot { x**2 + y**2   };
+			\end{axis} 
+		\end{tikzpicture}
+		&%\tikzsetnextfilename{cours-ptcrit2}
+		\begin{tikzpicture}[scale=.95]
+			\begin{axis}[z post scale=1.5,zlabel style={rotate=-90},zlabel=$z$,xlabel = $x$,ylabel=$y$,width=.3\textwidth, ,domain=-2:2,] 
+				\addplot3[surf,opacity=.6,samples=40] gnuplot {-x**2 - y**2   };
+			\end{axis} 
+		\end{tikzpicture}&%\tikzsetnextfilename{cours-ptcrit3}
+		\begin{tikzpicture}[scale=.95]
+			\begin{axis}[z post scale=1.5,zlabel style={rotate=-90},zlabel=$z$,xlabel = $x$,ylabel=$y$,width=.3\textwidth, ,domain=-2:2,] 
+				\addplot3[surf,opacity=.6,samples=40] gnuplot { x**2 - y**2   };
+			\end{axis} 
+		\end{tikzpicture} \\
+		%\tikzsetnextfilename{cours-ptcritlc1}
+		\begin{tikzpicture}[scale=.95]
+			\begin{axis}[ylabel style={rotate=-90},xlabel = $x$,ylabel=$y$,width=.3\textwidth, ,domain=-2:2,view={0}{90},] 
+				\addplot3[samples=60,contour gnuplot={levels={0, .5,1, 1.5, 2,2.5,3,3.5,4,4.5, 5,5.5,6 },labels=false,},thick] gnuplot { x**2 + y**2  };
+			\end{axis} 
+		\end{tikzpicture} &%\tikzsetnextfilename{cours-ptcritlc2}
+		\begin{tikzpicture}[scale=.95]
+			\begin{axis}[ylabel style={rotate=-90},xlabel = $x$,ylabel=$y$,width=.3\textwidth, ,domain=-2:2,view={0}{90},] 
+				\addplot3[samples=60,contour gnuplot={levels={0, -.5,-1, -1.5, -2,-2.5,-3,-3.5,-4,-4.5,-5,-5.5,-6 },labels=false
+				},thick] gnuplot { -x**2 - y**2  };
+			\end{axis} 
+		\end{tikzpicture} & %\tikzsetnextfilename{cours-ptcritlc3}
+		\begin{tikzpicture}[scale=.95]
+			\begin{axis}[ylabel style={rotate=-90},xlabel = $x$,ylabel=$y$,width=.3\textwidth, ,domain=-2:2,view={0}{90},] 
+				\addplot3[samples=60,contour gnuplot={levels={0, 1,2,-1,-2},labels=false,
+				},thick] gnuplot { x**2 - y**2  };
+			\end{axis} 
+		\end{tikzpicture} 
+		%\tikzexternaldisable
+		 \\
+Minimum & Maximum & Point selle
+\end{tabular}
+\end{center}
+
+\begin{exemple}
+	$f(x,y) = (x-y)^2 + x^3 + y^3$.
+	\pl{\rep{8cm}}
+\end{exemple}
+
+\begin{exemple}
+	$f(x,y) = (x-y)^2 + x^4 + y^4$.
+	\pl{\rep{6cm}}
+\end{exemple}
+
+
+
+% Nigliot cours
+
+%\section{Opérateurs de l'analyse vectorielles}

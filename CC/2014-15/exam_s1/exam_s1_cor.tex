@@ -1,0 +1,301 @@
+\documentclass{article}
+\input{./header.tex}
+
+%-----------------------------------------------------------------------------
+\begin{document}
+\noindent Université Montpellier 2 \hfill Année 2014-2015
+
+\noindent HLMA 410
+ 
+
+
+\bigskip
+
+\begin{center}
+{\large \sffamily\bfseries Examen - Session 1}
+\end{center}
+
+\bigskip
+\bigskip
+
+\section{Analyse}
+
+\exo{(Question de cours)}
+	Soit $\Gamma=([a,b],\phi)$ un arc param\'etr\'e dans $\R^n$ de classe $\mathcal C^1$ et $V:\R^n \rightarrow \R^n$ un champ de vecteurs continu.
+\begin{enumerate}
+	\item Qu'appelle-t-on circulation de $V$ le long de $\Gamma$ ?
+
+	\medskip
+
+		La circulation de $V$ le long de $\Gamma$ est le nombre réel $\int_{\Gamma} \prs{V,d\phi} \doteq \int_a^b \prs{V(\phi(t)),\phi'(t)} dt$.
+
+	\medskip
+
+\end{enumerate}
+			Soit $\theta: [c,d] \rightarrow [a,b]$ un $C^1$-diff\'eomorphisme et $\psi=\phi \circ \theta$. 
+		\begin{enumerate}[resume]
+	\item Quelle relation y a-t-il entre la circulation de $V$ le long de $\Gamma'=([c,d],\psi)$ et la circulation le long de $\Gamma$ ? 
+		
+	\medskip
+
+ On remarque que $\theta$ est un difféomorphisme, c'est donc une fonction strictement croissance ou décroissante et on note  $\varepsilon$ le signe de $\theta'$ sur $[a,b]$. On a $\int_{\Gamma} \prs{V,d\phi} = \varepsilon \int_{\Gamma'} \prs{V,d\psi} $. 
+	
+	\medskip
+
+	\item Le-d\'emontrer.
+
+
+		\begin{align*}
+			\int_{\Gamma} \prs{V,d\phi}  & = \int_a^b \prs{V(\phi(t)), \phi'(t) } dt\\
+			& = \int^{\phi^{-1}(b)}_{\phi^{-1}(a)}  \prs{V( \phi(\theta(\tau)) , \phi'(\theta(\tau)) } \abs{\theta'(\tau)} d\tau \\
+			& = \begin{cases}
+				\int_{c}^{d}  \prs{V( \phi(\theta(\tau)) , \phi'(\theta(\tau)) } \theta'(\tau) d\tau, \text{ si } \theta'>0,  \\
+					 \int_{d}^{c}  \prs{V( \phi(\theta(\tau)) , \phi'(\theta(\tau)) } \theta'(\tau) d\tau  \text{ si } \theta' <0
+			\end{cases} \\ 
+			& = \varepsilon \int_c^d \prs{V( \phi(\theta(\tau)) , \phi'(\theta(\tau))\theta'(\tau) } d\tau \\ 
+			& = \varepsilon\int_c^d \prs{V( \psi(\tau)) , \psi'(\tau)} d\tau . \hfill \qed
+		\end{align*}
+\end{enumerate}
+
+\bigskip
+
+
+\exo{} On considère le champ de vecteurs 
+\begin{align*}
+	F: \R^2 & \to \R^2 \\
+	(x,y) & \mapsto (2xy+y\cos(xy), x\cos(xy) +x^2-1)
+\end{align*}
+%\begin{center}
+	%\begin{tikzpicture}
+		%\begin{axis}[,%xtick=\empty,
+			     %%ytick=\empty,
+			     %ztick=\empty ,
+			     %xlabel=$x$,ylabel=$y$,xlabel=$x$,ylabel=$y$,domain=-2:2,% y domain=-1:1,
+			     %view={0}{90},
+			     %xmax=2, xmin=-2,
+			     %ymax=2, ymin=-2,%axis equal
+			%]
+			%\addplot3[blue, quiver={u={2*x*y+y*cos(x*y)}, v={x*cos(x*y) +x^2-1}, scale arrows=.1}, -stealth,samples=25] {0};
+			%\addplot3[contour gnuplot={number={25}, labels=true},samples=60] gnuplot {sin(x*y) +y* x**2  -y };
+		%\end{axis}
+	%\end{tikzpicture}
+%\end{center}
+
+%\begin{enumerate}
+	%\item Trouver une fonction $f:\R^2 \to \R$ de classe $\mathcal C^2$ telle que $F = \nabla f$, où $\nabla f =(\frac{\partial f}{\partial x} , \frac{\partial f}{\partial y})$.
+	%\item Déterminer les points critiques de la fonction $f$.
+	%\item Calculer la matrice Hessienne de $f$ en tout point de $\R^2$. 
+	%\item Déterminer la nature de la matrice Hessienne en chacun des points critiques  (\textit{i.e.} la forme quadratique associée est-elle définie ? est-elle positive ? est elle négative ?)
+	%\item Peut-on déduire, de la question précédente, la nature des points critiques (\textit{i.e.} minimum, maximum, strict, global) ? Justifier!
+	%\item \'Etudier la restriction de $f$ a la droite $y=0$. Quelle(s) information(s) cela apporte sur la nature des points critiques (\textit{i.e.} minimum, maximum, strict, global) ?
+	%\item Soit $\Gamma$ la courbe paramétrée par $\phi : t \mapsto (t,t^2)$ pour $t \in [0,1]$. Calculer  $\int_{\Gamma} \langle F , d\phi \rangle$.
+%\end{enumerate}
+On admettra provisoirement l'existence d'une fonction $f:\R^2 \to \R$ telle que $F = (\frac{\partial f}{\partial x} , \frac{\partial f}{\partial y})$.
+\begin{enumerate}
+	\item Déterminer les points critiques de la fonction $f$.
+On cherche $(x,y) \in\R^2$ tel que
+\begin{align*}
+F(x,y) = (0,0) \Leftrightarrow 	\begin{cases}
+		y(2x + \cos(xy) ) = 0 \\
+x\cos(xy) +x^2-1 =0
+	\end{cases}
+\end{align*}
+Il faut alors considérer les deux cas suivants :
+\begin{itemize}
+	\item $y=0$ qui donne $x^2 - x -1 =0$.  On a alors deux solutions $ A=(\frac{-1 -\sqrt{5}}{2} ,0)$ et $ B=(\frac{-1 +\sqrt{5}}{2} ,0)$.
+	\item $\cos(xy) = -2x$ qui donne $-x^2 -1 = 0$ qui n'a pas de solution.
+\end{itemize}
+	En résumé, il y a deux points critiques $A$ et $B$.
+
+	\item Calculer la matrice Hessienne de $f$ en tout point de $\R^2$. 
+
+	\medskip
+
+		On a 
+		\[
+			\hess_f (x,y) = \begin{pmatrix}
+	2 y - y^2 \sin(xy)	& 2x + \cos(xy) - xy\sin(xy)	 \\
+	2x + \cos(xy) - xy\sin(xy)	& -x^2\sin(xy)
+		\end{pmatrix}.
+	\]
+
+	
+	\medskip
+
+	\item Déterminer la nature de la matrice Hessienne de $f$ en chacun des points critiques  (\textit{i.e.} la forme quadratique associée est-elle définie ? est-elle positive ? est elle négative ?)
+
+	\medskip
+
+		On  a $\hess_f(A) = \sqrt{5} \begin{pmatrix}
+			0 & 1 \\ 1 & 0
+		\end{pmatrix}$. Ainsi la forme quadratique 
+		\begin{align*}
+			Q_A : \R^2 &\to \R \\ (h_1,h_2) &\mapsto (h_1,h_2) \hess_f(A) (h_1,h_2)^t = 2 \sqrt{5} h_1h_2
+		\end{align*}
+		n'est pas définie car $Q_A(0,1) =0 $, n'est pas positive, n'est pas négative car $Q_A(1,1) > 0> Q(-1,1)$.
+
+		On a $\hess_f (B) = - \hess_f (A)$ et les mêmes remarques s'appliquent.
+
+
+	\item Peut-on déduire, de la question précédente, la nature des points critiques de $f$ (\textit{i.e.} minimum, maximum, strict, global) ? Justifier!
+
+	\medskip
+
+On ne peut pas appliquer les ``conditions suffisantes d'ordre 2'' pour caractériser les points car les Hessiennes ne sont pas définies. Mais on peut remarquer que $\det(\hess_f(A)), \det(\hess_f(B)) < 0$ et les points  $A,B$  sont donc des points selles.
+
+	\medskip
+
+	\item Trouver une fonction $f:\R^2 \to \R$ de classe $\mathcal C^2$ telle que $\nabla f = F$.
+%	\item \'Etudier la restriction de $f$ à la droite $y=0$. Quelle(s) information(s) cela apporte sur la nature des points critiques (\textit{i.e.} minimum, maximum, strict, global) ?
+	
+	\medskip
+
+		On intègre une première fois en $x$ la fonction $\frac{\partial f}{\partial x}$ : 
+\[
+	\int (2xy+y\cos(xy)) dx =  y x^2 +\sin(xy) + \varphi_1(y)
+\]
+où $\varphi_1:\R\to\R $ est $\Cc^1$. Puis on intégre en $y$ la fonction $\frac{\partial f}{\partial y} $ :
+\[
+\int (x\cos(xy) +x^2-1)  dy =  y x^2 +\sin(xy) -y + \varphi_2(x)
+\]
+où $\varphi_2:\R\to\R $ est $\Cc^1$.  Ainsi, la fonction  $f(x,y) = \sin(xy) + x^2 y - y$ convient.
+	
+	\medskip
+
+	\item Soit $\Gamma$ la courbe paramétrée par $\phi : t \mapsto (t,t^2)$ pour $t \in [0,1]$. Calculer la circulation de $F$  le long de $\Gamma$.
+
+		
+	\medskip
+Le champ de vecteur $F$ est un champ de gradient. On a 
+		\[\int_{\Gamma} \prs{F,d\phi} = f(\phi(1)) - f(\phi(0)) = f(1,1) - f(0,0)= \sin(1).\]
+\end{enumerate}
+
+\bigskip 
+
+\exo{}
+\begin{enumerate}
+	\item Soient $\alpha, \beta, R > 0$. Calculer l'aire de l'ellipse $E \subset R^2$ définie par l'équation
+		\[
+			\frac{x^2}{\alpha^2} + \frac{y^2}{\beta^2} < R^2.
+		\]
+		{\it Indication : On pourra utiliser le changement de variables $(u,v) \mapsto (\alpha u, \beta v)$.}
+
+	\medskip
+
+		On pose $D = \left\{ (x,y) \in\R^2 |	\frac{x^2}{\alpha^2} + \frac{y^2}{\beta^2} < R^2  \right\}$  et $ \phi(u,v) = (\alpha u = x, \beta v = y )$.  On a $\Delta = \phi^{-1}(D) = \left\{ (u,v) \in\R^2 |	u^2 + v^2 < R^2  \right\} $. Comme le changement de variable $\phi $ est linéaire,  le déterminant du Jacobien est constant et égal à $\alpha\beta>0$. On a 
+\[
+	\aire(E) = \iint_D dx dy = \alpha\beta \iint_\Delta dudv = \alpha\beta \int_0^{2\pi}d\theta \int_0^R rdr = \alpha\beta\pi R^2.
+\]
+où on a utilisé un changement de variables en coordonnées polaires. Remarquer enfin que si $\alpha = \beta =1$ on retrouve une formule bien connue.
+
+	\medskip
+
+	\item Soit $H_{a,b,c} \subset \R^3$ le solide défini par
+\[
+	H_{a,b,c} = \left\{  (x,y,z) \in \R^3 | -1 < z <2, \frac{x^2}{a^2} + \frac{y^2}{b^2} - \frac{z^2}{c^2} <1 \right\}
+\]
+		où $a$, $b$ et $c$ sont des réels strictement positifs. Calculer le volume de $H_{a,b,c}$.
+
+	\medskip
+
+On a $ 
+	H_{a,b,c} = \left\{  (x,y,z) \in \R^2 | -1 < z <2, \frac{x^2}{a^2} + \frac{y^2}{b^2} < 1+ \frac{z^2}{c^2}  \right\}
+$ et la formule d'intégration par tranche donne :
+\begin{align*}
+	\vol(H_{a,b,c}) & = \iiint_{H_{a,b,c}} dxdydz = \int_{-1}^2 \aire(D_z) dz
+\end{align*}
+où $D_z = \left\{ (x,y) \in\R^2 | \frac{x^2}{a^2} + \frac{y^2}{b^2} < 1 + \frac{z^2}{c^2}.
+ \right\}$ et $\vol(D_z) = ab\pi(1 + \frac{z^2}{c^2} )$ d'après la question 1. On a alors
+ \begin{align*}
+	 \vol(H_{a,b,c}) & = \pi ab\int_{-1}^2 \left(1+\frac{z^2}{c^2}\right)  dz = 3ab\pi\left( 1+ \frac{1}{c^2} \right)
+ \end{align*}
+
+
+	\item On suppose que $a = b = 1$ et $c = 2$. Calculer l'intégrale
+		\[
+			I = \iiint_{H_{1,1,2}} z e^{x^2+y^2}dxdydz.
+		\]
+		Faire un changement de coordonnées cylindrique:
+\begin{align*}
+	I &= \int_{-1}^2 \left( 2\pi \int_0^{\sqrt{1+ \frac{z^2}{4} }}  e^{r^2} rdr \right)zdz \\
+	 & =  \pi \int_{-1}^{2} \left[ e^{r^2} \right]_0^{\sqrt{1+ \frac{z^2}{4} }}z dz \\
+	 & = \pi \left[  2e^{1+ \frac{z^2}{4} } - \frac{z^2}{2}  \right]_{-1}^{2}  \\
+	 & = \pi (2e^2 -2e^{\frac 5 4} - \frac 3 2)
+\end{align*}
+\end{enumerate}
+
+\bigskip
+
+
+\section{Probabilités}
+
+\exo{(Dominos)} Un domino se compose de deux cases, portant chacune un numéro $n$ entier, $0\leq n \leq 6$. Un jeu est formé de tous les dominos différents possibles. 
+\begin{enumerate}
+	\item Combien y a-t-il de domino dans un jeu ?
+
+	\medskip
+
+Il y a  $7(7+1) /2 = 28$ dominos.
+
+	\medskip
+
+%	\item On choisit un domino au hasard. Quelle est la probabilité conditionnelle que les deux numéros portés par ce domino soient consécutifs, sachant que le domino tiré n'est pas un double.
+	\item On choisit deux dominos au hasard. Quelle est la probabilité qu'ils soient compatibles (\textit{i.e.} possèdent un numéro commun) ?
+
+	\medskip
+
+		On a  $\Omega =  \text{``ensemble à 2 éléments parmi 28''}$ muni de la probabilité uniforme. Le nombre de paires compatibles est $ 7 \binom 7 2$. On a alors : 
+\[
+	\P(\text{``2 dominos compatibles''}) =  7\frac{\binom 7 2}{\binom{28}{2}} = \frac{7}{18}.
+\]
+
+\end{enumerate}
+
+\bigskip
+
+\exo{(Jeans)}
+%\subsection*{Partie A}
+%Le directeur de \og Massimo Dutti \fg{} a noté que 40 \% de ses clients achetaient désormais des jeans évasés. Afin de connaître leurs préférences, il décide avant la fermeture d\textquoteright interroger les
+%cinq derniers clients.
+%
+%
+%\begin{enumerate}
+%\item Donner la distribution de probabilité de la variable
+%aléatoire $X$ : « nombre de clients possédant un jean
+%évasé ». 
+%\item Calculer la moyenne et l\textquoteright écart type
+%de $X$. 
+%\item Quelle est la probabilité pour que l\textquoteright échantillon
+%des cinq derniers clients représente parfaitement la
+%structure de la clientèle ? 
+%\end{enumerate}
+L'enseigne \og Massimo Dutti \fg{} produit et vend $4\times10^{4}$ jeans par mois. Le coût de fabrication est de $100$ euros par jean. Le fabricant fait réaliser un test de conformité, dans les mêmes conditions, sur chacun de ses jeans fabriqués. Le test est positif dans $90\%$ des cas et un jean reconnu conforme peut alors être vendu à $200$ euros. Si le test est en revanche négatif, le jean est bradé au prix de $50$ euros. 
+\begin{enumerate}
+\item On note $Y$ la variable aléatoire qui indique le nombre de jeans conformes parmi les $4\times10^{4}$ produits.  Calculer l'espérance et la variance de $Y$. 
+
+	\medskip
+
+	On a  $Y\sim Bin(n,p)$ où $n=4\times10^{4}$ et $p=0.9$. Ce qui donne $ \E(Y)=np= 3.6 \times 10^4$ et $Var(Y) = np(1-p)=3.6\times10^3$.
+
+	\medskip
+
+\item On note $Z$ la variable aléatoire qui indique le bénéfice mensuel, exprimé en euros. Calculer l'espérance et la variance de $Z$.
+
+	\medskip
+
+ Remarquer que les recettes sont aléatoires, tandis que les dépenses sont déterministes. On a $Z = 200 Y + 50(n - Y) - 100n = 150Y -50n$. Utiliser la linéarité de l'espérance :
+\[
+	\E (Z) = 140 \E(Y)- 50n = 150 np - 10n = n(135-50) =  3.4\times 10^6. 
+\]
+Utiliser les règles de calculs de la variance :
+\[
+	\var(Z) = 150^2 \var(Y) = 15^2 \times 10^2\times 4 \times 10^4 \times 0.9 \times 0.1 = 225\times 4 \times 10^5 \times 0.9  = 900\times 0.9 \times 10^5 =  8.1 \times 10^7.
+\]
+
+	\medskip
+
+
+\end{enumerate}
+
+\end{document}
+

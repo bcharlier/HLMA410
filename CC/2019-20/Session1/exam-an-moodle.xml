@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+ 
+<question type="category">
+  <category>
+    <text>$module$/Analyse de Fonctions de plusieurs variables (4pt)</text>
+  </category>
+</question>
+ 
+<question type="multichoice">
+  <name>
+    <text>R\unhbox \voidb@x \bgroup \let \unhbox \voidb@x \setbox \@tempboxa \hbox {e\global \mathchardef \accent@spacefactor \spacefactor }\accent 19 e\egroup \spacefactor \accent@spacefactor gularit\unhbox \voidb@x \bgroup \let \unhbox \voidb@x \setbox \@tempboxa \hbox {e\global \mathchardef \accent@spacefactor \spacefactor }\accent 19 e\egroup \spacefactor \accent@spacefactor  des fonctions de plusieurs variables</text>
+  </name>
+  <questiontext format="html">
+    <text><![CDATA[<p>La fonction \(f:\mathbb R^2\to \mathbb R\) d&eacute;finie par \(f(x,y) = \frac {(x-1) y}{(x-1)^2 + y^2}\). D&eacute;terminer lesquelles de ces assertions sont vraies. </P><P></p>]]></text>
+  </questiontext>
+  <defaultgrade>4</defaultgrade>
+  <generalfeedback format="html"><text/></generalfeedback>
+  <penalty>.5</penalty>
+  <hidden>0</hidden>
+  <single>false</single>
+  <shuffleanswers>1</shuffleanswers>
+  <answernumbering>abc</answernumbering>
+  <answer fraction="33.33333" format="html">
+    <text><![CDATA[<p>\(f\) admet des d&eacute;riv&eacute;es partielle en \((1,0)\)</p>]]></text>
+  </answer>
+  <answer fraction="33.33333" format="html">
+    <text><![CDATA[<p>\(f\) est de classe \(\mathcal C^\infty \) sur \(\mathbb R^2 \setminus \left \{(1,0) \right \}\)</p>]]></text>
+  </answer>
+  <answer fraction="33.33333" format="html">
+    <text><![CDATA[<p>\(f\) n&rsquo;est pas diff&eacute;rentiable en \((1,0)\)</p>]]></text>
+  </answer>
+  <answer fraction="0" format="html">
+    <text><![CDATA[<p>\(f\) est continue en \((1,0)\)</p>]]></text>
+  </answer>
+  <answer fraction="0" format="html">
+    <text><![CDATA[<p>Aucune des autres r&eacute;ponses n&rsquo;est v&eacute;rifi&eacute;e</p>]]></text>
+  </answer>
+</question>
+<question type="multichoice">
+  <name>
+    <text>R\unhbox \voidb@x \bgroup \let \unhbox \voidb@x \setbox \@tempboxa \hbox {e\global \mathchardef \accent@spacefactor \spacefactor }\accent 19 e\egroup \spacefactor \accent@spacefactor gularit\unhbox \voidb@x \bgroup \let \unhbox \voidb@x \setbox \@tempboxa \hbox {e\global \mathchardef \accent@spacefactor \spacefactor }\accent 19 e\egroup \spacefactor \accent@spacefactor  des fonctions de plusieurs variables</text>
+  </name>
+  <questiontext format="html">
+    <text><![CDATA[<p>La fonction \(f:\mathbb R^2\to \mathbb R\) d&eacute;finie par \(f(x,y) = \frac {xy^2}{x^2 + y^2}\). D&eacute;terminer lesquelles de ces assertions sont vraies. </P><P></p>]]></text>
+  </questiontext>
+  <defaultgrade>4</defaultgrade>
+  <generalfeedback format="html"><text/></generalfeedback>
+  <penalty>.5</penalty>
+  <hidden>0</hidden>
+  <single>false</single>
+  <shuffleanswers>1</shuffleanswers>
+  <answernumbering>abc</answernumbering>
+  <answer fraction="33.33333" format="html">
+    <text><![CDATA[<p>\(f\) est de classe \(\mathcal C^\infty \) sur \(\mathbb R^2 \setminus \left \{(0,0) \right \}\)</p>]]></text>
+  </answer>
+  <answer fraction="33.33333" format="html">
+    <text><![CDATA[<p>\(f\) est continue sur \(\mathbb R^2\)</p>]]></text>
+  </answer>
+  <answer fraction="33.33333" format="html">
+    <text><![CDATA[<p>\(f\) admet des d&eacute;riv&eacute;es partielle en \((0,0)\)</p>]]></text>
+  </answer>
+  <answer fraction="0" format="html">
+    <text><![CDATA[<p>\(f\) est de classe \(\mathcal C^1\) en \((0,0)\)</p>]]></text>
+  </answer>
+  <answer fraction="0" format="html">
+    <text><![CDATA[<p>Aucune des autres r&eacute;ponses n&rsquo;est v&eacute;rifi&eacute;e</p>]]></text>
+  </answer>
+</question>
+<question type="multichoice">
+  <name>
+    <text>Extrema</text>
+  </name>
+  <questiontext format="html">
+    <text><![CDATA[<p>Soit la fonction \(f:\mathbb R^2\to \mathbb R\) d&eacute;finie par \(f(x,y) = x\exp (-x^2 - 2y^2)\). D&eacute;terminer lesquelles de ces assertions sont vraies. </P><P></p>]]></text>
+  </questiontext>
+  <defaultgrade>4</defaultgrade>
+  <generalfeedback format="html"><text/></generalfeedback>
+  <penalty>.5</penalty>
+  <hidden>0</hidden>
+  <single>false</single>
+  <shuffleanswers>1</shuffleanswers>
+  <answernumbering>abc</answernumbering>
+  <answer fraction="0" format="html">
+    <text><![CDATA[<p>\(f\) poss&egrave;de un point selle en \((0, 0)\)</p>]]></text>
+  </answer>
+  <answer fraction="0" format="html">
+    <text><![CDATA[<p>\(f\) poss&egrave;de un maximum local en \((-\frac {1}{\sqrt 2}, 0)\)</p>]]></text>
+  </answer>
+  <answer fraction="0" format="html">
+    <text><![CDATA[<p>\(f\) poss&egrave;de un minimum local en \((\frac {1}{\sqrt 2}, 0)\)</p>]]></text>
+  </answer>
+  <answer fraction="0" format="html">
+    <text><![CDATA[<p>\(f\) poss&egrave;de 3 points critiques: \((0,0)\), \((\frac {1}{\sqrt 2}, 0)\) et \((-\frac {1}{\sqrt 2}, 0)\)</p>]]></text>
+  </answer>
+  <answer fraction="100" format="html">
+    <text><![CDATA[<p>Aucune des autres r&eacute;ponses n&rsquo;est v&eacute;rifi&eacute;e</p>]]></text>
+  </answer>
+</question>
+<question type="multichoice">
+  <name>
+    <text>Extrema</text>
+  </name>
+  <questiontext format="html">
+    <text><![CDATA[<p>Soit la fonction \(f:\mathbb R^2\to \mathbb R\) d&eacute;finie par \(f(x,y) = x^2 \exp (-x^2y^2)\). </p>]]></text>
+  </questiontext>
+  <defaultgrade>4</defaultgrade>
+  <generalfeedback format="html"><text/></generalfeedback>
+  <penalty>.5</penalty>
+  <hidden>0</hidden>
+  <single>false</single>
+  <shuffleanswers>1</shuffleanswers>
+  <answernumbering>abc</answernumbering>
+  <answer fraction="50" format="html">
+    <text><![CDATA[<p>\(f\) poss&egrave;de un point critique d&eacute;g&eacute;n&eacute;r&eacute; en \((0, 0)\)</p>]]></text>
+  </answer>
+  <answer fraction="50" format="html">
+    <text><![CDATA[<p>\(f\) poss&egrave;de un minimum local en \((0, 0)\)</p>]]></text>
+  </answer>
+  <answer fraction="0" format="html">
+    <text><![CDATA[<p>\(f\) poss&egrave;de un maximum local en \((0, 0)\)</p>]]></text>
+  </answer>
+  <answer fraction="0" format="html">
+    <text><![CDATA[<p>\(f\) poss&egrave;de un unique point critique en \((0,0)\)</p>]]></text>
+  </answer>
+  <answer fraction="0" format="html">
+    <text><![CDATA[<p>\(f\) poss&egrave;de une infinit&eacute; de points critiques situ&eacute;s sur les hyperboles \(\{y= \pm \frac {1}{x}, x \neq 0 \}\)</p>]]></text>
+  </answer>
+  <answer fraction="0" format="html">
+    <text><![CDATA[<p>Aucune des autres r&eacute;ponses n&rsquo;est v&eacute;rifi&eacute;e</p>]]></text>
+  </answer>
+</question>
+ 
+</quiz>

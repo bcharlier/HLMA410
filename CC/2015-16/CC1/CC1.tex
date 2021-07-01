@@ -1,0 +1,107 @@
+\documentclass[a4paper]{tp_um}
+\input{../../TD/header.tex}
+\ue{HLMA410}
+%-----------------------------------------------------------------------------
+
+\title{\large \sffamily\bfseries Contrôle continu 1}
+
+\begin{document}
+
+\maketitle
+\textit{Durée 1h30. Les documents, la calculatrice, les téléphones portables, tablettes, ordinateurs ne sont pas autorisés. La qualité de la rédaction sera prise en compte.} 
+
+\bigskip
+\bigskip
+
+\exo{(Question de cours)}Calculer la moyenne et la variance d'une variable aléatoire suivant une loi de Poisson de paramètre $\lambda>0$. (On demande la démonstration complète)
+		\vspace*{8cm}
+
+\exo{} On jette 2 dés équilibrés.
+\begin{enumerate}
+\item Quelle est la probabilité qu'au moins l'un d'entre eux montre 6, sachant que les 2 résultats sont différents?
+	\vspace*{4cm}
+\item Quelle est la probabilité qu'au moins l'un d'entre eux montre 6, sachant
+que leur somme vaut $i$ ? Calculer le résultat pour toutes les valeurs possibles de $i$.
+	\vspace*{4cm}
+\newpage
+	\vspace*{4cm}
+\end{enumerate}
+%1.9
+
+\exo{} Une machine à sous fonctionne de la manière suivante : on introduit une pièce de 1 euro et 3 roues se mettent à tourner : ces roues représentent les dix chiffres de 0 à 9 et chaque roue s'arrête en montrant un chiffre au hasard. Si les trois chiffres sont différents, le joueur perd sa mise ; s'il y a un "double", le joueur récupère sa mise plus deux euros ; s'il y a un "triple", le joueur récupère sa mise plus $a$ euros.
+\begin{enumerate}
+\item Soit $X$ la variable aléatoire associée au gain d'un joueur. Déterminer la loi de $X$.	
+\vspace*{8cm}
+
+\item On dit que le jeu est favorable au propriétaire de la machine si l'espérance de gain du joueur est négative. Jusqu'à quelle valeur de $a$ le jeu est-il favorable au propriétaire de la machine ?	
+\vfill{}\newpage
+\end{enumerate}
+%TD3 cucala
+
+%\exo{} Dans un pays où il naı̂t autant de filles que de garçons, le docteur Gluck prévoit le sexe des enfants à naı̂tre. Il se trompe 1 fois sur 10 si c'est un garçon et 1 fois sur 20 si c'est une fille. Aujourd'hui il vient de dire à Mme Parisod qu'elle aurait une fille. Quelle est la probabilité pour que cela soit vrai?  %1.13
+%\vspace*{8cm}
+
+\exo{} 0n r\'ealise une suite de lancers ind\'ependants d'une pi\`ece \'equilibr\'ee, chaque
+lancer amenant donc ``Pile'' ou ``Face'' avec la probabilit\'e $1/2$.
+
+On note $P_k$ (resp. $F_k$) l'\'ev\'enement~: ``on obtient Pile (resp. Face) au
+$k$-i\`eme lancer''. Pour ne pas surcharger l'\'ecriture on \'ecrira, par exemple,
+$P_1 F_2$ \`a la place de $P_1\cap F_2$.
+On note $X$ la variable al\'eatoire qui prend la valeur $k$ si l'on obtient, pour
+la premi\`ere fois, ``Pile'' puis ``Face'' dans cet ordre aux lancers $k-1$ et
+$k$ ($k$ d\'esignant un entier sup\'erieur ou \'egal \`a $2$), $X$ prenant la valeur
+$0$ si l'on n'obtient jamais une telle succession.
+
+%On note $Y$ la variable al\'eatoire qui prend la valeur $k$ si l'on obtient, pour
+%la premi\`ere fois, ``Pile'' suivi de ``Pile'' aux lancers $k-1$ et $k$ ($k$
+%d\'esignant un entier sup\'erieur ou \'egal \`a $2$), $Y$ prenant la valeur $0$ si l'on
+%n'obtient jamais une telle succession.
+%
+%L'objet de l'exercice est de calculer les esp\'erances de $X$ et $Y$ et de
+%v\'erifier que, ``contre toute attente'', $E(Y) > E(X)$.
+L'objet de l'exercice est de calculer l'esp\'erances de $X$ (i.e. la durée moyenne d'une partie)
+\begin{enumerate}
+
+\item  Calculer $\P(X=2)$.
+\vspace*{5cm}
+
+\item  Soit $k$ un entier sup\'erieur ou \'egal \`a $3$.
+
+ \begin{enumerate}
+\item Remarquer que  que si le premier lancer est un ``Pile'', alors il faut et il suffit que $P_2 P_3 \dots P_{k-1}F_k$ se
+	r\'ealise pour que $\{X=k\}$ se r\'ealise.  En d\'eduire que~: $\forall k\ge 3$, on a $\P(X=k)={1\over 2} \P(X=k-1)+{1\over
+2^k}$
+\vspace*{5cm}
+\newpage
+\item On pose, pour tout entier $k$ sup\'erieur ou \'egal \`a $2$, $u_k= 2^k\P(X = k)$. D\'eterminer $u_k$,
+	
+	\vspace*{5cm}
+
+\item Donner alors la loi de $X$.\vspace*{5cm}
+
+\end{enumerate}
+\item Montrer que $X$ a une esp\'erance, not\'ee $\E(X)$, et la calculer.\vspace*{5cm}
+
+%
+%\qsquest
+%Montrer que $(F_1, P_1P_2, P_1F_2)$ est un syst\`eme complet d'\'ev\'enements.
+%
+%\squest
+%En d\'eduire que, pour pour tout entier $k$ sup\'erieur ou \'egal \`a $4$~:
+%$$P(Y=k)= {1\over 2} P(Y=k-1) + {1\over 4} P(Y=k-2)$$
+%
+%\squest
+%On pose, pour tout entier $k$ sup\'erieur ou \'egal \`a $2$, $v_k=P(Y=k)$.
+%
+%D\'eterminer $v_2$ et $v_3$ puis montrer qu'en posant $v_0=1$ et $v_1=0$, on a,
+%pour tout entier $k$ sup\'erieur ou \'egal \`a $2$~: $\displaystyle v_k={1\over 2}
+%v_{k-1} + {1\over 4} v_{k-2}$.
+%
+%\squest
+%En d\'eduire la suite $(v_k)_{k\ge 0}$, puis donner la loi de $Y$.
+%
+%\squest
+%Montrer que $Y$ a une esp\'erance, not\'ee $E(Y)$, et la calculer.
+\end{enumerate}
+
+\end{document}

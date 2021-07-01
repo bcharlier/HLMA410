@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+ 
+<question type="category">
+  <category>
+    <text>$module$/Formes quadratiques (3pt)</text>
+  </category>
+</question>
+ 
+<question type="multichoice">
+  <name>
+    <text>Forme quadratique</text>
+  </name>
+  <questiontext format="html">
+    <text><![CDATA[<p>Soit \(q:\mathbb {R}^3\to \mathbb {R}\) la forme quadratique donn&eacute;e par \(q(x,y,z)= 10z^2-8yz+4xz+2y^2-2xy+x^2\). D&eacute;terminer lesquelles de ces assertions sont vraies. </P><P></p>]]></text>
+  </questiontext>
+  <defaultgrade>3</defaultgrade>
+  <generalfeedback format="html"><text/></generalfeedback>
+  <penalty>.5</penalty>
+  <hidden>0</hidden>
+  <single>false</single>
+  <shuffleanswers>1</shuffleanswers>
+  <answernumbering>abc</answernumbering>
+  <answer fraction="50" format="html">
+    <text><![CDATA[<p>la forme polaire de \(q\) d&eacute;finie un produit scalaire sur \(\mathbb R^3\)</p>]]></text>
+  </answer>
+  <answer fraction="50" format="html">
+    <text><![CDATA[<p>\(q\) est de signature \((3,0)\)</p>]]></text>
+  </answer>
+  <answer fraction="0" format="html">
+    <text><![CDATA[<p>\(q\) est de signature \((0,3)\)</p>]]></text>
+  </answer>
+  <answer fraction="0" format="html">
+    <text><![CDATA[<p>\(q\) est de signature \((1,2)\)</p>]]></text>
+  </answer>
+  <answer fraction="0" format="html">
+    <text><![CDATA[<p>\(q\) est de signature \((2,1)\)</p>]]></text>
+  </answer>
+  <answer fraction="0" format="html">
+    <text><![CDATA[<p>\(q\) peut prendre des valeurs positives ou n&eacute;gatives</p>]]></text>
+  </answer>
+</question>
+<question type="multichoice">
+  <name>
+    <text>Forme quadratique</text>
+  </name>
+  <questiontext format="html">
+    <text><![CDATA[<p>Soit \(q:\mathbb {R}^3\to \mathbb {R}\) la forme quadratique donn&eacute;e par \(q(x,y,z)= -4z^2+10yz+2xz-y^2+2xy+x^2\). D&eacute;terminer lesquelles de ces assertions sont vraies. </P><P></p>]]></text>
+  </questiontext>
+  <defaultgrade>3</defaultgrade>
+  <generalfeedback format="html"><text/></generalfeedback>
+  <penalty>.5</penalty>
+  <hidden>0</hidden>
+  <single>false</single>
+  <shuffleanswers>1</shuffleanswers>
+  <answernumbering>abc</answernumbering>
+  <answer fraction="50" format="html">
+    <text><![CDATA[<p>\(q\) est de signature \((2,1)\)</p>]]></text>
+  </answer>
+  <answer fraction="50" format="html">
+    <text><![CDATA[<p>\(q\) peut prendre des valeurs positives ou n&eacute;gatives</p>]]></text>
+  </answer>
+  <answer fraction="0" format="html">
+    <text><![CDATA[<p>la forme polaire de \(q\) d&eacute;finie un produit scalaire sur \(\mathbb R^3\)</p>]]></text>
+  </answer>
+  <answer fraction="0" format="html">
+    <text><![CDATA[<p>\(q\) est de signature \((1,2)\)</p>]]></text>
+  </answer>
+  <answer fraction="0" format="html">
+    <text><![CDATA[<p>\(q\) est de signature \((1,1)\)</p>]]></text>
+  </answer>
+  <answer fraction="0" format="html">
+    <text><![CDATA[<p>\(q\) est de signature \((3,0)\)</p>]]></text>
+  </answer>
+  <answer fraction="0" format="html">
+    <text><![CDATA[<p>\(q\) est de signature \((0,3)\)</p>]]></text>
+  </answer>
+</question>
+<question type="multichoice">
+  <name>
+    <text>Forme quadratique</text>
+  </name>
+  <questiontext format="html">
+    <text><![CDATA[<p>Soit \(q:\mathbb {R}^3\to \mathbb {R}\) la forme quadratique donn&eacute;e par \(q(x,y,z)=2x^2+4xy+3y^2+4xz+9z^2\). D&eacute;terminer lesquelles de ces assertions sont vraies. </P><P></p>]]></text>
+  </questiontext>
+  <defaultgrade>3</defaultgrade>
+  <generalfeedback format="html"><text/></generalfeedback>
+  <penalty>.5</penalty>
+  <hidden>0</hidden>
+  <single>false</single>
+  <shuffleanswers>1</shuffleanswers>
+  <answernumbering>abc</answernumbering>
+  <answer fraction="33.33333" format="html">
+    <text><![CDATA[<p>\(q\) est d&eacute;finie positive</p>]]></text>
+  </answer>
+  <answer fraction="33.33333" format="html">
+    <text><![CDATA[<p>\(q\) est de signature \((3,0)\)</p>]]></text>
+  </answer>
+  <answer fraction="33.33333" format="html">
+    <text><![CDATA[<p>le point \((0,0,0)\) est un minimum de \(q\)</p>]]></text>
+  </answer>
+  <answer fraction="0" format="html">
+    <text><![CDATA[<p>\(q\) est de signature \((2,1)\)</p>]]></text>
+  </answer>
+  <answer fraction="0" format="html">
+    <text><![CDATA[<p>\(q\) est de signature \((1,2)\)</p>]]></text>
+  </answer>
+  <answer fraction="0" format="html">
+    <text><![CDATA[<p>\(q\) est de signature \((0,3)\)</p>]]></text>
+  </answer>
+  <answer fraction="0" format="html">
+    <text><![CDATA[<p>\(q\) peut prendre des valeurs positives ou n&eacute;gatives</p>]]></text>
+  </answer>
+</question>
+<question type="multichoice">
+  <name>
+    <text>Forme quadratique</text>
+  </name>
+  <questiontext format="html">
+    <text><![CDATA[<p>Soit \(q:\mathbb {R}^3\to \mathbb {R}\) la forme quadratique donn&eacute;e par \(q(x,y,z) = (x + y)^2 + (x+z)^2 + (y-z)^2\). D&eacute;terminer lesquelles de ces assertions sont vraies. </P><P></p>]]></text>
+  </questiontext>
+  <defaultgrade>3</defaultgrade>
+  <generalfeedback format="html"><text/></generalfeedback>
+  <penalty>.5</penalty>
+  <hidden>0</hidden>
+  <single>false</single>
+  <shuffleanswers>1</shuffleanswers>
+  <answernumbering>abc</answernumbering>
+  <answer fraction="50" format="html">
+    <text><![CDATA[<p>\(q\) est de signature \((2,0)\)</p>]]></text>
+  </answer>
+  <answer fraction="50" format="html">
+    <text><![CDATA[<p>le point \((0,0,0)\) est un minimum de \(q\)</p>]]></text>
+  </answer>
+  <answer fraction="0" format="html">
+    <text><![CDATA[<p>\(q\) est sous forme de somme de carr&eacute;s de formes lin&eacute;aires ind&eacute;pendantes</p>]]></text>
+  </answer>
+  <answer fraction="0" format="html">
+    <text><![CDATA[<p>\(q\) est d&eacute;finie positive</p>]]></text>
+  </answer>
+  <answer fraction="0" format="html">
+    <text><![CDATA[<p>\(q\) est de signature \((2,1)\)</p>]]></text>
+  </answer>
+  <answer fraction="0" format="html">
+    <text><![CDATA[<p>\(q\) est de signature \((3,0)\)</p>]]></text>
+  </answer>
+</question>
+<question type="multichoice">
+  <name>
+    <text>Forme quadratique</text>
+  </name>
+  <questiontext format="html">
+    <text><![CDATA[<p>Soit \(q:\mathbb {R}^3\to \mathbb {R}\) la forme quadratique donn&eacute;e par \(q(x,y,z)=(x + 2y + z)^2 - (x + y)^2 - (y + z)^2\) </P><P></p>]]></text>
+  </questiontext>
+  <defaultgrade>3</defaultgrade>
+  <generalfeedback format="html"><text/></generalfeedback>
+  <penalty>.5</penalty>
+  <hidden>0</hidden>
+  <single>false</single>
+  <shuffleanswers>1</shuffleanswers>
+  <answernumbering>abc</answernumbering>
+  <answer fraction="100" format="html">
+    <text><![CDATA[<p>\(q\) est de signature \((1,1)\)</p>]]></text>
+  </answer>
+  <answer fraction="0" format="html">
+    <text><![CDATA[<p>le point \((0,0,0)\) est un minimum de \(q\)</p>]]></text>
+  </answer>
+  <answer fraction="0" format="html">
+    <text><![CDATA[<p>\(q\) est sous forme de somme de carr&eacute;s de formes lin&eacute;aires ind&eacute;pendantes</p>]]></text>
+  </answer>
+  <answer fraction="0" format="html">
+    <text><![CDATA[<p>\(q\) est d&eacute;finie positive</p>]]></text>
+  </answer>
+  <answer fraction="0" format="html">
+    <text><![CDATA[<p>\(q\) est de signature \((2,1)\)</p>]]></text>
+  </answer>
+  <answer fraction="0" format="html">
+    <text><![CDATA[<p>\(q\) est de signature \((3,0)\)</p>]]></text>
+  </answer>
+</question>
+<question type="multichoice">
+  <name>
+    <text>Forme quadratique</text>
+  </name>
+  <questiontext format="html">
+    <text><![CDATA[<p>Soit \(q:\mathbb {R}^3\to \mathbb {R}\) la forme quadratique donn&eacute;e par \(q(x,y,z) = 2(x +y + z)^2 - (x + y)^2 - (y +z)^2 - (x +z)^2\). D&eacute;terminer lesquelles de ces assertions sont vraies. </P><P></p>]]></text>
+  </questiontext>
+  <defaultgrade>3</defaultgrade>
+  <generalfeedback format="html"><text/></generalfeedback>
+  <penalty>.5</penalty>
+  <hidden>0</hidden>
+  <single>false</single>
+  <shuffleanswers>1</shuffleanswers>
+  <answernumbering>abc</answernumbering>
+  <answer fraction="100" format="html">
+    <text><![CDATA[<p>\(q\) est de signature \((1,2)\)</p>]]></text>
+  </answer>
+  <answer fraction="0" format="html">
+    <text><![CDATA[<p>le point \((0,0,0)\) est un minimum de \(q\)</p>]]></text>
+  </answer>
+  <answer fraction="0" format="html">
+    <text><![CDATA[<p>\(q\) est sous forme de somme de carr&eacute;s de formes lin&eacute;aires ind&eacute;pendantes</p>]]></text>
+  </answer>
+  <answer fraction="0" format="html">
+    <text><![CDATA[<p>\(q\) est d&eacute;finie positive</p>]]></text>
+  </answer>
+  <answer fraction="0" format="html">
+    <text><![CDATA[<p>\(q\) est d&eacute;finie negative</p>]]></text>
+  </answer>
+  <answer fraction="0" format="html">
+    <text><![CDATA[<p>\(q\) est de signature \((2,1)\)</p>]]></text>
+  </answer>
+  <answer fraction="0" format="html">
+    <text><![CDATA[<p>\(q\) est de signature \((3,0)\)</p>]]></text>
+  </answer>
+</question>
+ 
+</quiz>

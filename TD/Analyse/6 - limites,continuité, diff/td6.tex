@@ -1,0 +1,234 @@
+\documentclass{tp_um}
+\input{../../header.tex}
+\newcommand{\miniscule}{\@setfontsize\miniscule{5}{6}}
+%-----------------------------------------------------------------------------
+
+\title{\Large \sffamily\bfseries Limites, continuité et différentiabilité}
+\ue{HLMA410}
+
+%-----------------------------------------------------------------------------
+\begin{document}
+
+\maketitle
+
+\bigskip
+
+Les exercices ou les questions marqués d'une étoile ne sont pas prioritaires.
+
+\section{Limites de fonctions}
+
+\exo{} Donner le domaine de définition et étudier la limite en l'origine des fonctions suivantes: 
+\begin{enumerate}
+	\item $f(x,y) = \frac{x^2 - 3y^2}{x^2 + y^2}$ 
+		\begin{center}
+			\begin{tikzpicture}[scale=.5]
+				\begin{axis}[,xlabel=$x$,ylabel=$y$]%,xtick=\empty,ytick=\empty,ztick=\empty ]
+					\addplot3[surf,opacity=.7,samples=50] gnuplot {(x**2 -3*y**2) /(x**2 + y**2)};
+				\end{axis}
+			\end{tikzpicture}
+		\end{center}
+	\item $f(x,y,z) = \frac{xyz}{x^2 + y^2 +z^2}$
+\end{enumerate}
+
+\newpage 
+
+%\exo{} Soit $f:\R^2 \to \R$ la fonction définie par $\frac{xy}{x^2+y^2}$.
+%\begin{center}
+	%\begin{tikzpicture}[scale=.5]
+		%\begin{axis}[,xlabel=$x$,ylabel=$y$]%,xtick=\empty,ytick=\empty,ztick=\empty ]
+			%\addplot3[surf,opacity=.7,samples=50] gnuplot {(x*y) /(x**2 + y**2)};
+		%\end{axis}
+	%\end{tikzpicture}
+%\end{center}
+%\begin{enumerate}
+	%\item Étudier la limite à l'origine de la restriction de $f$ à la droite d'équation $y=ax$. 
+	%\item Montrer que $f$ n'admet pas de limite à l'origine.
+%\end{enumerate}
+
+\exo{} Soit $f:\R^2 \to \R$ la fonction définie par $\frac{xy}{x+y}$.
+%\begin{center}
+	%\begin{tikzpicture}[scale=.5]
+		%\begin{axis}[,xlabel=$x$,ylabel=$y$,xtick=\empty,ytick=\empty,ztick=\empty,zmin=-1,zmax=1]%,view={47}{42}]
+			%\addplot3[surf,samples=50,domain=-1:1] gnuplot {( x>-y? (x*y)/(x + y): 0)};
+		%\end{axis}
+	%\end{tikzpicture}
+%\end{center}
+\begin{enumerate}
+	\item Étudier la limite à l'origine de la restriction de $f$ à la droite d'équation $y=ax$. 
+	\item Calculer la limite à l'origine de de la restriction de $f$ à la parabole d'équation $x+y=x^2$ (faire un dessin!)
+	\item Montrer que $f$ n'admet pas de limite à l'origine.
+\end{enumerate}
+
+\newpage
+
+\exo[*]{} Montrer que la fonction $f(x,y) = \frac{xy+y^2}{\sqrt{x^2+y^2}}$ tend vers 0 quand $(x,y)$ tend vers l'origine. 
+\begin{center}
+    \begin{tikzpicture}[scale=.5]
+        \begin{axis}[,xlabel=$x$,ylabel=$y$]%,xtick=\empty,ytick=\empty,ztick=\empty]
+            \addplot3[surf,opacity=.7,samples=50] gnuplot {(x*y + y**2) / sqrt(x**2 + y**2)};
+        \end{axis}
+    \end{tikzpicture}
+\end{center}
+
+\newpage
+\exo{} Donner le domaine de définition et étudier la limite en $a=(0,0)$ de la fonction $f(x,y) = \frac{\ln\left( 1  + xy\right)}{x^2 + y^2}$.
+%\begin{center}
+	%\begin{tikzpicture}[scale=.5]
+		%\begin{axis}[,xlabel=$x$,ylabel=$y$,xtick=\empty,ytick=\empty,ztick=\empty,zmin=0,zmax=2]
+			%\addplot3[surf,samples=50] gnuplot {log(1+ x*y) / sqrt(x**2 + y**2)};
+		%\end{axis}
+	%\end{tikzpicture}
+%\end{center}
+
+\newpage
+\exo[*]{} Soit $f$ la fonction définie sur le plan privé de la droite $\Delta$ d'équation $y=x$ par la formule $f(x,y) = \frac{\sin(x) - \sin(y)}{x - y}$. Étudier la limite de $f$ en tout point de $\Delta$. % cv vers \cos
+	\begin{center}%\shorthandoff{?}
+			\begin{tikzpicture}[scale=.5]
+				\begin{axis}[,xlabel=$x$,ylabel=$y$]%,xtick=\empty,ytick=\empty,ztick=\empty ]
+					\addplot3[surf,opacity=.7,samples=40,domain=-10:10] gnuplot { (x==y? cos(x):  (sin(x) - sin(y)) /(x - y )) }; %\usepackage{microtype}
+				\end{axis}
+			\end{tikzpicture}
+		\end{center}
+
+\newpage
+\section{Continuité}
+
+\exo{}
+\'Etudier la continuité de la fonction $f(x,y) = \max \left\{ x,y \right\}$.
+{\it Indication: On pourra montrer que $\max\{a,b\} = \frac 1 2 (a+b + |a-b|)$ pour tout $a,b\in\R$. }
+% Niglio exo 2 et 17 p. 23
+
+\newpage
+\exo[*]{} Montrer que la fonction définie par $f(x,y) = \frac{\sin(x+y)}{x+y}$ est continue sur son domaine de définition et qu'elle peut se prolonger par continuité à $\R^2$ tout entier.
+	\begin{center}%\shorthandoff{?}
+			\begin{tikzpicture}[scale=.5]
+				\begin{axis}[,xlabel=$x$,ylabel=$y$]%,xtick=\empty,ytick=\empty,ztick=\empty ]
+					\addplot3[surf,opacity=.7,samples=40,domain=-10:10] gnuplot { (x==-y? 1:  (sin(x +y)) /(x + y )) }; %\usepackage{microtype}
+				\end{axis}
+			\end{tikzpicture}
+		\end{center}% Niglio exo 13 p. 23
+
+%\exo{} \'Etudier la continuité pour tout $\alpha>0$ de la fonction $f(x,y) = \frac{\abs{x}^\alpha y}{x^2 + y^4}$ si $(x,y) \neq 0$ et $f(0,0) = 0 $.
+%{\it Indication: Pour la continuité en 0, on pourra considérer $f(y^2,y)$ puis majorer $\abs{f(x,y)}$ en distinguant les cas $\abs{x} > y^2$ et $\abs{x} < y^2$.  }
+
+\newpage
+
+\section{Dérivées partielles}
+
+
+\exo{} Calculer les dérivées partielles d'ordre 1 des fonctions suivantes:
+\begin{enumerate}
+	\item $f (x, y) = y^5-3xy $ 
+\item $f(x, y) = x \cos(e^{xy} )$
+\item $F(x,y) = \int_y^x \cos(e^t) dt$
+\end{enumerate}
+
+\newpage
+\exo[*]{} Existence et calcul des dérivées partielles de la fonction $f$ définie par $\arccos \big( 1+( x-y )^2 \big)$.
+% Niglio  exo 3 p41
+
+\newpage
+\exo{} Soit $f:\R^2\rightarrow \R$ la fonction
+d\'efinie par $f(x,y)=(x^2+y^2)^x$ pour $(x,y)\not=(0,0)$ et
+$f(0,0)= 1$.
+\begin{enumerate}
+ \item La fonction $f$ est-elle continue en $(0,0)$?
+ \item D\'eterminer les d\'eriv\'ees partielles de $f$ en un point
+quelconque distinct de l'origine.
+ \item  La fonction $f$ admet-elle des d\'eriv\'ees partielles par
+rapport \`a $x$, \`a $y$ en $(0,0)$?
+\end{enumerate}
+% ex 1 de fic00062
+
+\newpage
+
+\exo{(Gaz parfait)}Pour un gaz parfait, l'énergie interne $\varepsilon$ s'écrit en fonction du volume spécifique $\tau$ et de l'entropie spécifique $s$ comme
+\begin{align*}
+	\varepsilon: \R^2 & \to \R \\
+	(\tau,s) & \mapsto \tau^{1-\gamma} e^{s/c_\nu}
+\end{align*}
+où $\gamma>1$ et $C_\nu>0$ sont deux constantes. 
+\begin{enumerate}
+	\item	Calculer la pression $P = -\frac{\partial \varepsilon}{\partial \tau} $ et la température $T = \frac{\partial\varepsilon}{\partial s}$
+	\item  Retrouver la loi des gaz parfaits: $\frac{P\tau}{T}$ est constant.
+\end{enumerate}
+
+\newpage
+\section{Différentiabilité}
+
+\exo{} On considère la fonction $f: \R^2 \to \R$ définie par $f(x,y) =  \frac{xy}{\sqrt{x^2 + y^2}}$ si $(x,y) \neq (0,0)$ et  $f(0,0)=0$.
+	\begin{center}
+			\begin{tikzpicture}[scale=.5]
+				\begin{axis}[,xlabel=$x$,ylabel=$y$]%,xtick=\empty,ytick=\empty,ztick=\empty ]
+					\addplot3[surf,opacity=.7,samples=50] gnuplot {(x*y) /sqrt(x**2 + y**2)};
+				\end{axis}
+			\end{tikzpicture}
+		\end{center}
+\begin{enumerate}
+	\item Montrer que $f$ est continue sur $\R^2$.
+	\item Montrer que $f$ n'est pas différentiable en $(0,0)$.%sur  $\R^2$ {\it Indication: pour la différentiabilité en l'origine, Calculer les dérivées partielles de $f$ en $(0,0)$ et en déduire que $f$  n'est pas différentiable.}
+\end{enumerate}
+% Niglio  exo 4 p41
+
+\newpage
+
+\exo[*]{}
+On considère la fonction $f: \R^2 \to \R$ définie par $f(x,y) =  \begin{cases}\frac{x^2 y}{x^2 + \abs{y}}, & \text{si $(x,y) \neq (0,0)$} \\ 0 , & \text{si $(x,y) = (0,0)$}\end{cases} $. 
+	\begin{center}
+			\begin{tikzpicture}[scale=.5]
+				\begin{axis}[,xlabel=$x$,ylabel=$y$]%,xtick=\empty,ytick=\empty,ztick=\empty ]
+					\addplot3[surf,opacity=.7,samples=50] gnuplot {(x**2 *y) /(x**2 + abs(y))};
+				\end{axis}
+			\end{tikzpicture}
+		\end{center}
+
+\begin{enumerate}
+	\item Montrer que $f$ est continue et différentiable en l'origine.
+        \item \'Etudier la différentiabilité de $f$ au point $(a,0)$, $a\neq 0$.
+\end{enumerate}
+%Niglio exo 12 et 13 p44
+
+%\exo{}
+%\'Etudier suivant $\alpha\in\R$ la différentiabilité à l'origine de la fonction définie par: $f(x,y) =  \frac{\abs{x}^\alpha y}{x^2 + \abs{y}}$, est continue et différentiable en l'origine.
+%%Niglio exo 14 p44
+
+\newpage
+
+\section{Applications de la différentiabilité}
+
+\exo[*]{} Soit $f: \R^2 \to\R$ la fonction définie par $f(x,y) = \frac{x+y}{1+x^2+y^2}$.
+	\begin{center}
+			\begin{tikzpicture}[scale=.5]
+				\begin{axis}[,xlabel=$x$,ylabel=$y$]%,xtick=\empty,ytick=\empty,ztick=\empty ]
+					\addplot3[surf,opacity=.7,samples=50] gnuplot {(x+y) /(1 +x**2 + y**2)};
+				\end{axis}
+			\end{tikzpicture}
+		\end{center}
+\begin{enumerate}
+	\item Déterminer et représenter ses courbes de niveau.
+	\item Calculer les dérivées partielles premières.
+	\item Écrire l'équation du plan tangent à $f$ en $(0,0)$
+\end{enumerate}
+% Facanonni exo 4.17 p 85
+
+\newpage
+\exo{} Sachant que la fonction $f: \R^2 \to \R$ est différentiable et que $f(2,5) = 6$, $\frac{\partial f}{ \partial x}(2,5) = 1 $ et $\frac{\partial f}{\partial y} (2,5) = -1$. Donner une valeur approchée de $f(2.2,4.9)$.
+% Facanonni exo 4.12 p 85
+
+\newpage
+
+\exo{} Soit $\alpha>0$ et $a = (1,2)$. On pose $f(x)=\snorm{x-a}^\alpha$ pour tout $x\in\R^2$. 
+\begin{enumerate}
+	\item Représenter les courbes de niveau et le champ de gradient de $f$ pour $\alpha=2$ 
+	\item Même question en $\alpha =1$ en précisant bien le domaine de définition.
+\end{enumerate}
+
+\newpage
+
+\exo{} Calculer le jacobien en tout point de $\R^3$ des applications suivantes:
+\begin{enumerate}
+	\item $f(r,\theta,z) = (r\cos\theta,r\sin\theta,z)$
+	\item $g(r,\varphi,\theta) = (r\cos\varphi\cos\theta , r \cos\varphi\sin\theta , r \sin \varphi) $
+\end{enumerate}
+
+\end{document}

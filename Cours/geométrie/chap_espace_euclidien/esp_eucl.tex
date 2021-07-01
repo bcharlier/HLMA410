@@ -1,0 +1,418 @@
+\chapter{Espaces euclidiens}
+
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+\section{Formes Bilinéaires et formes quadratiques}
+
+\subsection{Formes bilinéaires symétriques}
+
+\begin{definition}
+	Une \emph{forme bilinéaire} sur un $\R$ espace vectoriel $E$ est une application $\varphi: E\times E \to \R$ qui est linéaire par rapport à chacune de ses variables: 
+	\begin{enumerate}
+		\item  $\forall u,v,w\in E$ et $\lambda,\mu\in\R$, $\varphi(\lambda u + \mu v,w) = \lambda \varphi(u,w) + \mu \varphi(v,w)$,
+		\item  $\forall u,v,w\in E$ et $\lambda,\mu\in\R$, $\varphi(u,\lambda v + \mu w) = \lambda \varphi(u,v) + \mu \varphi(u,w)$.
+	\end{enumerate}
+	Elle est \emph{symétrique} si $\varphi(u,v) = \varphi(v,u)$ pour tout $u,v\in E$
+\end{definition}
+
+\noindent \'Etant donnée une base $\mathcal B = \left( e_1,\cdots,e_n \right)$ de $E$ et $u=x_1 e_1 + \cdots+ x_n e_n$ et $v=y_1e_1+\cdots+y_n e_n$. On a 
+\[
+	\varphi (u,v) = \sum_{i=1}^n \sum_{j=1}^n m_{ij} x_iy_j
+\]
+$m_{ij} = \varphi(e_i,e_j) \in \R$ pour tout $i,j = 1,\cdots,n$. Ainsi une forme bilinéaire s'écrit comme comme un polynôme homogène de degré 2 en les coordonnées de $u$ et $v$.
+
+
+\begin{exemple}
+	\pl{\rep{7cm}}
+\end{exemple}
+
+\subsection{Formes quadratiques}
+
+\begin{definition}
+	Soit $E$ un $\R$ espace vectoriel. Une application $q:E \to \R$ est appelée une \emph{forme quadratique} s'il existe une forme bilinéaire $\varphi:E\times E \to \R$ telle que pour tout $u\in E$
+	\[
+q(u) = \varphi(u,u)
+	\]
+On dit que $\varphi$ est associée à $q$. ($q$ est un polynôme homogène de degré 2 en les coordonnées).
+\end{definition}
+
+\begin{exemple}
+	\pl{\rep{3cm}} %norme euclidienne
+\end{exemple}
+
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+
+%\noindent Lorque l'on écrit le vecteur $u$ dans une base, une forme quadratique est un polymôme homogène de degré 2 en les coordonnées de $u$.
+
+\begin{proposition}
+	Toute forme quadratique $q$ sur un \rev{} $E$ est associée à une unique forme bilinéaire symétrique.
+\end{proposition}
+
+\begin{proof}
+		\pl{\rep{10cm}}
+\end{proof}
+\pl{\pagebreak[5]}
+\begin{exemple}
+Soit $q(x_1,x_2) = x_1^2 +x_2^2$.
+
+\pl{\rep{6cm}} %norme euclidienne
+\end{exemple}
+\begin{definition}
+	Soit $q:E\to\R$ une forme quadratique définie sur un \rev{} $E$. La forme bilinéaire symétrique $\varphi(u,v) = \frac{1}{4} \left( q(u+v) - q(u-v) \right)$ est la \emph{forme polaire} de $q$.
+\end{definition}
+\begin{exemple}
+Soit $E=\R^3$ et  $q:(x_1,x_2,x_3) \mapsto 7x_1^2 +5  x_2 x_3$.
+
+\pl{\rep{9cm}} %norme euclidienne
+\end{exemple}
+
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+
+\subsection{Notation matricielle}
+
+	Soit $E$ un \rev{} de dimension finie et $\mathcal B = (e_1,\cdots,e_n)$ une base de $E$ et $u=x_1 e_1 + \cdots+ x_n e_n$ et $v=y_1e_1+\cdots+y_n e_n$ deux éléments de $E$. Une forme bilinéaire symétrique sur $E$ s'écrit
+	\[
+		\varphi (u,v) = \sum_{i=1}^n \sum_{j=1}^n \underbrace{\varphi(e_i,e_j)}_{=m_{ij}} x_iy_j.
+	\]
+	Réciproquement si $(m_{ij})_{i,j=1}^n$ est une famille de réels telles que $m_{ij} = m_{ji}$ pour tout $i,j=1,\cdots,n$. Alors 
+	\[
+		(u,v) \mapsto \sum_{i=1}^n \sum_{j=1}^n m_{ij} x_i y_j
+	\]
+	est une forme bilinéaire symétrique sur $E$.
+
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+
+\begin{definition}
+	Soit $E$ un \rev{} de dimension finie et $\mathcal B = (e_1,\cdots,e_n)$ une base de $E$. 
+	\begin{enumerate}[label=$(\roman*)$]
+		\item La matrice 
+			\[\redspace 
+				M = \left[ m_{ij}= \varphi(e_i,e_j) \right]_{i,j=1}^n
+			\] 
+			est appelée \emph{matrice de la forme bilinéaire symétrique} $\varphi$ dans la base $\mathcal B$.
+		\item	La matrice (dans la base $\mathcal B$) de la forme quadratique $q(u) = \varphi(u,u)$ est la matrice $M$ de $\varphi$. Autrement dit, la matrice d'une forme quadratique est la matrice de sa forme polaire.
+	\end{enumerate}
+\end{definition}
+
+Si $X = \begin{pmatrix}
+	x_1\\\vdots\\x_n
+\end{pmatrix}$ et $Y = \begin{pmatrix}
+	y_1\\\vdots\\y_n
+\end{pmatrix}$  sont les matrices colonnes des coordonnées de $u$ et $v$ dans la base $\mathcal B$, on a 
+\[\redspace
+	\varphi(u,v) = X^t M Y = Y^t M X = \varphi(v,u)
+\]
+et
+\[\redspace
+q(u) = X^t M X.
+\]
+On a de plus $M = M^t$.
+\begin{exemple}
+1) Soit $E=\R^2$ et $q(u) = x_1^2 + x_2^2$
+	\pl{\rep{2cm}} %norme euclidienne
+2) Soit $E=\R^3$ et  $q:(x_1,x_2,x_3) \mapsto 7x_1^2 + 6 x_1x_2 +  5  x_2 x_3$.
+
+\pl{\rep{4cm}} %norme euclidienne
+\end{exemple}
+
+
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+
+\section{Produit scalaire et norme euclidienne}
+
+%Un produit scalaire est une fonctionnelle qui permet de mesurer des distances et des angles. C'est à dire, tout ce qu'il faut pour faire de la géométrie (au sens classique du terme du moins).
+
+
+\subsection{Produit scalaire}
+
+\begin{definition}
+	On dit qu'une forme bilinéaire est 
+	\begin{enumerate}[label=$(\roman*)$]
+		\item \emph{Symétrique}: si $\forall u,v\in E, \varphi(u,v) = \varphi(v,u)$. 
+		\item \emph{Positive}: si $\forall u\in E, \varphi(u,u) \geq 0$.
+		\item \emph{Définie}: si $\varphi(u,u) =0 \Leftrightarrow u=0$. 
+	\end{enumerate}
+	Une forme forme bilinéaire symétrique définie positve est appelé \emph{produit scalaire}. 
+\end{definition}
+
+Suivant les auteurs et le contexte, le produit scalaire est noté $(u,v) \mapsto \prs{u,v}$ ou $(u,v) \mapsto \prs{u|v}$ ou encore $(u,v) \mapsto (u|v)$.
+
+\begin{definition}
+	Un espace euclidien est un espace vectoriel réel $E$ de dimension finie muni d'un produit scalaire $\prs{\cdot,\cdot}$. On note $(E,\prs{\cdot,\cdot})$.
+\end{definition}
+
+\begin{exemple}
+	\plprof{1) Dans $E=\R^n$, l'application $\prs{(x_1,\cdots,x_n), (y_1,\cdots,y_n)} = x_1y_1 +\cdots + x_n y_n$ est le produit scalaire canonique. 
+
+2) Dans $\R^2$ $\prs{(x_1,x_2),(y_1,y_2)} = (x_1 + x_2) (y_1+y_2) + 2 x_2y_2$ définit bien un produit scalaire.
+	}
+	\pl{\rep{5cm}} %norme euclidienne
+\end{exemple}
+
+\subsection{Norme euclidienne}
+
+Soit l'application 
+\begin{align*} 
+	\norm{\cdot}: E &\to \R \\ u&\mapsto \norm{u} = \sqrt{\prs{u,u}}
+\end{align*}
+Remarquons qu'elle est bien définie car le produit scalaire est positif. %On note cette application comme une norme: c
+%On s'intéresse maintenant aux propriétés de la fonction $E \times E \to \R $ défini par $(x,y) \to \sqrt{\prs{x,y}}$.
+\begin{exemple}
+	Si $E=\R$ on voit que la $\norm{\cdot}$ est simplement la valeur absolue. Si $E = \R^n$ avec le produit scalaire canonique alors $\norm{(x_1,\cdots,x_n)} = \sqrt{ x_1^2 + \cdots + x_n^2 }$.
+\end{exemple}
+
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+
+\begin{proposition}
+	[(Inégalité de Cauchy-Schwarz)] Pour tous $u,v \in E $ on a:
+	\[
+		%\abs{\prs{x,y}} \leq \sqrt{\prs{x,x}} \sqrt{\prs{y,y}}
+		\abs{\prs{u,v}} \leq \norm{u} \norm{v}
+	\]
+	De plus on a $\abs{\prs{u,v}} = \norm{u} \norm{v} $ si et seulement si il existe un $\lambda\in\R$ tel que  $v=\lambda u$.
+\end{proposition}
+
+\begin{proof}\plprof{On considère plusieurs cas:
+	\sld{	\begin{enumerate}
+		\item 	Cas $u=0$ ou $v=0$: tout est facilement vérifiable et découle des propriétés du produit scalaire.
+		\item 	Cas $u \neq 0$ et $v\neq 0$: tout d'abord, remarquer que l'on a pour tout $u\in E \setminus \{0\}$ on a 
+			\[
+				\prs{u,u} >0 \text{ et }\prs{ \frac{u}{{\norm{u}}},\frac{u}{{\norm{u}}} } = 1
+			\]
+			Cela implique que:
+			\begin{equation*}\label{eq.cs1}
+				0 \leq \norm{ \frac{u}{{\norm{u}}} + \frac{v}{{\norm{v}}} }^2  = 2 + 2 \frac{\prs{u,v}}{{\norm{u}}{\norm{v}} }
+			\end{equation*}
+			Ainsi, on en déduit que  $-{\norm{u}} {\norm{v}} \leq \prs{u,v} $. De même
+			\begin{equation*}
+				0 \leq \norm{ \frac{u}{{\norm{u}}} - \frac{v}{{\norm{v}}} }^2  = 2 - 2 \frac{\prs{u,v}}{{\norm{u}}{\norm{v}} }
+			\end{equation*}
+			Ainsi, on en déduit que $\abs{\prs{u,v}} \leq {\norm{u}} {\norm{v}} $. %On a donc $-\sqrt{\prs{x,x}} \sqrt{\prs{y,y}} \leq \prs{x,y} \leq \sqrt{\prs{x,x}} \sqrt{\prs{y,y}} $, 
+			Cela termine la démonstration de l'inégalité. 
+
+			Pour le cas d'égalité, on a $v=\lambda u$ pour $\lambda \in \R\setminus\{0\}$ si et seulement si $\norm{ \frac{v}{{\norm{u}}} + \frac{v}{{\norm{v}}} }^2 = 0$  ou $ \norm{ \frac{u}{{\norm{u}}} - \frac{v}{{\norm{v}}}} =0$ si et seulement si $ -\prs{u,v} = {\norm{u}} {\norm{v}}$ ou $ \prs{u,v} = {\norm{u}} \norm{v}$. 
+
+	\end{enumerate}}}
+	\pl{\rep{11cm}}
+\end{proof}
+
+\begin{remark}
+	\begin{enumerate}
+		\item On peut bien sûr utiliser l'expression (au carré): $\abs{\prs{u,v}}^2 \leq \prs{u,u}\prs{v,v}$
+		\item Si $E=\R^n$ muni du produit scalaire cannonique, on obtient $(\sum_{i=1}^n x_iy_i)^2 \leq \sum_{i=1}^n x_i \sum_{i=1}^n y_i$
+	\end{enumerate}
+\end{remark}
+
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+
+\begin{proposition}[(Inégalité de Minkowski)]
+$\forall u,v\in E$ on a 
+\[
+	{\norm{u+v}} \leq {\norm{u}} + {\norm{v}}.
+\]
+De plus on a $\norm{u+v} = \norm{u} + \norm{v} $ si et seulement si il existe un $\lambda\in\R$ tel que  $v=\lambda u$.
+\end{proposition}
+\begin{proof}\plprof{
+	\sld{	C'est une conséquence de l'inégalité de Cauchy-Schwarz:
+		\begin{align*}
+			\norm{u+v}^2=\prs{u+v,u+v} &= \norm{u}^2 + \norm{v}^2 + 2\prs{u,v}\\
+			& \leq \norm{u}^2 + \norm{v}^2 + 2\abs{\prs{u,v}} \\
+			& \leq \norm{u}^2 + \norm{v}^2 + 2\prs{u,u}\prs{v,v} \\
+			& \leq (\norm{u} + \norm{v})^2.
+		\end{align*}}}
+	\pl{\rep{5cm}}
+\end{proof}
+
+
+\noindent Un espace euclidien est en fait un espace normé:
+\begin{defprop}
+	Soit  un espace euclidien $(E,\prs{\cdot,\cdot})$. L'application $\norm{\cdot}: E \to \R $ définie pour tout $u\in E$ par $\norm{u} = \sqrt{\prs{u,u}}$ est une norme sur $E$ et elle est appelé \emph{norme euclidienne}.
+\end{defprop}
+\begin{proof} On vérifie les trois propriétés vérifiées pour une norme:
+	\begin{enumerate}
+		\item $\norm{u} = 0 \Rightarrow \prs{u,u}=0 \Rightarrow u=0 $ car le produit scalaire est défini. 
+		\item homogénéité $\norm{\lambda u} = \sqrt{\prs{\lambda u, \lambda u}} = \sqrt{\lambda^2} \sqrt{\prs{u,u}} = \abs{\lambda} \norm{u}$.
+		\item Inégalité triangulaire: c'est exactement l'inégalité de Minkowski.
+	\end{enumerate}
+\end{proof}
+
+\noindent 	Les normes euclidiennes sont donc des normes bien particulières car elles découlent d'un produit scalaire. Les normes euclidiennes satisfont un certain nombre de propriétés remarquables:
+
+\begin{proposition}
+	Soit  un espace euclidien $(E,\prs{\cdot,\cdot})$ et $\norm{\cdot}$ la norme euclidienne sur $E$. Pour tous $u,v\in E$ on a
+\begin{align*}
+	\prs{u,v} = \frac{1}{2} \left( \norm{u+v}^2 - \norm{u}^2 - \norm{v}^2 \right) = \frac{1}{4}\left( \norm{u+v}^2 - \norm{u-v}^2 \right) 
+	\intertext{ et  }
+	\norm{u+v}^2 + \norm{u-v}^2 = 2\left( \norm{u}^2 + \norm{v}^2 \right)
+\end{align*}
+\end{proposition}
+
+\begin{proof}
+		\pl{\rep{5cm}}
+\end{proof}
+
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+\subsection{Mesure d'angle géométrique}
+
+Comme on vient de le voir, un produit scalaire permet de mesurer des distances entre point $E$. Il permet aussi de mesurer un angle. L'inégalité de Cauchy-Schwarz implique que:
+\[
+	-1 \leq \frac{\prs{u,v}}{\norm{u} \norm{v}} \leq 1
+\]
+On est donc en mesure de poser la définition suivante:
+
+\begin{definition}
+	Soit $(E,\prscd)$ un espace euclidien. Soient $u,v$ deux vecteurs non nuls de $E$. On appelle mesure de l'angle non orienté du couple $(u,v)$ le réel compris $\theta \in [0,\pi]$ tel que 
+	\[
+		\cos(\theta) = \frac{\prs{u,v}}{\norm{u}\norm{v}}.
+	\]
+\end{definition}
+
+\begin{definition}
+	On dit que les vecteurs $u$ et $v$ de $(E,\prs{\cdot,\cdot})$ sont orthogonaux si $\prs{u,v} = 0$.
+\end{definition}
+
+\begin{proposition}
+	[(Théorème de Pythagore)] Soit  
+	$(E,\prs{\cdot,\cdot})$ un espace euclidien. Les vecteurs $u$ et $u$ de $E$ sont orthogonaux ssi $\norm{u+v}^2= \norm{u}^2 + \norm{v}^2$.
+\end{proposition}
+
+\begin{proof}
+		\pl{\rep{5cm}}
+\end{proof}
+
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+\section{Signe d'une forme quadratique}
+
+\subsection{Rappels}
+
+\begin{definition}
+	Soit $E$ un \rev. Une \emph{forme linéaire} $\ell$ est une application $\ell:E\to\R$ qui est linéaire.
+\end{definition}
+Si $E =\R^n$ et $\ell$ une forme linéaire sur $E$. Alors il existe un vecteur $a= \begin{psmallmatrix}
+	a_1\\\vdots\\a_n
+\end{psmallmatrix}\in E$ tel que
+\[\redspace
+	\ell(u) = \prs{a,u} = a_1 x_1 + \cdots + a_n x_n   , \quad \text{pour tout $u\in E$}.
+\]
+En notation matricielle, les vecteurs $u= \begin{psmallmatrix}
+	x_1\\\vdots\\x_n
+\end{psmallmatrix}$ sont notés en colonne et les formes linaires $\ell$ sont des matrices lignes (de taille $1\times n$). La matrice de $\ell$ n'est autre que celle de $a$ transposée et on a
+\[\redspace
+	\ell(u) = \begin{pmatrix}
+		a_1, \cdots, a_n
+	\end{pmatrix}\begin{pmatrix}
+		x_1\\\vdots\\x_n
+	\end{pmatrix}.
+\]
+\begin{definition}
+	Une forme quadratique $q:E \to \R$ définie sur un \rev{} $E$ est
+	\begin{enumerate}
+		\item \emph{Positive}: si $\forall u\in E$, $q(u)\geq 0$.
+		\item \emph{Négative}: si $\forall u\in E$, $q(u)\leq 0$.
+	\end{enumerate}
+\end{definition}
+
+
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+\subsection{Décomposition de Gauss}
+
+Soit $q: E \to \R$ une forme quadratique définie sur un \rev{} de dimension $n$. Alors il existe $(s+t)\leq n$ formes linéaires $\ell_1,\cdots,\ell_s,\ell_{s+1},\cdots,\ell_{s+t}: E \to \R$ linéairement indépendantes telles que pour tout $u\in E$
+\begin{align*}
+	%q(x_1,\cdots,x_n) & = \left( \ell_1(x_1,\cdots,x_n) \right)^2 + \cdots + \left( \ell_s(x_1,\cdots,x_n) \right)^2 \\
+	%& \qquad- \left( \ell_{s+1}(x_1,\cdots,x_n) \right)^2 - \cdots - \left( \ell_{s+t}(x_1,\cdots,x_n) \right)^2
+	q(u) & = \left( \ell_1(u) \right)^2 + \cdots + \left( \ell_s(u) \right)^2 \\
+	& \qquad- \left( \ell_{s+1}(u) \right)^2 - \cdots - \left( \ell_{s+t}(u) \right)^2
+\end{align*}
+Il n'y a pas unicité des $\ell_i$ mais les nombres entiers $s$ et $t$ ne dépendent pas de la décomposition choisie (c'est la \emph{signature} de $q$). 
+
+\begin{remark} On peut déduire le signe de la forme quadratique $q$ grâce à sa décomposition de Gauss:
+	\begin{enumerate}
+		\item Si $t=0$ alors la forme quadratique $q$ est positive.
+		\item Si $s=0$ alors la forme quadratique $q$ est négative.
+	\end{enumerate}
+\end{remark}
+
+\pl{\rep{6cm}}
+
+
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+L'algorithme de Gauss permet de calculer les formes linéaires indépendantes $\ell_i$. Soit $q:E\to \R$ une forme quadratique. On l'écrit tout d'abord dans une base 
+\[
+	q(x_1,\cdots,x_n) = a_{11} x_1^2 + \cdots + a_{nn} x_n^2 + \sum_{i=1}^n\sum_{\substack{ j=1 \\ j\neq i }}^n a_{ij} x_ix_j.
+\]
+De deux choses l'une:
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+\begin{enumerate}
+	\item Il y a au moins un ``terme carré'' dans l'écriture de $q$. C'est à dire, il existe un entier $1\leq i\leq n$ tel que $a_{ii}$ n'est pas nul. On supposera pour simplifier qu'il s'agit de $a_{11}$ et on note $a=a_{11}$. On peut alors écrire $q$ sous la forme:
+		\begin{align*}
+			q(x_1,\cdots,x_n) & = a_{} x_1^2 + x_1 B(x_2,\cdots,x_n) + C(x_2,\cdots,x_n)
+		\end{align*}
+où on a factorisé les termes en $x_1$ et fait apparaître une forme linéaire $\boldsymbol B = B(x_2,\cdots,x_n)$ et une forme quadratique $\boldsymbol C = C(x_2,\cdots,x_n)$. On peut alors ``complèter le carré'' (mise sous forme canonique):
+		\begin{align*}
+		q(x_1,\cdots,x_n) = a_{} \left( x_1 + \frac{\boldsymbol B}{2a} \right)^2 +  \boldsymbol C - \frac{\boldsymbol B^2}{4a}
+		\end{align*}
+		On a donc écrit la forme quadratique $q$ comme somme du carré d'une forme linéaire et d'une forme quadratique où $x_1$ n'intervient plus (linéairement indépendant). Il suffit alors de réitérer la méthode de Gauss avec $q'(x_2,\cdots,x_n) = C(x_2,\cdots,x_n)-\frac{B^2(x_2,\cdots,x_n)}{4a}$. 
+
+		\medskip
+
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+	\item Il n'y a que des ``termes rectangles'' dans l'écriture de $q$. Si la forme quadratique est nulle, l'algorithme s'arrête. On suppose pour simplifier que $a_{12} \neq 0$ et on note $a=a_{12}$. On écrit alors $q$ sous la forme:
+		\[
+			q(x_1,\cdots,x_n) = a_{} x_1 x_2 + x_1 B(x_3,\cdots,x_n) + x_2  C(x_3,\cdots,x_n) + D(x_3,\cdots,x_n)
+		\]
+		où $B(x_3,\cdots,x_n)$ et $ C(x_3,\cdots,x_n)$ sont des formes linéaires et $D(x_3,\cdots,x_n)$ est une forme quadratique. Dans la suite, on note respectivement ces applications $\boldsymbol B,\boldsymbol C $ et $\boldsymbol D.$ On factorise alors sous la forme suivante: 
+		\[\redspace
+			q(x_1,\cdots,x_n)  = a_{}\left( x_1 + \frac{\boldsymbol C}{a} \right)\left( x_2 + \frac{\boldsymbol B}{a} \right) + \boldsymbol D - \frac{\boldsymbol B\boldsymbol C}{a}
+		\]
+		Puis on utilise le fait que pour tous réels $a$ et $b$ on a $ab= ((a+b)^2-(a-b)^2)/4$ pour obtenir finalement:
+		\[%\redspace
+			q(x_1,\cdots,x_n)  = \frac{a_{}}{4} \left( x_1 + x_2 + \frac{\boldsymbol B+ \boldsymbol C}{a} \right)^2 -\frac{a_{}}{4}  \left( x_1 - x_2 + \frac{\boldsymbol C-\boldsymbol B}{a} \right)^2 + \boldsymbol D - \frac{\boldsymbol B\boldsymbol C}{a}
+		\]
+		Il suffit alors d'itérer la méthode avec la forme quadratique $q'(x_3,\cdots,x_n) =  \boldsymbol D - \frac{\boldsymbol B \boldsymbol C}{a}$, qui ne fait plus intervenir que $x_3,\cdots,x_n$. 
+\end{enumerate}
+
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+\begin{remark}
+	Il existe d'autres méthodes pour écrire une forme quadratique sous la forme d'une somme de carrés de formes linéaires indépendantes: la diagonalisation de la forme quadratique (conjugaison par une matrice orthogonale) et $q$-orthonormalisation d'une base de $E$ (méthode de Lagrange). A noter que pour les matrices définies positives, il existe aussi l'algorithme de Choleski et pour les matrices non définies il existe l'algorithme LDL.
+\end{remark}
+
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+\subsection{Critère de Sylvester ou des déterminants mineurs principaux}
+
+
+\begin{proposition}
+	Soit $q: \R^2 \to \R$ une forme quadratique sur $\R^2$	de matrice $M = \begin{pmatrix}
+		a & b \\ c & d
+	\end{pmatrix}$. On note $\Delta_1 = a$ et $\Delta_2 =(ad - cb)$ et $\operatorname{tr}(M) = a +d$. Alors:
+	\begin{enumerate}
+		\item $q$ est définie positive ssi $\Delta_1>0$ et $ \Delta_2 >0$ ssi  $\operatorname{tr}(M) >0$ et $\Delta_2>0$.
+		\item $q$ est définie négative ssi $\Delta_1<0$ et $ \Delta_2 >0$ ssi  $\operatorname{tr}(M) <0$ et $\Delta_2>0$.
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+ On se contente d'une illustration sur les matrices diagonales.
+ \pl{\rep{4cm}}
+\end{proof}
+
+\sld{\vfill\pagebreak[5]}%%%%%%%%%%%%%%%
+\begin{proposition}
+	Soit $q: \R^3 \to \R$ une forme quadratique sur $\R^3$	de matrice $M = \left( m_{ij} \right)_{i,j=1}^3$. On note: 
+	\[ 
+		\Delta_1 = m_{11}, \qquad \Delta_2 = \begin{vmatrix}
+		m_{11} & m_{12} \\ m_{21} & m_{22}
+	\end{vmatrix}, \quad \text{ et }  \quad  \Delta_3 = \det(M) = \begin{vmatrix}
+		m_{11} & m_{12} & m_{13} \\ m_{21} & m_{22} & m_{23} \\  m_{31} & m_{32} & m_{33}
+\end{vmatrix}.
+\]
+Alors:
+	\begin{enumerate}
+		\item $q$ est définie positive ssi $\Delta_1>0$ et $\Delta_2>0 $ et $\Delta_3 >0$, 
+		\item $q$ est définie négative ssi $\Delta_1 <0$ et $\Delta_2 >0 $ et $\Delta_3<0$.
+	\end{enumerate}
+\end{proposition}
+
+
+\begin{proof}
+ On se contente d'une illustration sur les matrices diagonales.
+ \pl{\rep{4cm}}
+\end{proof}

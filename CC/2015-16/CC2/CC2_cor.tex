@@ -1,0 +1,279 @@
+\documentclass[a4paper]{tp_um}
+\input{../../TD/header.tex}
+\ue{HLMA410}
+%-----------------------------------------------------------------------------
+
+\title{\large \sffamily\bfseries Contrôle continu 2}
+
+\begin{document}
+
+\maketitle
+\textit{Durée 1h30. Les documents, la calculatrice, les téléphones portables, tablettes, ordinateurs ne sont pas autorisés. La qualité de la rédaction sera prise en compte.} 
+
+\bigskip
+\bigskip
+
+\exo{(Question de cours)} Soit $E$ un espace vectoriel et $\|\cdot\|, \|\cdot\|': E \to [0,+\infty[$  deux normes équivalentes sur $E$. Montrer que toute suite $(u_{k})_{k\in\N}$  de $E$ qui converge pour la norme $\|\cdot\|$ converge aussi pour la norme $\|\cdot\|'$.
+
+\bigskip 
+On utilise les hypothèses: 
+	\begin{enumerate}
+		\item 	Les deux normes sont équivalentes, ainsi il existe $\alpha, \beta >0$ tels que $ \alpha\snorm{ \cdot }  \leq \snorm{\cdot}' \leq \beta \snorm{\cdot}$.
+
+		\item 	La suite $u_k \to \ell \in E$ quand $k\to +\infty$ pour la nome $\snorm{\cdot}$, ainsi 
+			\[
+				0 \leq \snorm{u_k - \ell} \to 0, \quad \text{quand $k\to + \infty$}
+			\]
+	\end{enumerate}
+
+En utilisant 1) et 2) on a 
+\[
+	0 \leq \snorm{u_k - \ell}' \leq \beta \snorm{u_k - \ell}
+\]
+Par le théorème des gendarmes, la suite réelle $(\snorm{u_k - \ell}')_k$  converge et sa limite est $\lim_k \beta \snorm{u_k - \ell} = 0$. Autrement dit, $(u_k)_k$ converge vers $\ell\in E$ pour $\snorm{\cdot}'$.
+
+\exo{(Projection de ${\Bbb R}^2$ sur $\Bbb R$)} Dans cet exercice, il est fortement recommand\'e de dessiner, et de se souvenir qu'un dessin n'est jamais une preuve.  Si $X$ est un espace vectoriel normé, «$B(x,r[$» désigne la boule ouverte de centre $x\in X$ et de rayon $r>0$. On rappelle que pour une application $p:X\rightarrow Y$, et pour $A\subset X$, l'image de $A$ par $p$ est l'ensemble $p(A)=\{ y\in  Y, \exists x\in A, y=p(x)\}=\{ p(x), x \in A\}$. 
+
+Soit $p:{\Bbb R}^2\rightarrow {\Bbb R}$ la premi\`ere projection ($p(x,y)=x$). On munit ${\Bbb R}^2$ de la norme euclidienne et $\Bbb R$ de la valeur absolue. %Dans cet exercice,
+\begin{enumerate}
+\item Montrer que dans $\Bbb R$, $B(a,\epsilon[=]a-\epsilon,a+\epsilon[$.  
+
+
+			\bigskip		
+On a $B(a,\epsilon[=\{x\in {\Bbb R}, d_{\Bbb R}(a,x)<\epsilon\}=\{x\in {\Bbb R}, |x-a|<\epsilon\}=\{x\in {\Bbb R}, -\epsilon<x-a<\epsilon\}=\{x\in {\Bbb R},a- \epsilon<x<a+\epsilon\}=]a-\epsilon,a+\epsilon[$.
+	
+			
+
+			\bigskip			
+			
+\item Montrer que $p(B((x,y),\epsilon[)=B(x,\epsilon[$. En d\'eduire que l'image d'un ouvert de ${\Bbb R}^2$ par $p$ est un ouvert de $\Bbb R$.
+	
+			\bigskip		
+			
+						
+			On remarque que pour $(x,y),(a,b)\in {\Bbb R}²$, $|x-a|\le \sqrt{(x-a)^2+(y-b)^2}= d_{\Bbb R^2}((x,y),(a,b))$. Pour $a=p(a,b)\in p(B((x,y),\epsilon[)$, on a donc $d_{\Bbb R}(x,a)\le d_{\Bbb R^2} ((x,y),(a,b))<\epsilon$ et donc $a\in B(x,\epsilon[$.
+
+D'autre part, pour $a\in B(x,\epsilon[$, on a $d_{\Bbb R^2 }((x,y),(a,y))=\sqrt{(x-a)^2}=|x-a|<\epsilon$ donc $(a,y) \in B((x,y),\epsilon[$ et $p(a,y)=a$ donc $a\in p(B((x,y),\epsilon[)$.
+
+Soit $U$ un ouvert de ${\Bbb R}^2$ et $x\in p(U)$, il existe $(x,y)\in U$ tel que $p(x,y)=x$. Comme $U$ est ouvert, il existe $\epsilon>0$ tel que $B((x,y),\epsilon[\subset U$. On a alors $p(B((x,y),\epsilon[)=B(x,\epsilon[\subset p(U)$.
+
+			
+			
+			\bigskip
+\item Montrer que $F=\{(x,y), xy=1\}$ est un ferm\'e de ${\Bbb R}^2$ mais que $p(F)$ n'est pas ferm\'e.
+			
+			\bigskip
+				
+Soit $X_n=(x_n,y_n)$ une suite de $F$ qui converge vers $X=(x,y)$, alors la suite $x_ny_n$ est constante \'egale \`a $1$, et tend vers $xy$, donc $xy=1$ et $X\in F$. L'ensemble $F$ est donc ferm\'e.
+
+D'autre part, $0\notin p(F)$, car pour tout $y\in \Bbb R$, $(0,y)\notin F$. La suite $x_n=1/n=p(1/n,n)\in p(F)$ mais $\lim x_n=0\notin p(F)$, donc $p(F)$ n'est pas ferm\'e.
+
+	
+	
+%\item On suppose maintenant que $F$ est une partie de ${\Bbb R}^2$ ferm\'ee et born\'e et on consid\`ere une suite $x_n\in p(F)$ telle que $x_n\rightarrow x$.
+%\begin{enumerate} 
+%\item Montrer qu'il existe une suite $y_n$ telle que $(x_n,y_n)\in F$.
+%\item Montrer qu'il existe une sous suite $(x_{\phi(n)},y_{\phi(n)})$ convergente.
+%\item En d\'eduire que $x\in p(F)$, puis que $p(F)$ est ferm\'e dans $\Bbb R$.
+%\end{enumerate}
+\end{enumerate}
+
+		
+		
+		
+		
+		
+		
+\exo{(La deltoïde)}  Soit la courbe paramétrée $\Gamma$ définie par $\begin{cases}x(t)= 2\cos t + \cos 2t \\ y(t) = 2\sin t - \sin 2t \end{cases}$ pour $t\in[-\pi,\pi]$
+
+	\begin{enumerate}
+		\item \'Etudier la parité des fonctions $x(\cdot)$ et $y(\cdot)$. Quelle(s) symétrie(s) cela implique-t-il sur le support de la courbe $\Gamma$?
+
+			\bigskip
+
+On a $x(-t) = 2\cos(- t) + \cos (-2t) = 2\cos(t) + \cos (2t) = x(t)$ et la fonction $x$ est paire. De même, $y(-t) =  2\sin (-t) - \sin (-2t)= -2\sin t + \sin 2t = -y(t)$ et la fonction $y$ est impaire. Cela donne une symétrie axiale par rapport à l'axe des abscisses.   	\bigskip
+
+
+		\item Calculer $\Gamma'$, $\Gamma''$ et $\Gamma'''$.
+	\bigskip
+On a 
+\begin{align*}
+		\Gamma'(t) & = 
+	\begin{cases}
+	x'(t) = -2\sin t - 2 \sin 2t \\
+	y'(t) = 2\cos t - 2 \cos 2t
+	\end{cases} \\
+		\Gamma''(t) & = 
+	\begin{cases}
+	x''(t) = -2\cos t - 4 \cos 2t\\
+	y''(t) = -2\sin t + 4 \sin 2t \\
+	\end{cases}\\
+		\Gamma'''(t) & = 
+	\begin{cases}
+x'''(t) = 	2\sin t + 8 \sin 2t \\
+y'''(t) = 	-2\cos t +8 \cos 2t
+	\end{cases}
+\end{align*}
+
+
+
+\item Soit $t \in [-\pi,\pi[$. Montrer que $\cos(t) - \cos(2t) = 0$ a trois solutions $t = 0$ et $t=2\pi/3$ et $t= -2\pi/3$. 
+
+			\bigskip
+Une solution consiste à se souvenir que $\cos 2t = 2\cos^2 t -1$. Ansi,
+\begin{align*}
+	\cos t - \cos 2t &= 0 \\
+\Leftrightarrow \cos t - 2\cos^2 t +1 &= 0
+\end{align*}
+On cherchant les racines du polynôme de degré deux, $X \mapsto -2X^2+X+1$, on arrive à  $\cos t = -1/2$ ou $\cos t = 1$. Ce qui donne le résultat escompté (faire un dessin avec un cercle trigonométrique!).
+
+			\bigskip
+	\item Calculer la position des points stationnaires. Donner leur nature ainsi que le comportement local de la courbe en leur voisinage (faire un petit dessin à chaque fois).
+
+\bigskip
+		La question précédentes donne les temps en lesquels $x'$ s'annule. Reste à vérifier si $y'$ s'annule aussi en ces temps. C'est bien le cas, on a
+		\[
+			y'(0) = y'(2\pi/3) = y'(-2\pi/3) = 0
+		\]
+Il y a donc 3 points stationnaires en $t=-2\pi/3,0,2\pi/3$.
+
+
+\'Etude des points stationnaires:
+\begin{enumerate}
+	\item $t=0$ on a $\Gamma(0) = \begin{psmallmatrix}
+			3\\0
+		\end{psmallmatrix}$, $\Gamma''(0) = \begin{psmallmatrix}
+			-6\\0
+		\end{psmallmatrix} $ et  $\begin{psmallmatrix}
+			0\\6
+		\end{psmallmatrix}$. 
+		Cela donne le DL suivant,
+	\[
+		\Gamma(0 + h ) = \begin{psmallmatrix}
+		 3 - 3h^2 + o(\abs{h}^3)	\\  h^3 + o(\abs{h}^3)
+		\end{psmallmatrix}
+	\]
+		Avec les notations du cours on a $p=2$ et $q=3$. Ainsi, c'est un point de rebroussement de première espèce. 
+		\begin{center}\begin{tikzpicture}[scale=1]
+			
+				\begin{scope}[rotate=0] 
+				
+				  \draw[->, thick, red] (0,0)--(-2,0) node[left] {${v}$}; 
+			    \draw[->, thick, red] (0,0)--(0,2) node[above] {${w}$}; 
+		      \draw [>->,>=latex,very thick, color=blue] (-1,-1) .. controls (-0.5,0) and (-0.2,0) .. (-0.05,0) .. controls (-0.1,0.05) and (-0.5,0) .. (-1,1);
+	       \fill (0,0) circle (1pt);
+       \end{scope}
+       \end{tikzpicture}\end{center}
+			\item $t=2\pi/3$ on a $\Gamma(2\pi/3) = \begin{psmallmatrix} -3/2 \\ 3\sqrt 3/2
+		\end{psmallmatrix}$, $\Gamma''(0) = \begin{psmallmatrix}
+					3\\-3\sqrt{3}
+		\end{psmallmatrix} $ et  $\begin{psmallmatrix}
+					-3\sqrt{3}\\-3
+		\end{psmallmatrix}$. 
+		Cela donne le DL suivant,
+	\[
+		\Gamma(0 + h ) =  \frac 1 2 \begin{psmallmatrix}
+			- 3  + 3h^2 - \sqrt{3}h^3 o(\abs{h}^3)	\\  3\sqrt 3  -3 \sqrt 3 h^2  - h^3 + o(\abs{h}^3)
+		\end{psmallmatrix}
+	\]
+		Avec les notations du cours on a $p=2$ et $q=3$. Ainsi, c'est un point de rebroussement de première espèce. 
+		\begin{center}
+			\begin{tikzpicture}[scale=1]
+			
+			
+			  \draw[->, thick, red] (0,0)--(.75,-1.299038106) node[left] {${v}$}; 
+		    \draw[->, thick, red] (0,0)--(-1.299038106, -.75) node[above] {${w}$}; 
+		    \begin{scope}[rotate=120] 
+		      \draw [>->,>=latex,very thick, color=blue] (-1,-1) .. controls (-0.5,0) and (-0.2,0) .. (-0.05,0) .. controls (-0.1,0.05) and (-0.5,0) .. (-1,1);
+	      \end{scope}
+       \fill (0,0) circle (1pt);
+       \end{tikzpicture}\end{center}
+
+	\item $t= -2\pi/3$. C'est l'image par la symétrie axiale du point traité en (b). On a donc:	$\Gamma(-2\pi/3) = \begin{psmallmatrix} -3/2 \\ -3\sqrt 3/2
+		\end{psmallmatrix}$, $\Gamma''(0) = \begin{psmallmatrix}
+					3\\3\sqrt{3}
+		\end{psmallmatrix} $ et  $\begin{psmallmatrix}
+					-3\sqrt{3}\\3
+		\end{psmallmatrix}$. 
+		Cela donne le DL suivant,
+	\[
+		\Gamma(0 + h ) =  \frac 1 2 \begin{psmallmatrix}
+			- 3  + 3h^2 - \sqrt{3}h^3 o(\abs{h}^3)	\\  -3\sqrt 3  +3 \sqrt 3 h^2  + h^3 + o(\abs{h}^3)
+		\end{psmallmatrix}
+	\]
+		Avec les notations du cours on a $p=2$ et $q=3$. Ainsi, c'est un point de rebroussement de première espèce. 
+		\begin{center}
+			\begin{tikzpicture}[scale=1,yscale  = -1]
+		\draw[->, thick, red] (0,0)--(.75,-1.299038106) node[left] {${v}$}; 
+		    \draw[->, thick, red] (0,0)--(1.299038106, .75) node[above] {${w}$}; 
+		    \begin{scope}[rotate=120] 
+		      \draw [<-<,>=latex,very thick, color=blue] (-1,-1) .. controls (-0.5,0) and (-0.2,0) .. (-0.05,0) .. controls (-0.1,0.05) and (-0.5,0) .. (-1,1);
+	      \end{scope}
+       \fill (0,0) circle (1pt);
+       \end{tikzpicture}\end{center}
+\end{enumerate}
+
+
+
+
+
+	%	\item Y a t il des point de la courbe avec une tangente verticale ? horizontal ? de direction $(1,1)$ ?
+			%\blanc{6cm}
+	
+		\item Calculer les tangentes aux points stationnaires et montrer qu'elles s'intersectent toutes en un même et unique point.
+
+%	Il suffit de calculer le point d'intersection de deux des tangentes et de vérifier que la troisème passe bien par ce même point. 
+\bigskip
+			
+Comme la tangente au point $\Gamma(0)$ est l'axe des abscisses, il suffit de calculer où les 2 autres tangentes coupent cet axe. Par exemple, la tangente au point $\Gamma(2\pi/3)$ est 
+\[
+	t \mapsto 3/2  \begin{psmallmatrix}
+		-1 \\  \sqrt{3}
+	\end{psmallmatrix} + 3 t \begin{psmallmatrix}
+		1 \\ -\sqrt{3}
+	\end{psmallmatrix}		
+\]
+Elle annule sa deuxième coordonnée en $t=1/2$ en passant par l'origine. Par symétrie, on vérifie immédiatement que la troisième tangente passe elle aussi par l'origine. 
+\bigskip
+
+		\item Compléter le tableau de variations suivant:
+			\bigskip
+
+			On utilise les propriétés de parité de $x$ et de $y$ !
+			\begin{center}
+				\begin{tabular}{|c|ccccccccc|}
+					\hline    $t$       & $-\pi$ & \hspace{1.5cm}  & $-2\pi/3$ & \hspace{1.5cm}  &  0	& \hspace{1.5cm} & $2\pi/3$ & \hspace{1.5cm}   & $\pi$\\[0.3cm]\hline\hline
+					signe de $x'(t)$     &     &  $-$ & 0 & $+$  & 0 & $-$ & 0 &  $+$           &	\\[0.4cm]\hline
+					variation de $x(t)$ &  $-$1   & $\searrow$    & $-3/2$ & $\nearrow$ & 3 & $\searrow$  & $-3/2$ &     $\nearrow$      & $-1$	\\[0.9cm]\hline\hline
+					signe de $y'(t)$   & 0 & $-$    & 0        &$+$ &0 & $+$& 0 & $-$&      0	\\[0.4cm]\hline
+					variation de $y(t)$ &   0  &  $\searrow$        & $-3\sqrt{3}/2 $ &  $\nearrow$& 0 &  $\nearrow$&  $3\sqrt{3}/2 $&   $\searrow$  &	0\\[0.9cm]\hline
+				\end{tabular}
+			\end{center}
+		\item  Sur le graphique suivant, tracer la courbe $\Gamma$ ainsi que les tangentes étudiées aux questions précédentes. {\it Indication: on commencera par tracer les tangentes aux points stationnaires (ces points apparaissent déjà sur le graphique).}
+				\begin{center}
+
+	\begin{tikzpicture}\pgfplotsset{compat=1.8}
+			\begin{axis}[height=10cm,width=10cm,enlargelimits=true,grid=major,  axis lines=center, axis on top, xlabel={$x$}, ylabel={$x$}, zlabel={$y$}, axis equal,view={90}{0},,
+				ymin=-3,ymax=3,zmin=-3,zmax=3,xmin=-3,xmax=3]
+				\addplot3[grid=both,samples=500, very thick,red, domain = -pi:pi, samples y =0] ({x},{2*cos(deg(x))  +cos(deg(2*x)) },{2* sin(deg(x))  -sin(deg(2*x))  });
+				\addplot3[grid=both,samples=500, thin,blue, domain = -pi:.6, samples y =0] ({x}, { -1 + 2*x },{ sqrt(3) *(1 -2*x)  });
+				\addplot3[grid=both,samples=500, thin,blue, domain = -pi:.6, samples y =0] ({x}, { -1 + 2*x },{ -sqrt(3) *(1 -2*x)  });
+				\addplot3[grid=both,samples=500, thin,blue, domain = -pi:.6, samples y =0] ({x}, { 0 },{ -x  });
+			\end{axis}		\end{tikzpicture}
+			\end{center}
+			%\blanc{8cm}
+
+		\item La courbe $(\Gamma,[-\pi,\pi[)$ est-elle paramétrée par l'abscisse curviligne ?  {\it Indication: c'est la justification qui sera notée.}
+				\bigskip
+
+			Non, car la norme de son vecteur dérivée n'est pas constante.  En effet, $\snorm{\Gamma'}^2 = 8 (1 - \cos(3t))= 16\sin^2(3t/2)$ pour tout $t \in ]-\pi,\pi]$.  
+				\bigskip
+
+		\item {\bf\sffamily (Question Bonus)} Montrer que  la longueur de $\Gamma$ est 16. {\it Indication: aucun point ne sera donné pour la définition de la longueur, c'est bel et bien le calcul qui sera évalué.}
+
+			\[
+				L = 4 \int_{-\pi}^\pi \abs{\sin(3t/2)} dt = 12 \int_0^{2\pi/3} \sin(3t/2) dt = 8 \int_0^{\pi} \sin(t) dt = 8 \left[ \cos(t) \right]_{t=0}^\pi = 16. 
+			\]
+	\end{enumerate}
+ 
+\end{document}

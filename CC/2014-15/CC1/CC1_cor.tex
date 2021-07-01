@@ -1,0 +1,195 @@
+\documentclass[a4paper]{article}
+\input{../../td/header.tex}
+
+%-----------------------------------------------------------------------------
+\begin{document}
+
+\noindent Université Montpellier 2 \hfill Année 2014-2015
+
+\noindent HLMA 410
+ 
+
+
+\bigskip
+
+\begin{center}
+{\large \sffamily\bfseries Correction du contrôle continu 1}
+\end{center}
+
+%\textit{Durée 1h30. Les documents, la calculatrice, les téléphones portables, tablettes, ordinateurs ne sont pas autorisés. La qualité de la rédaction sera prise en compte.} 
+
+\bigskip
+\bigskip
+
+
+\exo{(Question de cours)} Rappeler la définition d'un produit scalaire puis la définition d'espace euclidien.
+\bigskip
+
+Un produit scalaire sur un espace vectoriel $E$  est une forme bilinéaire symétrique, définie et positive. Un espace euclidien est un espace vectoriel de dimension finie et muni d'un produit scalaire.
+\bigskip
+
+\exo{(Une norme sur $\boldsymbol{ \mathbb{R}^2}$)} Soit $N(x,y) =\max \left\{ \sqrt{x^2+y^2} , \abs{x-y} \right\}$ définie pour tout $(x,y)\in\R^2$.
+\begin{enumerate}
+	\item Montrer que $N$ est une norme sur $\R^2$.
+
+\bigskip
+
+On remarque tout d'abord que $N(x,y) =\max \left\{ \snorm{(x,y)}_2 , \abs{x-y} \right\}  $.
+		\begin{enumerate}
+			\item Homogénéité : soit $\lambda\in \R$, on a $N(\lambda x, \lambda y) = \max \left\{\abs{\lambda}\snorm{(x,y)}_2 , \abs{\lambda}\abs{x-y} \right\}=\abs{\lambda}\max \left\{\snorm{(x,y)}_2 , \abs{x-y} \right\} =\abs{\lambda}N(x,y)  $.
+			\item Séparabilité : clairement $N(x,y) \geq 0 $ pour tout  $x,y\in\R$. De plus $N(x,y) =0$ ssi 
+				$\begin{cases} \snorm{(x,y)}_2  = 0\\ \text{ et }\\\abs{x-y} \end{cases}$ ssi $x = y = 0 $ (car $\snorm{ \cdot}_2$  est une norme sur $\R^2$).
+			\item Inégalité triangulaire : soit $x,y,z,t \in \R$ :
+				\begin{align*}
+					N(x + z,y +t) &  = \max \left\{  \snorm{(x+z,y+t)}_2  , \abs{x+z-y-t} \right\} \\
+					& \leq \max \left\{  \snorm{(x,y)}_2 + \snorm{(z,t)}_2  , \abs{x-y}+ \abs{z-t} \right\} \\
+					& \leq \max \left\{  \snorm{(x,y)}_2  , \abs{x-y} \right\} +\max \left\{   \snorm{(z,t)}_2+ \abs{z-t}\right\}  \\
+					& = N(x,y) + N(z,t)
+				\end{align*}
+		\end{enumerate}
+\bigskip
+
+	\item Calculer la norme $N$ des points suivants : $(-\frac 1 2, \frac 1 2)$, $(\frac 1 2, -\frac 1 2) $, $( \frac{\sqrt{2}}{2},\frac{\sqrt{2}}{2}) $ et $( -\frac{\sqrt{2}}{2},-\frac{\sqrt{2}}{2})$. 
+\bigskip
+
+
+On a $N(-\frac 1 2, \frac 1 2) = N(\frac 1 2, -\frac 1 2)= N( \frac{\sqrt{2}}{2},\frac{\sqrt{2}}{2})= N( -\frac{\sqrt{2}}{2},-\frac{\sqrt{2}}{2}) =1$. En d'autres termes, tous ces points sont sur le cercle unité de $N$.
+\bigskip
+
+
+	\item Dessiner (en justifiant) la boule unité de $N$ : \\
+		\begin{minipage}	{.45\textwidth}\begin{tikzpicture}[scale=1]
+				\def\xone{-3.1}
+				\def\xtwo{3.1}
+				\def\yone{-3.1}
+				\def\ytwo{3.1}
+
+															% grid
+				\draw[step=1cm,help lines,gray!50] (\xone-.1,\yone-.1) grid (\xtwo+.1,\ytwo+.1);
+				\draw[thick,->] (\xone-.3, 0) -- (\xtwo+.3, 0) node[right] {$x$};
+				\draw[thick,->] (0, \yone-.3) -- (0, \ytwo+.3) node[above] {$y$};
+
+				\draw[] (2,.1) -- (2,-.1) node [below] {1};
+				\draw[] (.1,2) -- (-.1,2) node [left] {1};
+				\draw[] (-2,.1) -- (-2,-.1) node [below] {-1};
+				\draw[] (.1,-2) -- (-.1,-2) node [left] {-1};
+
+				\draw[] (0,0) circle (2cm);
+				\draw[] (-3,-1) -- (1,3);
+				\draw[] (-1,-3) -- (3,1);
+
+\begin{scope}
+				\clip[] (-3,-1) -- (-1,-3) -- (3,1) -- (1,3) -- cycle;
+  \fill[red,opacity=.5] (0,0) circle (2cm);
+\end{scope}
+
+			\end{tikzpicture} \end{minipage}\begin{minipage}{.4\textwidth}On a $N(x,y) \leq 1$ ssi $\begin{cases}
+				\snorm{(x,y)}_2 \leq 1 \\
+				\text{ et } \\
+				-1 \leq (x-y) \leq 1
+			\end{cases}$
+			\medskip
+			La première condition est satisfaite pour les points du plan situés dans le cercle unité. La seconde condition est satisfaite pour les points du plan situés dans la bande délimité par les droites d'équation $y=x+1 $ et $y=x-1$. L'intersection de ces deux domaines est la boule unité de $N$.\end{minipage}
+
+\end{enumerate}
+
+
+\exo{(Géométrie vectorielle)} Dans $\R^3$ muni du repère canonique $(O,i,j,k)$, on considère les points $A=(6,2,4)$, $B=(2,1,1)$ et $C=(\alpha,3,7)$ où $\alpha \in \R$
+\begin{enumerate}
+\item Déterminer l'ensemble des $\alpha\in\R$ pour lesquelles :
+	\begin{enumerate}
+		\item les points $A$, $B$ et $C$ sont alignés.
+			
+			\bigskip
+			$A$, $B$ et $C$ sont alignés ssi $\snorm{\overrightarrow{AB} \wedge \overrightarrow{AC}} = 0 $ ssi $ \snorm{ ( 0, 12 - 3 (\alpha-6), -4 + \alpha -6) } = 0$ ssi $\alpha = 10$.
+			\bigskip
+
+		\item le vecteur $\overrightarrow{OC}$ est unitaire.
+
+			\bigskip
+			Pas de solution car $\snorm{\overrightarrow{OC} }^2 =1 $ ssi $  \alpha^2+ 9 + 49 = 1 $. Cette dernière équation n'a pas de solution $\alpha$ réelle.
+			\bigskip
+	\end{enumerate}
+\item Déterminer une base orthonormale dont le premier vecteur est colinéaire à $\overrightarrow{OA}$.
+
+	\bigskip
+	Prendre :
+	\begin{enumerate}
+		\item $e_1 = \frac{\overrightarrow{OA}}{\snorm{\overrightarrow{OA} } } = (6,2,4)/ \sqrt{56 }$.
+		\item $v = (-2,6,0)$ et  $e_2 = \frac{v}{\snorm{v}} = (-2,6,0)/ \sqrt{40 }$.
+		 \item $e_3 = e_1 \wedge e_2 = (-24,-8,40) / \sqrt{40\times 56}$.
+	\end{enumerate}
+	\bigskip
+
+\item Quelle est la distance entre le point de coordonnées $(6,3,7)$ et la droite contenant les points $A$ et $B$.
+	
+	\bigskip
+
+	La distance entre le point $M = (6,3,7)$ est donnée par $ \frac{\snorm{\overrightarrow{AM} \wedge \overrightarrow{AB}}}{ \snorm{\overrightarrow{AB} }} = \frac{\snorm{(0,-12,4)}}{\sqrt{16+1+9}} =  \frac{\sqrt{160}}{\sqrt{26}}$.
+	\bigskip
+
+\end{enumerate}
+
+
+\exo{(Une fonction de plusieurs variables)} Soit la fonction définie par $f(x,y) =\sqrt{1+\frac{x}{y}}$.
+\begin{enumerate}
+	\item Déterminer le domaine de définition $\mathcal D$ de $f$. Ce domaine est-il ouvert ? est-il fermé ?
+
+		\bigskip
+
+		La fonction est définie pour $\begin{cases}
+			y \neq 0 \\
+			\text{ et }
+			1 + \frac{x}{y} \geq 0
+		\end{cases} $ ssi  $\begin{cases}
+			y \neq 0 \\
+			\text{ et } \\
+			(x\geq -y \text{ et } y\geq 0) \text{ ou } (x \leq -y  \text{ et } y\leq 0)
+		\end{cases} $ 
+
+		Ainsi l'ensemble $\mathcal D$ :
+		\begin{enumerate}
+			\item n'est pas fermé car la suite $(0,1/n)$ qui est dans $\mathcal D$ converge vers $(0,0) \notin \mathcal D$\ldots
+			\item n'est pas ouvert car le point $(1,-1)$ n'est pas un point intérieur à $\mathcal D$.
+		\end{enumerate}
+
+\bigskip
+%\newpage
+%	\item Déterminer l'ensemble image de $f$. Cet ensemble est-il ouvert ? est-il fermé ?
+	\item Déterminer les ensembles de niveau de $f$.
+
+		\bigskip
+		L'image de $f$ est $\R^+$. Ainsi pour tout $\lambda \in \R^+$ on a : $L_\lambda = \left\{ (x,y) \in \R^2 | y (\lambda^2 - 1) = x \right\} \cap \mathcal D$ qui est la droite (sans l'origine!) de coefficient directeur $1 / (\lambda^2 -1)$.
+		 \bigskip
+
+	\item Représenter le domaine $\mathcal D$ et les ensembles de niveau $\lambda =0$, $\lambda= 1$ et $\lambda = 2$.
+		\begin{center}
+			%\begin{tikzpicture}
+		%\begin{axis}[ylabel style={rotate=-90},xlabel = $x$,ylabel=$y$,domain=-2:2, view={0}{90},width=.45\textwidth, ] 
+					%\addplot3[ domain=-5:5,contour gnuplot={levels={1,2,3},labels=false},thick,samples=100] gnuplot {(1+x/y)**.5}; 
+%\end{axis} 
+			%\end{tikzpicture}
+\begin{tikzpicture}[scale=.45]
+	\def\xone{-8}
+	\def\xtwo{8}
+	\def\yone{-8}
+	\def\ytwo{8}
+
+% grid
+  \draw[step=2cm,help lines,gray!50] (\xone-.2,\yone-.2) grid (\xtwo+.2,\ytwo+.2);
+  \draw[thick,->] (\xone-.3, 0) -- (\xtwo+.3, 0) node[right] {$x$};
+  \draw[thick,->] (0, \yone-.3) -- (0, \ytwo+.3) node[above] {$y$};
+
+  \filldraw[green, opacity=.50] (\xone,\ytwo) -- (0,0) -- (\xtwo,0) -- (\xtwo, \ytwo) ;
+  \filldraw[green, opacity=.50] (\xone,0) -- (0,0) -- (\xtwo,\yone) -- (\xone, \yone) ;
+  \draw[thick,dashed,green] (\xone, 0) -- (\xtwo, 0);
+
+  \draw[thick,blue] (\xone, \ytwo) -- (\xtwo, -\ytwo) node[above] {$L_0$};
+  \draw[thick,red] (0, \ytwo) -- (0, -\ytwo) node[right]{$L_1$};
+  \draw[thick,cyan] (\xone, -\ytwo/3) -- (\xtwo, \ytwo/3) node[right]{$L_2$};
+
+\end{tikzpicture}
+		\end{center}
+\end{enumerate}
+
+\end{document}

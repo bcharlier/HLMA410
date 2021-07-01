@@ -1,0 +1,10 @@
+\begin{tikzpicture}[scale=1]
+
+\begin{scope}[rotate=-5] 
+
+  \draw[->,thick, blue] (0,0)--(1,0) node[below] {${v}$}; 
+  \draw[->,thick, blue] (0,0)--(-0.5,1) node[above] {${w}$}; 
+  \draw [>->,>=latex,very thick, color=red] (-1,-1) .. controls (-0.5,0) and (-0.2,0) .. (0,0) .. controls (0.2,0) and (0.5,0) .. (1,1);
+ \fill (0,0) circle (1pt);
+\end{scope}
+\end{tikzpicture}

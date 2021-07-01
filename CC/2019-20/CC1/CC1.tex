@@ -1,0 +1,239 @@
+\documentclass[a4paper]{tp_um}
+\input{../../TD/header.tex}
+\ue{HLMA410}
+%-----------------------------------------------------------------------------
+
+%\def\version{eno}
+\def\version{cor}
+
+\title{\large \sffamily\bfseries Contrôle continu 1}
+
+\begin{document}
+
+\maketitle
+\textit{Durée 1h30. Les documents, la calculatrice, les téléphones portables, tablettes, ordinateurs ne sont pas autorisés. La qualité de la rédaction sera prise en compte.} 
+
+\bigskip
+\bigskip
+
+\exo{(Question de cours)}  Soit $(E,\langle\cdot,\cdot\rangle)$ un espace euclidien. Montrer que pour tout $u,v\in E$ 
+\[
+    \abs{\prs{u,v}} \leq \sqrt{\prs{u,u} \prs{v,v}}.
+\]
+
+\eno{\vspace*{8cm}}
+\cor{
+    Voir le cours!
+}
+
+\exo{} On considère la courbe paramétrée $\Gamma = (I, \phi)$ définie par $\phi(t) = (t -\sin(t), 1 - \cos(t))$ pour $t\in I =\left[-\pi, \pi \right]$ 
+\begin{enumerate}
+    \item Calculer $\phi'$, $\phi''$ et $\phi'''$.
+        \eno{\vspace*{4cm}}
+        \cor{
+            On a $\phi'(t) = \left( 1-\cos(t), \sin(t) \right)$,  $\phi''(t) = \left( \sin(t), \cos(t) \right)$, $\phi'''(t) = \left( \cos(t), -\sin(t) \right)$. Dans la suite on pose $\phi(t) = (x(t), y(t))$.
+        }
+    \item %À l'aide d'un dévelopement limité, 
+        Déterminer la nature et la tangente du point critique de $\Gamma$.  %au voisinage de chacunde ce(s) point(s): en déduire leurs nature et donner la tangeante en ce point.
+        \eno{\newpage}
+
+        \eno{\vspace*{4cm}}
+        
+        \cor{
+            L'unique temps $t\in I$ en lequel $\phi'(t) = (0,0)$ est $t=0$. On a pour tout $h$ suffisament petit en module, \[\phi(0+h) = (0,0) + (0,0) h + (0, 1) h^2/2 + (1,0 ) h^3/6 + o(\abs{h}^3).\] Avec les notations du cours, on a $p=2$ et $q=3$ et c'est un point de rebroussement de première espèce. La tangente est l'axe des ordonnées (vecteur directeur $(0,1)$).
+        }
+    \item Déterminer les temps en lequels $\Gamma$ admet des tangentes horizontales. %Calculer $\lim_{t\to -\pi}\limits \frac{y'(t)}{x'(t)}$ et $\lim_{t\to \pi}\limits \frac{y'(t)}{x'(t)}$ et en déduire les tangentes en $t=\pm\pi$.
+        \eno{\vspace*{3cm}}
+        \cor{
+            Il suffit de chercher les temps en lesquels $y'(t)=0$ et $x'(t) \neq 0$. On trouve $t=\pm\pi$.
+        }
+    \item Tracer la courbe $\Gamma$ et les tangentes des questions précédentes. {\it Indication: pour gagner du temps, on peut déterminer une symétrie de la courbe.}
+        \eno{ 
+            \begin{center}
+                \begin{tikzpicture}\pgfplotsset{compat=newest}
+                    \begin{axis}[xticklabels={},yticklabels={},height=5cm,width=12cm,enlargelimits=true,grid=major,  axis lines=center, axis on top,
+                        ymin=-1,ymax=2.2,xmin=-3.5,xmax=3.5]
+                    \end{axis}	
+                \end{tikzpicture}
+            \end{center}
+
+        }
+
+        \cor{ 
+            \begin{center}
+                \begin{tikzpicture}\pgfplotsset{compat=newest}
+                    \begin{axis}[height=5cm,width=12cm,enlargelimits=true,grid=major,  axis lines=center, axis on top,
+                        ymin=-1,ymax=2.2,xmin=-3.5,xmax=3.5]
+                        \draw[ultra thick,red,->] (axis cs:3.1415,2) -- (axis cs:2.1415,2);
+                        \draw[ultra thick,red,->] (axis cs:-3.1415,2) -- (axis cs:-2.1415,2);
+                        \draw[ultra thick,red,->] (axis cs:0,0) -- (axis cs:0,1);
+                        \addplot[grid=both,samples=500, very thick,blue, parametric, domain = -pi:pi] gnuplot {t - sin(t), 1 - cos(t) };
+                    \end{axis}	
+                \end{tikzpicture}
+            \end{center}
+
+        }
+\end{enumerate}
+
+
+
+\exo{} Soit la courbe paramétrée $\Gamma=(I, \phi)$ définie par $I=\R$ et $\phi(t) = \left( \frac{1-t^2}{1+t^2}, \frac{2t}{1+t^2} \right)$ pour tout $t\in I$.
+
+\begin{enumerate}
+    \item Calculer la longueur de $I$.
+        \eno{\vspace{9cm}}
+        \cor{
+            On a
+            \begin{align*}
+                I &= \int_{-\infty}^{+\infty} \snorm{\phi'(t)} dt = \int_{-\infty}^{+\infty} \sqrt{(-4t)^2 + (2(1-t^2))^2} \frac{dt}{(1+t^2)^2}\\
+                &=  \int_{-\infty}^{+\infty} \sqrt{4(1+t^2)^2} \frac{dt}{(1+t^2)^2} = 2 \int_{-\infty}^{+\infty} \frac{dt}{(1+t^2)}\\
+                &= 2 \left[ \operatorname{Arctan}(t) \right]_{-\infty}^{+\infty} = 2 \left(\frac{\pi}{2} - \frac{-\pi}{2} \right) = 2\pi
+            \end{align*}
+        }
+    \item Calculer la norme euclidienne de $\phi(t)$ pour tout $t$. Que peut on en déduire à propos du support de la courbe?
+        \eno{\vspace{4cm}}
+
+        \cor{
+            On a immediatement que $\snorm{\phi(t)}^2 = 1$. Le support de la courbe est donc inclu dans le cercle unité.
+        }
+    \item Démontrer que $\theta:\tau \mapsto \tan(\tau/2)$ est un difféomorphisme de $]-\pi,\pi[$ dans $\R$.
+        \eno{\vspace*{4cm}}
+
+        \cor{
+        La fonction $\theta$ est bien $\mathcal C^\infty$, sa dérivée est strictement positive et $\theta$ est inversible sur $]-\pi,\pi[$. Sa fonction réciproque $\theta^{-1}(\cdot) =2 \operatorname{Arctan}(\cdot)$ est elle aussi $\mathcal C^\infty$ sur son domaine de définition $\R$.
+        }
+
+
+    \item On admettra que $\cos(\tau) = \frac{1 - \tan^2(\tau/2)}{1 + \tan^2(\tau/2)}$ et $\sin(\tau) = \frac{2\tan(\tau/2)}{1 + \tan^2(\tau/2)}$ pour tout $\tau\in]-\pi,\pi[$. En déduire une reparamétrisation admissible de $\Gamma$.
+        \eno{\vspace{5cm}}
+
+        \cor{
+            En utilisant le changement de variable suggéré, on a $\Gamma_1 = (]-\pi,\pi[, \phi_2)$ avec $\phi_2(\tau) = (\cos(\tau), \sin(\tau))$.        }
+    %\item Démontrer que $\cos(t) = \frac{1 - \tan^2(t/2)}{1 + \tan^2(t/2)}$ et $\sin(t) = 2 \frac{\tan(t/2)}{1 + \tan^2(t/2)} $.
+        %\eno{\vspace{5cm}}
+
+        %\cor{
+            %Cela découle facilement des formules de l'angle double $\sin(2t) = 2\sin(t)\cos(t)$ et $\cos(2t) = \cos^2(t) - \sin^2(t) $ et du fait que $1 + \tan^2(t) = 1/\cos^2(t)$.
+        %}
+    %\item En déduire une reparamétrisation admissible de $\Gamma$ et tracer la courbe $\Gamma$
+        %\eno{
+            %\vspace*{4cm}
+            %\begin{center}
+                %\begin{tikzpicture}\pgfplotsset{compat=newest}
+                    %\begin{axis}[xticklabels={}, yticklabels={},height=5cm,width=5cm,enlargelimits=true,grid=major,  axis lines=center, axis on top,
+                        %ymin=-2.2,ymax=2.2,xmin=-2.2,xmax=2.2]
+                                %%\draw[ultra thick,blue!50] (axis cs:3,0) -- (axis cs:12,0);
+                                %%\draw[ultra thick,blue!50] (axis cs:-3,0) -- (axis cs:-12,0);
+                                %%\addplot[grid=both,samples=500, very thick,blue, parametric, domain = -3.1:3.1] gnuplot {cos(t), sin(t) };
+                                %%\draw[thick,blue!50] (axis cs:-1,0) circle (2pt);
+                    %\end{axis}	
+                %\end{tikzpicture}
+            %\end{center}
+
+        %}
+
+        %\cor{ 
+            %En utilisant le changement de variable suggéré, on a $\Gamma_1 = (]-\pi,\pi[, \phi_2)$ avec $\phi_2(t) = (\cos(t), \sin(t))$. Le support de la courbe $\Gamma$ (et de $\Gamma_1$) est donc le cercle unité privé du point $(-1,0)$.
+            %\begin{center}
+                %\begin{tikzpicture}\pgfplotsset{compat=newest}
+                    %\begin{axis}[height=5cm,width=5cm,enlargelimits=true,grid=major,  axis lines=center, axis on top,
+                        %ymin=-1.2,ymax=1.2,xmin=-1.2,xmax=1.2]
+                                %%\draw[ultra thick,blue!50] (axis cs:3,0) -- (axis cs:12,0);
+                                %%\draw[ultra thick,blue!50] (axis cs:-3,0) -- (axis cs:-12,0);
+                        %\addplot[grid=both,samples=500, very thick,blue, parametric, domain = -3.1:3.1] gnuplot {cos(t), sin(t) };
+                        %\draw[thick,blue!50] (axis cs:-1,0) circle (2pt);
+                    %\end{axis}	
+                %\end{tikzpicture}
+            %\end{center}
+
+        %}
+    \item Tracer la courbe $\Gamma$. Le support de $\Gamma$ est il ouvert, fermé, ni l'un ni l'autre ?
+        \eno{
+            \vspace*{4cm}
+            \begin{center}
+                \begin{tikzpicture}\pgfplotsset{compat=newest}
+                    \begin{axis}[xticklabels={}, yticklabels={},height=5cm,width=5cm,enlargelimits=true,grid=major,  axis lines=center, axis on top,
+                        ymin=-2.2,ymax=2.2,xmin=-2.2,xmax=2.2]
+                                %\draw[ultra thick,blue!50] (axis cs:3,0) -- (axis cs:12,0);
+                                %\draw[ultra thick,blue!50] (axis cs:-3,0) -- (axis cs:-12,0);
+                                %\addplot[grid=both,samples=500, very thick,blue, parametric, domain = -3.1:3.1] gnuplot {cos(t), sin(t) };
+                                %\draw[thick,blue!50] (axis cs:-1,0) circle (2pt);
+                    \end{axis}	
+                \end{tikzpicture}
+            \end{center}
+
+        }
+
+        \cor{ 
+            Le support de la courbe $\Gamma$ (et de $\Gamma_1$) est donc le cercle unité privé du point $(-1,0)$. Il n'est pas ouvert (inclus dans cercle unité); ni fermé: on peut trouver une suite qui converge vers $(-1,0)$ (prendre par exemple $u_n=\phi(n)$)
+ 
+            \begin{center}
+                \begin{tikzpicture}\pgfplotsset{compat=newest}
+                    \begin{axis}[height=5cm,width=5cm,enlargelimits=true,grid=major,  axis lines=center, axis on top,
+                        ymin=-1.2,ymax=1.2,xmin=-1.2,xmax=1.2]
+                                %\draw[ultra thick,blue!50] (axis cs:3,0) -- (axis cs:12,0);
+                                %\draw[ultra thick,blue!50] (axis cs:-3,0) -- (axis cs:-12,0);
+                        \addplot[grid=both,samples=500, very thick,blue, parametric, domain = -3.1:3.1] gnuplot {cos(t), sin(t) };
+                        \draw[thick,blue!50] (axis cs:-1,0) circle (2pt);
+                    \end{axis}	
+                \end{tikzpicture}
+            \end{center}
+
+        }
+
+\end{enumerate}
+
+%\exo{Norme bizarre} 
+
+%\item Montrer que $N:(x,y) \mapsto \sup_{t\in\R}\frac{\abs{x + ty}}{1 + t + t^2}$ est une norme sur $\R^2$
+
+%\item Dessiner la boule unité.
+
+    %\cor{
+        %On a $N(x,y) = 1$ ssi $\sup_{t\in\R}\frac{\abs{x + ty}}{1 + t + t^2} = 1$
+    %}
+
+\exo{} Soient $N_1$ et $N_2$ deux normes sur un espace vectoriel $E$. On pose $N=\max(N_1,N_2)$.
+
+\begin{enumerate}
+    \item Démontrer que $N$ est une norme sur $E$.
+
+        \eno{\vspace*{12cm}}
+        \cor{
+            Démontrer directement les trois points (homogéniété, séparabilité et inégalité triangulaire).
+        }
+
+    \item On se place maintenant dans $E=\R^2$ et on pose $N_1(x,y) = \abs{x} + \abs{y}$ et $N_2(x,y) = \sqrt{4 x^2 + y^2}$ pour $(x,y)\in\R^2$. Dessiner la boule unité de $N$. {\it Indication: Dessiner d'abord les boules unités de $N_1$ et $N_2$.}
+        \eno{\vspace*{5cm}
+
+            \begin{center}
+                \begin{tikzpicture}\pgfplotsset{compat=newest}
+                    \begin{axis}[xticklabels={}, yticklabels={}, height=7cm,width=7cm,enlargelimits=true,grid=both,  axis lines=center, axis on top,
+                            ymin=-4.2,ymax=4.2,xmin=-4.2,xmax=4.2,
+                        ]
+                \end{axis}	
+                \end{tikzpicture}
+            \end{center}
+        }
+
+        \cor{
+            On a $N(x,y) \leq 1  \Leftrightarrow \max\left\{ N_1(x,y), N_2(x,y) \right\} \leq 1 \Leftrightarrow N_1(x,y) \leq 1 \text{ et } N_2(x,y) \leq 1$. Ainsi, la boule unité pour la norme $N$ est l'intersection des boules unités de $N_1$ (en rouge) et $N_2$ (en bleu).
+            \begin{center}
+                \begin{tikzpicture}\pgfplotsset{compat=newest}
+                    \begin{axis}[height=5cm,width=5cm,enlargelimits=true,grid=major,  axis lines=center, axis on top,
+                            ymin=-1.2,ymax=1.2,xmin=-1.2,xmax=1.2,
+                   % after end axis/.code={\addplot [fill=green, fill opacity=1] fill between [ of=puma and toto, ]; }
+                        ]
+                \draw[fill, fill opacity=.3,very thick,red, name path=puma] (axis cs:1,0) -- (axis cs:0,-1) -- (axis cs:-1,0) -- (axis cs:0,1) -- cycle;
+                \addplot[fill, fill opacity=.3,samples=500, very thick,blue, parametric, domain = -3.14:3.14, name path=toto] gnuplot {cos(t)/2, sin(t) };
+                        %\addplot [fill=green, fill opacity=1, name path=tutu] fill between [ of=puma and toto, ];
+                        %\addplot [name path=tutu] fill between [ of=puma and toto, ];
+                        %\draw[black] tutu;
+                \end{axis}	
+                \end{tikzpicture}
+            \end{center}
+        }
+\end{enumerate}
+
+
+\end{document}

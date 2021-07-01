@@ -1,0 +1,112 @@
+\documentclass[a4paper]{tp_um}
+\input{../../TD/header.tex}
+\ue{HLMA410}
+%-----------------------------------------------------------------------------
+
+\title{\large \sffamily\bfseries Contrôle continu 2}
+
+\begin{document}
+
+\maketitle
+\textit{Durée 1h30. Les documents, la calculatrice, les téléphones portables, tablettes, ordinateurs ne sont pas autorisés. La qualité de la rédaction sera prise en compte.} 
+
+\bigskip
+\bigskip
+
+\exo{(Question de cours)} Soit $E$ un espace vectoriel et $\|\cdot\|, \|\cdot\|': E \to [0,+\infty[$  deux normes équivalentes sur $E$. Montrer que toute suite $(u_{k})_{k\in\N}$  de $E$ qui converge pour la norme $\|\cdot\|$ converge aussi pour la norme $\|\cdot\|'$.
+		\blanc{8cm}
+
+
+\exo{(Projection de ${\Bbb R}^2$ sur $\Bbb R$)} Dans cet exercice, il est fortement recommand\'e de dessiner, et de se souvenir qu'un dessin n'est jamais une preuve.  Si $X$ est un espace vectoriel normé, «$B(x,r[$» désigne la boule ouverte de centre $x\in X$ et de rayon $r>0$. On rappelle que pour une application $p:X\rightarrow Y$, et pour $A\subset X$, l'image de $A$ par $p$ est l'ensemble $p(A)=\{ y\in  Y, \exists x\in A, y=p(x)\}=\{ p(x), x \in A\}$. 
+
+Soit $p:{\Bbb R}^2\rightarrow {\Bbb R}$ la premi\`ere projection ($p(x,y)=x$). On munit ${\Bbb R}^2$ de la norme euclidienne et $\Bbb R$ de la valeur absolue. %Dans cet exercice,
+\begin{enumerate}
+\item Montrer que dans $\Bbb R$, $B(a,\epsilon[=]a-\epsilon,a+\epsilon[$.  
+			\blanc{6cm}
+\item Montrer que $p(B((x,y),\epsilon[)=B(x,\epsilon[$. En d\'eduire que l'image d'un ouvert de ${\Bbb R}^2$ par $p$ est un ouvert de $\Bbb R$.
+			\blanc{10cm}
+\item Montrer que $F=\{(x,y), xy=1\}$ est un ferm\'e de ${\Bbb R}^2$ mais que $p(F)$ n'est pas ferm\'e.
+			\blanc{10cm}
+%\item On suppose maintenant que $F$ est une partie de ${\Bbb R}^2$ ferm\'ee et born\'e et on consid\`ere une suite $x_n\in p(F)$ telle que $x_n\rightarrow x$.
+%\begin{enumerate} 
+%\item Montrer qu'il existe une suite $y_n$ telle que $(x_n,y_n)\in F$.
+%\item Montrer qu'il existe une sous suite $(x_{\phi(n)},y_{\phi(n)})$ convergente.
+%\item En d\'eduire que $x\in p(F)$, puis que $p(F)$ est ferm\'e dans $\Bbb R$.
+%\end{enumerate}
+\end{enumerate}
+
+		
+		
+		
+		
+		
+		
+\exo{(La deltoïde)}  Soit la courbe paramétrée $\Gamma$ définie par $\begin{cases}x(t)= 2\cos t + \cos 2t \\ y(t) = 2\sin t - \sin 2t \end{cases}$ pour $t\in[-\pi,\pi]$
+
+	\begin{enumerate}
+		\item \'Etudier la parité des fonctions $x(\cdot)$ et $y(\cdot)$. Quelle(s) symétrie(s) cela implique-t-il sur le support de la courbe $\Gamma$?
+			\blanc{5cm}
+
+
+		\item Calculer $\Gamma'$, $\Gamma''$ et $\Gamma'''$.
+			\blanc{8cm}
+
+\item Soit $t \in [-\pi,\pi[$. Montrer que $\cos(t) - \cos(2t) = 0$ a trois solutions $t = 0$ et $t=2\pi/3$ et $t= -2\pi/3$. 
+	\blanc{7cm}
+
+	\item Calculer la position des points stationnaires. Donner leur nature ainsi que le comportement local de la courbe en leur voisinage (faire un petit dessin à chaque fois).
+			\blanc{19cm}
+	%	\item Y a t il des point de la courbe avec une tangente verticale ? horizontal ? de direction $(1,1)$ ?
+			%\blanc{6cm}
+	
+		\item Calculer les tangentes aux points stationnaires et montrer qu'elles s'intersectent toutes en un même et unique point.
+
+			\blanc{7cm}
+		
+		\item Compléter le tableau de variations suivant:
+			\begin{center}
+				\begin{tabular}{|c|ccccccccc|}
+					\hline    $t$       & $-\pi$ & \hspace{1.5cm}  & $-2\pi/3$ & \hspace{1.5cm}  &  0	& \hspace{1.5cm} & $2\pi/3$ & \hspace{1.5cm}   & $\pi$\\[0.3cm]\hline\hline
+					signe de $x'(t)$     &     &   & & & & & &            &	\\[0.4cm]\hline
+					variation de $x(t)$ &     &     & & & & & &          &	\\[0.9cm]\hline\hline
+					signe de $y'(t)$     &     &         & & & & & &      &	\\[0.4cm]\hline
+					variation de $y(t)$ &     &          & & & & & &     &	\\[0.9cm]\hline
+				\end{tabular}
+			\end{center}
+		\item  Sur le graphique suivant, tracer la courbe $\Gamma$ ainsi que les tangentes étudiées aux questions précédentes. {\it Indication: on commencera par tracer les tangentes aux points stationnaires (ces points apparaissent déjà sur le graphique).}
+				\begin{center}
+				\begin{tikzpicture}[scale=.5]
+					\def\xone{-4}
+					\def\xtwo{6}
+					\def\yone{-8}
+					\def\ytwo{8}
+
+% grid
+					\draw[step=2cm,help lines,gray!50] (\xone-.2,\yone-.2) grid (\xtwo+.2,\ytwo+.2);
+					\draw[thin,->] (\xone-.3, 0) -- (\xtwo+.3, 0) node[right] {$x$};
+					\draw[thin,->] (0, \yone-.3) -- (0, \ytwo+.3) node[above] {$y$};
+					
+					
+\draw (6,0) circle (3pt);
+%\draw[very thick,->,gray] (6,0) -- (4,0);
+\draw (-3,5.1961524) circle (3pt);
+%\draw[very thick,->,gray] (-3,5.1961524) -- (-2,3.4641016);
+\draw (-3,-5.1961524) circle (3pt);
+%\draw[very thick,->,gray] (-3,-5.1961524) -- (-2,-3.4641016);
+
+%\draw[very thick,->,gray] (6,0) -- (4,0);
+
+				\end{tikzpicture}
+			\end{center}
+			%\blanc{8cm}
+
+		\item La courbe $(\Gamma,[-\pi,\pi[)$ est-elle paramétrée par l'abscisse curviligne ?  {\it Indication: c'est la justification qui sera notée.}
+
+			\blanc{6cm}
+
+		\item {\bf\sffamily (Question Bonus)} Montrer que  la longueur de $\Gamma$ est 16. {\it Indication: aucun point ne sera donné pour la définition de la longueur, c'est bel et bien le calcul qui sera évalué.}
+
+			\blanc{5cm}
+	\end{enumerate}
+ 
+\end{document}

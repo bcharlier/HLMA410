@@ -1,0 +1,203 @@
+\documentclass[a4paper]{tp_um}
+\input{../../TD/header.tex}
+%\input{header.tex}
+
+%\def\version{eno}
+\def\version{cor}
+
+
+\ue{HLMA410}
+
+%-----------------------------------------------------------------------------
+
+\title{\large \sffamily\bfseries Contrôle continu 2}
+
+\begin{document}
+
+\maketitle
+\textit{Durée 1h10. Les documents, la calculatrice, les téléphones portables, tablettes, ordinateurs ne sont pas autorisés. La qualité de la rédaction sera prise en compte.} 
+
+\bigskip
+\bigskip
+
+\exo{Formes quadratique} Déterminer la matrice et la  signature des formes quadratiques suivantes:
+\begin{enumerate}
+    \item $q_1(x,y,z,t)=x^2+3y^2+4z^2+t^2+2xy+xt+yt$
+
+        \cor{On a 
+            $q(x,y,z,t)=(x+y+t/2)^2+2y^2+4z^2+3/4t^2$. Cette forme quadratique est positive (et même définie positive, sa signature est $(4,0)$). 
+        }
+        \eno{
+            \vspace*{8cm} \vfill
+        }
+    \item $q_2(x,y,z) = x^2 + y^2 + 2z(x\cos\alpha+y\sin\alpha)$ où $\alpha\in\R$.
+
+\cor{ 
+    
+    On trouve 
+$q_2(x,y,z) = (x+z\cos\alpha)^2 + (y+z\sin\alpha )^2-z^2$. Cette  forme quadratique n'est pas positive (sa signature est $(2,1)$). 
+}
+
+        \eno{
+            \vspace*{9cm} \vfill
+        }
+\end{enumerate}
+
+
+\exo{} Soit $E$ un espace vectoriel euclidien et $x,y$ deux éléments de $E$. Montrer que $x$ et $y$ sont orthogonaux si et seulement si $\snorm{x+ \lambda y } \geq \snorm{x}$ pour tout $\lambda\in\R$.
+
+        \eno{
+            \vspace*{10cm} \vfill
+        }
+
+        \cor{Supposons que $x$ et $y$ sont orthogonaux. On choisit $\lambda\in \R$ quelconque et on a $\snorm{x + \lambda y}^2 = \snorm{x}^2 + \lambda^2\snorm{y}^2 + 2\lambda\prs{x,y} = \snorm{x}^2 + \lambda^2\snorm{y}^2 \geq \snorm{x}^2$.
+            
+        Réciproquement, si $\snorm{x+ \lambda y } - \snorm{x} \geq 0$ pour tout $\lambda\in\R$, il vient que 
+        \[
+            \lambda(\lambda \snorm{y}^2 +2\prs{x,y}) \geq 0 
+        \]
+        Dressant le tableau de signes de ce produit, il ne peut être toujours positif que si:
+       \begin{itemize}
+           \item $2\prs{x,y}+\lambda\snorm{y}$  est toujours nul, c'est-à-dire si $y=0$
+           \item $2\prs{x,y}+\lambda\snorm{y}$ ne s'annule qu'en $\lambda=0$, c'est-à-dire si $\prs{x,y}=0$. 
+       \end{itemize}
+            Dans les deux cas, on trouve bien que $x$ et $y$ sont orthogonaux.
+        %Si $\lambda=-1$, on a $\snorm{y}^2 \geq 2\prs{x,y}$ et si $\lambda = 1$
+    }
+
+
+\exo{Lignes de niveau} 
+\begin{enumerate}
+    \item Donner le domaine de définition de la fonction $f_1(x,y)=(y+x)^2$ et dessiner les lignes de niveau $k$ avec $k=-1$ et $k=1$ 
+
+
+        \begin{minipage}{.5\linewidth}
+            \begin{tikzpicture}\pgfplotsset{compat=1.8}
+                \begin{axis}[height=8cm,width=8cm,enlargelimits=true, axis lines=center, axis on top, xlabel={$x$}, ylabel={$y$}, axis equal,
+                    ymin=-2.2,ymax=2.2,xmin=-2.2,xmax=2.2,grid=both, minor tick num=2,]
+
+                    \cor{
+                        \addplot[samples=5, very thick,red, domain = -3:3, samples y =0] ({x},{-x+1});
+                        \addplot[samples=5, very thick,red, domain = -3:3, samples y =0] ({x},{-x-1});
+                    }
+                \end{axis}  
+            \end{tikzpicture}
+        \end{minipage}
+        \begin{minipage}[]{.49\linewidth}
+           \cor{ La fonction étant positive l'ensemble de niveau $-1$ est vide. Pour l'ensemble de niveau 1 on a:
+            \[
+                (x+y)^2 = 1 \Leftrightarrow x+y = \pm 1
+            \]
+        C'est donc l'union des 2 droites parallèles dessinées ci contre.}
+        \end{minipage}
+      %  
+        \eno{ 
+        \newpage
+    }%
+
+    \item Soit $f_2(x,y)=\frac{x^4+y^4}{8-x^2y^2}$.
+        \begin{enumerate}
+            \item Dessiner le domaine de définition $D$  de $f_2$
+
+                \begin{minipage}{.5\linewidth}
+                    \begin{tikzpicture}\pgfplotsset{compat=1.8}
+                        \begin{axis}[height=10cm,width=10cm,enlargelimits=true, axis lines=center, axis on top, xlabel={$x$}, ylabel={$y$}, axis equal,
+                            ymin=-10.2,ymax=10.2,xmin=-10.2,xmax=10.2,grid=both, minor tick num=1,]
+
+                            \cor{
+                                \addplot[samples=500, very thick,red, domain = -10:10, samples y =0] ({x},{sqrt(8)/abs(x)});
+                                \addplot[samples=500, very thick,red, domain = -10:10, samples y =0] ({x},{-sqrt(8)/abs(x)});
+                            }
+                        \end{axis}  
+                    \end{tikzpicture}
+                \end{minipage}\hfill
+                \begin{minipage}[]{.3\linewidth}
+                    \cor{
+                        Il s'agit de déterminer l'ensemble des points du plan vérifiant $8 - x^2y^2$. 
+                        
+                        Attention, il faut distinguer 4 cas correspondant aux 4 quadrants (ie supposer succéssivement que $x>0$, $x<0$, $y>0$, $y<0$). Dans tous les cas on trouve une hyperbole. Le domaine de définition de $f_2$ est tout le plan privé des 4 courbes en rouge ci contre.
+                    }
+                \end{minipage}
+        \item Déterminer la nature de $D$ (ouvert, fermé, ni l'un ni l'autre)? Démontrer. 
+
+            \eno{\vspace{8cm}}
+            \cor{
+                Le domaine de définition de $f_2$ est ouvert. En effet, c'est le complémentaire d'un fermé car $F =\{ (x,y) \in \R^2 | 8 - x^2y^2\}$ est l'image réciproque du singleton $\{8\}$ (qui est un fermé) par l'application continue $(x,y) \mapsto x^2y^2$. On peut aussi le montrer directement en prenant une suite de $F$ qui converge et démonter que la limite est encore dans $F$.
+            }
+        \item Calculer la ligne de niveau $k=2$. Quel objet géométrique est-ce?
+
+            \cor{La ligne de niveau est l'ensemble des $(x,y)\in\R^2$ tels que $x^4+y^4 + 2x^2y^2 = 16$. Ce qui donne $(x^2 + y^2)^2 = 16$ et implique que $x^2 + y^2 =4$. C'est donc le cercle $C$ de centre $(0,0)$ et de rayon 2 auquel  il faut retirer les points pour lesquels $x^2y^2=8$, points pour lesquels la fonction $f$ n'est pas définie. Les points du cercle vérifiant cette relation vérifient aussi \[x^2+8/x^2=4 \Rightarrow x^4-4x^2+8=0.\] 
+            Posons $X=x^2$, alors $X$ vérifie $X^2-4X+8=0$. Le discriminant de cette équation est $16-4\times 8=-16<0$. Ainsi, l'équation n'a pas de solutions dans $\R$. La courbe de niveau recherché est bien le cercle de centre l'origine et de rayon $2$.  }
+            
+            \eno{
+            
+            \vspace{8cm}
+
+            \newpage
+
+            \vspace*{5cm}
+        }
+        \end{enumerate}
+\end{enumerate}
+
+
+\exo{Limites}	
+\'Etudier la limite en l'origine de la fonction
+\[
+f(x,y) = \frac{x \sin(y) - y \sin(x)}{x^2 + y^2}.
+\]
+        \eno{
+            \newpage
+        }
+
+        \cor{
+            On a, au voisinage de $(0,0)$,
+\begin{align*}
+    \abs{f(x,y)} & \leq 2\frac{\abs{x (y +o(y^2) ) - y(x + o(x^2)) }}{ x^2 + y^2} \\
+    & \leq \frac{ o(x^2) + o(y^2)}{x^2 + y^2} 
+     = \frac{ x^2 \varepsilon_1(x) + y^2 \varepsilon_2(y)}{x^2 + y^2} \qquad \text{avec } \lim_{x\to 0}\varepsilon_1(x) = \lim_{y\to 0} \varepsilon_2(y) = 0, \\
+    & \leq \frac{(x^2 + y^2) \max\{\varepsilon_1(x) , \varepsilon_2(y)\}  }{x^2 + y^2}\\
+& \leq  \max\{\varepsilon_1(x) , \varepsilon_2(y)\} = \snorm{ (\varepsilon_1(x), \varepsilon_2(y)) }_\infty \xrightarrow[(x,y)\to(0,0)]{} 0  \end{align*}
+
+Ainsi, $\lim_{(x,y) \to (0,0)} f(x,y) = 0$.
+        }
+
+%\exo{}	
+%On considère la fonction $f:\R^2 \to \R$ dont l'expression est 
+%\[
+%f(x,y) = \sqrt{\frac{x+y}{x-y}}.
+%\]
+
+%\begin{enumerate}
+    %\item  Déterminer et dessiner le domaine de définition de $f$ ainsi que sa nature (ouvert, fermé).
+
+        %\begin{tikzpicture}\pgfplotsset{compat=1.8}
+            %\begin{axis}[height=6cm,width=6cm,enlargelimits=true, axis lines=center, axis on top, xlabel={$x$}, ylabel={$y$}, axis equal, ymin=-10.2,ymax=10.2,xmin=-10.2,xmax=10.2,grid=both, minor tick num=2,]
+
+            %\cor{
+
+                %\addplot[samples=5, very thick,red, dashed,  domain = -10:10, samples y =0] ({x},{x});
+                %\addplot[samples=5, very thick,red, domain = -10:10, samples y =0] ({x},{-x});
+             %}
+
+            %\end{axis}
+        %\end{tikzpicture}
+        
+    %\cor{
+        %La fonction $f$ est bien définie dès lors que $x\neq y$ et $\frac{x+y}{x-y}\geq 0$. Ce qui donne, $x\geq-y$ et $-y >-x$ ou $x \leq -y $ et $ -y <-x$. C'est à dire entre les droites $y = -x$ (incluse) et $y= x$ (excluse). Ainsi, l'origine d'est pas dans le domaine de définition.
+    
+    %}
+
+%\eno{
+
+    %\vspace{4cm}
+%}
+    %\item \'Etudier la limite de $f$ en les points de l'ensemble $A = \{ (x,y) \in \mathbb R^2 \mid  x \ge 0 \text{ et } -x \le y \le x \}$.
+
+        %\cor{La fonction $f$ est clairement continue sur son domaine de défintion. On se concentre donc sur la droite $x=y$ qui est sur le bord du domaine $A$.
+            %Prendre $u_n=(n^{-1}, n^{-1} + n^{-2})$ et on a  $f(u_n) = n (2n^{-1} + n^{-2} ) \to 2$ et 
+        
+        %}
+%\end{enumerate}
+
+\end{document}

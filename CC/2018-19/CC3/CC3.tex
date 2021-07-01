@@ -1,0 +1,235 @@
+\documentclass[a4paper]{tp_um}
+\input{../../TD/header.tex}
+%\input{header.tex}
+
+%\def\version{eno}
+\def\version{cor}
+
+
+\ue{HLMA410}
+
+%-----------------------------------------------------------------------------
+
+\title{\large \sffamily\bfseries Contrôle continu 3}
+
+\tikzexternaldisable
+\begin{document}
+
+\maketitle
+\textit{Durée 1h10. Les documents, la calculatrice, les téléphones portables, tablettes, ordinateurs ne sont pas autorisés. La qualité de la rédaction sera prise en compte.} 
+
+\bigskip
+\bigskip
+
+
+\exo{} Soit la fonction définie par $f(x,y) = \sin x + y^2 -2y +1$.
+\begin{enumerate}
+    \item Déterminer le domaine de définition de $f$ et %la régularité  de $f$ (est-elle continue ou différentiable ou \ldots?) 
+        calculer la différentielle de $f$ en tout point $(x,y)$ de son domaine de définition.
+
+        \cor{
+            La fonction $f$ est définie sur $\R^2$. Sa différentielle en $(x,y)$ est l'application linéaire de $\R^2$ dans $\R$ définie par $d_{(x,y)} f (h_1,h_2) =  h_1\cos x +  h_2(2y-2)$. 
+        }
+        \eno{
+            \vspace{5cm}
+        }
+
+    \item Calculer les points critiques de $f$.
+
+        \cor{
+            Les points critiques sont $(x,y) \in \R^2$ tels que  $\begin{cases}\cos x = 0 \\ 2y-2 =0\end{cases}$. Ils sont donc de la forme $( (k+1/2) \pi, 1)$ et sont donc situés sur la droite verticale $y=1$. 
+        }
+        \eno{
+            \vspace{3cm}
+        }
+    \item Déterminer la nature des points critiques (minimum, maximum ou point selle).
+
+        \cor{ 
+            La Hessienne de $f$ est $\operatorname{Hess} (x,y) = \begin{pmatrix}
+                -\sin x & 0 \\ 0 & 2
+            \end{pmatrix}$ et $\operatorname{Hess}( (k+1/2) \pi, 1)  = \begin{pmatrix}
+            (-1)^{k+1} & 0 \\ 0 & 2
+        \end{pmatrix}$.  Par conséquent, si $k$ est impair, le point $((k+1/2)\pi ,1)$ présente un minimum local et, si $k$ est pair, le point $((k+1/2)\pi,1)$ présente un point selle.
+        }
+
+        \eno{
+            \vspace{8cm}
+        }
+
+
+\end{enumerate}
+
+\exo{}
+Soit $ U = ]0,\pi/2[ \times ]0,\pi/2[$ et $ \begin{cases}
+        \Phi : U  &\to \R^2\\
+        (x,y) &\mapsto (\cos(x+y),\sin(x-y))
+    \end{cases}$.
+
+          \begin{enumerate}
+              \item Montrer que $U$ est un ouvert de $\R^2$
+                  \cor{
+                      L'ensemble $U$ est un ouvert car tous ses points sont contenus dans une boule ouverte incluse dans $U$. En effet, soit $a = (a_1, a_2) \in U$ et $r = \min\{ a_1 , a_2, |a_1 -\frac \pi 2|, |a_2 - \frac \pi 2| \}$. On a bien $B_{\|\cdot\|_2}(a, r/2) \subset U$. 
+                  }
+
+                  \eno{
+                  \vspace{6cm}
+
+                  \vspace*{7cm}
+              }
+
+              \item Soit $(c,s)  \in \mathbb R^2$ et $(x,y) \in U$. Montrer que $(c,s) = \Phi(x,y)$ si et seulement si $x = (\arccos(c) + \arcsin(s))/2$ et   $y = (\arccos(c) - \arcsin(s))/2$.
+
+                  \cor{
+                  
+                  }
+
+        \eno{
+            \vspace*{6cm}
+        }
+
+              \item Montrer que $V=\Phi(U)$ est un ouvert.
+
+                  \cor{
+                      C'est l'image réciproque d'un ouvert par l'application continue $\Phi^{-1}$.
+
+                  }
+        \eno{
+            \vspace{3cm}
+        }
+              \item Calculer la jacobienne de $\Phi$ et montrer qu'elle est inversible.
+                  \cor{
+On a 
+                      \[
+                          \operatorname{Jac}_\Phi (x,y) = \begin{pmatrix}
+                              -\sin(x+y) & -\sin(x+y) \\
+                              \cos(x-y)  &  -\cos(x-y)
+                          \end{pmatrix}
+                      \]
+                      Ce qui donne $\det(\operatorname{Jac}_\Phi(x,y)) = 2\sin(x+y) \cos(x-y)$ qui s'annule si et seulement si $x+y=k\pi$ ou $x-y = \frac \pi 2 + k\pi$ pour un $k\in\Z$. Or ces deux dernières équations n'ont pas de solution sur $U$ car $ 0 <x+y<\pi$ et $-\frac \pi 2 <x -y < \frac \pi 2$. 
+                  }
+        \eno{
+            \vspace{6cm}
+        }
+
+    \item $\Phi$ realise-t-il un $\mathcal C^1$-diffeomorphisme de $U$ sur $V$ ? Justifier.
+                  \cor{
+          Théorème d'inversion globale. %Pour l'appliquer il reste à vérifier que $\Phi$ est injective (les questions précédentes sont préciséménent le reste des hypothèses). 
+      }
+  
+        \eno{
+            \vspace*{4cm}
+        }
+
+  \item Calculer la matrice jacobienne de $\Phi^{-1}$ en $(c,s) = (0,0)$. %(\sqrt 2/2,\sqrt 2/2)$.
+
+          \cor{
+              On a $\Phi(\pi/4,\pi/4) = ( 0, 0) $ et  $\operatorname{Jac}_\Phi (\pi/4,\pi/4) = \begin{pmatrix}
+                              -1 & -1 \\
+                                1  &  - 1
+                            \end{pmatrix}$. Ainsi $\operatorname{Jac}_\Phi (\pi/4,\pi/4) \circ \operatorname{Jac^{-1}}_\Phi (0, 0) = Id_2$. Ce qui donne $\operatorname{Jac^{-1}}_\Phi (0, 0) =\begin{pmatrix}
+                              -1 & -1 \\
+                                1  &  - 1
+                            \end{pmatrix}^{-1}  = \frac 1 2 \begin{pmatrix}
+                              -1 & 1 \\
+                              -1 & -1
+                          \end{pmatrix}$.
+
+          }
+        \eno{
+            \vspace{5cm}
+        }
+  \end{enumerate}
+
+\exo{}
+Soit $B= \{ a \in \R^2,\,  \|a\|_2 \leq 1 \}$. Calculer alors
+\[ I  = \iint_{B} \frac{1}{(1+x^2+y^2)} dx dy.\]
+        \eno{
+            \vfill
+
+            \vspace{6cm}
+
+            \vspace*{6cm}
+        }
+
+%\exo{}	
+%On considère la fonction $f:\R^2 \to \R$ dont l'expression est 
+%\[
+%f(x,y) = \sqrt{\frac{x+y}{x-y}}.
+%\]
+
+%\begin{enumerate}
+    %\item  Déterminer et dessiner le domaine de définition $\mathcal D$ de $f$ ainsi que sa nature (ouvert, fermé).
+
+        %\begin{center}
+            %\begin{tikzpicture}\pgfplotsset{compat=1.8}
+                %\begin{axis}[height=6cm,width=6cm,enlargelimits=true, axis lines=center, axis on top, xlabel={$x$}, ylabel={$y$}, axis equal, ymin=-10.2,ymax=10.2,xmin=-10.2,xmax=10.2,grid=both, minor tick num=2,]
+
+                    %\cor{
+
+                        %\addplot[samples=5, very thick,red, dashed,  domain = -10:10, samples y =0] ({x},{x});
+                        %\addplot[samples=5, very thick,red, domain = -10:10, samples y =0] ({x},{-x});
+                    %}
+
+                %\end{axis}
+            %\end{tikzpicture}
+        %\end{center}
+        
+    %\cor{
+        %La fonction $f$ est bien définie dès lors que $x\neq y$ et $\frac{x+y}{x-y}\geq 0$. Ce qui donne, $x\geq-y$ et $-y >-x$ ou $x \leq -y $ et $ -y <-x$. C'est à dire entre les droites $y = -x$ (incluse) et $y= x$ (excluse). Ainsi, l'origine d'est pas dans le domaine de définition.
+    
+    %}
+
+%\eno{
+
+    %\vspace{4cm}
+%}
+
+    %\item Déterminer l'ensemble de points adhérents $\bar{\mathcal D}$ de $\mathcal D$. 
+
+        %\cor{
+            %On a $\bar{\mathcal D} = \mathcal D \cup \left\{ y=x \right\}$.
+        %}
+%\eno{
+
+    %\vspace{4cm}
+%}
+
+
+    %\item \'Etudier la limite de $f$ en $(0,0)$. %$A = \{ (x,y) \in \mathbb R^2 \mid  x \ge 0 \text{ et } -x \le y \le x \}$.
+
+        %\cor{%La fonction $f$ est clairement continue sur son domaine de définition. On se concentre donc sur la droite $x=y$ qui est sur le bord du domaine $A$.
+            %La fonction $f$ n'admet pas de limite en l'origine. Prendre par exemple, $u_n=(n^{-1}, n^{-1} + n^{-2})$ qui donne  $f(u_n) = n \sqrt{2n^{-1} + n^{-2}} \to +\infty$ et $v_n=(n^{-1}, -n^{-1})$ qui donne $f(v_n) = 0$. 
+        
+        %}
+
+%\exo{(Différentielle)} Pour $(x,y,z)\in \R^3$ on note $f(x,y,z) = (\cos(xy) \cos(z),(1+x^2)^{yz} )$. Montrer que la fonction $f$ est différentiable au point $(a,1,0)$ pour tout $a$ de $\R$ puis calculer sa différentielle en ce point.
+
+%\cor{
+%}
+
+
+
+\exo{} Calculer $\iint_D y dxdy$ où $D$ est le domaine de $\R^2$ dessiné ci-contre
+\begin{center}
+    \begin{tikzpicture}\pgfplotsset{compat=1.8}
+        \draw[red, fill=red!50, thick] (-3,2) -- (4,2) -- (1,0) node[below, black] {$1$} -- (-2,0) -- (-3,2) -- cycle ;
+        \draw[color=gray, style=dotted] (-5,0) grid[xstep=1cm, ystep=1cm] (6cm,3cm);
+        \draw[->] (0,0) -- node[below, black, pos=.3333, left] {$1$} (0,3) node [above] {$y$};
+        \draw[->] (-5,0) -- (6,0) node [right] {$x$};
+    \end{tikzpicture}
+\end{center}
+
+\cor{
+
+    On a 
+    $D=\{(x,y)\in\R^2 | -3\leq x \leq -2,-2x\leq 4\leq y\leq 2\} \cup \{ (x,y)\in \R^2 ∣-2\leq x\leq 1, 0\leq y\leq 2\}\cup \{(x,y)\in \R^2 | 1\leq x\leq 4, \frac 2 3x - \frac 2 3 \leq y \leq 2\}$
+    ou encore, ce qui est plus simple, $D=\{(x,y)\in\R^2 ∣ 0\leq y\leq 2,-\frac 1 2y-2\leq x\leq \frac 3 2 y+1\}$. Cela donne,
+    \[
+        \iint_D y dxdy = \int_0^2 \left( \int_{-\frac y 2 - 2 }^{\frac 3 2 y +1} y dy \right) dx = \frac{34}{3}.
+    \]
+}
+
+
+\end{enumerate}
+
+\end{document}

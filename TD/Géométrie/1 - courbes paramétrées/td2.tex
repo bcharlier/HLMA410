@@ -1,0 +1,420 @@
+\documentclass{tp_um}
+\input{../../header.tex}
+\newcommand{\miniscule}{\@setfontsize\miniscule{5}{6}}
+%-----------------------------------------------------------------------------
+
+%\def\version{eno}
+\def\version{cor}
+
+
+
+\title{\Large \sffamily\bfseries \'Etude de courbes paramétrées et calculs de longueurs}
+\ue{HLMA410}
+
+\begin{document}
+
+
+\maketitle
+
+\bigskip
+
+Les exercices ou les questions marqués d'une étoile ne sont pas prioritaires.
+\section{Tracer des courbes paramétrées simples}
+
+\exo{} Déterminer une paramétrisation des courbes suivantes
+\begin{center}
+    \def\wwidth{4cm}
+    \def\hheight{4cm}
+\resizebox {!} {\hheight} {
+    \begin{tikzpicture}
+        \begin{axis}[grid,
+                xtick={-15.70795, -12.56636, ..., 15.70795},
+                xticklabels={,,,,$-\pi$, 0,$\pi$,,,,},
+                ytick={-15.70795, -12.56636, ..., 15.70795},
+                yticklabels={,,,,$-\pi$, 0,$\pi$,,,,}
+       ]
+            \addplot[blue, very thick,domain=0:5*pi,samples=600] 
+            ({x*cos(deg(x))},
+            {x*sin(deg(x))});
+        \end{axis}
+    \end{tikzpicture}
+}
+\resizebox {!} {\hheight} {
+    \begin{tikzpicture}
+        \begin{axis}[grid,
+                xtick={-15.70795, -12.56636, ..., 15.70795},
+                xticklabels={,,,,$-\pi$, 0,$\pi$,,,,},
+                ytick={-15.70795, -12.56636, ..., 15.70795},
+                yticklabels={,,,,$-\pi$, 0,$\pi$,,,,}
+]
+            \addplot[blue, very thick,domain=0:5*pi,samples=600] 
+            ({x*sin(deg(2*x))},
+            {x*cos(deg(2*x))});
+        \end{axis}
+    \end{tikzpicture}
+}
+\resizebox {!} {\hheight} {
+    \begin{tikzpicture}
+        \begin{axis}[axis equal, grid,view={60}{30}]
+            \addplot[blue, very thick,domain=0:2*pi,samples=600] 
+            ({3*sin(deg(x))},
+            {1.5*cos(deg(x))});
+        \end{axis}
+    \end{tikzpicture}
+}
+    \resizebox {!} {\hheight} {
+    \tikzsetnextfilename{vague}
+    \begin{tikzpicture}
+        \begin{axis}[axis equal, grid]
+            \addplot[blue, very thick,domain=-2.5:2.5,samples=600] 
+            ({x},
+            {1 - 2* abs(abs(x - ceil(x)) - .5) });
+        \end{axis}
+    \end{tikzpicture}
+
+}
+\end{center}
+
+\newpage
+
+\exo{} Déterminer une paramétrisation de la droite $\Delta'$ projettée orthogonale de la droite $\Delta$ d'équation:
+\[
+    \begin{cases}
+        x = 1 + 2 \lambda \\
+        y = -1 + \lambda \\
+        z = 2
+    \end{cases}
+\]
+dans le plan $P$ d'équation $x+y+z =1$.
+
+\newpage
+
+\exo{} Tracer, puis déterminer une paramétrisation (en coordonnées cartésiennes) des courbes du plan décrites en coordonnées polaires par
+\begin{enumerate}
+    \item	$r = \frac{1}{2\cos(\theta) + 3\sin(\theta)}$, %avec $a,b \neq (0,0)$
+    \item	$r = 4\cos(\theta)$.
+\end{enumerate}
+\newpage
+
+\section{Étude de courbes paramétrées}
+
+\exo{}  Soit la courbe paramétrée $\Gamma=\left( \R, \phi \right)$ définie par $ \phi(t) = \begin{cases}x(t)= t - \tanh t \\ y(t) = \frac{1}{\cosh t} \end{cases}$ pour $t\in\R$
+
+\begin{enumerate}
+    \item \'Etudier la parité des fonctions $x(\cdot)$ et $y(\cdot)$. Quelle(s) symétrie(s) cela implique-t-il sur le support de la courbe $\Gamma$? Peut on réduire le domaine d'étude?
+
+        \cor{
+            On a $x(-t) = -t - \tanh(-t) = - (t - \tanh(t)) = -x(t)$ et $y(-t) = 1/\cosh(-t) = 1/\cosh(t) = y(t)$. Ainsi, on remarque que le support de la courbe $\Gamma$ admet une symétrie axiale par rapport à l'axe $Oy$.
+
+        }
+                    \item Calculer $\phi', \phi''$ (on donne $\phi'''(t)=\begin{pmatrix}
+                                2(1- 2\sinh^2 t) /\cosh^4t \\ (5\tanh t - 6 \tanh^3 t ) / \cosh t  
+                    \end{pmatrix}$) et déterminer si $\Gamma$ à un/des point(s) stationnaire(s).
+
+        \cor{
+On  a $\phi'(t)=\begin{pmatrix}
+                                1- 1 /\cosh^2t \\ - \sinh t / \cosh^2 t  
+                    \end{pmatrix}$ et 
+On  a $\phi''(t)=\begin{pmatrix}
+2\sinh t /\cosh^3t \\  (2 \sinh^2 t - \cosh^2 t) / \cosh^3 t 
+                    \end{pmatrix}$
+                    L'unique point stationnaire ( $\phi'(t) = \begin{pmatrix}
+                            0\\0
+                    \end{pmatrix}$) est en $t=0$.
+        }
+
+    \item On se place en $t=0$: donner la nature du point $\phi(0)$ ainsi que le comportement local de la courbe (faire un petit dessin).
+        \cor{
+
+            On a $\phi''(t) = \begin{pmatrix}
+                0\\ -1
+            \end{pmatrix}$ et $\phi'''(t) = \begin{pmatrix}
+                2\\ 0
+            \end{pmatrix}$. Autrement dit, avec les notations du cours: on a $p=2$ et $q=3$. C'est donc un point de rebroussement de 1ère espèce admettant une tangente verticale:
+            \begin{center}
+                \begin{tikzpicture}[scale=1]
+
+
+                        \draw[->, thick, red] (0,0)--(0,-1) node[left] {${v}$}; 
+                        \draw[->, thick, red] (0,0)--(2,0) node[above] {${w}$}; 
+                    \begin{scope}[rotate=90] 
+                        \draw [<-<,>=latex,very thick, color=blue] (-1,-1) .. controls (-0.5,0) and (-0.2,0) .. (-0.05,0) .. controls (-0.1,0.05) and (-0.5,0) .. (-1,1);
+                        \fill (0,0) circle (1pt);
+                    \end{scope}
+                \end{tikzpicture}
+            \end{center}
+        }
+
+    \item On se place au voisinage de $t=+\infty$. Étudier la branche infinie (asymptote et position relative).
+
+
+        \cor{
+            On a $\lim_{t\to +\infty} x(t) = +\infty$ et $\lim_{t\to +\infty} y(t) = 0 $. La courbe $\Gamma$ admet dont une asymptote horizontale en $t=+\infty$. De plus, on a $y(t) >0$ et $\Gamma$ est située au dessus de son asymptote.
+        }
+    \item Faire le tableau de variations de $\Gamma$. On pourra ajouter les limites à l'infini et les valeurs $x(0)$ et $y(0)$.
+        \cor{
+                        \begin{center}
+                                \begin{tabular}{|c|ccccc|}
+                                        \hline    $t$       & $-\infty$ & \hspace{5cm}   &  0 &  \hspace{5cm} & $\infty$ \\[0.3cm]\hline\hline
+                                        signe de $x'(t)$    &           &      +          &  0   &   +                 &          \\[0.4cm]\hline
+                    variation de $x(t)$    &           &      $\nearrow$          &    &        $\nearrow$         &     	 \\[0.9cm]\hline\hline
+                                        signe de $y'(t)$    &           &      +          &  0  &     -               &          \\[0.4cm]\hline
+                                        variation de $y(t)$ &           &      $\nearrow$          &    &   $\searrow$              &          \\[0.9cm]\hline
+                                \end{tabular}
+                        \end{center}
+        }
+        \item  Tracer la courbe $\Gamma$ ainsi que les tangentes et asymptotes étudiées aux questions précédentes. 
+         \cor
+         \begin{center}
+                        \begin{tikzpicture}\pgfplotsset{compat=newest}
+                            \begin{axis}[height=5cm,width=13cm,enlargelimits=true,grid=major,  axis lines=center, axis on top, xlabel={$x$}, ylabel={$y$}, zlabel={$y$},
+                                ymin=-.5,ymax=1.5,xmin=-12,xmax=12]
+                                \draw[ultra thick,blue!50] (axis cs:3,0) -- (axis cs:12,0);
+                                \draw[ultra thick,blue!50] (axis cs:-3,0) -- (axis cs:-12,0);
+                                \addplot[grid=both,samples=500, very thick,red, parametric, domain = -10:10] gnuplot {t - tanh(t), 1 /cosh(t) };
+                                \draw[ultra thick,blue!50,->] (axis cs:0,1) -- (axis cs:0,.5);
+                            \end{axis}	
+                        \end{tikzpicture}
+                    \end{center}
+        }
+
+\end{enumerate}
+
+\newpage
+\exo{(La deltoïde)}  Soit la courbe paramétrée $\Gamma$ définie par $\phi(t) = \begin{cases}x(t)= 2\cos t + \cos 2t \\ y(t) = 2\sin t - \sin 2t \end{cases}$ pour $t\in[-\pi,\pi]$
+
+\begin{enumerate}
+    \item \'Etudier la parité des fonctions $x(\cdot)$ et $y(\cdot)$. Quelle(s) symétrie(s) cela implique-t-il sur le support de la courbe $\Gamma$?
+
+
+        \cor{
+On a $x(-t) = 2\cos(- t) + \cos (-2t) = 2\cos(t) + \cos (2t) = x(t)$ et la fonction $x$ est paire. De même, $y(-t) =  2\sin (-t) - \sin (-2t)= -2\sin t + \sin 2t = -y(t)$ et la fonction $y$ est impaire. Cela donne une symétrie axiale par rapport à l'axe des abscisses.   
+        }
+
+
+    \item Calculer $\phi'$, $\phi''$ et $\phi'''$.
+        \cor{
+            On a 
+            \begin{align*}
+                \phi'(t) & = 
+                \begin{cases}
+                    x'(t) = -2\sin t - 2 \sin 2t \\
+                    y'(t) = 2\cos t - 2 \cos 2t
+                \end{cases} \\
+                \phi''(t) & = 
+                \begin{cases}
+                    x''(t) = -2\cos t - 4 \cos 2t\\
+                    y''(t) = -2\sin t + 4 \sin 2t \\
+                \end{cases}\\
+                \phi'''(t) & = 
+                \begin{cases}
+                    x'''(t) = 	2\sin t + 8 \sin 2t \\
+                    y'''(t) = 	-2\cos t +8 \cos 2t
+                \end{cases}
+            \end{align*}
+        }
+
+
+
+    \item Soit $t \in [-\pi,\pi[$. Montrer que $\cos(t) - \cos(2t) = 0$ a trois solutions $t = 0$ et $t=2\pi/3$ et $t= -2\pi/3$. 
+
+                \cor{
+                    Une solution consiste à se souvenir que $\cos 2t = 2\cos^2 t -1$. Ansi,
+                    \begin{align*}
+                        \cos t - \cos 2t &= 0 \\
+                        \Leftrightarrow \cos t - 2\cos^2 t +1 &= 0
+                    \end{align*}
+                    En cherchant les racines du polynôme de degré deux, $X \mapsto -2X^2+X+1$, on arrive à  $\cos t = -1/2$ ou $\cos t = 1$. Ce qui donne le résultat escompté (faire un dessin avec un cercle trigonométrique!).
+                }
+
+            \item Calculer la position des points stationnaires. Donner leur nature ainsi que le comportement local de la courbe en leur voisinage (faire un petit dessin à chaque fois).
+
+                \cor{
+                    La question précédentes donne les temps en lesquels $y'$ s'annule. Reste à vérifier si $x'$ s'annule aussi en ces temps. C'est bien le cas, on a
+                    \[
+                        x'(0) = x'(2\pi/3) = x'(-2\pi/3) = 0
+                    \]
+                    Il y a donc 3 points stationnaires en $t=-2\pi/3,0,2\pi/3$.
+
+
+                    \'Etude des points stationnaires:
+                    \begin{enumerate}
+                        \item $t=0$ on a $\phi(0) = \begin{psmallmatrix}
+                                3\\0
+                            \end{psmallmatrix}$, $\phi''(0) = \begin{psmallmatrix}
+                                -6\\0
+                            \end{psmallmatrix} $ et  $\phi'''(0) = \begin{psmallmatrix}
+                                0\\6
+                            \end{psmallmatrix}$. 
+                            Cela donne le DL suivant,
+                            \[
+                                \phi(0 + h ) = \begin{psmallmatrix}
+                                    3 - 3h^2 + o(\abs{h}^3)	\\  h^3 + o(\abs{h}^3)
+                                \end{psmallmatrix}
+                            \]
+                            Avec les notations du cours on a $p=2$ et $q=3$. Ainsi, c'est un point de rebroussement de première espèce. 
+                            \begin{center}\begin{tikzpicture}[scale=1]
+
+                                    \begin{scope}[rotate=0] 
+
+                                        \draw[->, thick, red] (0,0)--(-2,0) node[left] {${v}$}; 
+                                        \draw[->, thick, red] (0,0)--(0,2) node[above] {${w}$}; 
+                                        \draw [>->,>=latex,very thick, color=blue] (-1,-1) .. controls (-0.5,0) and (-0.2,0) .. (-0.05,0) .. controls (-0.1,0.05) and (-0.5,0) .. (-1,1);
+                                        \fill (0,0) circle (1pt);
+                                    \end{scope}
+                            \end{tikzpicture}\end{center}
+                        \item $t=2\pi/3$ on a $\phi(2\pi/3) = \begin{psmallmatrix} -3/2 \\ 3\sqrt 3/2
+                            \end{psmallmatrix}$, $\phi''(2\pi/3) = \begin{psmallmatrix}
+                                3\\-3\sqrt{3}
+                            \end{psmallmatrix} $ et  $\phi'''(2\pi/3) = \begin{psmallmatrix}
+                                -3\sqrt{3}\\-3
+                            \end{psmallmatrix}$. 
+                            Cela donne le DL suivant,
+                            \[
+                                \phi(2\pi/3+ h ) =  \frac 1 2 \begin{psmallmatrix}
+                                    - 3  + 3h^2 - \sqrt{3}h^3 o(\abs{h}^3)	\\  3\sqrt 3  -3 \sqrt 3 h^2  - h^3 + o(\abs{h}^3)
+                                \end{psmallmatrix}
+                            \]
+                            Avec les notations du cours on a $p=2$ et $q=3$. Ainsi, c'est un point de rebroussement de première espèce. 
+                            \begin{center}
+                                \begin{tikzpicture}[scale=1]
+
+
+                                    \draw[->, thick, red] (0,0)--(.75,-1.299038106) node[left] {${v}$}; 
+                                    \draw[->, thick, red] (0,0)--(-1.299038106, -.75) node[above] {${w}$}; 
+                                    \begin{scope}[rotate=120] 
+                                        \draw [>->,>=latex,very thick, color=blue] (-1,-1) .. controls (-0.5,0) and (-0.2,0) .. (-0.05,0) .. controls (-0.1,0.05) and (-0.5,0) .. (-1,1);
+                                    \end{scope}
+                                    \fill (0,0) circle (1pt);
+                            \end{tikzpicture}\end{center}
+
+                        \item $t= -2\pi/3$. C'est l'image par la symétrie axiale du point traité en (b). On a donc:	$\phi(-2\pi/3) = \begin{psmallmatrix} -3/2 \\ -3\sqrt 3/2
+                            \end{psmallmatrix}$, $\phi''(-2\pi/3) = \begin{psmallmatrix}
+                                3\\3\sqrt{3}
+                            \end{psmallmatrix} $ et  $\phi'''(-2\pi/3) = \begin{psmallmatrix}
+                                3\sqrt{3}\\-3
+                            \end{psmallmatrix}$. 
+                            Cela donne le DL suivant,
+                            \[
+                                \phi(-2\pi/3+ h ) =  \frac 1 2 \begin{psmallmatrix}
+                                    - 3  + 3h^2 + \sqrt{3}h^3 o(\abs{h}^3)	\\  -3\sqrt 3  +3 \sqrt 3 h^2  - h^3 + o(\abs{h}^3)
+                                \end{psmallmatrix}
+                            \]
+                            Avec les notations du cours on a $p=2$ et $q=3$. Ainsi, c'est un point de rebroussement de première espèce. 
+                            \begin{center}
+                                \begin{tikzpicture}[scale=1,yscale  = -1]
+                                    \draw[->, thick, red] (0,0)--(.75,-1.299038106) node[left] {${v}$}; 
+                                    \draw[->, thick, red] (0,0)--(1.299038106, .75) node[above] {${w}$}; 
+                                    \begin{scope}[rotate=120] 
+                                        \draw [<-<,>=latex,very thick, color=blue] (-1,-1) .. controls (-0.5,0) and (-0.2,0) .. (-0.05,0) .. controls (-0.1,0.05) and (-0.5,0) .. (-1,1);
+                                    \end{scope}
+                                    \fill (0,0) circle (1pt);
+                            \end{tikzpicture}\end{center}
+                    \end{enumerate}
+                }
+
+
+
+
+
+        %	\item Y a t il des point de la courbe avec une tangente verticale? horizontal? de direction $(1,1)$?
+
+            \item Calculer les tangentes aux points stationnaires et montrer qu'elles s'intersectent toutes en un même et unique point.
+
+                \cor{
+        Il suffit de calculer le point d'intersection de deux des tangentes et de vérifier que la troisème passe bien par ce même point. 
+\bigskip
+
+Comme la tangente au point $\phi(0)$ est l'axe des abscisses, il suffit de calculer où les 2 autres tangentes coupent cet axe. Par exemple, la tangente au point $\phi(2\pi/3)$ est 
+\[
+        t \mapsto 3/2  \begin{psmallmatrix}
+                -1 \\  \sqrt{3}
+        \end{psmallmatrix} + 3 t \begin{psmallmatrix}
+                1 \\ -\sqrt{3}
+        \end{psmallmatrix}		
+\]
+Elle annule sa deuxième coordonnée en $t=1/2$ en passant par l'origine. Par symétrie, on vérifie immédiatement que la troisième tangente passe elle aussi par l'origine. 
+                }
+%\bigskip
+
+            \item Faire le tableau de variations associé à $\phi$.
+
+                \cor{
+                    On utilise les propriétés de parité de $x$ et de $y$ !
+                    \begin{center}
+                        \begin{tabular}{|c|ccccccccc|}
+                            \hline    $t$       & $-\pi$ & \hspace{1.5cm}  & $-2\pi/3$ & \hspace{1.5cm}  &  0	& \hspace{1.5cm} & $2\pi/3$ & \hspace{1.5cm}   & $\pi$\\[0.3cm]\hline\hline
+                            signe de $x'(t)$     &     &  $-$ & 0 & $+$  & 0 & $-$ & 0 &  $+$           &	\\[0.4cm]\hline
+                            variation de $x(t)$ &  $-$1   & $\searrow$    & $-3/2$ & $\nearrow$ & 3 & $\searrow$  & $-3/2$ &     $\nearrow$      & $-1$	\\[0.9cm]\hline\hline
+                            signe de $y'(t)$   & 0 & $-$    & 0        &$+$ &0 & $+$& 0 & $-$&      0	\\[0.4cm]\hline
+                            variation de $y(t)$ &   0  &  $\searrow$        & $-3\sqrt{3}/2 $ &  $\nearrow$& 0 &  $\nearrow$&  $3\sqrt{3}/2 $&   $\searrow$  &	0\\[0.9cm]\hline
+                        \end{tabular}
+                    \end{center}
+                \item  Sur le graphique suivant, tracer la courbe $\Gamma$ ainsi que les tangentes étudiées aux questions précédentes. {\it Indication: on commencera par tracer les tangentes aux points stationnaires (ces points apparaissent déjà sur le graphique).}
+                    \begin{center}
+
+                        \begin{tikzpicture}\pgfplotsset{compat=1.8}
+                            \begin{axis}[height=10cm,width=10cm,enlargelimits=true,grid=major,  axis lines=center, axis on top, xlabel={$x$}, ylabel={$x$}, zlabel={$y$}, axis equal,view={90}{0},,
+                                ymin=-3,ymax=3,zmin=-3,zmax=3,xmin=-3,xmax=3]
+                                \addplot3[grid=both,samples=500, very thick,red, domain = -pi:pi, samples y =0] ({x},{2*cos(deg(x))  +cos(deg(2*x)) },{2* sin(deg(x))  -sin(deg(2*x))  });
+                                \addplot3[grid=both,samples=500, thin,blue, domain = -pi:.6, samples y =0] ({x}, { -1 + 2*x },{ sqrt(3) *(1 -2*x)  });
+                                \addplot3[grid=both,samples=500, thin,blue, domain = -pi:.6, samples y =0] ({x}, { -1 + 2*x },{ -sqrt(3) *(1 -2*x)  });
+                                \addplot3[grid=both,samples=500, thin,blue, domain = -pi:.6, samples y =0] ({x}, { 0 },{ -x  });
+                        \end{axis}		\end{tikzpicture}
+                    \end{center}
+                }
+
+            \item La courbe $\Gamma = ([-\pi,\pi[, \phi)$ est-elle paramétrée par l'abscisse curviligne? 
+
+                        \cor{
+                    Non, car la norme de son vecteur dérivée n'est pas constante.  En effet, $\snorm{\Gamma'}^2 = 8 (1 - \cos(3t))= 16\sin^2(3t/2)$ pour tout $t \in ]-\pi,\pi]$.  
+                }
+
+                    \item  Montrer que  la longueur de $\Gamma$ est 16. 
+
+                        \cor{
+                        \[
+                                L = 4 \int_{-\pi}^\pi \abs{\sin(3t/2)} dt = 12 \int_0^{2\pi/3} \sin(3t/2) dt = 8 \int_0^{\pi} \sin(t) dt = 8 \left[ \cos(t) \right]_{t=0}^\pi = 16. 
+                        \]
+                        }
+                \end{enumerate}
+
+
+\newpage
+
+                \exo[*]{ } 
+        On se place dans le plan euclidien rapporté à un repère orthonormé $(O;i,j)$. \'Etant donné un réel $\alpha > 0$, on note $\Gamma$ la courbe paramétrée $\phi: \left] -\frac \pi 2, \frac \pi 2  \right[ \cup \left] \frac \pi 2, \frac{3\pi}{2}  \right] \to \R^2$ définie par 
+        \[
+            \phi_\alpha(t) = \left( 1 + \alpha \cos t , \tan t + \alpha \sin t \right)
+        \]
+        \begin{enumerate}
+            \item \'Etude des points stationnaires:
+                \begin{enumerate}
+                    \item	Dans le cas $\alpha=1$ , étudier les points stationnaires éventuels de la courbe $\Gamma$ et, pour chacun, donner (en justifiant les calculs) sa nature et l'allure locale de $\Gamma$ au voisinage.
+                    \item Montrer qu'il n'y a pas de point stationnaire pour $\alpha \in ]0,1[\cup ]1, +\infty[$.
+                \end{enumerate}
+            \item Tangentes: discuter, suivant $\alpha$, le nombre (et la position) des points de $\Gamma$ admettant une tangente horizontale ou verticale.
+            \item Un cas particulier: Dans le cas où $\alpha = 8$, étudier la courbe $\Gamma$ (symétries, variations, étude asymptotique, représentation graphique\ldots).
+            \item Donner l'allure de $\Gamma$  dans les cas où $\alpha \in ]0,1[$, $\alpha =1$ et $\alpha >1$. 
+        \end{enumerate}
+
+        \section{Calculer des longueurs}
+\newpage
+
+        \exo{} Tracer le support et calculer la longueur $L$ des courbes $\Gamma$ dans chacun des cas suivants~:
+        \begin{modenumerate}
+        \item  $\Gamma$ est l'\emph{astroïde} de représentation paramétrique $t \mapsto \begin{pmatrix}
+                \cos^3t\\
+                \sin^3t
+            \end{pmatrix}a$ où $t\in [-\pi, \pi]$ et $a>0$ donné.
+            \moditem{*}  $\Gamma$ est l'\emph{arche de cycloïde} de représentation paramétrique $t \mapsto \begin{pmatrix}
+                t-\sin t\\
+                1-\cos t
+            \end{pmatrix} R$, où $t \in[0,2\pi]$ et  $R >0 $ donné.
+%\item  $\Gamma$ est l'arc de parabole d'équation cartésienne $x^2=2py$, $0\leq x\leq a$ ($p>0$ et $a>0$ donnés).
+        \item  $\Gamma$ est la \emph{cardioïde} d'équation polaire $t \mapsto\begin{pmatrix} r(t) \\ \theta(t)\end{pmatrix} = \begin{pmatrix}a(1+\cos t) \\ t\end{pmatrix}$  où $t\in [ -\pi,\pi ] $ et  $a>0$ donné.
+        \end{modenumerate}
+% fic0114 exo 1
+
+
+        \end{document}

@@ -1,0 +1,145 @@
+\documentclass[a4paper]{tp_um}
+\input{../../TD/header.tex}
+\ue{HLMA410}
+%-----------------------------------------------------------------------------
+
+\title{\large \sffamily\bfseries Contrôle continu 1}
+
+\begin{document}
+
+\maketitle
+\textit{Durée 1h10. Les documents, la calculatrice, les téléphones portables, tablettes, ordinateurs ne sont pas autorisés. La qualité de la rédaction sera prise en compte.} 
+
+\bigskip
+\bigskip
+
+\exo{(Question de cours)} Donner la formule des probabilités totales (avec ses hypothèses) et en donner une démonstration.
+%\vspace*{8cm}
+
+\bigskip
+Voir le cours!
+\bigskip
+
+\exo{} On lance simultanément trois dés équilibrés à 6 faces (numérotées de 1 à 6).
+\begin{enumerate}
+    \item Définir un espace probabilisé pour modéliser cette expérience aléatoire.
+        %\vspace*{4cm}
+
+        \bigskip
+        L'idée est, comme vu en TD, de ``numéroter les dés'' en considérant des triplets. Prendre alors l'ensemble des possibles $\Omega = \left\{ 1,\cdots,6 \right\}^3$ muni de la tribu $\mathcal P (\Omega)$ et de la probabilité uniforme (les 3 dés donnant des résultats indépendants et équiprobables).
+
+        \bigskip
+
+    \item Calculer la probabilité d'obtenir :
+
+
+        \begin{enumerate}
+            \item trois numéros de la même parité ;
+        %\vspace*{5cm}
+
+                \bigskip
+                On considère l'évènement $A  = \left\{ 1,3,5 \right\}^3 \cup \left\{ 2,4,6 \right\}^2$. C'est une union disjointe. On a donc $\P(A) = \frac{|A|}{|\Omega|} = 2\frac{3^3}{6^3} = 0.25$. 
+                \bigskip
+            \item un numéro strictement supérieur à la somme de deux autres;
+
+                \bigskip
+                On considère l'évènement 
+                \[
+                    B  = \underbrace{\left\{ (a,b,c) \in \Omega | a> b+c \right\}}_{B_1} \cup  \underbrace{\left\{ (a,b,c) \in \Omega | b> a+c \right\} }_{B_2} \cup  \underbrace{\left\{ (a,b,c) \in \Omega | c> a+b \right\}}_{B_3}
+                \]
+                C'est une union disjointe d'évènements de même probabilité. En utilisant le principe de partition $B_1 = \bigcup_{i=2}^5 \left\{ b+c = i\right\} \cap \left\{ a > i \right\}$ on a donc
+%\[\P(A_1) = \frac{1}{36} \frac 4 6 +  \frac{2}{36} \frac 3 6 + \frac{3}{36} \frac 2 6 + + \frac{4}{36} \frac 1 6= \frac 1 6 \left( \frac{10}{6} + 10 \right) =  
+                \[ 
+                    |B_1| =  \sum_{i=2}^5 \abs{\left\{ b+c = i\right\}}\abs{\left\{ a > i \right\}} =  1 \times 4 +  2 \times 3 + 3 \times 2 + 4 \times 1= 20.
+                \] 
+                Finalement 
+                \[
+                    \P(B) = 3 \P(B_1) = 60 / 6^3 = 10 /36 \approx 0.27778
+                \]
+
+                \bigskip
+            \item un $6$ sachant qu'un numéro est strictement supérieur à la somme de deux autres.
+%		\vspace*{8cm}
+
+                \bigskip
+                On remarque tout d'abord qu'il ne peut y avoir qu'un seul 6 dans un tel lancer et c'est le résultat qui est supérieur à la somme des 2 autres. On a alors
+                \[
+                    \abs{B_1 \cap \left\{ a=6 \right\}} = \abs{B_2 \cap \left\{ b=6 \right\}}  =  \abs{B_3 \cap \left\{ c=6 \right\}}  =  \sum_{i=2}^5 \abs{\left\{a=6, b+c = i\right\}}=10,
+                \]
+                ce qui donne $\P(B \cap ( \left\{ a=6 \right\} \cup \left\{ b=6 \right\} \cup \left\{ c=6 \right\})) = \frac{30}{6^3}$. Enfin on a\[
+                \P( \left\{ a=6 \right\} \cup \left\{ b=6 \right\} \cup \left\{ c=6 \right\} | B ) = 1/2.\]
+
+                \bigskip
+        \end{enumerate}
+\end{enumerate}
+
+
+
+\exo{} Soit $X$ une variable aléatoire à valeurs dans $\N^{*}$ et vérifiant $\P(X > k+1) = \frac 1 2 \P\left( X > k \right)$ pour tout $k\in\N$. 
+\begin{enumerate}
+    \item Déterminer la loi de $X$.
+        %\vspace*{5cm}
+
+        \bigskip
+        On a $\P(X > 0) = 1$ car c'est une loi de probabilité dont le support est $\N^{*}$ et $P(X > k) = 1/2^{k}$ car c'est une suite géométrique.  De plus, comme $\P(X=k) = \P(X >k-1) - \P(X> k) = 1/2^{k-1} - 1/2^{k} = 1 / 2^{k}$. C'est donc une loi géométrique (qui porte bien son nom) de paramètre $1/2$.
+        \bigskip
+
+    \item Calculer la moyenne et la variance de $X$.
+
+        \bigskip
+        Le calcul est fait en cours. On a $\E(X) = Var(X) = 2$.
+        \bigskip
+        %\vspace*{5cm}
+\end{enumerate} % loi geometrique de parametre 2. 
+
+
+\exo{} Dans un pays où il naît autant de filles que de garçons, le docteur Glück prévoit le sexe des enfants à naître. Il se trompe 1 fois sur 10 si c'est un garçon et 1 fois sur 20 si c'est une fille. Aujourd'hui il vient d'annoncer à Mme Parisod qu'elle aurait une fille. Quelle est la probabilité pour que cela soit vrai?  %1.13
+%\vspace*{8cm}
+
+\bigskip
+On note $F=\left\{ \text{Mme Parisod a une fille} \right\}$ et $G_F =\left\{ \text{Le Docteur prévoit une fille } \right\}  $. On a $\P(G_F|F^c) = 0.1$ et $\P(G_F|F) = 0.95$. On cherche la probabilité de l'évènement $F$ sachant $P_F$ 
+\[
+    \P(F | G_F) = \frac{ \P( G_F | F) \P(F)}{\P(G_F \cap F) + \P(G_F \cap F^c)} = \frac{ 0.95 /2 }{ 0.95/2 + 0.1/2 } \approx 0.91.
+\]
+\bigskip
+
+%\exo{} Un joueur dispose d'un dé et d'une pièce. Le dé est équilibré et la pièce a une probabilité $p$ $(0 < p < 1)$ de tomber sur pile. Le joueur lance d'abord le dé, puis lance la pièce autant de fois que le résutlat du dé.  Il compte enfin le nombre de piles obtenu au cours des lancers. Les résultats de chaque lancer sont indépendants. On note $q= 1-p$.  On note également $D$ la variable aléatoire correspondant à la valeur du dé et $X$ celle correspondant au nombre de piles obtenus à la fin du jeu.
+
+%\begin{enumerate}
+    %\item  Soit  $i\in \{ 1 ,\cdots, 6 \}$ et $j\in \{ 0,1 ,\cdots, 6 \}$.   Que  vaut $\P ( X = j | D = i)$?
+%%\vspace*{8cm}
+
+        %\bigskip
+
+        %Le nombre $D$ étant fixé à $i$ (probabilité conditionelle), $X$ est le nombre de pile en $i$ lancers. C'est donc le nombre de succès dans $i$ répétition d'un schéma de Bernoulli i.i.d. et  $X \sim \mathcal B(i,p)$. Donc si $j > i$ on a $\P(X= j | D=i) = 0$ et si $0\leq j \leq i$ on a $\P(X=j|D=1) = \binom{i}{j} p^i q^{i-j}$.
+
+        %\bigskip
+
+
+
+    %\item Montrer que $\P(X=0) = \frac q 6 \left( \frac{1-q^6}{1-q} \right) $
+%%\vspace*{8cm}
+%%\newpage
+
+        %\bigskip
+
+        %Il faut utiliser la formule des probabilités totale (principe de partition)
+        %\[
+            %\P(x=0) = \sum_{i=1}^{6} \P(X=0 |D=i) \P(D=i) = \frac 1 6 \sum_{i=1}^6 q^i = \frac q 6 \left( \frac{1-q^6}{1-q} \right)
+        %\]
+
+
+    %\item Sachant que l’on n’a obtenu aucun pile au cours du jeu, quelle était la probabilité que le résultat du dé était 1?  Évaluer cette quantité quand $ p = q =\frac 1 2$.
+%%\vspace*{8cm}
+
+        %\bigskip
+        %Dans cette question on demande de calculer $P(D = 1|X = 0)$. On utilise ici la formule de Bayes:
+        %\[
+            %P(D = 1|X = 0) = \frac{\P(X = 0| D=1) \P(D = 1)}{\P(X=0)} = \frac{\frac q 6}{\frac q 6 \left(\frac{1-q^6}{1-q} \right)} = \frac{1 -q}{1-q^6}.
+        %\]
+        %Dans le cas $p=1/2$ on trouve $32/63 \approx 0.508$.
+        %\bigskip
+
+%\end{enumerate}
+
+\end{document}

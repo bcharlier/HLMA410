@@ -1,0 +1,231 @@
+\documentclass{tp_um}
+\input{../../header.tex}
+\newcommand{\miniscule}{\@setfontsize\miniscule{5}{6}}
+%-----------------------------------------------------------------------------
+
+\title{\Large \sffamily\bfseries  Fonctions de classe $\reg{1}$}
+\ue{HLMA410}
+
+
+%-----------------------------------------------------------------------------
+\begin{document}
+
+\maketitle
+
+\bigskip
+
+Les exercices ou les questions marqués d'une étoile ne sont pas prioritaires.
+
+\section{Fonctions de classe $\reg{1}$ et différentielle}
+
+\exo{} Soit $f:\R^2 \to \R$ la fonction définie par $f(x,y) = \frac{x^2y}{x^2+y^2}$ si $(x,y) \neq(0,0)$ et $f(0,0) = 0$. 
+		\begin{center}
+			\begin{tikzpicture}[scale=.5]
+				\begin{axis}[,xlabel=$x$,ylabel=$y$]%,xtick=\empty,ytick=\empty,ztick=\empty ]
+					\addplot3[surf,opacity=.7,samples=50] gnuplot {(x**2 *y) /(x**2 + y**2)};
+				\end{axis}
+			\end{tikzpicture}
+		\end{center}
+\begin{enumerate}
+	\item La fonction $f$ est-elle continue ?
+	\item La fonction $f$ admet-elle des dérivées partielles ?%en Calculer $\nabla f (x,y)$ pour tout $(x,y) \in \R^2 $.
+	\item La fonction $f$ est elle de classe $\reg{1}$ ?
+	\item La fonction $f$ est-elle différentiable sur $ \R^2$ ?
+\end{enumerate}
+%Faccanoni exo 4.22 p91
+
+
+\exo[*]{} Soit $\U = \left\{ (x,y) \in \R^2 | y\neq 0 \right\}$. On considère l'application $f:\R^2 \to \R$ définie pour $(x,y) \in \R^2$ par $ f(x,y) =\begin{cases}
+	y^2 \sin\left( \tfrac x y \right) & \text{ si } (x,y) \in \U \\ 0 & \text{ sinon.}
+\end{cases}$.
+		\begin{center}
+			\begin{tikzpicture}[scale=.5]
+				\begin{axis}[,xlabel=$x$,ylabel=$y$]%,xtick=\empty,ytick=\empty,ztick=\empty ]
+					\addplot3[surf,opacity=.9,samples=50,domain=-3:3,y domain=-1:1] gnuplot {(y**2 *sin(x/y))};
+				\end{axis}
+			\end{tikzpicture}
+		\end{center}
+
+\begin{enumerate}
+	\item Montrer que $\U$ est un ouvert de $\R^2$ et que $f$ est de classe $\reg{1}$ sur $\U$.
+	\item Montrer que $f$ est continue sur $\R^2$.
+	\item Montrer que $f$ a des dérivées partielles en tout point de $\R^2$. Les calculer.
+	\item Montrer que la fonction $\frac{\partial f}{\partial x}$ est continue.
+	\item Montrer que la fonction $f$ n'est pas de classe $\reg{1}$.
+\end{enumerate}
+% Liret-Martinais:  exo 5 p 190
+
+\exo{} Calculer la différentielle de chacune des fonctions suivantes:
+
+\begin{enumerate*}[itemjoin={{, \hspace*{1em} }}]
+		\item $m = p^5q^3$  \   
+		%\item $u = \sqrt{x^2 +3y^2}$  \   
+		\item $R= \alpha \beta^2 \cos(\gamma)$  \   
+		%\item $T = \frac{ \nu }{1 + uvw}$  \   
+		%\item $L = xzye^{ - y^2 - z^2}$
+	\end{enumerate*}
+
+
+\section{Règle de la chaîne}
+
+\exo{}
+On consid\`ere les fonctions $f\colon \R^2\longrightarrow \R^3$ et
+$g\colon \R^3\longrightarrow \R$ d\'efinies par
+\[
+f(x,y)=(\cos(xy), y, x\exp(y^2)),\quad 
+g(u,v,w)= uvw .
+\]
+\begin{enumerate}
+ \item  Calculer explicitement $g\circ f$.
+ \item En utilisant l'expression trouv\'ee en (1), calculer les d\'eriv\'ees partielles de $g\circ f$.
+ \item  D\'eterminer les matrices jacobiennes $J_f(x,y)$ et $J_g(u,v,w)$ de $f$ et de $g$. 
+ \item Retrouver le r\'esultat de la question 2. en utilisant un produit appropri\'e de matrices jacobiennes. 
+\end{enumerate}
+% fic00062 exo 4
+
+
+\exo{} Soit $f:\mathcal U \to \R$ une fonction de classe $\reg{1}$ sur un ouvert $\mathcal U$ de $\R^2$. Calculer $\left( \frac{\partial f}{\partial x}  \right)^2 + \left( \frac{\partial f}{\partial y}  \right)^2 $ en coordonnées polaires.
+{\it Indication:  On demande en fait d'exprimer les dérivées partielles de $f$ en fonction des dérivées partielles de  $g:(r,\theta) \mapsto f(r\cos(\theta), r \sin(\theta))$. }
+%exo 16 p44 dans Niglio
+
+
+%\exo{} On consid\`ere l'application $\varphi:\R^3\to \R^3$ d\'efinie par $$\varphi (x,y,z)= (x^2-y^2, y^2-z^2, z^2-x^2)$$ et une application $f:\R^3\longrightarrow \R$ de classe $\reg{1}$. 
+
+%\begin{enumerate}
+	%\item \'Ecrire les matrices jacobiennes de $\varphi $ et  de l'application $g=f\circ \varphi:\R^3\longrightarrow \R$. 
+	%\item  Calculer $\frac{\partial g}{\partial x}(t,t,t)+ \frac{\partial g}{\partial y}(t,t,t)+ \frac{\partial g}{\partial z}(t,t,t) $ pour tout r\'eel $t$.
+%\end{enumerate}
+
+
+\section{ Fonctions implicites}
+
+\exo{} On considère l'équation $xe^y + ye^x = 0$:
+\begin{center}
+    
+    \begin{tikzpicture}[scale=1]
+        \begin{axis}[z post scale=1.5,zlabel style={rotate=-90},zlabel=$z$,xlabel = $x$,ylabel=$y$,width=.3\textwidth, ,domain=-.5:.5,zmax=1.648721271,zmin=-1,view/h=70] 
+            
+            \addplot3[ contour gnuplot={ % cdata should not be affected by z filter:
+                output point meta=rawz,
+                levels={0},
+                labels=false,
+            }, samples=71, z filter/.code=\def\pgfmathresult{-1}, thick] {x*exp(y) + y*exp(x) };
+            \addplot3[surf,opacity=.7,samples=20] gnuplot {x*exp(y) + y*exp(x)  };
+        \end{axis} 
+    \end{tikzpicture}
+\end{center}
+\begin{enumerate}
+    \item Vérifier qu'elle définie une et une seule fonction $y=\varphi(x)$ au voisinage de $(0,0)$.
+    \item Calculer le développement de Taylor de $\varphi$ à l'ordre 2 centré en $x = 0$.
+\end{enumerate}
+
+%%Facononi: exerci 4.45 p 114
+
+
+\exo[*]{} On considère la fonction définie par $f(x,y) = x^2 y + \ln(1+y^2)$ dont voici le graphe:
+\begin{center}
+    
+    \begin{tikzpicture}[scale=1]
+        \begin{axis}[zlabel style={rotate=-90},zlabel=$z$,xlabel = $x$,ylabel=$y$,width=.3\textwidth, ,domain=-1:1,zmax=2,zmin=-1] 
+            
+            \addplot3[ contour gnuplot={ % cdata should not be affected by z filter:
+                output point meta=rawz,
+                levels={0},
+                labels=false,
+            }, samples=71, z filter/.code=\def\pgfmathresult{-1}, thick ] {x^2 *y + ln(1+y^2) };
+            \addplot3[surf,opacity=.7,samples=20] gnuplot {x**2 *y + log(1+y**2) };
+        \end{axis} 
+    \end{tikzpicture}
+\end{center}
+\begin{enumerate}
+    \item Vérifier que le théorème des fonctions implicites ne s'applique pas à l'origine.
+    \item Montrer que, au voisinage de l'origine, l'ensemble $ L_0 = \left\{ (x,y)  \in \R^2 | f(x,y) =0\right\}$ est constitué de l'axe des abscisses et d'une courbe dont on déterminera une expression. %a tangente à l'origine.
+    %\item Déterminer des fonctions $x \mapsto \varphi(x)$ de classe  $\reg{1}$ ou $\reg{2}$ sur un intervalle $I$ contenant 0 et telles que $f(x,\varphi(x)) = 0$ pour tout $x\in I$.
+\end{enumerate}
+%%exercice 22 p. 46 Noirot
+
+\section{\'Equations aux dérivée partielles}
+
+\exo{(Primitives)}
+Déterminer toutes les fonctions $f: \R^2 \to \R$ solutions des systèmes suivants:
+
+\begin{enumerate*}
+	\item $\begin{cases}
+				\frac{\partial f}{\partial x} (x,y) = xy^2  \\
+				\frac{\partial f}{\partial y} (x,y) = yx^2 
+		\end{cases}$
+	\item $\begin{cases}
+				\frac{\partial f}{\partial x} (x,y) = e^x y  \\
+				\frac{\partial f}{\partial y} (x,y) = e^x + 2y 
+		\end{cases}$
+	%\item $\frac{\partial f}{\partial x} (x,y) = xy^2$
+\end{enumerate*}
+% exo 9 de bibmath
+
+
+\exo{(Fonctions invariantes par translation)} On cherche à déterminer les fonctions $\R^2 \to \R$ de classe $\reg{1}$ vérifiant pour tout $x,y,t\in\R$:
+\[
+	f(x+t,y+t) = f(x,y)
+\]
+\begin{enumerate}
+	\item Démontrer que, pour tout $(x,y) \in\R^2$,
+		\[
+			\frac{\partial f}{\partial x} (x,y) + \frac{\partial f}{\partial y} (x,y) = 0.
+		\]
+	\item On pose $u=x+y$ et $v=x-y$ et $F(u,v) = f(x,y)$. Démontrer que $\frac{\partial F}{\partial u} = 0$.
+	\item Conclure.
+\end{enumerate}
+% exo bibmath 
+{\it Indication:  Voici un exemple de solution:}
+
+\begin{minipage}{6cm}
+			\begin{tikzpicture}[scale=.5]
+				\begin{axis}[,xlabel=$x$,ylabel=$y$,view={-60}{45}]%,xtick=\empty,ytick=\empty,ztick=\empty ]
+					\addplot3[surf,opacity=.7,samples=50,domain=-5:5,y domain=-5:5] gnuplot { exp(- abs(x - y)**2  )};
+				\end{axis}
+			\end{tikzpicture}
+		\end{minipage}
+		$f(x,y) =  \exp(-(x - y)^2)$
+
+
+
+
+\exo[*]{}
+Trouver toutes les applications $f$ de $\R^2$ dans $\R$ vérifiant  
+\begin{equation}
+	x\frac{\partial f}{\partial x}+ y\frac{\partial f}{\partial y}=\sqrt{x^2+y^2} \tag{$*$}
+\end{equation}
+	sur $D=\{(x,y)\in\R^2/\;x>0\}$.
+{\it Indication: on pourra passer en coordonnées polaires. Voici un exemple de solution:}
+% Exo 10 fiche 000116
+
+\begin{minipage}{6cm}
+			\begin{tikzpicture}[scale=.5]
+				\begin{axis}[,xlabel=$x$,ylabel=$y$,view={30}{40}]%,xtick=\empty,ytick=\empty,ztick=\empty ]
+					\addplot3[surf,opacity=.7,samples=50,domain=0:1,y domain=-1:1] { sqrt(x^2 + y^2) + (- atan( y/x))^2};
+				\end{axis}
+			\end{tikzpicture}
+		\end{minipage}
+		$f(x,y) = \sqrt{x^2 + y^2} -  (\arctan(y/x))^2$
+
+
+%\exo{(\'Equation de transport)}
+%Trouver toutes les fonctions $f: \R^2 \to \R$, $\reg{1}$ sur $\R^2$ telles que
+%\[
+%\frac{\partial f}{\partial x}+ 2x\frac{\partial f}{\partial y}=0
+%\]
+%{\it  Indication:  on pourra effectuer le changement de variables $x=u,y=v+u^2$ . Voici un exemple de solution:}
+
+%\begin{minipage}{6cm}
+
+			%\begin{tikzpicture}[scale=.5]
+				%\begin{axis}[,xlabel=$x$,ylabel=$y$,view={-60}{75}]%,xtick=\empty,ytick=\empty,ztick=\empty ]
+					%%\addplot3[surf,samples=50,domain=-3:7,y domain=-5:5] gnuplot { exp(- abs(x - y**2)**2  )};
+					%\addplot3[surf,opacity=.7,samples=50,domain=-3:7,y domain=-5:5] { exp(- abs(x - y^2)^2  )};
+				%\end{axis}
+			%\end{tikzpicture}
+		%\end{minipage}
+%$f(x,y) = \exp(-(x - y^2)^2 ) $
+
+\end{document}
+

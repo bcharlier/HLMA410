@@ -1,0 +1,35 @@
+\documentclass[a4paper,12pt,draft]{book}
+
+\input{../../header.tex}
+
+\def\version{poly}
+
+\usepackage[a4paper,hmargin=20mm,vmargin=25mm]{geometry}
+
+\title{{\color{astral}\sffamily\bfseries G\'eom\'etrie et Toplogie}}
+
+\author{Benjamin Charlier \& Matthieu Hillairet}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+
+\tikzexternaldisable
+
+
+%\input{../chap_geometrie_vectorielle/chap_geometrie.tex}
+%\addtocounter{chapter}{1}
+\input{../chap_courbes/chap_courbes.tex}
+%\addtocounter{chapter}{2}
+\input{../chap_espace_norme/chap_espace_norme.tex}
+%\addtocounter{chapter}{3}
+\input{../chap_espace_euclidien/esp_eucl.tex}
+
+\bibliographystyle{plain}
+\bibliography{../../biblio_cours} 
+
+
+\end{document}
+

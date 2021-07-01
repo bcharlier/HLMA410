@@ -1,0 +1,129 @@
+\documentclass{tp_um}
+
+\input{../../TD/header.tex}
+
+%-----------------------------------------------------------------------------
+
+\title{\Large \sffamily\bfseries Examen - Session 1}
+\ue{HLMA410}
+
+
+%-----------------------------------------------------------------------------
+\begin{document}
+
+\maketitle
+
+\bigskip
+
+\textit{Durée 3h00. Les documents, la calculatrice, les téléphones portables, tablettes, ordinateurs ne sont pas autorisés. La qualité de la rédaction sera prise en compte. Les exercices sont indépendants.} 
+
+\bigskip
+\bigskip
+
+\section{Analyse}
+
+\exo{} Soit $(E,\langle\cdot,\cdot\rangle)$ un espace euclidien. Montrer que pour tout $u,v\in E$ 
+\[
+	\abs{\prs{u,v}} \leq \sqrt{\prs{u,u} \prs{v,v}}.
+\]
+
+\exo{}
+On considère l'application 
+\begin{align*}
+	f : \R^3 & \to \R^2 \\
+(x,y,z) & \mapsto (xye^z,\cos(yz))
+\end{align*}
+\begin{enumerate}
+	\item Justifier que $f$ est de classe $\mathcal C^1$ sur $\R^3$.
+	\item Calculer la différentielle $L$ de $f$ au point $(1,2,3)$.
+	\item Détermniner l'ensemble $\{ (x,y,z)\in \R^3 | L(x,y,z) = (0,0) \}$. 
+\end{enumerate}
+
+\exo{} On considère le domaine 
+\[
+	D = \left\{ (x,y) \in\R^2 | x <7, 8-x <y<x+1 \right\}
+\]
+\begin{enumerate}
+	\item Dessiner $D$.
+	\item Calculer $\iint_D \frac{dxdy}{(x+y)^2}$
+\end{enumerate}
+
+
+\exo{} Pour $(x,y) \in \R^2\setminus\left\{ (0,0) \right\}$, on note 
+\[
+	f(x,y) = \frac{xy^2}{x^2 + y^2}
+\]
+\begin{enumerate}
+	\item Montrer que $f$ se prolonge en une fonction $\check f$ continue sur $\R^2$.
+	\item En quels points de $\R^2$ la fonction $\check f$ est-elle différentiable ?
+\end{enumerate}
+
+\exo{} Soit la fonction \[f(x,y) = \exp \left ( -4x^2 - y^2 + 8x +4y -8 \right)\]
+définie sur $\R^2$.% 9*(x-2)^2 + (y+2)^2/4
+\begin{enumerate}
+	\item \'Etudier la régularité $f$ (continuité, différentiabilité, etc\ldots).
+	\item Déterminer le signe de  $(x,y)  \mapsto   -4x^2 - y^2 + 8x +4y -8$. En déduire l'ensemble image de $f$.
+	\item Soit  \[E_\lambda =  \left\{ (x,y) \in\R^2 | f(x,y) \geq \lambda \right\}.\] Dessiner $E_{e^{-1}}$, $E_{e^{-2}}$ et  $E_{e^{-3}}$. L'ensemble $E_{e^{-1}} \cup E_{e^{-2}} \cup E_{e^{-3}}$ est-il ouvert, fermé, les deux, ni l'un ni l'autre? Faire une démonstration.
+	%\item Donner les points de minimums de $f$ sur $\R^2$. Indiquer aussi la nature de ces points (minimum global ou local).
+	\item Calculer le gradient de $f$ et le représenter succinctement sur la figure de la question 3.
+	\item Calculer la hessienne de $f$.
+	\item Déterminer le(s) point(s) critique(s) de $f$ et donner leur nature (minimum, maximum, point selle,\ldots).
+	\item On pose $D_1=\left\{ (X,Y)\in\R^2 | X^2 + Y^2 < 1 \right\}$ et on donne $\iint_{D_1} \exp(-X^2 -Y^2 )dXdY  = \pi(1 - e^{-1})$.
+	%\item On rappelle que $\iint_{\R^2} \exp(-X^2 -Y^2 )dXdY  = \pi$.
+		%\begin{enumerate}
+			%\item Déterminer les réels $a_1,a_2,c_1,c_2$ tels que $f(x , y) =  \exp (-a_1(x-c_1)^2 - a_2 (y-c_2)^2 )$. % Appliquer l'algorithme de la décomposition de Gauss et en déduire le signe de $q$
+En déduire de  la valeur de 
+\[
+\iint_{D_2} f(x,y) dxdy\] où $D_2 = \{ (x,y)\in\R^2 | 4(x-1)^2 +  (y-2)^2  < 1 \}$.
+		%\end{enumerate}
+\end{enumerate}
+
+%\exo{} On considère l'arc paramétré 
+%\begin{align*}
+	%\phi:[0,1] &\to \R^2
+	%t & \mapsto \left( \frac{t}{1+t^4} , \frac{t^3}{1+t^4} \right)
+%\end{align*}
+%et le champs de vecteurs 
+%\begin{align*}
+	%\omega:\R^2 &\to \R^2
+	%(x,y) &\mapsto (-y, x)
+%\end{align*}
+%\begin{enumerate}
+	%\item Calculer la circulation de $\omega$ le long de $\phi$
+	%\item Calculer la circulation de $\omega$ le long du segment $s$ joignant $\phi(0)$ à $\phi(1)$.
+	%%\item Montrer que le support de la courbe $\phi$ est incluse dans le domaine $D = \{(x,y)\in\R^2 | y\leq x\}$.
+	%%\item Calculer l'aire du domaine délimité par l'arc $\phi$ et le segment $s$ (on admettra que le bord de ce domaine est l'union des support de $\phi$ et de $s$)
+%\end{enumerate}
+
+
+
+
+
+\section{Probabilités}
+
+\exo{}Soit $X$ une variable aléatoire réelle telle que $\E(X^2) < +\infty$. Montrer que 
+\[
+	\E( (X-\E(X))^2) = \E(X^2) - (\E(X))^2.
+\]
+
+\exo{}Sachant que l'on a obtenu 12 fois «face» en 20 lancers d'une pièce équilibrée, calculer la probabilité que:
+\begin{enumerate}
+	\item le premier lancer ait amené «face»
+	\item au moins deux des cinq premiers lancers aient amené «face» (on ne demande pas de calculer la valeur numérique approchée, c'est le raisonnement qui sera évalué).
+\end{enumerate}%Dossier 3 MArin
+
+%\exo{} Soit $X$ et $Y$ deux variables aléatoires indépendantes de lois géométriques de paramètre $a$ et $b$ respectivement. On note $Z = \min \left\{ X,Y \right\}$. Le but de l'exercice est de déterminer la loi de $Z$.
+%\begin{enumerate}
+	%\item Calculer $\P\left( X \leq k \right)$ et $\P\left( Y\leq k\right)$ pour tout $k\in \N^*$.
+	%\item Calculer alors $\P\left( Z\leq k \right)$ pour tout $k \in \N^*$
+	%\item Soit $k\in\N^*$ fixé. Exprimer l'évènement $\left\{ Z = k \right\}$ en fonction des évènements du type $\left\{ Z\leq \ell \right\}$, $\ell\in \N^*$.
+	%\item En déduire la loi de $Z$.
+%\end{enumerate}
+\end{document}
+
+
+
+
+
+
+

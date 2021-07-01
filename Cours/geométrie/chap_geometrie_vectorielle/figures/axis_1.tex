@@ -1,0 +1,44 @@
+%\usetikzlibrary{3d}
+\begin{tikzpicture}
+	[%x={(-0.5cm,-0.5cm)},
+%	    y={(1cm,0cm)},
+%	    z={(0cm,1cm)}, 
+		scale=1,
+		fill opacity=1,%0.80,
+		very thin,
+	every node/.append style={transform shape}]
+
+\def\ctr{1}
+\def\side{2}
+\def\sideT{.4}
+\filldraw[color=blue!40] (-\sideT,-\sideT,0) -- (-\sideT,\side,0) -- (\side,\side,0) -- (\side,-\sideT,0) -- cycle;
+\filldraw[color=gray!40] (-\sideT,0,-\sideT) -- (-\sideT,0,\side) -- (\side,0,\side) -- (\side,0,-\sideT) -- cycle;
+\filldraw[color=green!40] (0,-\sideT,-\sideT) -- (0,-\sideT,\side) -- (0,\side,\side) -- (0,\side,-\sideT) -- cycle;
+
+\def\sideT{0}
+\filldraw[color=blue!40] (-\sideT,-\sideT,0) -- (-\sideT,\side,0) -- (\side,\side,0) -- (\side,-\sideT,0) -- cycle;
+\filldraw[color=gray!40] (-\sideT,0,-\sideT) -- (-\sideT,0,\side) -- (\side,0,\side) -- (\side,0,-\sideT) -- cycle;
+	\filldraw[color=green!40] (0,-\sideT,-\sideT) -- (0,-\sideT,\side) -- (0,\side,\side) -- (0,\side,-\sideT) -- cycle;
+
+%	% face #3
+	\begin{scope}[canvas is zx plane at y=0]
+		\draw[thick,->] (1.5,1) arc (0:90:.5cm) node[above right,midway]{$+$};
+		\node[rotate=90] at (\ctr/2,\ctr) {plan $xz$};
+	\end{scope}
+%	% face #2
+	\begin{scope}[canvas is yx plane at z=0]
+		\draw[thick,<-] (1.5,1) arc (0:90:.5cm) node[above right,midway]{$+$};
+		\node[yscale=-1,rotate=-90] at (\ctr/2,\ctr) {plan $xy$};
+	\end{scope} 
+%
+%      % face #1
+	\begin{scope}[canvas is yz plane at x=0]
+		\draw[thick,->] (1.5,1) arc (0:90:.5cm) node[above right,midway]{$+$};
+		\node[rotate=-90] at (\ctr/2,\ctr) {plan $yz$};
+	\end{scope}
+
+	\draw[thick,->] (0,0,0) -- (\side+.3,0,0) node[right,text width=2cm, align=center] {$x$ (pouce)};
+	\draw[thick,->] (0,0,0) -- (0,\side+.3,0) node[above,text width=2.1cm, align=center] {$y$ (index)};
+	\draw[thick,->] (0,0,0) -- (0,0,\side+.3) node[below left,text width=2.4cm, align=center] {$z$ (majeur)};
+
+\end{tikzpicture}

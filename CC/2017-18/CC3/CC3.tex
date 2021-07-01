@@ -1,0 +1,245 @@
+\documentclass[a4paper]{tp_um}
+\input{../../TD/header.tex}
+%\input{header.tex}
+\ue{HLMA410}
+
+%-----------------------------------------------------------------------------
+
+\title{\large \sffamily\bfseries Contrôle continu 3}
+
+\begin{document}
+
+\maketitle
+\textit{Durée 1h10. Les documents, la calculatrice, les téléphones portables, tablettes, ordinateurs ne sont pas autorisés. La qualité de la rédaction sera prise en compte.} 
+
+\bigskip
+\bigskip
+
+\exo{} On définit $f:\R^2\setminus\left\{ (0,0) \right\} \to \R$ par 
+\[
+    f(x,y) = \frac{x^2}{(x^2 + y^2)^{3/4} }
+\]
+\begin{enumerate}
+    \item Déterminer la limite de $f$ en $(0,0)$.
+        \blanc{4cm}
+        
+        %\medskip
+
+        %On a $\abs{f(x,y)} \leq (x^2 + y^2) /(x^2 + y^2)^{3/4} = (x^2 + y^2)^{1/4} \xrightarrow[(x,y)\to(0,0)]{} 0$. Ainsi $\lim_{(x,y)\to(0,0)}f(x,y) = 0$.
+        
+        %\medskip
+
+    \item En déduire que l'on peut prolonger $f$ en une fonction $\tilde f$ continue sur tout $\R^2$.
+        \blanc{4cm}
+        
+        %\medskip
+
+        %Comme $f$ est clairement continue (c'est un quotient de fonctions continues dont le dénominateur ne s'annule pas) sur $\R^2\setminus\left\{ (0,0) \right\}$, il suffit de poser $\tilde f(x,y)= \begin{cases}
+            %f(x,y) &\text{ si } (y,x) \neq (0,0) \\
+            %0 &\text{ si } (x,y) = (0,0)
+        %\end{cases}$.
+        
+        %\medskip
+
+    \item \'Etudier l'existence des dérivées partielles de $\tilde f$. Les calculer lorsqu'elles existent.
+        \blanc{13cm}
+        
+        %\medskip
+
+        %Sur $\R^2\setminus\left\{ (0,0) \right\} $ la fonction $\tilde f$ admet les dérivées partielles suivantes : 
+        %\[
+            %\frac{\partial \tilde f}{\partial x}(x,y) = {{2\,x}\over{\left(y^2+x^2\right)^{{{3}\over{4}}}}}-{{3\,x^3}\over{
+ %2\,\left(y^2+x^2\right)^{{{7}\over{4}}}}}   \quad \text{ et }  \frac{\partial \tilde f}{\partial y}(x,y)  = -{{3\,x^2\,y}\over{2\,\left(y^2+x^2\right)^{{{7}\over{4}}}}}
+        %\]
+        %En $(x,y) = (0,0)$ la fonction partielle $y \mapsto f(0,y) = 0$  et il vient $\frac{\partial \tilde f}{\partial y}(0,0) = 0$. De plus 
+        %\[
+            %\frac{ \tilde f(x,0) - \tilde f(0,0) }{x - 0} = \abs{x}^{-1/2}, 
+        %\]
+%ce taux d'accroissement tend vers $+\infty$ si $x$ tend vers $0$, et donc $\tilde f$ n'admet pas de dérivée partielle par rapport à la première variable en $(0,0)$.
+        
+        %\medskip
+
+    \item Sur quel domaine la fonction $\tilde f$ est-elle différentiable ?
+        \blanc{5cm}
+
+        %\medskip
+        
+        %Sur $\R^2\setminus\left\{ (0,0) \right\} $ la fonction $\tilde f$ est $\mathcal C^1$ et est donc différentiable. En l'origine, on a un point singulier: la fonction partielle $x \mapsto \tilde f(x,0) = \abs{x}^{2-3/2} = \abs{x}^{1/2}$ admet un point anguleux en $x=0$:
+		%\begin{center}
+			%\begin{tikzpicture}[scale=.5]
+				%\begin{axis}[,xlabel=$x$,ylabel=$y$]%,xtick=\empty,ytick=\empty,ztick=\empty ]
+                    %\addplot3[surf,opacity=.7,samples=50] gnuplot {x**2 /(x**2 + y**2)**(0.75) };
+				%\end{axis}
+			%\end{tikzpicture}
+		%\end{center}
+
+
+\end{enumerate}
+
+
+\exo{} Soit $a\in\R$, on cherche toutes les fonctions $g:\R^2\to\R$ de classe $\mathcal C^1$ sur $\R^2$ vérifiant 
+\begin{equation}\label{eq.par}
+    \frac{\partial g}{\partial x} (x,y) - \frac{\partial g}{\partial y}(x,y) = a.
+\end{equation}
+
+\begin{enumerate}
+    \item On pose $\phi : (u,v)  \to ((u+v)/2,(v-u)/2)$. Montrer que $\phi$ est un $\mathcal C^1$-diffeomorphisme sur $\R^2$ et preciser son inverse. 
+        \blanc{6cm}
+        
+        %\medskip
+
+        %La fonction $\phi$ est une application linéaire inversible (d'inverse $\phi^{-1}(x,y) = \left( x-y, x+y \right)$). Les applications $\phi$ et $\phi^{-1}$  sont donc $\mathcal C^1(\R^2)$ et donnent bien des difféomorphismes du plan.
+
+        
+        %\medskip
+
+    \item Étant donnée une fonction $g:\R^2\to\R$ solution de \eqref{eq.par}, on pose $f = g \circ \phi %\left( \frac{u+v}{2}, \frac{v-u}{2} \right)
+        $. Démontrer alors que $\frac{\partial f}{\partial u}(u,v) = \frac a 2$.
+        \blanc{8cm}
+        
+        %\medskip
+        %On pose $\phi(u,v) = (x(u,v),y(u,v))$ et il faut appliquer la règle de la chaîne: 
+        %\begin{align*}
+            %\frac{\partial f}{\partial u}(u,v) &= \frac{\partial g}{\partial x}(x,y) \frac{\partial x}{\partial u} (u,v)  +\frac{\partial g}{\partial y}(x,y) \frac{\partial y}{\partial u} (u,v) \\
+            %& = \frac{\partial g}{\partial x}(x,y) \frac 12 -\frac{\partial g}{\partial y}(x,y)  \frac 12 \\
+            %& = \frac 12 \underbrace{\left( \frac{\partial g}{\partial x}(x,y) -\frac{\partial g}{\partial y}(x,y)  \right)}_{\text{utiliser \eqref{eq.par}}} = \frac a2
+        %\end{align*}
+
+        %\medskip
+
+    \item Intégrer l'expression de la question précédente pour en déduire une expression générique de $f$.
+        \blanc{6cm}
+
+        %\medskip
+
+        %La dérivée partielle de $f$ par rapport à $u$ est une constante: on a donc \[f(u,v) = \frac a2 u + h(v) + b\] où $h:\R\to\R$ est une fonction $\mathcal C^1$ quelconque et $b\in \R$ (on aurait pu ``rentrer'' la constante $b$ dans la fonction $h$\ldots).
+
+        %\medskip
+
+    \item En déduire les solutions de \eqref{eq.par}.
+        \blanc{5cm}
+
+%\medskip
+
+        %On utilise le changement de variable inverse. On a  
+        %\[
+            %g(x,y) = f \circ \phi^{-1} (x,y) = \frac a2 (x-y) + h(x+y) + b.
+        %\]
+        %qui est bien solution de \eqref{eq.par}. Voici un exemple avec $a=2$ et $h(v) = 3\sin\left( - v^2 /10 \right)$:
+		%\begin{center}
+			%\begin{tikzpicture}[scale=.5]
+				%\begin{axis}[,xlabel=$x$,ylabel=$y$,view={-110}{25}]%,xtick=\empty,ytick=\empty,ztick=\empty ]
+                    %\addplot3[surf,opacity=.7,samples=50] gnuplot { (x-y) + 3*sin(- .1*( x+y)**2 ) };
+				%\end{axis}
+			%\end{tikzpicture}
+		%\end{center}
+
+\end{enumerate}
+
+\exo{}
+Soit $f : \mathbb R^2 \to \mathbb R$, définie par $f(x,y) = \tfrac13 x^3 + 4 xy^2 + x^2 +4y^2$.
+\begin{enumerate}
+    \item Démontrer que les 4 points critiques de la fonction $f$ sont $(0,0)$, $(-2,0)$, $(-1,-1/2)$ et $(-1,1/2)$.
+        \blanc{8cm}
+
+        %\medskip
+
+%La fonction $f$ est clairement de classe $\mathcal C^2$ sur $\mathbb R^2$ car polyn\^ome. Pour tout $(x,y) \in \mathbb R^2$ on a
+%$$
+%\frac{\partial f}{ \partial x}(x,y) = x^2 + 4y^2 + 2x , \quad
+%\frac{\partial f}{ \partial y}(x,y) = 8xy + 8y,
+%$$
+%et
+%$$
+%\frac{\partial^2 f}{ \partial x^2}(x,y) = 2x+2 , \quad
+%\frac{\partial^2 f}{ \partial x \partial y}(x,y) = 8y , \quad
+%\frac{\partial^2 f}{ \partial y^2}(x,y) = 8x+8.
+%$$
+%Un point $(x,y) \in \mathbb R^2$ est un point critique si et seulement si
+%$$
+%\left\{
+%\begin{aligned}
+%& x^2 + 4y^2 + 2x = 0 \\
+%&  y(x + 1)=0
+%\end{aligned}
+%\right.
+%\quad \Leftrightarrow \quad 
+%\left\{
+%\begin{aligned}
+%& x^2 + 4y^2 + 2x = 0 \\
+%& y=0 \text{ ou } x=-1
+%\end{aligned}
+%\right. .
+%$$
+%Ainsi si $y=0$ on obtient de la premi\`ere \'equation $x = 0$ ou $x=-2$ ; et si $x=-1$ on obtient $y=-1/2$ ou $y=1/2$. Il y a donc quatre points critiques: $(0,0)$, $(-2,0)$, $(-1,-1/2)$ et $(-1,1/2)$.
+
+        \medskip
+
+    \item Déterminer la nature (maximum, minimum, point selle) de chacun de ces points critiques.
+        \blanc{10cm}
+
+        %\medskip
+
+        %\begin{itemize}
+            %\item
+                %Point $(0,0)$: on a
+                %$$
+                %\mathrm{Hess}_f (0,0) = \left(\begin{matrix} 
+                        %2 & 0 \\
+                        %0 & 8  
+                %\end{matrix} \right),
+                %$$
+                %et avec les notations du cours on obtient $rt-s^2 = 16 > 0$ et $r=2>0$, donc $(0,0)$ est un minimum local de $f$. 
+
+            %\item
+                %Point $(-2,0)$: on a
+                %$$
+                %\mathrm{Hess}_f (-2,0) = \left(\begin{matrix} 
+                        %-2 & 0 \\
+                        %0 & -8  
+                %\end{matrix} \right),
+                %$$
+                %ce qui implique $rt-s^2 = 16  > 0$ et $r=-2<0$, donc $(-2,0)$ est un maximum local de $f$. 
+
+            %\item
+                %Point $(-1,-1/2)$: on a
+                %$$
+                %\mathrm{Hess}_f (-1,-1/2) = \left(\begin{matrix} 
+                        %0 & -4 \\
+                        %-4 & 0  
+                %\end{matrix} \right),
+                %$$
+                %ce qui implique $rt-s^2 = -16  < 0$, donc $(-1,-1/2)$ est un point selle de $f$. 
+
+            %\item
+                %Point $(-1,1/2)$: on a
+                %$$
+                %\mathrm{Hess}_f (-1,1/2) = \left(\begin{matrix} 
+                        %0 & 4 \\
+                        %4 & 0  
+                %\end{matrix} \right),
+                %$$
+                %ce qui implique $rt-s^2 = -16  < 0$, donc $(-1,1/2)$ est un point selle de $f$. 
+        %\end{itemize}
+
+%\medskip
+
+    \item La fonction $f$ possède-t-elle un maximum global?
+        \blanc{1cm} 
+        \medskip
+
+        %C'est une fonction polynomiale et n'est donc pas bornée. Il n'y a pas d'extrema globaux finis.
+\end{enumerate}
+
+
+
+%\medskip\noindent
+%{\it Solution.}
+
+
+
+
+
+
+
+\end{document}

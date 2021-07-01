@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+ 
+<question type="category">
+  <category>
+    <text>$module$/Application de la differentielle (3pt)</text>
+  </category>
+</question>
+ 
+<question type="numerical">
+  <name>
+    <text>Application de la differentielle</text>
+  </name>
+  <questiontext format="html">
+    <text><![CDATA[<p>Soit la fonction \(f:\mathbb R^3 \to \mathbb R\) de classe \(\mathcal C^2(\mathbb R^2)\) et \(p=(3,2,1)\). Sachant que \(f(p) = 10\), \(\frac {\partial f}{\partial x}(p) = 2\), \(\frac {\partial f}{\partial y}(p) = 1\) et \(\frac {\partial f}{\partial z}(p) = 3\) et que \(\operatorname {Hess}_f(p) = \begin {pmatrix} 1& 2& 0\\ 2& 1& 1\\ 0& 1& 3 \end {pmatrix}\), calculer une valeur approch&eacute;e de \(f(2.9,2.1,1.2)\). On donnera une valeur approch&eacute;e &agrave; \(10^{-2}\) pr&egrave;s. </p>]]></text>
+  </questiontext>
+  <defaultgrade>3</defaultgrade>
+  <generalfeedback format="html"><text/></generalfeedback>
+  <penalty>0.1000000</penalty>
+  <hidden>0</hidden>
+  <answer fraction="100" format="plain_text">
+    <text>10.57</text>
+    <tolerance>0</tolerance>
+  </answer>
+</question>
+ 
+</quiz>
