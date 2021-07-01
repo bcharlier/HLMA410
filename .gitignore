@@ -1,0 +1,20 @@
+# System specific files
+*.DS_Store
+*~
+*.swp
+*.swo
+.Rproj.user
+# Latex
+*.syntex.gz
+*.out
+*.log
+*.aux
+*.gnuplot
+*.table
+*.snm
+*.latexmain
+*.toc
+*.nav
+*_minted*
+*ouput_latex*
+
