@@ -5,7 +5,10 @@
 *.swo
 .Rproj.user
 # Latex
-*.syntex.gz
+*.auxlock
+*.bbl
+*.blg
+*.synctex.gz
 *.out
 *.log
 *.aux
