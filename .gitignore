@@ -4,6 +4,8 @@
 *.swp
 *.swo
 .Rproj.user
+*.md5
+
 # Latex
 *.auxlock
 *.bbl

@@ -1,0 +1,1 @@
+./output_latex/td6-figure2.pdf: ./output_latex/td6-figure2.pgf-plot.table
