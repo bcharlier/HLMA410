@@ -1,0 +1,132 @@
+\pgfkeys{/tikz/.cd,
+cube top color/.store in=\CubeTopColor,
+cube top color=blue!60,
+cube front color/.store in=\CubeFrontColor,
+cube front color=blue!30,
+cube side color/.store in=\CubeSideColor,
+cube side color=blue!40,
+}
+\makeatletter
+ \pgfdeclareplotmark{my cube*}
+                {%
+                        \pgfplots@cube@gethalf@x
+                        \let\pgfplots@cube@halfx=\pgfmathresult
+                        \pgfplots@cube@gethalf@y
+                        \let\pgfplots@cube@halfy=\pgfmathresult
+                        \pgfplots@cube@gethalf@z
+                        \let\pgfplots@cube@halfz=\pgfmathresult
+                        \pgfmathparse{0*\pgfplots@cube@halfz}
+                        \let\pgfplots@cube@topz=\pgfmathresult
+                        %
+                        \pgfplotsifaxissurfaceisforeground{0vv}{%
+                                \pgfsetfillcolor{\CubeFrontColor}
+                                \pgfpathmoveto{\pgfplotsqpointxyz{-\pgfplots@cube@halfx}{-\pgfplots@cube@halfy}{-\pgfplots@cube@halfz}}%
+                                \pgfpathlineto{\pgfplotsqpointxyz{-\pgfplots@cube@halfx}{-\pgfplots@cube@halfy}{\pgfplots@cube@topz}}%
+                                \pgfpathlineto{\pgfplotsqpointxyz{-\pgfplots@cube@halfx}{ \pgfplots@cube@halfy}{\pgfplots@cube@topz}}%
+                                \pgfpathlineto{\pgfplotsqpointxyz{-\pgfplots@cube@halfx}{ \pgfplots@cube@halfy}{-\pgfplots@cube@halfz}}%
+                                \pgfpathclose
+                                \pgfusepathqfillstroke
+                        }{% 
+                                \pgfsetfillcolor{\CubeFrontColor}
+                                \pgfpathmoveto{\pgfplotsqpointxyz{ \pgfplots@cube@halfx}{-\pgfplots@cube@halfy}{-\pgfplots@cube@halfz}}%
+                                \pgfpathlineto{\pgfplotsqpointxyz{ \pgfplots@cube@halfx}{-\pgfplots@cube@halfy}{\pgfplots@cube@topz}}%
+                                \pgfpathlineto{\pgfplotsqpointxyz{ \pgfplots@cube@halfx}{ \pgfplots@cube@halfy}{\pgfplots@cube@topz}}%
+                                \pgfpathlineto{\pgfplotsqpointxyz{ \pgfplots@cube@halfx}{ \pgfplots@cube@halfy}{-\pgfplots@cube@halfz}}%
+                                \pgfpathclose
+                                \pgfusepathqfillstroke
+                        }%
+                        \pgfplotsifaxissurfaceisforeground{v0v}{%
+                                \pgfsetfillcolor{\CubeSideColor}
+                                \pgfpathmoveto{\pgfplotsqpointxyz{-\pgfplots@cube@halfx}{-\pgfplots@cube@halfy}{-\pgfplots@cube@halfz}}%
+                                \pgfpathlineto{\pgfplotsqpointxyz{-\pgfplots@cube@halfx}{-\pgfplots@cube@halfy}{\pgfplots@cube@topz}}%
+                                \pgfpathlineto{\pgfplotsqpointxyz{ \pgfplots@cube@halfx}{-\pgfplots@cube@halfy}{\pgfplots@cube@topz}}%
+                                \pgfpathlineto{\pgfplotsqpointxyz{ \pgfplots@cube@halfx}{-\pgfplots@cube@halfy}{-\pgfplots@cube@halfz}}%
+                                \pgfpathclose
+                                \pgfusepathqfillstroke
+                        }{% 
+                                \pgfsetfillcolor{\CubeSideColor}
+                                \pgfpathmoveto{\pgfplotsqpointxyz{-\pgfplots@cube@halfx}{ \pgfplots@cube@halfy}{-\pgfplots@cube@halfz}}%
+                                \pgfpathlineto{\pgfplotsqpointxyz{-\pgfplots@cube@halfx}{ \pgfplots@cube@halfy}{\pgfplots@cube@topz}}%
+                                \pgfpathlineto{\pgfplotsqpointxyz{ \pgfplots@cube@halfx}{ \pgfplots@cube@halfy}{\pgfplots@cube@topz}}%
+                                \pgfpathlineto{\pgfplotsqpointxyz{ \pgfplots@cube@halfx}{ \pgfplots@cube@halfy}{-\pgfplots@cube@halfz}}%
+                                \pgfpathclose
+                                \pgfusepathqfillstroke
+                        }%
+                        \pgfplotsifaxissurfaceisforeground{vv0}{%
+                                \pgfsetfillcolor{\CubeTopColor}
+                                \pgfpathmoveto{\pgfplotsqpointxyz{-\pgfplots@cube@halfx}{-\pgfplots@cube@halfy}{-\pgfplots@cube@halfz}}%
+                                \pgfpathlineto{\pgfplotsqpointxyz{-\pgfplots@cube@halfx}{ \pgfplots@cube@halfy}{-\pgfplots@cube@halfz}}%
+                                \pgfpathlineto{\pgfplotsqpointxyz{ \pgfplots@cube@halfx}{ \pgfplots@cube@halfy}{-\pgfplots@cube@halfz}}%
+                                \pgfpathlineto{\pgfplotsqpointxyz{ \pgfplots@cube@halfx}{-\pgfplots@cube@halfy}{-\pgfplots@cube@halfz}}%
+                                \pgfpathclose
+                                \pgfusepathqfillstroke
+                        }{% 
+                                \pgfsetfillcolor{\CubeTopColor}
+                                \pgfpathmoveto{\pgfplotsqpointxyz{-\pgfplots@cube@halfx}{-\pgfplots@cube@halfy}{\pgfplots@cube@topz}}%
+                                \pgfpathlineto{\pgfplotsqpointxyz{-\pgfplots@cube@halfx}{ \pgfplots@cube@halfy}{\pgfplots@cube@topz}}%
+                                \pgfpathlineto{\pgfplotsqpointxyz{ \pgfplots@cube@halfx}{ \pgfplots@cube@halfy}{\pgfplots@cube@topz}}%
+                                \pgfpathlineto{\pgfplotsqpointxyz{ \pgfplots@cube@halfx}{-\pgfplots@cube@halfy}{\pgfplots@cube@topz}}%
+                                \pgfpathclose
+                                \pgfusepathqfillstroke
+                        }%
+            }
+\makeatother
+
+\pgfmathsetmacro{\gconv}{2*326.32446}
+% from https://tex.stackexchange.com/a/435234/121799
+\begin{tikzpicture}[declare function={% (0.00001*\n!/(0.01*\x!*0.01*\y!*0.01*(\n-\x-\y)!))*
+f(\x,\y,\px,\py,\n)=(0.000001*\n!/(0.01*\x!*0.01*\y!*0.01*(\n-\x-\y)!))*pow(\px,\x)*pow(\py,\y)*pow(1-\px-\py,\n-\x-\y);}] % 
+\pgfplotsset{set layers}
+\begin{axis}[% from section 4.6.4 of the pgfplotsmanual
+        view={40}{40},
+        %x dir=reverse,
+        %y dir=reverse,
+        width=320pt,
+        height=280pt,
+        mesh,
+        %mesh/ordering=x varies,
+        z buffer=auto,%reverse xy seq,
+        xmin=-0.5,xmax=5.5,
+        ymin=-0.5,ymax=5.5,
+        zmin=0,zmax=0.3,
+        enlargelimits=true,
+        ztick={0,0.15,0.3},
+        xtick=data,
+        extra tick style={grid=major},
+        ytick={0,...,5},xtick={0,...,5},
+        grid=minor,
+        xlabel={$x$},
+        ylabel={$y$},
+        zlabel={$f(x,y)$},
+        minor tick num=1,
+        ]
+\path let \p1=($(axis cs:0,0,1)-(axis cs:0,0,0)$) in 
+\pgfextra{\pgfmathsetmacro{\conv}{2*\y1}
+\ifx\gconv\conv
+\typeout{z-scale\space good!}
+\else
+\typeout{Kindly\space consider\space setting\space the\space 
+        prefactor\space of\space z\space to\space \conv}
+\fi     
+        };  
+\path let \p1=($(axis cs:1,0,0)-(axis cs:0,0,0)$) in 
+\pgfextra{\pgfmathsetmacro{\convx}{veclen(\x1,\y1)}
+\typeout{One\space unit\space in\space x\space 
+        direction\space is\space\convx pt}
+        };                  
+\path let \p1=($(axis cs:0,1,0)-(axis cs:0,0,0)$) in 
+\pgfextra{\pgfmathsetmacro{\convy}{veclen(\x1,\y1)}
+\typeout{One\space unit\space in\space y\space 
+        direction\space is\space\convy pt}
+        };
+  \addplot3 [point meta=0,visualization depends on={
+  \gconv*z \as \myz}, % you'll get told how to adjust the prefactor
+  scatter/@pre marker code/.append style={/pgfplots/cube/size z=\myz},%
+  scatter/@pre marker code/.append style={/pgfplots/cube/size x=24.3018pt},%
+  scatter/@pre marker code/.append style={/pgfplots/cube/size y=21.71275pt},%
+  scatter,only marks,
+  mark=my cube*,mark size=5,opacity=1,domain=0:5,domain y=0:5,samples=6,samples y=6]
+  {f(x,y,0.2,0.4,5)};
+    \end{axis}
+\end{tikzpicture}
+

@@ -1,0 +1,23 @@
+\begin{tikzpicture}
+
+	\def\x{1}
+	\def\y{1.4}
+	\def\z{1.1}
+
+	\def\siz{2}
+
+	\draw[->,thick] (0,0,0) -- (0,0,\siz) node[left] {$x$} ;
+	\draw[->,thick] (0,0,0) -- (\siz,0,0) node[right] {$y$} ;
+	\draw[->,thick] (0,0,0) -- (0,\siz,0) node[above] {$z$} ;
+
+	\draw[red] (\y,0,\x) -- (\y,\z,\x);
+	\draw[red,dashed] (0,0,\x) node[left]{$x$} -- (\y,0,\x);
+	\draw[red,dashed] (\y,0,0)  node[above]{$y$}-- (\y,0,\x);
+
+	\node[above right] at (\y,\z,\x) {};
+
+	%\draw[red,dashed] (0,0,\x) node[left]{$x$} -- (\y,\z,\x);
+	\draw[red,dashed] (0,\z,0) node[left]{$f(x,y)$} -- (\y,\z,\x);
+	\filldraw[red] (\y,\z,\x) circle (1pt);
+	%\draw[red,dashed] (\y,0,0) node[left]{$x$} -- (\y,\z,\x);
+\end{tikzpicture}

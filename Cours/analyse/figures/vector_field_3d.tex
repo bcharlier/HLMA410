@@ -1,0 +1,53 @@
+%% helper macros
+%: Styles for XYZ-Coordinate Systems
+%: isometric  South West : X , South East : Y , North : Z
+\tikzset{isometricXYZ/.style={x={(-0.866cm,-0.5cm)}, y={(0.866cm,-0.5cm)}, z={(0cm,1cm)}}}
+
+%: isometric South West : Z , South East : X , North : Y
+\tikzset{isometricZXY/.style={x={(0.866cm,-0.5cm)}, y={(0cm,1cm)}, z={(-0.866cm,-0.5cm)}}}
+
+%: isometric South West : Y , South East : Z , North : X
+\tikzset{isometricYZX/.style={x={(0cm,1cm)}, y={(-0.866cm,-0.5cm)}, z={(0.866cm,-0.5cm)}}}
+
+%% document-wide tikz options and styles
+\begin{tikzpicture} [scale=2, isometricZXY, line join=round,
+        opacity=.75, text opacity=1.0,%
+        %>=latex,
+        inner sep=0pt,%
+        outer sep=2pt,%
+    ]
+    \def\h{5}
+    \shade[ball color=red!10!white,opacity=0.20] (0,0) circle (1.2cm);
+    %Movement arrows
+    \foreach \t in {225,235,...,295}
+	\foreach \f in {50,40,...,0}
+	    \draw [blue, opacity=1.0, ->, thick]
+		({sin(\f - \h)*cos(\t - \h)}, {sin(\f - \h)*sin(\t - \h)}, {cos(\f - \h)})
+		-- ({(1 + 0.2*cos(90 - \f))*sin(\f - \h)*cos(\t - \h)},
+		    {(1 + 0.2*cos(90 - \f))*sin(\f - \h)*sin(\t - \h)},
+		    {(1 + 0.2*cos(90 - \f))*cos(\f - \h)});
+
+    \foreach \t in {125,135,...,205}
+	\foreach \f in {110,100,...,0}
+	    \draw [blue, <-, thick]
+		({(1 + 0.2*cos(90 - \f))*sin(\f - \h)*cos(\t - \h)},
+		 {(1 + 0.2*cos(90 - \f))*sin(\f - \h)*sin(\t - \h)},
+		 {(1 + 0.2*cos(90 - \f))*cos(\f - \h)})
+		-- ({sin(\f - \h)*cos(\t - \h)},{sin(\f - \h)*sin(\t - \h)},{cos(\f - \h)});
+    \foreach \t in {35,45,...,115}
+	\foreach \f in {130,120,...,0}
+	    \draw [blue, opacity=1.0 ,->, thick]
+		({sin(\f - \h)*cos(\t - \h)}, {sin(\f - \h)*sin(\t - \h)}, {cos(\f - \h)})
+		-- ({(1 + 0.2*cos(90 - \f))*sin(\f - \h)*cos(\t - \h)},
+		    {(1 + 0.2*cos(90 - \f))*sin(\f - \h)*sin(\t - \h)},
+		    {(1 + 0.2*cos(90 - \f))*cos(\f - \h)});
+
+    \foreach \t in {-55,-45,...,25}
+	\foreach \f in {130,120,...,0}
+	    \draw [blue, <-, thick]
+		({(1 + 0.2*cos(90 - \f))*sin(\f - \h)*cos(\t - \h)},
+		 {(1 + 0.2*cos(90 - \f))*sin(\f - \h)*sin(\t - \h)},
+		 {(1 + 0.2*cos(90 - \f))*cos(\f - \h)})
+	      -- ({sin(\f - \h)*cos(\t - \h)},{sin(\f - \h)*sin(\t - \h)},{cos(\f - \h)});
+
+\end{tikzpicture}
